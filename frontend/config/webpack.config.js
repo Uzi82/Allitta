@@ -470,7 +470,7 @@ module.exports = function (webpackEnv) {
             {
               test: cssRegex,
                 exclude: cssModuleRegex,
-                include: path.resolve(__filename, 'src/style.css'),
+                // include: path.resolve(__filename, 'src/style.css'),
                 use: getStyleLoaders({
                     importLoaders: 1,
                     sourceMap: isEnvProduction ? shouldUseSourceMap : isEnvDevelopment,

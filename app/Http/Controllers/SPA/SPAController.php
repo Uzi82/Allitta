@@ -10,7 +10,7 @@ class SPAController extends Controller
 {
     public function index(): View
     {
-        $manifestPath = public_path('build/asset-manifest.json');
+        $manifestPath = public_path('asset-manifest.json');
 
         if (File::exists($manifestPath)) {
 
@@ -25,7 +25,7 @@ class SPAController extends Controller
             return view('main', ['files' => $data]);
         }
 
-        return view('main', ['files' => ['main.js' => 'build/static/js/fallback.js']]);
+        return view('main', ['files' => ['main.js' => 'static/js/fallback.js']]);
     }
 
     protected function getManifestFiles(string $manifestPath): array
@@ -33,7 +33,7 @@ class SPAController extends Controller
         $files = json_decode(File::get($manifestPath), true)['files'];
 
         foreach ($files as $key => $file) {
-            $files[$key] = 'build' . $file;
+            $files[$key] = $file;
 
             if (str_ends_with($file, '.map')) {
                 unset($files[$key]);
