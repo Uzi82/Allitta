@@ -2,6 +2,7 @@ import ReactDOM from 'react-dom/client';
 import { RouterProvider } from 'react-router-dom';
 import { publicRoutes } from './pages/routes';
 import { QueryClientProvider, QueryClient } from 'react-query';
+import './style.css'
 
 const client = new QueryClient()
 

@@ -1,6 +1,14 @@
+import { ProductCard, FlexCenter, Header, Footer } from "./index"
+
 const Home1: React.FC = () => {
     return(
-        <>Home</> // Will do later
+        <>
+            <FlexCenter>
+                <Header />
+                <ProductCard />
+                <Footer />
+            </FlexCenter>
+        </> // Will do later
     )
 }
 export default Home1
