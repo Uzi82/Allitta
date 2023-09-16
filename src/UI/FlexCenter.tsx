@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const FlexCenter = styled.div`
+export const FlexCenter = styled.div`
     width: 100vw;
     min-height: 100vh;
     display: flex;
@@ -8,5 +8,3 @@ const FlexCenter = styled.div`
     align-items: center;
     justify-content: space-between;
 `
-
-export default FlexCenter

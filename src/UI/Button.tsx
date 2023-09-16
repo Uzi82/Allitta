@@ -30,12 +30,10 @@ type Props = {
   mt?: number
 }
 
-const Button = ({ children, width = 116, height = 35, mt = 0}: Props) => {
+export const Button = ({ children, width = 116, height = 35, mt = 0}: Props) => {
     return(
         <Btn width={width} height={height} mt={mt}>
             { children }
         </Btn>
     )
 }
-
-export default Button
