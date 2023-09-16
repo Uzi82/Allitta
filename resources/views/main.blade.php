@@ -11,14 +11,19 @@
     />
     <link rel="apple-touch-icon" href="logo192.png"/>
     <link rel="manifest" href="manifest.json"/>
-    @foreach ($files['styles'] as $file)
+    @foreach ($files['css'] as $file)
         <link rel="stylesheet" href="{{ asset($file) }}"/>
+    @endforeach
+    @foreach ($files['fonts'] as $file)
+        <link rel="preload" href="{{ asset($file) }}" as="font" type="font/ttf" crossorigin="anonymous">
     @endforeach
     <title>Allitta</title>
 </head>
 <body>
 <noscript>You need to enable JavaScript to run this app.</noscript>
 <div id="root"></div>
-<script src="{{ asset($files['js']) }}"></script>
+@foreach ($files['scripts'] as $file)
+    <script src="{{ asset($file) }}"></script>
+@endforeach
 </body>
 </html>

@@ -14,11 +14,12 @@ class SPAController extends Controller
 
         if (File::exists($manifestPath)) {
 
-            $files = $this->getManifestFiles($manifestPath);
+            $filePaths = $this->getManifestFiles($manifestPath);
 
             $data = [
-                'js' => $this->getAndRemoveMainJs($files),
-                'styles' => $files,
+                'scripts' => $this->getFilePathsByExtension($filePaths, '.js'),
+                'css' => $this->getFilePathsByExtension($filePaths, '.css'),
+                'fonts' => $this->getFilePathsByExtension($filePaths, '.ttf')
             ];
 
             return view('main', ['files' => $data]);
@@ -42,14 +43,16 @@ class SPAController extends Controller
         return $files;
     }
 
-    protected function getAndRemoveMainJs(array &$files): string
+    protected function getFilePathsByExtension(array $filePaths, string $extension): array
     {
-        if (isset($files['main.js'])) {
-            $mainJs = $files['main.js'];
-            unset($files['main.js']);
-            return $mainJs;
+        $result = [];
+
+        foreach ($filePaths as $filePath) {
+            if (str_ends_with($filePath, $extension)) {
+                $result[] = $filePath;
+            }
         }
 
-        return '';
+        return $result;
     }
 }
