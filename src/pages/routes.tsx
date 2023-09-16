@@ -1,17 +1,16 @@
-
 import { createBrowserRouter } from 'react-router-dom'
-import Home1 from './Home/Home1'
+import { Home } from './Home/'
 
 export const publicRoutes = createBrowserRouter([
     {
         path: '/',
-        element: <Home1 />
+        element: <Home />
     }
 ])
 
 export const privateRoutes = createBrowserRouter([ // Here will be private routes later
     {
         path: '/',
-        element: <Home1 /> 
+        element: <Home /> 
     }
 ])

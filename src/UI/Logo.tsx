@@ -12,10 +12,8 @@ type Props = {
     color?: string
 }
 
-const Logo = ({ children, color = 'black' }: Props) => {
+export const Logo = ({ children, color = 'black' }: Props) => {
     return(
         <LogoContainer color={color}>{children}</LogoContainer>
     )
 }
-
-export default Logo

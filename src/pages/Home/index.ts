@@ -1,5 +1,5 @@
-import ProductCard from "../../components/ProductCard"
-import FlexCenter from "../../UI/FlexCenter"
-import Header from "../../components/Header"
-import Footer from "../../components/Footer"
-export { ProductCard, FlexCenter, Header, Footer }
+export { ProductCard } from "../../components/ProductCard"
+export { FlexCenter } from "../../UI/FlexCenter"
+export { Header } from "../../components/Header"
+export { Footer } from "../../components/Footer" 
+export { Home } from './UI/'

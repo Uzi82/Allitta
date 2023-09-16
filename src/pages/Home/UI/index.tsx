@@ -1,6 +1,6 @@
-import { ProductCard, FlexCenter, Header, Footer } from "./index"
+import { ProductCard, FlexCenter, Header, Footer } from "../index"
 
-const Home1: React.FC = () => {
+export const Home: React.FC = () => {
     return(
         <>
             <FlexCenter>
@@ -8,7 +8,6 @@ const Home1: React.FC = () => {
                 <ProductCard />
                 <Footer />
             </FlexCenter>
-        </> // Will do later
+        </>
     )
 }
-export default Home1
