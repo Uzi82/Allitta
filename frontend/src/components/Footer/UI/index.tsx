@@ -1,12 +1,12 @@
-import { FooterContent, FooterDiv, Contact, ContactText, ContactHeader, ContactDescription, PagesCategories, PagesCategoriesHeader, PagesCategoriesElement, EmailDiv, EmailInput } from "./styled"
-import { Logo, Link } from '../'
+import { FooterContent, FooterDiv, Contact, ContactText, ContactHeader, ContactDescription, PagesCategories, PagesCategoriesHeader, PagesCategoriesElement, EmailDiv, EmailInput, EmailSend, EmailDescription } from "./styled"
+import { Logo } from '../'
 
 export const Footer: React.FC = () => {
     return(
         <FooterDiv>
             <FooterContent>
                 <Contact>
-                    <Logo color='#5D20D6'>ALLITTA</Logo>
+                    <Logo color='white'>ALLITTA</Logo>
                     <ContactText>
                         <ContactHeader>Contact Us</ContactHeader>
                         <ContactDescription>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</ContactDescription>
@@ -16,29 +16,30 @@ export const Footer: React.FC = () => {
                 </Contact>
                 <PagesCategories>
                     <PagesCategoriesHeader>Pages</PagesCategoriesHeader>
-                    <Link to={'/'}><PagesCategoriesElement>Home</PagesCategoriesElement></Link>
-                    <Link to={'/'}><PagesCategoriesElement>Shop Online</PagesCategoriesElement></Link>
-                    <Link to={'/'}><PagesCategoriesElement>Shop Online</PagesCategoriesElement></Link>
-                    <Link to={'/'}><PagesCategoriesElement>Contact us</PagesCategoriesElement></Link>
-                    <Link to={'/'}><PagesCategoriesElement>About us</PagesCategoriesElement></Link>
-                    <Link to={'/'}><PagesCategoriesElement>What’s New</PagesCategoriesElement></Link>
-                    <Link to={'/'}><PagesCategoriesElement>Most Popular</PagesCategoriesElement></Link>
-                    <Link to={'/'}><PagesCategoriesElement>Best Selling</PagesCategoriesElement></Link>
+                    <PagesCategoriesElement to={'/'}>Home</PagesCategoriesElement>
+                    <PagesCategoriesElement to={'/'}>Shop Online</PagesCategoriesElement>
+                    <PagesCategoriesElement to={'/'}>Shop Online</PagesCategoriesElement>
+                    <PagesCategoriesElement to={'/'}>Contact us</PagesCategoriesElement>
+                    <PagesCategoriesElement to={'/'}>About us</PagesCategoriesElement>
+                    <PagesCategoriesElement to={'/'}>What’s New</PagesCategoriesElement>
+                    <PagesCategoriesElement to={'/'}>Most Popular</PagesCategoriesElement>
+                    <PagesCategoriesElement to={'/'}>Best Selling</PagesCategoriesElement>
                 </PagesCategories>
                 <PagesCategories>
                     <PagesCategoriesHeader>Categories</PagesCategoriesHeader>
-                    <Link to={'/'}><PagesCategoriesElement>Category 1</PagesCategoriesElement></Link>
-                    <Link to={'/'}><PagesCategoriesElement>Category 2</PagesCategoriesElement></Link>
-                    <Link to={'/'}><PagesCategoriesElement>Category 3</PagesCategoriesElement></Link>
-                    <Link to={'/'}><PagesCategoriesElement>Category 4</PagesCategoriesElement></Link>
-                    <Link to={'/'}><PagesCategoriesElement>Category 5</PagesCategoriesElement></Link>
+                    <PagesCategoriesElement to={'/'}>Category 1</PagesCategoriesElement>
+                    <PagesCategoriesElement to={'/'}>Category 2</PagesCategoriesElement>
+                    <PagesCategoriesElement to={'/'}>Category 3</PagesCategoriesElement>
+                    <PagesCategoriesElement to={'/'}>Category 4</PagesCategoriesElement>
+                    <PagesCategoriesElement to={'/'}>Category 5</PagesCategoriesElement>
                 </PagesCategories>
                 <PagesCategories>
                     <PagesCategoriesHeader>News Latter Subscription</PagesCategoriesHeader>
-                    <PagesCategoriesElement>Get the Latest Products & Best
-Deals <br/> in Your Inbox as First Person</PagesCategoriesElement>
+                    <EmailDescription>Get the Latest Products & Best
+Deals <br/> in Your Inbox as First Person</EmailDescription>
                     <EmailDiv>
-                        <EmailInput />
+                        <EmailInput maxLength={30}/>
+                        <EmailSend>Submit</EmailSend>
                     </EmailDiv>
                 </PagesCategories>
             </FooterContent>
