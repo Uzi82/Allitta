@@ -1,0 +1,55 @@
+version: '3'
+
+networks:
+    project:
+
+services:
+    php:
+        build:
+            context: .
+            dockerfile: docker/php/Dockerfile
+        volumes:
+            - './:/var/www/html/allitta'
+            - '/var/www/html/allitta/vendor'
+        expose:
+            - 9001
+        networks:
+            - project
+        depends_on:
+            - postgresql
+        extra_hosts:
+            - "host.docker.internal:host-gateway"
+
+    nginx:
+        build:
+            context: .
+            dockerfile: docker/nginx/Dockerfile
+        ports:
+            - "80:80"
+        volumes:
+            - './:/var/www/html/allitta'
+        networks:
+            - project
+        depends_on:
+            - php
+
+    postgresql:
+        build:
+            context: .
+            dockerfile: docker/postgresql/Dockerfile
+        ports:
+            - "5432:5432"
+        environment:
+            PGDATA: /var/lib/postgresql/data/pgdata
+            POSTGRES_DB: ${DB_DATABASE}
+            POSTGRES_USER: ${DB_USERNAME}
+            POSTGRES_PASSWORD: ${DB_PASSWORD}
+        volumes:
+            - pgdata_local:/var/lib/postgresql/data
+        networks:
+            - project
+        env_file:
+            - .env
+
+volumes:
+    pgdata_local:
