@@ -1,5 +1,0 @@
-{
-    "watch": ["src"],
-    "ext": "js,mjs,cjs,json,tsx,css,ts",
-    "exec": "node scripts/build.js"
-}
