@@ -2,12 +2,19 @@ export type Props = {
     children?: string | JSX.Element | JSX.Element[],
     type: 'signIn' | 'reset',
 }
-export type StylesProps = {
+export type FormStyles = {
     width?: string,
     $maxwidth?: string,
     height?: string,
-    $mt?: string
+    $mb?: string
+}
+export type TitleStyles = {
+    $mb?: string
+}
+export type SubtitleStyles = {
+    $mb?: string
 }
 export type LinkFormStyles = {
-    ml?: string
+    $justify?: string,
+    $mb?: string
 } 

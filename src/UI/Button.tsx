@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-const Btn = styled.button<{ width: number; height: number; mt: number }>`
+const Btn = styled.button<{ width: number; height: number; mt: number, br: number }>`
     width: ${props => props.width}px;
     height: ${props => props.height}px;
     background-color: #5D20D6;
-    border-radius: 100px;
+    border-radius: ${props => props.br}px;
     border: 2px solid #5D20D6;
     margin: ${props => props.mt}px 0 0 0;
     color: #FFF;
@@ -28,11 +28,12 @@ type Props = {
     width?: number,
     height?: number,
     mt?: number
+    br?: number
 }
 
-const Button = ({ children, width = 116, height = 35, mt = 0 }: Props) => {
+const Button = ({ children, width = 116, height = 35, mt = 0, br = 100 }: Props) => {
     return (
-        <Btn width={width} height={height} mt={mt}>
+        <Btn width={width} height={height} mt={mt} br={br} >
             {children}
         </Btn>
     )
