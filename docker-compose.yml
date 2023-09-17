@@ -10,6 +10,7 @@ services:
             dockerfile: docker/php/Dockerfile
         volumes:
             - './:/var/www/html/allitta'
+            - '/var/www/html/allitta/vendor'
         expose:
             - 9001
         networks:
