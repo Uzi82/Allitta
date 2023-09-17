@@ -1,15 +1,7 @@
 import styled from 'styled-components'
-import { Link } from '../'
+import { Link } from 'react-router-dom'
 
-export const FooterDiv = styled.div`
-    background: #393434;
-    width: 100vw;
-    height: 416px;
-    display: flex;
-    justify-content: center;
-`
-
-export const FooterContent = styled.div`
+export const Content = styled.div`
     width: 1108px;
     display: flex;
     flex-direction: row;

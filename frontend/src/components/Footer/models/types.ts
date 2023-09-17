@@ -1,4 +1,5 @@
-export type link = {
+export type linkType = {
+    id: string,
     title: string,
     path: string
 }
