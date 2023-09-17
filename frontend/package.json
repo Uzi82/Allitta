@@ -73,7 +73,7 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
     "watch_linux": "NODE_ENV=development nodemon --config nodemon.json",
-    "watch_windows": "set NODE_ENV=development && nodemon --config nodemon.json"
+    "watch_windows": "set NODE_ENV=development&& set BABEL_ENV=development&& nodemon --config nodemon.json"
   },
   "eslintConfig": {
     "extends": [
@@ -81,18 +81,11 @@
       "react-app/jest"
     ]
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
+  "browserslist": [
+    ">0.2%",
+   "not dead",
+   "not op_mini all"
+  ],
   "jest": {
     "roots": [
       "<rootDir>/src"

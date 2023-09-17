@@ -190,7 +190,7 @@ module.exports = function (webpackEnv) {
     target: ['browserslist'],
     // Webpack noise constrained to errors and warnings
     stats: 'errors-warnings',
-    mode: isEnvProduction ? 'production' : isEnvDevelopment && 'development',
+    mode: isEnvProduction ? 'production' : 'development',
     // Stop compilation early in production
     bail: isEnvProduction,
     devtool: isEnvProduction
