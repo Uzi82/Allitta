@@ -1,12 +1,12 @@
-import { FooterContent, FooterDiv, Contact, ContactText, ContactHeader, ContactDescription, PagesCategories, PagesCategoriesHeader, PagesCategoriesElement, EmailDiv, EmailInput } from "./styled"
-import { Logo, Link } from '../'
+import { Content, Contact, ContactText, ContactHeader, ContactDescription, PagesCategories, PagesCategoriesHeader, PagesCategoriesElement, EmailDiv, EmailInput, EmailSend, EmailDescription } from "./styled"
+import { BlockCenter, Logo, links } from '../'
 
 export const Footer: React.FC = () => {
     return(
-        <FooterDiv>
-            <FooterContent>
+        <BlockCenter background="#393434">
+            <Content>
                 <Contact>
-                    <Logo color='#5D20D6'>ALLITTA</Logo>
+                    <Logo color='white'>ALLITTA</Logo>
                     <ContactText>
                         <ContactHeader>Contact Us</ContactHeader>
                         <ContactDescription>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</ContactDescription>
@@ -16,32 +16,30 @@ export const Footer: React.FC = () => {
                 </Contact>
                 <PagesCategories>
                     <PagesCategoriesHeader>Pages</PagesCategoriesHeader>
-                    <Link to={'/'}><PagesCategoriesElement>Home</PagesCategoriesElement></Link>
-                    <Link to={'/'}><PagesCategoriesElement>Shop Online</PagesCategoriesElement></Link>
-                    <Link to={'/'}><PagesCategoriesElement>Shop Online</PagesCategoriesElement></Link>
-                    <Link to={'/'}><PagesCategoriesElement>Contact us</PagesCategoriesElement></Link>
-                    <Link to={'/'}><PagesCategoriesElement>About us</PagesCategoriesElement></Link>
-                    <Link to={'/'}><PagesCategoriesElement>What’s New</PagesCategoriesElement></Link>
-                    <Link to={'/'}><PagesCategoriesElement>Most Popular</PagesCategoriesElement></Link>
-                    <Link to={'/'}><PagesCategoriesElement>Best Selling</PagesCategoriesElement></Link>
+                    {
+                        links?.length > 0
+                            ? links[0].map(el=><PagesCategoriesElement key={el.id} to={el.path}>{el.title}</PagesCategoriesElement>)
+                            : <></>
+                    }
                 </PagesCategories>
                 <PagesCategories>
                     <PagesCategoriesHeader>Categories</PagesCategoriesHeader>
-                    <Link to={'/'}><PagesCategoriesElement>Category 1</PagesCategoriesElement></Link>
-                    <Link to={'/'}><PagesCategoriesElement>Category 2</PagesCategoriesElement></Link>
-                    <Link to={'/'}><PagesCategoriesElement>Category 3</PagesCategoriesElement></Link>
-                    <Link to={'/'}><PagesCategoriesElement>Category 4</PagesCategoriesElement></Link>
-                    <Link to={'/'}><PagesCategoriesElement>Category 5</PagesCategoriesElement></Link>
+                    {
+                        links?.length > 0
+                            ? links[1].map(el=><PagesCategoriesElement key={el.id} to={el.path}>{el.title}</PagesCategoriesElement>)
+                            : <></>
+                    }
                 </PagesCategories>
                 <PagesCategories>
                     <PagesCategoriesHeader>News Latter Subscription</PagesCategoriesHeader>
-                    <PagesCategoriesElement>Get the Latest Products & Best
-Deals <br/> in Your Inbox as First Person</PagesCategoriesElement>
+                    <EmailDescription>Get the Latest Products & Best
+Deals <br/> in Your Inbox as First Person</EmailDescription>
                     <EmailDiv>
-                        <EmailInput />
+                        <EmailInput maxLength={30}/>
+                        <EmailSend>Submit</EmailSend>
                     </EmailDiv>
                 </PagesCategories>
-            </FooterContent>
-        </FooterDiv>
+            </Content>
+        </BlockCenter>
     )
 }

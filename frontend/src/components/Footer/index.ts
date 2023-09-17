@@ -1,3 +1,6 @@
 export { Footer } from './UI/'
 export { Logo } from '../../UI/Logo'
 export { Link } from 'react-router-dom'
+export { links } from './models/links'
+export { BlockCenter } from '../../UI/BlockCenter'
+export type { linkType } from './models/types'

@@ -1,14 +1,7 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
-export const FooterDiv = styled.div`
-    background: #393434;
-    width: 100vw;
-    height: 416px;
-    display: flex;
-    justify-content: center;
-`
-
-export const FooterContent = styled.div`
+export const Content = styled.div`
     width: 1108px;
     display: flex;
     flex-direction: row;
@@ -30,16 +23,16 @@ export const ContactText = styled.div`
 
 export const ContactHeader = styled.div`
     margin: 10px 0;
-    color: #5D20D6;
     font-family: Inter-Bold, sans-serif;
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    color: #C8C8C8;
 `
 
 export const ContactDescription = styled.div`
-    color: #FFF;
+    color: #C8C8C8;
     width: 262px;
     font-family: Inter-Regular, sans-serif;
     font-size: 16px;
@@ -55,7 +48,7 @@ export const PagesCategories = styled.div`
 `
 
 export const PagesCategoriesHeader = styled.div`
-    color: #5D20D6;
+    color: white;
     font-family: Inter-Bold, sans-serif;
     font-size: 18px;
     font-style: normal;
@@ -64,20 +57,69 @@ export const PagesCategoriesHeader = styled.div`
     margin: 10px 0;
 `
 
-export const PagesCategoriesElement = styled.div`
-    color: #FFF;
+export const PagesCategoriesElement = styled(Link)`
+    color: #C8C8C8;
     font-family: Inter-Regular, sans-serif;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    transition-duration: 300ms;
+    &:hover {
+        color: #fff;
+        text-decoration: underline;
+    }
 `
 export const EmailDiv = styled.div`
     display: flex;
     flex-direction: row;
     margin: 20px 0;
+    align-items: center;
+    justify-content: flex-end;
 `
 
 export const EmailInput = styled.input`
-    padding: 3px 40px 3px 10px;
+    padding: 3px 100px 3px 20px;
+    width: 256px;
+    height: 45px;
+    border-radius: 100px;
+    background: rgba(0, 0, 0, 0.20);
+    backdrop-filter: blur(20px);
+    color: #FFF;
+    font-family: Inter-Regular, sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+`
+
+export const EmailSend = styled.button`
+    width: 87px;
+    height: 35px;
+    border-radius: 100px;
+    background: #5D20D6;   
+    position: absolute;
+    transform: translateX(-5px);
+    color: #FFF;
+    font-family: Inter-Regular, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    cursor: pointer;
+    border: 2px solid #5D20D6;
+    transition-duration: 300ms;
+    &:hover {
+        background: none;
+        border: 2px solid #5D20D6;
+    }
+`
+
+export const EmailDescription = styled.p`
+    color: #C8C8C8;
+    font-family: Inter-Regular, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 `
