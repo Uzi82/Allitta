@@ -27,7 +27,7 @@ services:
         ports:
             - "80:80"
         volumes:
-            - './:/var/www/html/allitta'
+            - './:/var/www/html/allitta:ro'
         networks:
             - project
         depends_on:
