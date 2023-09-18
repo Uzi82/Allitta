@@ -4,7 +4,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import './styles.css';
-import { Pagination } from 'swiper/modules';
 
 export const Categories: React.FC = () => {
     return(
@@ -15,10 +14,6 @@ export const Categories: React.FC = () => {
                     slidesPerView={6}
                     spaceBetween={20}
                     grabCursor={true}
-                    // pagination={{
-                    //   clickable: true,
-                    // }}
-                    // modules={[Pagination]}
                     className="mySwiper"
                     loop
                 >
