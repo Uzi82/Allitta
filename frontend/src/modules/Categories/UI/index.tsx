@@ -12,15 +12,15 @@ export const Categories: React.FC = () => {
             <Content>
                 <Header>Shop Our Top Categories</Header>
                 <Swiper
-                    slidesPerView={4}
-                    centeredSlides={true}
-                    spaceBetween={30}
+                    slidesPerView={6}
+                    spaceBetween={20}
                     grabCursor={true}
-                    pagination={{
-                      clickable: true,
-                    }}
-                    modules={[Pagination]}
+                    // pagination={{
+                    //   clickable: true,
+                    // }}
+                    // modules={[Pagination]}
                     className="mySwiper"
+                    loop
                 >
                     {
                         categoryList.map(el=>{
