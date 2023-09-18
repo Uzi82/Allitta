@@ -17,6 +17,10 @@
     margin: 0;
     border: none;
     padding: 0;
-    overflow-x: hidden;
     text-decoration: none !important;
+    box-sizing: border-box;
+}
+
+.body {
+    overflow-x: hidden;
 }
