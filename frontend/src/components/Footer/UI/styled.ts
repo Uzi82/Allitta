@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import { Link } from '../'
 
 export const Content = styled.div`
     width: 1108px;
@@ -68,50 +68,6 @@ export const PagesCategoriesElement = styled(Link)`
     &:hover {
         color: #fff;
         text-decoration: underline;
-    }
-`
-export const EmailDiv = styled.div`
-    display: flex;
-    flex-direction: row;
-    margin: 20px 0;
-    align-items: center;
-    justify-content: flex-end;
-`
-
-export const EmailInput = styled.input`
-    padding: 3px 100px 3px 20px;
-    width: 256px;
-    height: 45px;
-    border-radius: 100px;
-    background: rgba(0, 0, 0, 0.20);
-    backdrop-filter: blur(20px);
-    color: #FFF;
-    font-family: Inter-Regular, sans-serif;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-`
-
-export const EmailSend = styled.button`
-    width: 87px;
-    height: 35px;
-    border-radius: 100px;
-    background: #5D20D6;   
-    position: absolute;
-    transform: translateX(-5px);
-    color: #FFF;
-    font-family: Inter-Regular, sans-serif;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    cursor: pointer;
-    border: 2px solid #5D20D6;
-    transition-duration: 300ms;
-    &:hover {
-        background: none;
-        border: 2px solid #5D20D6;
     }
 `
 

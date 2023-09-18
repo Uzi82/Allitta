@@ -1,5 +1,5 @@
-import { Content, Contact, ContactText, ContactHeader, ContactDescription, PagesCategories, PagesCategoriesHeader, PagesCategoriesElement, EmailDiv, EmailInput, EmailSend, EmailDescription } from "./styled"
-import { BlockCenter, Logo, links } from '../'
+import { Content, Contact, ContactText, ContactHeader, ContactDescription, PagesCategories, PagesCategoriesHeader, PagesCategoriesElement, EmailDescription } from "./styled"
+import { BlockCenter, Logo, StyledInput, links } from '../'
 
 export const Footer: React.FC = () => {
     return(
@@ -34,10 +34,7 @@ export const Footer: React.FC = () => {
                     <PagesCategoriesHeader>News Latter Subscription</PagesCategoriesHeader>
                     <EmailDescription>Get the Latest Products & Best
 Deals <br/> in Your Inbox as First Person</EmailDescription>
-                    <EmailDiv>
-                        <EmailInput maxLength={30}/>
-                        <EmailSend>Submit</EmailSend>
-                    </EmailDiv>
+                    <StyledInput btnText="Sumbit"/>
                 </PagesCategories>
             </Content>
         </BlockCenter>
