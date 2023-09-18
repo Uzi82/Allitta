@@ -21,6 +21,9 @@ const Input = styled.input<{ width: number, heigth: number }>`
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    &::placeholder {
+        color: #FFF;
+    }
 `
 
 const Send = styled.button<{ changecolor: string }>`
@@ -46,7 +49,7 @@ const Send = styled.button<{ changecolor: string }>`
     }
 `
 
-export const StyledInput = ({btnText = 'Send', width = 256 , heigth = 45, chngClr}: {btnText?: string, width?: number, heigth?: number, chngClr?: boolean}) => <Div>
-    <Input width={width} heigth={heigth} maxLength={30}/>
+export const StyledInput = ({btnText = 'Send', width = 256 , heigth = 45, chngClr, placeholder = ''}: {btnText?: string, width?: number, heigth?: number, chngClr?: boolean, placeholder?: string}) => <Div>
+    <Input placeholder={placeholder} width={width} heigth={heigth} maxLength={30}/>
     <Send changecolor={chngClr ? '#5D20D6' : 'white'}>{btnText}</Send>
 </Div>

@@ -1,15 +1,12 @@
 import { useQuery } from "react-query"
 import { Content, Header, List } from "./styled"
-import { Spinner, getDeals } from '../'
-import { ProductCard } from "../../../components/ProductCard"
-
-
+import { Spinner, getDeals, ProductCard } from '../'
 
 export const BestDeals: React.FC = () => {
     const { data, isLoading, isError} = useQuery('bestDeals', getDeals, {
         refetchOnWindowFocus: false
     })
-    console.log(data)
+    if(isError) console.error('BestDeals: Query error')
     return(
         <Content>
             <Header>
