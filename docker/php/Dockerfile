@@ -14,7 +14,7 @@ COPY --chown=www-data:www-data . /var/www/html/allitta
 
 USER root
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-RUN composer install --no-dev --optimize-autoloader
+RUN composer install --optimize-autoloader
 
 ENV PHP_IDE_CONFIG 'serverName=Docker'
 RUN echo "xdebug.mode=debug" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
