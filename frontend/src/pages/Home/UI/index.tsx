@@ -10,7 +10,7 @@ export const Home: React.FC = () => {
                         <SearchText>
                             <SearchHead>
                                 Find the Best Products with <Purple>Reliability</Purple>
-                                <StyledInput placeholder="Search Here Shop or Product" btnText="Search" width={356} heigth={45} chngClr/>
+                                <StyledInput placeholder="Search Here Shop or Product" btnText="Search" width={388} heigth={45} chngClr/>
                             </SearchHead>
                         </SearchText>
                     </Search>

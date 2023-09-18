@@ -18,10 +18,10 @@ export const Header = styled.h1`
 `
 
 export const List = styled.div`
-    padding: 5px;
+    padding: 5px 0;
     display: flex;
     flex-wrap: wrap;
-    width: 1100px;
+    width: 1108px;
     min-height: 150px;
     flex-direction: row;
     gap: 17px;
