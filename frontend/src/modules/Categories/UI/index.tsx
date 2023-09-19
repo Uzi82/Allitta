@@ -6,13 +6,22 @@ import 'swiper/css/pagination';
 import './styles.css';
 
 export const Categories: React.FC = () => {
+    let width = document.documentElement.clientWidth
+    console.log(width)
+    console.log(width >= 1120
+        ? 20
+        : 5)
     return(
         <>
             <Content>
                 <Header>Shop Our Top Categories</Header>
                 <Swiper
                     slidesPerView={6}
-                    spaceBetween={20}
+                    spaceBetween={
+                        width >= 1120
+                            ? 20
+                            : 2
+                    }
                     grabCursor={true}
                     className="mySwiper"
                     loop

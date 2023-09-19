@@ -10,7 +10,7 @@ export const MostPopular: React.FC = () => {
     return(
         <Content>
             <Header>
-                Best Deals For You!
+                Most Popular Products
             </Header>
             <List>
                 {
