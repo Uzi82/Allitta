@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
-const Btn = styled.button<{ width?: string; height?: string; margint?: string; marginb?: string; borderRadius?: string }>`
-    width: ${props => props.width};
-    height: ${props => props.height};
+const Btn = styled.button<{ width?: string; height?: string; $mt?: string; $mb?: string; $br?: string }>`
+    width: ${props => props.width || '100%'};
+    height: ${props => props.height || '45px'};
     background-color: #5D20D6;
-    border-radius: ${({ borderRadius }) => borderRadius};
+    border-radius: ${({ $br }) => $br || '100px'};
     border: 2px solid #5D20D6;
-    margin: ${props => props.margint} 0 ${props => props.marginb} 0;
+    margin: ${props => props.$mt || 0} 0 ${props => props.$mb || 0} 0;
     color: #FFF;
     text-align: center;
     font-family: Inter-Regular, sans-serif;
@@ -32,9 +32,9 @@ type Props = {
     br?: string
 }
 
-export const Button = ({ children, width, height, mt, mb, br = '100px' }: Props) => {
+export const Button = ({ children, width, height, mt, mb, br }: Props) => {
     return (
-        <Btn width={width} height={height} margint={mt} marginb={mb} borderRadius={br}>
+        <Btn width={width} height={height} $mt={mt} $mb={mb} $br={br}>
             {children}
         </Btn>
     )
