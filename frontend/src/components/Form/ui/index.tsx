@@ -14,7 +14,7 @@ const Form = ({ type }: Props) => {
                     <Input placeholder='email address' />
                     <Input placeholder='password' type='password' mb='10px' />
                     <LinkForm $mb='20px' $justify='end' ><Link to='/'>Forget password?</Link></LinkForm>
-                    <Button br={'10px'} >Sign In</Button>
+                    <Button br={'10px'} mb={'20px'} >Sign In</Button>
                     <LinkForm ><Link to='/'>Create Account</Link></LinkForm>
                 </>
                 :
@@ -23,7 +23,7 @@ const Form = ({ type }: Props) => {
                     <Subtitle $mb='20px'>Create your new Password and confirm it.</Subtitle>
                     <Input placeholder='password' type='password' />
                     <Input placeholder='confirm password' type='password' />
-                    <Button br={'10px'}>Sign In</Button>
+                    <Button br={'10px'} mb={'20px'}>Sign In</Button>
                 </>
             }
         </FormStyled>
