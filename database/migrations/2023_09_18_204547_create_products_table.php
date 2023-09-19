@@ -1,6 +1,7 @@
 <?php
 
 use App\Enums\CurrencyEnum;
+use App\Enums\ProductStatusEnum;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -18,7 +19,8 @@ return new class extends Migration {
             $table->string('logotype_path');
             $table->jsonb('images')->nullable();
             $table->text('description');
-            $table->smallInteger('category');
+            $table->tinyInteger('status')->default(ProductStatusEnum::UNAVAILABLE->value);
+            $table->foreignId('category_id')->constrained('product_categories');
             $table->smallInteger('subcategory');
             $table->boolean('active')->default(false);
             $table->boolean('draft')->default(false);

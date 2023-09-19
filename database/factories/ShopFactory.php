@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\PathEnum;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -26,8 +27,8 @@ class ShopFactory extends Factory
             'street' => $this->faker->streetAddress(),
             'city' => $this->faker->city(),
             'zip_code' => $this->faker->postcode(),
-            'logotype_path' => 'storage/images/no_logotype.png',
-            'banner_path' => 'storage/images/no_banner.png'
+            'logotype_path' => PathEnum::SHOP_IMAGES_LOGOTYPES->value . 'no_logotype.png',
+            'banner_path' => PathEnum::SHOP_IMAGES_BANNERS->value . 'no_banner.png'
         ];
     }
 }

@@ -2,9 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Enums\PathEnum;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
-use function Symfony\Component\Translation\t;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\ShopUser>
@@ -28,7 +28,7 @@ class ShopUserFactory extends Factory
             'last_name' => $lastName,
             'full_name' => $fullName,
             'email' => $this->faker->email(),
-            'img_path' => 'storage/images/no_photo.png',
+            'img_path' => PathEnum::USER_IMAGES_PROFILE->value . 'no_photo.png',
             'password' => Hash::make('pass'),
             'birthday' => $this->faker->date(),
             'gender' => rand(1, 2),

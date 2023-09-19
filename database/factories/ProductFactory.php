@@ -2,6 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Enums\PathEnum;
+use App\Enums\ProductStatusEnum;
+use App\Models\ProductCategory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,13 +19,16 @@ class ProductFactory extends Factory
      */
     public function definition(): array
     {
+        $statuses = ProductStatusEnum::cases();
+
         return [
             'shop_id' => null,
             'name' => $this->faker->words(2, true),
-            'logotype_path' => 'storage/images/no_product_logotype.png',
+            'logotype_path' => PathEnum::PRODUCT_IMAGES_LOGOTYPES->value . 'no_product_logotype.png',
             'images' => '[]',
             'description' => $this->faker->sentence(10),
-            'category' => rand(1, 10),
+            'status' => $statuses[array_rand($statuses)]->value,
+            'category_id' => ProductCategory::inRandomOrder()->first(),
             'subcategory' => rand(1, 5),
             'active' => (bool)rand(0, 1),
             'draft' => (bool)rand(0, 1),
