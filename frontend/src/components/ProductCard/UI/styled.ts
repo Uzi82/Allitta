@@ -4,6 +4,9 @@ export const Card = styled.div`
     display: flex;
     flex-direction: column;
     gap: 15px;
+    @media screen and (min-width: 767px) and (max-width: 1120px) {
+        gap: 5px;
+    }
 `
 
 export const Text = styled.div`
@@ -21,6 +24,10 @@ export const Header = styled.h1`
     word-break: break-all;
     width: 262px;
     padding: 0 2px;
+    @media screen and (min-width: 767px) and (max-width: 1120px) {
+        font-size: 14px; 
+        width: calc(20vw - 20px);
+    }
 `
 
 export const Price = styled.p`
@@ -34,6 +41,10 @@ export const Price = styled.p`
     padding: 0 2px;
     margin: 5px 0;
     word-break: break-all;
+    @media screen and (min-width: 767px) and (max-width: 1120px) {
+        font-size: 12px; 
+        width: calc(20vw - 20px);
+    }
 `
 
 export const Desctiption = styled.p`
@@ -47,4 +58,9 @@ export const Desctiption = styled.p`
     width: 262px;
     padding: 0 2px;
     margin: 5px 0;
+    @media screen and (min-width: 767px) and (max-width: 1120px) {
+        font-size: 12px;
+        width: calc(20vw - 20px);
+        margin: 0;
+    }
 `

@@ -15,11 +15,19 @@ export const Content = styled(Link)`
     &:hover{
         box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.4);
     }
+    @media screen and (min-width: 767px) and (max-width: 1120px) {
+        width: 175px;
+        height: 60px;
+    }
 `
 
 const Img = styled.img`
     width: 30px;
     height: 30px;
+    @media screen and (min-width: 767px) and (max-width: 1120px) {
+        width: 20px;
+        height: 20px;
+    }
 `
 
 const ImgContainer = styled.div`
@@ -30,6 +38,10 @@ const ImgContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    @media screen and (min-width: 767px) and (max-width: 1120px) {
+        width: 40px;
+        height: 40px;
+    }
 `
 
 export const Image = ({src}: { src?: string }) => <ImgContainer><Img src={src !== '' && !src ? src : require('./shoppingBag.png')} /></ImgContainer>
@@ -38,7 +50,10 @@ export const Text = styled.div`
     display: flex;
     flex-direction: column;
     gap: 4px;
-    width: 145px
+    width: 145px;
+    @media screen and (min-width: 767px) and (max-width: 1120px) {
+        width: 100px;
+    }
 `
 
 export const Header = styled.h1`
