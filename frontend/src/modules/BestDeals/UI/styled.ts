@@ -8,6 +8,10 @@ export const Content = styled.div`
         width: calc(100vw - 20px);
         gap: 10px;  
     }
+    @media screen and (max-width: 766px) {
+        width: calc(100vw - 20px);
+        gap: 10px; 
+    }
 `
 
 export const Header = styled.h1`
@@ -32,5 +36,10 @@ export const List = styled.div`
         width: calc(100vw - 20px);
         gap: 7px;  
         justify-content: space-around;
+    }
+    @media screen and (max-width: 766px) {
+        gap: 20px;
+        flex-direction: column;
+        width: calc(100vw - 20px);
     }
 `

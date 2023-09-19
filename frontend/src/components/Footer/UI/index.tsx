@@ -1,4 +1,4 @@
-import { Content, Contact, ContactText, ContactHeader, ContactDescription, PagesCategories, PagesCategoriesHeader, PagesCategoriesElement, EmailDescription } from "./styled"
+import { Content, Contact, ContactText, ContactHeader, ContactDescription, PagesCategories, PagesCategoriesHeader, PagesCategoriesElement, EmailDescription, EmailHeader } from "./styled"
 import { BlockCenter, Logo, StyledInput, links } from '../'
 
 export const Footer: React.FC = () => {
@@ -31,7 +31,7 @@ export const Footer: React.FC = () => {
                     }
                 </PagesCategories>
                 <PagesCategories>
-                    <PagesCategoriesHeader>News Latter Subscription</PagesCategoriesHeader>
+                    <EmailHeader>News Latter Subscription</EmailHeader>
                     <EmailDescription>Get the Latest Products & Best
 Deals <br/> in Your Inbox as First Person</EmailDescription>
                     <StyledInput width={'100%'} placeholder="Your Email Address" btnText="Submit"/>

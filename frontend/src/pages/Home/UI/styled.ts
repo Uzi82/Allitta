@@ -8,7 +8,7 @@ export const Content = styled.div`
     align-items: center;
     gap: 40px;
     margin: 25px 0;
-    @media screen and (min-width: 767px) and (max-width: 1120px) {
+    @media screen and (max-width: 1120px) {
         width: 100vw;
     }
 `

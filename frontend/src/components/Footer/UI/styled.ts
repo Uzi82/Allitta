@@ -11,6 +11,12 @@ export const Content = styled.div`
         width: 100vw;
         padding: 0 5px;
     }
+    @media screen and (max-width: 767px) {
+        width: 100vw;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
 `
 
 export const Contact = styled.div`
@@ -69,6 +75,9 @@ export const PagesCategoriesHeader = styled.div`
     @media screen and (min-width: 767px) and (max-width: 1120px) {
         font-size: 14px;
     }
+    @media screen and (max-width: 767px) {
+        display: none;
+    }
 `
 
 export const PagesCategoriesElement = styled(Link)`
@@ -85,6 +94,22 @@ export const PagesCategoriesElement = styled(Link)`
     }
     @media screen and (min-width: 767px) and (max-width: 1120px) {
         font-size: 12px;
+    }
+    @media screen and (max-width: 767px) {
+        display: none;
+    }
+`
+
+export const EmailHeader = styled.div`
+    color: white;
+    font-family: Inter-Bold, sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin: 10px 0;
+    @media screen and (min-width: 767px) and (max-width: 1120px) {
+        font-size: 14px;
     }
 `
 

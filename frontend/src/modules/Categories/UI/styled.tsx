@@ -8,6 +8,10 @@ export const Content = styled.div`
     @media screen and (min-width: 767px) and (max-width: 1120px){
         width: calc(100vw - 20px);
     }
+    @media screen and (max-width: 766px) {
+        width: calc(100vw - 20px);
+        gap: 10px; 
+    }
 `
 
 export const Header = styled.h1`

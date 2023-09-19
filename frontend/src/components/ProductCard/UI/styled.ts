@@ -7,6 +7,9 @@ export const Card = styled.div`
     @media screen and (min-width: 767px) and (max-width: 1120px) {
         gap: 5px;
     }
+    @media screen and (max-width: 766px) {
+        gap: 5px;
+    }
 `
 
 export const Text = styled.div`
