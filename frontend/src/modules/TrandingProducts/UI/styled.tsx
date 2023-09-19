@@ -10,6 +10,10 @@ export const Content = styled.div`
         width: calc(100vw - 20px);
         gap: 10px; 
     }
+    @media screen and (max-width: 766px) {
+        width: calc(100vw - 20px);
+        gap: 10px; 
+    }
 `
 
 export const Header = styled.h1`
@@ -29,6 +33,11 @@ export const Categories = styled.div`
     @media screen and (min-width: 767px) and (max-width: 1120px) {
         justify-content: space-around;
     }
+    @media screen and (max-width: 766px) {
+        gap: 10px;
+        flex-direction: column;
+        align-items: center;
+    }
 `
 
 export const Category = styled.div<{ $image?: string }>`
@@ -40,6 +49,10 @@ export const Category = styled.div<{ $image?: string }>`
     background: ${({$image})=>$image ? `${$image}` : '#D9D9D9'};
     background-position: center;
     @media screen and (min-width: 767px) and (max-width: 1120px) {
+        width: 344px;
+        height: 225px; 
+    }
+    @media screen and (max-width: 766px) {
         width: 344px;
         height: 225px; 
     }

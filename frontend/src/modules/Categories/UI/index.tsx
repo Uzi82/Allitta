@@ -16,7 +16,9 @@ export const Categories: React.FC = () => {
             <Content>
                 <Header>Shop Our Top Categories</Header>
                 <Swiper
-                    slidesPerView={6}
+                    slidesPerView={width >= 766
+                        ? 6
+                        : 2}
                     spaceBetween={
                         width >= 1120
                             ? 20
