@@ -34,7 +34,7 @@ export const Footer: React.FC = () => {
                     <PagesCategoriesHeader>News Latter Subscription</PagesCategoriesHeader>
                     <EmailDescription>Get the Latest Products & Best
 Deals <br/> in Your Inbox as First Person</EmailDescription>
-                    <StyledInput width={326} placeholder="Your Email Address" btnText="Sumbit"/>
+                    <StyledInput width={326} placeholder="Your Email Address" btnText="Submit"/>
                 </PagesCategories>
             </Content>
         </BlockCenter>
