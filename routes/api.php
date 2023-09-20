@@ -19,9 +19,14 @@ Route::prefix('products')->group(function () {
     Route::get('categories', [ProductCategories::class, 'index']);
 
     Route::prefix('recommendations')->group(function () {
-        Route::get('best-products', [RecommendationController::class, 'bestProducts']);
-        Route::get('best-shops', [RecommendationController::class, 'bestShops']);
+        Route::get('best', [RecommendationController::class, 'bestProducts']);
         Route::get('personal', [RecommendationController::class, 'personal']);
+    });
+});
+
+Route::prefix('shops')->group(function () {
+    Route::prefix('recommendations')->group(function () {
+        Route::get('best', [RecommendationController::class, 'bestShops']);
     });
 });
 
