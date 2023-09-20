@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\Users;
 
 use App\Enums\PathEnum;
 use Illuminate\Database\Eloquent\Factories\Factory;

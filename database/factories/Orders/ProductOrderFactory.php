@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\Orders;
 
 use App\Enums\CurrencyEnum;
 use App\Enums\OrderStatusEnum;

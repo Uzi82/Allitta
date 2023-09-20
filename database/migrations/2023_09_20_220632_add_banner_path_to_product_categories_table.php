@@ -10,11 +10,8 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('product_categories', function (Blueprint $table) {
-            $table->smallInteger('id')->primary();
-            $table->string('logotype_path');
-            $table->boolean('visible')->default(true);
-            $table->timestamps();
+        Schema::table('product_categories', function (Blueprint $table) {
+            $table->string('banner_path');
         });
     }
 
@@ -23,6 +20,8 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('product_categories');
+        Schema::table('product_categories', function (Blueprint $table) {
+            $table->dropColumn('banner_path');
+        });
     }
 };

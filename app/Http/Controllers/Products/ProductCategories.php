@@ -13,7 +13,7 @@ class ProductCategories extends Controller
     public function index(LimitRequest $request): AnonymousResourceCollection
     {
         return ProductCategoryResource::collection(
-            ProductCategory::select('id', 'img_path')->where('visible', true)->limit(
+            ProductCategory::select('id', 'logotype_path')->where('visible', true)->limit(
                 $request->input('limit', 10)
             )->get()
         );

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Recommendations;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LimitRequest;
-use App\Http\Resources\Products\shops\ShopRecommendationResource;
+use App\Http\Resources\Shops\ShopRecommendationResource;
 use App\Services\Shops\ShopRecommendationService;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
