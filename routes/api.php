@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProductCategories;
-use App\Http\Controllers\RecommendationController;
+use App\Http\Controllers\Products\ProductCategories;
+use App\Http\Controllers\Recommendations\ProductsRecommendationsController;
+use App\Http\Controllers\Recommendations\ShopsRecommendationsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,14 +20,14 @@ Route::prefix('products')->group(function () {
     Route::get('categories', [ProductCategories::class, 'index']);
 
     Route::prefix('recommendations')->group(function () {
-        Route::get('best', [RecommendationController::class, 'bestProducts']);
-        Route::get('personal', [RecommendationController::class, 'personal']);
+        Route::get('best', [ProductsRecommendationsController::class, 'bestProducts']);
+        Route::get('personal', [ProductsRecommendationsController::class, 'personal']);
     });
 });
 
 Route::prefix('shops')->group(function () {
     Route::prefix('recommendations')->group(function () {
-        Route::get('best', [RecommendationController::class, 'bestShops']);
+        Route::get('best', [ShopsRecommendationsController::class, 'bestShops']);
     });
 });
 

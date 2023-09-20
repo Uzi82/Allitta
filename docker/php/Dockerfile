@@ -23,3 +23,5 @@ RUN echo "xdebug.client_host=host.docker.internal" >> /usr/local/etc/php/conf.d/
 RUN echo "xdebug.client_port=9001" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 RUN echo "xdebug.log=/var/log/xdebug.log" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 RUN echo "xdebug.idekey = PHPSTORM" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+
+RUN php artisan storage:link
