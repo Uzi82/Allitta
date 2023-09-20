@@ -11,7 +11,6 @@ services:
         volumes:
             - './:/var/www/html/allitta'
             - '/var/www/html/allitta/vendor'
-            - '/var/www/html/allitta/storage'
         expose:
             - 9001
         networks:
@@ -28,7 +27,7 @@ services:
         ports:
             - "80:80"
         volumes:
-            - './:/var/www/html/allitta:ro'
+            - './:/var/www/html/allitta'
         networks:
             - project
         depends_on:
