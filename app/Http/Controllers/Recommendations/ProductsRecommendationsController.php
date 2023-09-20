@@ -47,6 +47,7 @@ class ProductsRecommendationsController extends Controller
         foreach ($products as $product) {
             $product->logotype_path = asset($product->logotype_path);
             $product->currency = config('currencies')[$product->currency];
+            $product->cost = (int)$product->cost;
         }
 
         return $products;
