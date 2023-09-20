@@ -3,8 +3,15 @@ import styled from 'styled-components'
 export const Content = styled.div`
     display: flex;
     flex-direction: column;
-    width: 1108px;
-    gap: 30px;    
+    width: 1108px;  
+    @media screen and (min-width: 767px) and (max-width: 1120px) {
+        width: calc(100vw - 20px);
+        gap: 10px;  
+    }
+    @media screen and (max-width: 766px) {
+        width: calc(100vw - 20px);
+        gap: 10px; 
+    }
 `
 
 export const Header = styled.h1`
@@ -24,5 +31,15 @@ export const List = styled.div`
     flex-direction: row;
     gap: 17px;
     justify-content: center;
-    align-items: center
+    align-items: center;
+    @media screen and (min-width: 767px) and (max-width: 1120px) {
+        width: calc(100vw - 20px);
+        gap: 7px;  
+        justify-content: space-around;
+    }
+    @media screen and (max-width: 766px) {
+        gap: 20px;
+        flex-direction: column;
+        width: calc(100vw - 20px);
+    }
 `

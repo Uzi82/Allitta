@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
-import { Button, Logo } from '../'
-import { HeaderDiv, HeaderContent, Navigation, LinkText, Sign } from './styled'
+import { Logo } from '../'
+import { HeaderDiv, HeaderContent, Navigation, LinkText, Sign, Button } from './styled'
 
 export const Header: React.FC = () => {
     return (
@@ -17,6 +17,8 @@ export const Header: React.FC = () => {
                 <Sign>
                     <Button width={'91px'} height={'35px'}>Sign Up</Button>
                     <Button width={'91px'} height={'35px'}>Sign In</Button>
+                    <Button to='/'>Sign Up</Button>
+                    <Button to='/'>Sign In</Button>
                 </Sign>
             </HeaderContent>
         </HeaderDiv>

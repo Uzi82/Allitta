@@ -5,6 +5,13 @@ export const Content = styled.div`
     flex-direction: column;
     gap: 30px;
     width: 100%;
+    @media screen and (min-width: 767px) and (max-width: 1120px){
+        width: calc(100vw - 20px);
+    }
+    @media screen and (max-width: 766px) {
+        width: calc(100vw - 20px);
+        gap: 10px; 
+    }
 `
 
 export const Header = styled.h1`
@@ -25,6 +32,13 @@ export const Element = styled.div<{ image: string }>`
     background-size: cover;
     background-position: center;
     background-image: url(${({ image }) => image});
+    @media screen and (min-width: 767px) and (max-width: 1120px){
+        width: 132px;
+        height: 189px;
+    }
+    @media screen and (min-width: 767px) and (max-width: 1120px) {
+        border-radius: 10px;
+    }
 `
 
 export const ElText = styled.h1`

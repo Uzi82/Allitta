@@ -21,19 +21,19 @@ export const categoryList: categoryType[] = [
     },
     {
         id: '4',
-        background: require('../UI/TechBg.png'),
+        background: require('../UI/Fashion.png'),
         title: 'Fashion',
         path: '/'
     },
     {
         id: '5',
-        background: require('../UI/TechBg.png'),
+        background: require('../UI/Furniture.png'),
         title: 'Furniture',
         path: '/'
     },
     {
         id: '6',
-        background: require('../UI/TechBg.png'),
+        background: require('../UI/Sports.png'),
         title: 'Sports',
         path: '/'
     },
@@ -57,19 +57,19 @@ export const categoryList: categoryType[] = [
     },
     {
         id: '10',
-        background: require('../UI/TechBg.png'),
+        background: require('../UI/Fashion.png'),
         title: 'Fashion',
         path: '/'
     },
     {
         id: '11',
-        background: require('../UI/TechBg.png'),
+        background: require('../UI/Furniture.png'),
         title: 'Furniture',
         path: '/'
     },
     {
         id: '12',
-        background: require('../UI/TechBg.png'),
+        background: require('../UI/Sports.png'),
         title: 'Sports',
         path: '/'
     }
