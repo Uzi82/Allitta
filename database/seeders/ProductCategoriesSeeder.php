@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use App\Enums\PathEnum;
 use App\Enums\ProductCategoryEnum;
-use App\Models\ProductCategory;
+use App\Models\Products\ProductCategory;
 use Illuminate\Database\Seeder;
 
 class ProductCategoriesSeeder extends Seeder

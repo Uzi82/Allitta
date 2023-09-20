@@ -4,20 +4,18 @@ namespace App\Http\Controllers\Products;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LimitRequest;
-use App\Models\ProductCategory;
+use App\Http\Resources\Products\Categories\ProductCategoryResource;
+use App\Models\Products\ProductCategory;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class ProductCategories extends Controller
 {
-    public function index(LimitRequest $request)
+    public function index(LimitRequest $request): AnonymousResourceCollection
     {
-        $limit = $request->input('limit', 10);
-        $categories = ProductCategory::select('id', 'img_path')->where('visible', true)->limit($limit)->get();
-
-        foreach ($categories as $category) {
-            $category->img_path = asset($category->img_path);
-            $category->name = __('categories')[$category->id];
-        }
-
-        return $categories;
+        return ProductCategoryResource::collection(
+            ProductCategory::select('id', 'img_path')->where('visible', true)->limit(
+                $request->input('limit', 10)
+            )->get()
+        );
     }
 }

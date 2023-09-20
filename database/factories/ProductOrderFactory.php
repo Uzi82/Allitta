@@ -4,12 +4,12 @@ namespace Database\Factories;
 
 use App\Enums\CurrencyEnum;
 use App\Enums\OrderStatusEnum;
-use App\Models\Shop;
+use App\Models\Shops\Shop;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\ProductOrder>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Orders\ProductOrder>
  */
 class ProductOrderFactory extends Factory
 {

@@ -5,11 +5,11 @@ namespace Database\Factories;
 use App\Enums\CurrencyEnum;
 use App\Enums\PathEnum;
 use App\Enums\ProductStatusEnum;
-use App\Models\ProductCategory;
+use App\Models\Products\ProductCategory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Product>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Products\Product>
  */
 class ProductFactory extends Factory
 {

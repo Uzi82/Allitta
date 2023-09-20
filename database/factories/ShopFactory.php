@@ -6,7 +6,7 @@ use App\Enums\PathEnum;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Shop>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Shops\Shop>
  */
 class ShopFactory extends Factory
 {
@@ -27,8 +27,8 @@ class ShopFactory extends Factory
             'street' => $this->faker->streetAddress(),
             'city' => $this->faker->city(),
             'zip_code' => $this->faker->postcode(),
-            'logotype_path' => PathEnum::SHOP_IMAGES_LOGOTYPES->value . 'no_logotype.png',
-            'banner_path' => PathEnum::SHOP_IMAGES_BANNERS->value . 'no_banner.png'
+            'logotype_path' => PathEnum::SHOP_IMAGES_LOGOTYPES->value . 'no_shop_logotype.png',
+            'banner_path' => PathEnum::SHOP_IMAGES_BANNERS->value . 'no_shop_banner.png'
         ];
     }
 }
