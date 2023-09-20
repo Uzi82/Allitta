@@ -9,4 +9,5 @@ return [
     ProductCategoryEnum::FASHION->value => 'Fashion',
     ProductCategoryEnum::FURNITURE->value => 'Furniture',
     ProductCategoryEnum::SPORTS->value => 'Sports',
+    'abc' => 1,
 ];

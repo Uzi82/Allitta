@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\CurrencyEnum;
 use App\Enums\PathEnum;
 use App\Enums\ProductStatusEnum;
 use App\Models\ProductCategory;
@@ -20,6 +21,7 @@ class ProductFactory extends Factory
     public function definition(): array
     {
         $statuses = ProductStatusEnum::cases();
+        $currencies = CurrencyEnum::cases();
 
         return [
             'shop_id' => null,
@@ -33,7 +35,7 @@ class ProductFactory extends Factory
             'active' => (bool)rand(0, 1),
             'draft' => (bool)rand(0, 1),
             'quantity' => rand(0, 100),
-            'currency' => rand(0, 3),
+            'currency' => $currencies[array_rand($currencies)]->value,
             'cost' => rand(100, 5000)
         ];
     }

@@ -26,7 +26,7 @@ return new class extends Migration {
             $table->boolean('draft')->default(false);
             $table->integer('quantity')->default(0);
             $table->tinyInteger('currency')->default(CurrencyEnum::USD->value);
-            $table->integer('cost');
+            $table->float('cost');
             $table->timestamps();
         });
     }
