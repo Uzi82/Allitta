@@ -1,19 +1,15 @@
-import { getCategories, type categoryType } from '../'
+import { getCategories } from '../'
 import { Content, ElText, Element, Header, CenterSpinner } from './styled'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import './styles.css';
-import { useNavigate } from 'react-router-dom';
 import { useQuery } from 'react-query';
-import { Spinner } from '../../BestDeals';
+import { LazyLoad } from '../';
 
 export const Categories: React.FC = () => {
     let width = document.documentElement.clientWidth
-    const navigate = useNavigate()
     const { data, isLoading, isError } = useQuery('categories', getCategories)
-    let list: categoryType[] = []
-    if(data !== undefined) list = [...data, ...data]
     if(isError) console.error('Categories: Quety error')
     return(
         <>
@@ -21,7 +17,7 @@ export const Categories: React.FC = () => {
                 <Header>Shop Our Top Categories</Header>
                 {
                     isLoading
-                        ? <CenterSpinner><Spinner /></CenterSpinner>
+                        ? <CenterSpinner><LazyLoad width='1108px' height='232px' /></CenterSpinner>
                         :   <Swiper
                                 slidesPerView={width >= 766
                                     ? 6
@@ -36,7 +32,7 @@ export const Categories: React.FC = () => {
                                 loop
                             >
                                 {
-                                    list.length > 0 && list?.map(el=>{
+                                    data !== undefined && data.length > 0 && data?.map(el=>{
                                         return(<SwiperSlide key={el.id}>
                                             <Element to={`/categories/${el.id}`} image={el.img_path}>
                                                 <ElText>

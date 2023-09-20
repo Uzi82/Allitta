@@ -58,4 +58,6 @@ export const ElText = styled.h1`
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    width: 100px;
+    user-select: none;
 `

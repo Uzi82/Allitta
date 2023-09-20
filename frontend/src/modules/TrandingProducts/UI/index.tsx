@@ -1,8 +1,7 @@
 import { useQuery } from "react-query"
 import { Button, Categories, Category, Content, Header, Text, Title } from "./styled"
 import { getCategories } from "../"
-import { Spinner } from "../"
-
+import { LazyLoad } from "../"
 
 export const TrandingProducts: React.FC = () => {
     const { data, isLoading, isError } = useQuery('tradingProducts', getCategories, {refetchOnWindowFocus: false})
@@ -12,7 +11,7 @@ export const TrandingProducts: React.FC = () => {
             <Content>
                 {
                     isLoading
-                        ? <Spinner />
+                        ?  <LazyLoad width="1108px" height="325px" />
                         :   <><Header>
                                 Tranding Products
                             </Header>

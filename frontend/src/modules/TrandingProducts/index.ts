@@ -1,4 +1,4 @@
 export { type category } from './models/types'
 export { getCategories } from './models/getCategories'
-export { Spinner } from "../../UI/Spinner"
+export { LazyLoad } from "../../UI/LazyLoading"
 export { TrandingProducts } from './UI'
