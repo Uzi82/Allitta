@@ -1,7 +1,7 @@
 import React from 'react'
 import { FormStyled, Subtitle, Title } from './styled'
 import { Input } from '../../../UI/Input'
-import { Button } from '../../Header'
+import { Button } from '../'
 import { ForgetVector } from '../../../UI/ForgetVector'
 
 
