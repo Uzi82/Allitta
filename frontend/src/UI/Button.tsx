@@ -29,12 +29,13 @@ type Props = {
     height?: string,
     mt?: string,
     mb?: string,
-    br?: string
+    br?: string,
+    onClick?: () => void
 }
 
-export const Button = ({ children, width, height, mt, mb, br }: Props) => {
+export const Button = ({ children, width, height, mt, mb, br, onClick }: Props) => {
     return (
-        <Btn width={width} height={height} $mt={mt} $mb={mb} $br={br}>
+        <Btn width={width} height={height} $mt={mt} $mb={mb} $br={br} onClick={onClick}>
             {children}
         </Btn>
     )

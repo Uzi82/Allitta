@@ -4,6 +4,7 @@ export const Content = styled.div`
     display: flex;
     flex-direction: column;
     width: 1108px;  
+    gap: 30px;
     @media screen and (min-width: 767px) and (max-width: 1120px) {
         width: calc(100vw - 20px);
         gap: 10px;  

@@ -17,7 +17,7 @@ export const BestDeals: React.FC = () => {
                     isLoading
                         ? <Spinner />
                         : data && data?.length > 0
-                            ? data.map(el=><ProductCard title={el?.title} price={el?.price} description={el?.description} image={el?.image} />)
+                            ? data.map(el=><ProductCard id={el?.id} key={el?.id} title={el?.name} price={`${el?.cost} ${el?.currency}`} description={el?.description} image={el?.logotype_path} />)
                             : <><ProductCard /> <ProductCard /> <ProductCard /> <ProductCard /></>
                 }
             </List>

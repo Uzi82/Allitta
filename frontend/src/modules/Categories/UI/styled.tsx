@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Content = styled.div`
@@ -14,6 +15,13 @@ export const Content = styled.div`
     }
 `
 
+export const CenterSpinner = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 150px;
+`
+
 export const Header = styled.h1`
     color: #000;
     font-family: Inter-Bold, sans-serif;
@@ -23,7 +31,7 @@ export const Header = styled.h1`
     line-height: normal;
 `
 
-export const Element = styled.div<{ image: string }>`
+export const Element = styled(Link)<{ image: string }>`
     display: flex;
     flex-direction: column;
     align-items: center;
