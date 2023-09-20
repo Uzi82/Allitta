@@ -1,6 +1,6 @@
-import { useQuery } from "react-query"
-import { Content, Header, List } from "./styled"
-import { ShopCard, LazyLoad, getShops } from '../'
+import {useQuery} from "react-query"
+import {Content, Header, List} from "./styled"
+import {getShops, LazyLoad, ShopCard} from '../'
 
 export const ChooseShop: React.FC = () => {
     const { data, isLoading, isError} = useQuery('shops', getShops, {
@@ -17,7 +17,8 @@ export const ChooseShop: React.FC = () => {
                     isLoading
                         ? <LazyLoad width="1108px" height="187px" />
                         : data && data?.length > 0
-                            ? data.map(el=><ShopCard key={el?.id} name={el?.name} amount={el?.products} image={el?.logotype_path} link={`/shops/${el?.id}`}/>)
+                            ? data.map(el => <ShopCard key={el?.id} name={el?.name} amount={el?.products_count}
+                                                       image={el?.logotype_path} link={`/shops/${el?.id}`}/>)
                             : <><ShopCard /><ShopCard /><ShopCard /><ShopCard /><ShopCard /><ShopCard /><ShopCard /><ShopCard /></>
                 }
             </List>

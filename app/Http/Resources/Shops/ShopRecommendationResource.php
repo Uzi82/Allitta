@@ -13,7 +13,7 @@ class ShopRecommendationResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'logotype_path' => asset($this->logotype_path),
-            'products' => $this->products,
+            'products_count' => $this->products_count,
         ];
     }
 }

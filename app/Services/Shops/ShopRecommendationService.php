@@ -12,8 +12,8 @@ class ShopRecommendationService
     {
         return Shop::rightJoin('products', 'shops.id', '=', 'products.shop_id')
             ->groupBy('shops.id', 'shops.name', 'shops.logotype_path')
-            ->select('shops.id', 'shops.name', 'shops.logotype_path', DB::raw('count(*) as products'))
-            ->orderBy('products', 'DESC')
+            ->select('shops.id', 'shops.name', 'shops.logotype_path', DB::raw('count(*) as products_count'))
+            ->orderBy('products_count', 'DESC')
             ->limit($limit)
             ->get();
     }

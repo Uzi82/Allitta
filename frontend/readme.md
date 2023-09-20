@@ -31,4 +31,4 @@
 
     URL: GET http://api.localhost/api/shops/recommendations/best
     Опционально: ?limit={int} (по умолчанию 10)
-    Ответ: JSON массив объектов вида {{id, name, logotype_path, products}, ...}
+    Ответ: JSON массив объектов вида {{id, name, logotype_path, products_count}, ...}
