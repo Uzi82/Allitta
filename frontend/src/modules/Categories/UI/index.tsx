@@ -4,21 +4,27 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import './styles.css';
-import { Pagination } from 'swiper/modules';
 
 export const Categories: React.FC = () => {
+    let width = document.documentElement.clientWidth
+    console.log(width)
+    console.log(width >= 1120
+        ? 20
+        : 5)
     return(
         <>
             <Content>
                 <Header>Shop Our Top Categories</Header>
                 <Swiper
-                    slidesPerView={6}
-                    spaceBetween={20}
+                    slidesPerView={width >= 766
+                        ? 6
+                        : 2}
+                    spaceBetween={
+                        width >= 1120
+                            ? 20
+                            : 2
+                    }
                     grabCursor={true}
-                    // pagination={{
-                    //   clickable: true,
-                    // }}
-                    // modules={[Pagination]}
                     className="mySwiper"
                     loop
                 >
