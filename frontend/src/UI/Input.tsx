@@ -26,9 +26,8 @@ const InputStyled = styled.input<StylesProps>`
     backdrop-filter: blur(10px);
     border-radius: 10px;
     color: #000;
-    font-family: Inter;
+    font-family: Inter-Regular;
     font-size: 14px;
-    font-weight: 500;
     &::placeholder {
         text-transform: capitalize;
         color: #BEBEBE;

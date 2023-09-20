@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { FormStyles, LinkFormStyles, SubtitleStyles, TitleStyles } from "../models/types";
+import { FormStyles, FormLinkStyles, SubtitleStyles, TitleStyles } from "../models/types";
 
 export const FormStyled = styled.form<FormStyles>`
     width: ${props => props.width || '100%'};
@@ -13,27 +13,26 @@ export const FormStyled = styled.form<FormStyles>`
 export const Title = styled.h2<TitleStyles>`
     margin: 0 0 ${props => props.$mb || '0'} 0;
     color: #000;
-    font-family: Inter;
+    font-family: Inter-bold;
     font-size: 36px;
-    font-weight: 700;
 `
 export const Subtitle = styled.p<SubtitleStyles>`
     margin: 0 0 ${props => props.$mb || '0'} 0;
+    max-width: 320px;
+    text-align: center;
     color: #000;
-    font-family: Inter;
-    font-weight: 400;
-
+    font-family: Inter-Regular;
+    font-size: 16px;
+    font-style: normal;
 `
-export const LinkForm = styled.div<LinkFormStyles>`
+export const FormLink = styled.div<FormLinkStyles>`
     margin-bottom: ${props => props.$mb || 0};
-    justify-content: ${props => props.$justify || 'center'};
-    width: 100%;
+    justify-content: ${props => props.$justify || 'stretch'};
+    width: ${props => props.width || 'auto'} ;
     display: flex;
     color: #5D20D6;
-    font-family: Inter;
+    font-family: Inter-Regular;
     font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
     transition: opacity .2s ease-out;
     a {
         text-decoration: none;
@@ -41,6 +40,13 @@ export const LinkForm = styled.div<LinkFormStyles>`
     &:hover {
         opacity: .5;    // позже норм хавер поведение
     }
+`
+export const VerifyingActions = styled.div<FormLinkStyles>`
+    margin-bottom: ${props => props.$mb || 0};
+    justify-content: space-between;
+    align-items:center;
+    width: 100%;
+    display: flex;
 `
 
 

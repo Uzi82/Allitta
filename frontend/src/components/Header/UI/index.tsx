@@ -3,7 +3,7 @@ import { Logo } from '../'
 import { HeaderDiv, HeaderContent, Navigation, LinkText, Sign, Button } from './styled'
 
 export const Header: React.FC = () => {
-    return(
+    return (
         <HeaderDiv>
             <HeaderContent>
                 <Logo>ALLITTA</Logo>
@@ -15,6 +15,8 @@ export const Header: React.FC = () => {
                     <Link to={'/'}><LinkText>About us</LinkText></Link>
                 </Navigation>
                 <Sign>
+                    <Button width={'91px'} height={'35px'}>Sign Up</Button>
+                    <Button width={'91px'} height={'35px'}>Sign In</Button>
                     <Button to='/'>Sign Up</Button>
                     <Button to='/'>Sign In</Button>
                 </Sign>
