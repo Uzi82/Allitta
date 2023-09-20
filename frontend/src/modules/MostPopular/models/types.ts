@@ -1,7 +1,8 @@
 export type product = null | {
     id: string,
-    title: string,
-    price: string,
+    name: string,
+    cost: string,
     description: string,
-    image: string
+    currency: string,
+    logotype_path: string
 }
