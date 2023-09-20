@@ -11,6 +11,7 @@ services:
         volumes:
             - './:/var/www/html/allitta'
             - '/var/www/html/allitta/vendor'
+            - '/var/www/html/allitta/storage'
         expose:
             - 9001
         networks:

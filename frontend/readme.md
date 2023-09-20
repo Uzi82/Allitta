@@ -1,7 +1,5 @@
 ## Продукты:
-
 ### Категории:
-
 #### Получение категорий продуктов:
 
     URL: GET http://api.localhost/api/products/categories
@@ -9,7 +7,6 @@
     Ответ: JSON массив объектов вида {{id, img_path, name}, ...}
 
 ### Рекомендации:
-
 #### Лучшие продукты:
 
     URL: GET http://api.localhost/api/products/recommendations/best
@@ -23,9 +20,7 @@
     Ответ: JSON массив объектов вида {{id, name, logotype_path, currency, cost, description}, ...}
 
 ## Магазины:
-
 ### Рекомендации:
-
 #### Лучшие магазины:
 
     URL: GET http://api.localhost/api/shops/recommendations/best

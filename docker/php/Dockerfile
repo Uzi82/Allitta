@@ -11,6 +11,7 @@ RUN usermod -u $USER_ID www-data && groupmod -g $GROUP_ID www-data
 
 WORKDIR /var/www/html/allitta
 COPY --chown=www-data:www-data . /var/www/html/allitta
+COPY --chown=www-data:www-data docker/storage /var/www/html/allitta/storage
 
 USER root
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
