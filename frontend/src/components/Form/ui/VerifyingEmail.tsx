@@ -1,8 +1,8 @@
 import React from 'react'
 import { FormStyled, FormLink, Subtitle, Title, VerifyingActions } from './styled'
 import { Input } from '../../../UI/Input'
-import { Button } from '../../Header'
 import { Link } from 'react-router-dom'
+import { Button } from '../../ProductCard'
 
 
 const VerifyingPassword: React.FC = () => {

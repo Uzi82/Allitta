@@ -1,8 +1,8 @@
 import React from 'react'
 import { FormStyled, Subtitle, Title } from './styled'
 import { Input } from '../../../UI/Input'
-import { Button } from '../../Header'
 import { ForgetVector } from '../../../UI/ForgetVector'
+import { Button } from '../../ProductCard'
 
 
 const ForgetPassword: React.FC = () => {
