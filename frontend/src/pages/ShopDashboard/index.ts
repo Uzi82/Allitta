@@ -1,1 +1,0 @@
-export { ShopDashboard } from './UI'
