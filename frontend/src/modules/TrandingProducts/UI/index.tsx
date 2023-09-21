@@ -9,36 +9,36 @@ export const TrandingProducts: React.FC = () => {
     return(
         <>
             <Content>
-                {
-                    isLoading
-                        ?  <LazyLoad $width="1108px" $height="325px" />
-                        :   <><Header>
-                                Tranding Products
-                            </Header>
-                            <Categories>
-                                {
-                                    data && data?.length === 2
-                                        ? data?.map(el=>{
-                                            return(
-                                                <Category key={el.id} $image={el.banner_path}>
-                                                    <Text>
-                                                        <Title>
-                                                            {
-                                                                el.name
-                                                            }
-                                                        </Title>
-                                                        <Button to={`/categories/${el.id}`}> 
-                                                            Shop Now
-                                                        </Button>
-                                                    </Text>
-                                                </Category>
-                                            )
-                                        })
-                                        : <></>
-                                }
-                            </Categories>
-                        </>
-                }
+                <Header>
+                    Tranding Products
+                </Header>
+                    {
+                        isLoading
+                            ? <LazyLoad $height="325px" $width="1108px" />
+                            :   <Categories>
+                                    {
+                                        data && data?.length === 2
+                                            ? data?.map(el=>{
+                                                return(
+                                                    <Category key={el.id} $image={el.banner_path}>
+                                                        <Text>
+                                                            <Title>
+                                                                {
+                                                                    el.name
+                                                                }
+                                                            </Title>
+                                                            <Button to={`/categories/${el.id}`}> 
+                                                                Shop Now
+                                                            </Button>
+                                                        </Text>
+                                                    </Category>
+                                                )
+                                            })
+                                            : <></>
+                                    }
+                                </Categories>
+                    }
+                    
             </Content>
         </>
     )
