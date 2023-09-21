@@ -2,18 +2,31 @@
     font-family: Inter-Bold;
     src: url(./fonts/Inter-Bold.ttf);
 }
+
 @font-face {
     font-family: Inter-Light;
     src: url(./fonts/Inter-Light.ttf);
 }
+
 @font-face {
     font-family: Inter-Regular;
     src: url(./fonts/Inter-Regular.ttf);
 }
+
 * {
     margin: 0;
     border: none;
     padding: 0;
-    overflow-x: hidden;
     text-decoration: none !important;
+    outline: none;
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.image {
+    width: auto;
+    height: 100%;
 }

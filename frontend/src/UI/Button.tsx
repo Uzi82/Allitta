@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
-const Btn = styled.button<{width: number; height: number; mt: number}>`
-    width: ${props => props.width}px;
-    height: ${props => props.height}px;
+const Btn = styled.button<{ $width?: string; $height?: string; $mt?: string; $mb?: string; $br?: string }>`
+    width: ${props => props.$width || '100%'};
+    height: ${props => props.$height || '45px'};
     background-color: #5D20D6;
-    border-radius: 100px;
+    border-radius: ${({ $br }) => $br || '100px'};
     border: 2px solid #5D20D6;
-    margin: ${props => props.mt}px 0 0 0;
+    margin: ${props => props.$mt || 0} 0 ${props => props.$mb || 0} 0;
     color: #FFF;
     text-align: center;
     font-family: Inter-Regular, sans-serif;
@@ -24,16 +24,19 @@ const Btn = styled.button<{width: number; height: number; mt: number}>`
 `
 
 type Props = {
-  children: string | JSX.Element | JSX.Element[],
-  width?: number,
-  height?: number,
-  mt?: number
+    children: string | JSX.Element | JSX.Element[],
+    width?: string,
+    height?: string,
+    mt?: string,
+    mb?: string,
+    br?: string,
+    onClick?: () => void
 }
 
-export const Button = ({ children, width = 116, height = 35, mt = 0}: Props) => {
-    return(
-        <Btn width={width} height={height} mt={mt}>
-            { children }
+export const Button = ({ children, width, height, mt, mb, br, onClick }: Props) => {
+    return (
+        <Btn $width={width} $height={height} $mt={mt} $mb={mb} $br={br} onClick={onClick}>
+            {children}
         </Btn>
     )
 }
