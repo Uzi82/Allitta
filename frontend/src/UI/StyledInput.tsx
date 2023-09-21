@@ -8,10 +8,10 @@ const Div = styled.div`
     justify-content: flex-end;
 `
 
-const Input = styled.input<{ width: string, heigth: number }>`
+const Input = styled.input<{ $width: string, $heigth: number }>`
     padding: 3px 100px 3px 20px;
-    width: ${({width}) => `${width}`};
-    height: ${({heigth}) => `${heigth}px`};
+    width: ${({$width}) => `${$width}`};
+    height: ${({$heigth}) => `${$heigth}px`};
     border-radius: 100px;
     background: rgba(0, 0, 0, 0.20);
     backdrop-filter: blur(20px);
@@ -25,14 +25,12 @@ const Input = styled.input<{ width: string, heigth: number }>`
         color: #FFF;
     }
     @media screen and (min-width: 767px) and (max-width: 1120px) {
-        /* width: ${({width}) => `calc(${width} / 1.5)`};
-        height: ${({heigth}) => `${heigth}px`}; */
         font-size: 14px;
         padding: 3px 70px 3px 10px;
     }
 `
 
-const Send = styled.button<{ changecolor: string }>`
+const Send = styled.button<{ $changecolor: string }>`
     width: 87px;
     height: 35px;
     border-radius: 100px;
@@ -51,7 +49,7 @@ const Send = styled.button<{ changecolor: string }>`
     &:hover {
         background: none;
         border: 2px solid #5D20D6;
-        ${({changecolor}) => changecolor && `color: ${changecolor}`}
+        ${({$changecolor}) => $changecolor && `color: ${$changecolor}`}
     }
     @media screen and (min-width: 767px) and (max-width: 1120px) {
         width: 57px;
@@ -61,6 +59,6 @@ const Send = styled.button<{ changecolor: string }>`
 `
 
 export const StyledInput = ({btnText = 'Send', width = '256px' , heigth = 45, chngClr, placeholder = ''}: {btnText?: string, width?: string, heigth?: number, chngClr?: boolean, placeholder?: string}) => <Div>
-    <Input placeholder={placeholder} width={width} heigth={heigth} maxLength={30}/>
-    <Send changecolor={chngClr ? '#5D20D6' : 'white'}>{btnText}</Send>
+    <Input placeholder={placeholder} $width={width} $heigth={heigth} maxLength={30}/>
+    <Send $changecolor={chngClr ? '#5D20D6' : 'white'}>{btnText}</Send>
 </Div>

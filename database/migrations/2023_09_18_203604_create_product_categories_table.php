@@ -12,7 +12,7 @@ return new class extends Migration {
     {
         Schema::create('product_categories', function (Blueprint $table) {
             $table->smallInteger('id')->primary();
-            $table->string('img_path');
+            $table->string('logotype_path');
             $table->boolean('visible')->default(true);
             $table->timestamps();
         });

@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\ShopUser;
+use App\Models\Users\ShopUser;
 use Illuminate\Database\Seeder;
 
 class ShopUsersSeeder extends Seeder

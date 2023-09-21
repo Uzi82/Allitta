@@ -1,5 +1,5 @@
 import { Content, Image, Text, Header, Description } from "./styled"
-
+import { checkProducts } from "../"
 
 export const ShopCard: React.FC<{image?: string, name?: string, amount?: number, link?: string}> = ({image = '', name = 'Shop name', amount=24, link='/'}) => {
     return(
@@ -11,7 +11,7 @@ export const ShopCard: React.FC<{image?: string, name?: string, amount?: number,
                         {name}
                     </Header>
                     <Description>
-                        {amount} Products
+                        {checkProducts(amount)} Products
                     </Description>
                 </Text>
             </Content>

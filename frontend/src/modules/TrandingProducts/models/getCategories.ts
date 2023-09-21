@@ -1,17 +1,5 @@
 import axios from "axios";
 import { category } from "../";
-export async function getCategories() {
-    const data: category[] = [
-        {
-            id: '1',
-            title: 'Product category'
-        },
-        {
-            id: '2',
-            title: 'Product category'
-        }
-    ]
-
-    // const data: category[] = await axios.get('').then(res=>res.data)
-    return data
+export async function getCategories(): Promise<category[]> {
+    return await axios.get('http://api.localhost/api/products/categories/recommendations/best?limit=2').then(res=>res.data)
 }
