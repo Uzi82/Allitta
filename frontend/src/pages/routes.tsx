@@ -1,11 +1,18 @@
 import { createBrowserRouter } from 'react-router-dom'
 import { Home } from './Home/'
 import { SignInPage } from './SignIn'
+import { Layout } from './Layout'
 
 export const publicRoutes = createBrowserRouter([
     {
         path: '/',
-        element: <Home />
+        element: <Layout />,
+        children: [
+            {
+                path: '/',
+                element: <Home />
+            }
+        ]
     },
     {
         path: '/signin',
@@ -16,6 +23,12 @@ export const publicRoutes = createBrowserRouter([
 export const privateRoutes = createBrowserRouter([ // Here will be private routes later
     {
         path: '/',
-        element: <Home />
-    }
+        element: <Layout />,
+        children: [
+            {
+                path: '/',
+                element: <Home />
+            }
+        ]
+    },
 ])
