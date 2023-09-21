@@ -11,7 +11,7 @@ export const TrandingProducts: React.FC = () => {
             <Content>
                 {
                     isLoading
-                        ?  <LazyLoad width="1108px" height="325px" />
+                        ?  <LazyLoad $width="1108px" $height="325px" />
                         :   <><Header>
                                 Tranding Products
                             </Header>
@@ -20,15 +20,15 @@ export const TrandingProducts: React.FC = () => {
                                     data && data?.length === 2
                                         ? data?.map(el=>{
                                             return(
-                                                <Category key={el.id} $image={el.image}>
+                                                <Category key={el.id} $image={el.banner_path}>
                                                     <Text>
                                                         <Title>
                                                             {
-                                                                el.title
+                                                                el.name
                                                             }
                                                         </Title>
-                                                        <Button to={'/'}> 
-                                                            Shop Now {/* Link add later */}
+                                                        <Button to={`/categories/${el.id}`}> 
+                                                            Shop Now
                                                         </Button>
                                                     </Text>
                                                 </Category>

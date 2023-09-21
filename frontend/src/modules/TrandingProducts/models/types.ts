@@ -1,5 +1,5 @@
 export type category = {
     id: string,
-    title: string,
-    image?: string
+    name: string,
+    banner_path?: string
 }

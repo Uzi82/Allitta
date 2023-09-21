@@ -1,9 +1,10 @@
 import { Content, Contact, ContactText, ContactHeader, ContactDescription, PagesCategories, PagesCategoriesHeader, PagesCategoriesElement, EmailDescription, EmailHeader } from "./styled"
-import { BlockCenter, Logo, StyledInput, links } from '../'
+import { BlockCenter, Logo, StyledInput, links, useAppSelector } from '../'
 
 export const Footer: React.FC = () => {
+    const categories = useAppSelector(state => state.categories.data)
     return(
-        <BlockCenter background="#393434">
+        <BlockCenter $background="#393434">
             <Content>
                 <Contact>
                     <Logo color='white'>ALLITTA</Logo>
@@ -25,8 +26,8 @@ export const Footer: React.FC = () => {
                 <PagesCategories>
                     <PagesCategoriesHeader>Categories</PagesCategoriesHeader>
                     {
-                        links?.length > 0
-                            ? links[1].map(el=><PagesCategoriesElement key={el.id} to={el.path}>{el.title}</PagesCategoriesElement>)
+                        categories?.length > 0
+                            ? categories.map(el=><PagesCategoriesElement key={el.id} to={el.path}>{el.name}</PagesCategoriesElement>)
                             : <></>
                     }
                 </PagesCategories>
