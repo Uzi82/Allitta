@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom'
 import { Home } from './Home/'
 import { SignInPage } from './SignIn'
+import { ShopDashboard } from './ShopDashboard'
 
 export const publicRoutes = createBrowserRouter([
     {
@@ -10,6 +11,10 @@ export const publicRoutes = createBrowserRouter([
     {
         path: '/signin',
         element: <SignInPage />
+    },
+    {
+        path: '/shopdashboard',
+        element: <ShopDashboard />
     }
 ])
 
