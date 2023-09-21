@@ -73,7 +73,7 @@ export const BackgroundBlur: React.FC<Props> = ({ children, circles, close, logo
     return (
         <BackgroundBlurStyled>
             {close ? <SvgClose /> : ''}
-            {logo ? <LogoWrapper><Logo>ALLITO </Logo></LogoWrapper> : ''}
+            {logo ? <LogoWrapper><Logo>ALLITO</Logo></LogoWrapper> : ''}
             <Content>
                 {children}
             </Content>

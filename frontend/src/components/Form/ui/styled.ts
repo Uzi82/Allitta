@@ -29,6 +29,8 @@ export const FormLink = styled.div<FormLinkStyles>`
     margin-bottom: ${props => props.$mb || 0};
     justify-content: ${props => props.$justify || 'stretch'};
     width: ${props => props.width || 'auto'} ;
+    align-self: flex-end;
+
     display: flex;
     color: #5D20D6;
     font-family: Inter-Regular;
