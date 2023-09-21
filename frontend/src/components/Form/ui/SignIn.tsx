@@ -2,7 +2,6 @@ import React from 'react'
 import { FormStyled, FormLink, Subtitle, Title } from './styled'
 import { Input } from '../../../UI/Input'
 import { Button } from '../'
-import { Link } from 'react-router-dom'
 
 
 const SignIn: React.FC = () => {
