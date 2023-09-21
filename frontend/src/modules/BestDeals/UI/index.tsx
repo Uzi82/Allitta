@@ -15,7 +15,7 @@ export const BestDeals: React.FC = () => {
             <List>
                 {
                     isLoading
-                        ? <LazyLoad width="1108px" height="425px" />
+                        ? <LazyLoad $width="1108px" $height="425px" />
                         : data && data?.length > 0
                             ? data.map(el=><ProductCard id={el?.id} key={el?.id} title={el?.name} price={`${el?.cost} ${el?.currency}`} description={el?.description} image={el?.logotype_path} />)
                             : <><ProductCard /> <ProductCard /> <ProductCard /> <ProductCard /></>

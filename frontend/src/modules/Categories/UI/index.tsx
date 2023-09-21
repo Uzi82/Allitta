@@ -5,10 +5,14 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import './styles.css';
 import {useQuery} from 'react-query';
+import { useAppDispatch } from '../';
 
 export const Categories: React.FC = () => {
     let width = document.documentElement.clientWidth
-    const { data, isLoading, isError } = useQuery('categories', getCategories)
+    const dispatch = useAppDispatch()
+    const { data, isLoading, isError } = useQuery('categories', () => getCategories(dispatch), {
+        refetchOnWindowFocus: false
+    })
     if(isError) console.error('Categories: Quety error')
     return(
         <>
@@ -16,7 +20,7 @@ export const Categories: React.FC = () => {
                 <Header>Shop Our Top Categories</Header>
                 {
                     isLoading
-                        ? <CenterSpinner><LazyLoad width='1108px' height='232px' /></CenterSpinner>
+                        ? <CenterSpinner><LazyLoad $width='1108px' $height='232px' /></CenterSpinner>
                         :   <Swiper
                                 slidesPerView={width >= 766
                                     ? 6

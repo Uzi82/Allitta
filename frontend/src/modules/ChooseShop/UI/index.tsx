@@ -15,7 +15,7 @@ export const ChooseShop: React.FC = () => {
             <List>
                 {
                     isLoading
-                        ? <LazyLoad width="1108px" height="187px" />
+                        ? <LazyLoad $width="1108px" $height="187px" />
                         : data && data?.length > 0
                             ? data.map(el => <ShopCard key={el?.id} name={el?.name} amount={el?.products_count}
                                                        image={el?.logotype_path} link={`/shops/${el?.id}`}/>)
