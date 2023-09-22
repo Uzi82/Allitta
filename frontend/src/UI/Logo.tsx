@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 
-const LogoContainer = styled.h1<{ color: string }>`
+const LogoContainer = styled.h1<{ $color: string }>`
     font-family: Inter-Bold, sans-serif;
     color: #000;
     font-size: 34px;
-    color: ${props => props.color};
+    color: ${props => props.$color};
     @media screen and (min-width: 767px) and (max-width: 1120px) {
         font-size: 24px;
     }
@@ -20,6 +20,6 @@ type Props = {
 
 export const Logo = ({ children, color = 'black' }: Props) => {
     return(
-        <LogoContainer color={color}>{children}</LogoContainer>
+        <LogoContainer $color={color}>{children}</LogoContainer>
     )
 }

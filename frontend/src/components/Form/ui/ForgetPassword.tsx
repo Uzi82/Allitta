@@ -3,7 +3,6 @@ import { FormStyled, Img, Subtitle, Title } from './styled'
 import { Input } from '../../../UI/Input'
 import { Button } from '../../../UI/Button'
 
-
 const ForgetPassword: React.FC = () => {
     return (
         <FormStyled $maxwidth='388px'>

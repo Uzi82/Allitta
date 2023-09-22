@@ -1,8 +1,7 @@
 import { useQuery } from "react-query"
 import { Button, Categories, Category, Content, Header, Text, Title } from "./styled"
 import { getCategories } from "../"
-import { Spinner } from "../"
-
+import { LazyLoad } from "../"
 
 export const TrandingProducts: React.FC = () => {
     const { data, isLoading, isError } = useQuery('tradingProducts', getCategories, {refetchOnWindowFocus: false})
@@ -12,7 +11,7 @@ export const TrandingProducts: React.FC = () => {
             <Content>
                 {
                     isLoading
-                        ? <Spinner />
+                        ?  <LazyLoad $width="1108px" $height="325px" />
                         :   <><Header>
                                 Tranding Products
                             </Header>
@@ -21,15 +20,15 @@ export const TrandingProducts: React.FC = () => {
                                     data && data?.length === 2
                                         ? data?.map(el=>{
                                             return(
-                                                <Category key={el.id} $image={el.image}>
+                                                <Category key={el.id} $image={el.banner_path}>
                                                     <Text>
                                                         <Title>
                                                             {
-                                                                el.title
+                                                                el.name
                                                             }
                                                         </Title>
-                                                        <Button to={'/'}> 
-                                                            Shop Now {/* Link add later */}
+                                                        <Button to={`/categories/${el.id}`}> 
+                                                            Shop Now
                                                         </Button>
                                                     </Text>
                                                 </Category>

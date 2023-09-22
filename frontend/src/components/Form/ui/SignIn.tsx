@@ -2,7 +2,7 @@ import React from 'react'
 import { FormStyled, FormLink, Subtitle, Title } from './styled'
 import { Input } from '../../../UI/Input'
 import { Link } from 'react-router-dom'
-import { Button } from '../../ProductCard'
+import { Button } from '../../../UI/Button'
 import { CustomLink } from '../../../UI/CustomLink'
 
 

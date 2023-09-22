@@ -15,10 +15,8 @@ export const Header: React.FC = () => {
                     <Link to={'/'}><LinkText>About us</LinkText></Link>
                 </Navigation>
                 <Sign>
-                    <Button to={'/'}> Sign Up</Button>
+                    <Button to={'/'}>Sign Up</Button>
                     <Button to={'/'}>Sign In</Button>
-                    <Button to='/'>Sign Up</Button>
-                    <Button to='/'>Sign In</Button>
                 </Sign>
             </HeaderContent>
         </HeaderDiv>

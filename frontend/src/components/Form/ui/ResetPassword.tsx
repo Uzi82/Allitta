@@ -1,7 +1,7 @@
 import React from 'react'
 import { FormStyled, Subtitle, Title } from './styled'
 import { Input } from '../../../UI/Input'
-import { Button } from '../../ProductCard'
+import { Button } from '../'
 
 const ResetPassword: React.FC = () => {
     return (

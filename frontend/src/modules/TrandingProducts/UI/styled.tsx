@@ -46,7 +46,7 @@ export const Category = styled.div<{ $image?: string }>`
     border-radius: 15px;
     display: flex;
     align-items: flex-end;
-    background: ${({$image})=>$image ? `${$image}` : '#D9D9D9'};
+    background: ${({$image})=>`url(${$image})` || '#D9D9D9'};
     background-position: center;
     @media screen and (min-width: 767px) and (max-width: 1120px) {
         width: 344px;

@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\OrderItem;
-use App\Models\Product;
-use App\Models\ProductOrder;
+use App\Models\Orders\OrderItem;
+use App\Models\Orders\ProductOrder;
+use App\Models\Products\Product;
 use Illuminate\Database\Seeder;
 
 class OrderItemsSeeder extends Seeder

@@ -63,6 +63,9 @@ export const Header = styled.h1`
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 `
 
 export const Description = styled.p`
