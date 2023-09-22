@@ -8,13 +8,7 @@ export type FormStyles = {
     height?: string,
     $mb?: string
 }
-export type TitleStyles = {
-    $mb?: string
-}
-export type SubtitleStyles = {
-    $mb?: string
-}
-export type VerifyingActionsStyles = {
+export type MarginBottom = {
     $mb?: string
 }
 export type FormLinkStyles = {

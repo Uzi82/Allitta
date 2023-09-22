@@ -16,7 +16,6 @@ const VerifyingPassword: React.FC = () => {
                 <FormLink $mb='20px' $justify='end'>Resend Code</FormLink>
             </VerifyingActions>
             <Button br={'10px'} mb={'20px'} >Submit</Button>
-            <FormLink><Link to='/'>Create Account</Link></FormLink>
         </FormStyled>
     )
 }
