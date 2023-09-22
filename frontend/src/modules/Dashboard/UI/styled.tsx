@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+    padding: 35px 44px 0px 23px;
     width: calc(100vw - 250px);
     display: flex;
     flex-direction: column;
@@ -10,6 +11,8 @@ export const Header = styled.div`
     display: flex;
     width: 100%;
     flex-direction: row;
+    justify-content: center;
+    gap: 40px;
 `
 
 export const Blocks = styled.div`

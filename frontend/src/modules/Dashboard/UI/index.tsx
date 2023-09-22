@@ -1,4 +1,4 @@
-import { StatsElement } from "../"
+import { DashboardPie, StatsElement } from "../"
 import { 
     Blocks,
     Buttons,
@@ -51,6 +51,7 @@ export const Dashboard: React.FC = () => {
                         </Btn>
                     </Buttons>
                 </Blocks>
+                <DashboardPie />
             </Header>
         </Container>
     )
