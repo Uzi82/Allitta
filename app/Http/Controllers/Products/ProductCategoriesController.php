@@ -8,7 +8,7 @@ use App\Http\Resources\Products\Categories\ProductCategoryResource;
 use App\Models\Products\ProductCategory;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
-class ProductCategories extends Controller
+class ProductCategoriesController extends Controller
 {
     public function index(LimitRequest $request): AnonymousResourceCollection
     {
