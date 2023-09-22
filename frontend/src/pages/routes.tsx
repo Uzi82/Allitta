@@ -1,7 +1,9 @@
-import { createBrowserRouter } from 'react-router-dom'
+import { Navigate, createBrowserRouter } from 'react-router-dom'
 import { Home } from './Home/'
 import { SignInPage } from './SignIn'
 import { Layout } from './Layout'
+import { DashboardLayout } from './DashboardLayout'
+import { Dashboard } from '../modules/Dashboard'
 
 export const publicRoutes = createBrowserRouter([
     {
@@ -17,6 +19,36 @@ export const publicRoutes = createBrowserRouter([
     {
         path: '/signin',
         element: <SignInPage />
+    },
+    {
+        path: '/shopMenu/',
+        element: <DashboardLayout />,
+        children: [
+            {
+                path: '/shopMenu/',
+                element: <Navigate to={'/shopMenu/Dashboard'} />
+            },
+            {
+                path: 'DashBoard',
+                element: <Dashboard />
+            },
+            {
+                path: 'Product',
+                element: <>321</>
+            },
+            {
+                path: 'Orders',
+                element: <>321</>
+            },
+            {
+                path: 'Customers',
+                element: <>321</>
+            },
+            {
+                path: 'CusChat',
+                element: <>321</>
+            }
+        ]
     }
 ])
 
