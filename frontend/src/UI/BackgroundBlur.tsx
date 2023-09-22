@@ -6,14 +6,14 @@ const BackgroundBlurStyled = styled.div`
     width: 100%;
     height: 100%;
     min-height: 100vh;
-    background: rgba(255, 255, 255, 0.70);
+    background: #fff;
     backdrop-filter: blur(30px); 
 `
 const Content = styled.div`
     position: absolute;
-    z-index: 5;
+    z-index: 6;
     color: black;
-    top: 30%;
+    top: 20%;
     left:50%;
     transform: translateX(-50%);
 `
@@ -32,6 +32,8 @@ const StyledCircleSvg = styled.img<SvgCircleProps>`
     z-index: 3;
     left:${props => props.$left};
     top:${props => props.$top};
+    background: rgba(255, 156, 0, 0.20);
+    filter: blur(75px);
 `
 const StyledCloseSvg = styled.img`
     width: 25px; 
