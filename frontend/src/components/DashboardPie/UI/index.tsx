@@ -16,24 +16,15 @@ import { Chart,
          PieContainer,
          Text
 } from './styled';
+import { useQuery } from 'react-query';
+import { LazyLoad, getLowStock } from '../';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-export const data = {
-  labels: ['Added Stock', 'Available Stock'],
-  datasets: [
-    {
-      data: [9, 1],
-      backgroundColor: [
-        'rgba(93, 32, 214, 1)',
-        'rgba(93, 32, 214, 0.2)'
-      ]
-    },
-  ],
-};
-
 export const DashboardPie: React.FC = () => {
-    const data = {
+    const { data, isError, isLoading } = useQuery('lowStockProducts', getLowStock)
+    if(isError) console.error('LowStock: Query error')
+    const chartData = {
         labels: ['Added Stock', 'Available Stock'],
         datasets: [
             {
@@ -73,7 +64,7 @@ export const DashboardPie: React.FC = () => {
                     </DescEl>
                 </Text>
                 <PieContainer>
-                    <Pie data={data} options={options} />
+                    <Pie data={chartData} options={options} />
                 </PieContainer>
             </Chart>
             <LowStock>
@@ -81,57 +72,25 @@ export const DashboardPie: React.FC = () => {
                     Low stock Products
                 </LowStockHeader>
                 <List>
-                    <LowStockEl>
-                    <LowStockTitle>
-                        Product name
-                    </LowStockTitle>
-                    <LowStockRemain>
-                        Remaining 10%
-                    </LowStockRemain>
-                </LowStockEl>
-                <LowStockEl>
-                    <LowStockTitle>
-                        Product name
-                    </LowStockTitle>
-                    <LowStockRemain>
-                        Remaining 10%
-                    </LowStockRemain>
-                </LowStockEl>
-                <LowStockEl>
-                    <LowStockTitle>
-                        Product name
-                    </LowStockTitle>
-                    <LowStockRemain>
-                        Remaining 10%
-                    </LowStockRemain>
-                </LowStockEl>
-                <LowStockEl>
-                    <LowStockTitle>
-                        Product name
-                    </LowStockTitle>
-                    <LowStockRemain>
-                        Remaining 10%
-                    </LowStockRemain>
-                </LowStockEl>
-                <LowStockEl>
-                    <LowStockTitle>
-                        Product name
-                    </LowStockTitle>
-                    <LowStockRemain>
-                        Remaining 10%
-                    </LowStockRemain>
-                </LowStockEl>
-                <LowStockEl>
-                    <LowStockTitle>
-                        Product name
-                    </LowStockTitle>
-                    <LowStockRemain>
-                        Remaining 10%
-                    </LowStockRemain>
-                </LowStockEl>
+                    {
+                        isLoading
+                            ? <LazyLoad $width='100%' $height='140px'/>
+                            : data && data.length > 0
+                                ? data.map(el=>{
+                                    return(
+                                        <LowStockEl key={el.id}>
+                                            <LowStockTitle>
+                                                { el.title }
+                                            </LowStockTitle>
+                                            <LowStockRemain>
+                                                Remaining { el.remaining }%
+                                            </LowStockRemain>
+                                        </LowStockEl>
+                                    )
+                                })
+                                : <LazyLoad $height='140px' $width='100%' />
+                    }
                 </List>
-                
-                
             </LowStock>
         </Container>
     )

@@ -7,7 +7,7 @@ import {
     Title
 } from "./styled"
 
-export const StatsElement: React.FC<Props> = ({amount = '240', title = 'Total Products', img = require('./box.png')}) => {
+export const StatsElement: React.FC<Props> = ({amount = 240, title = 'Total Products', img = require('./box.png')}) => {
     return(
         <Container>
             <Text>

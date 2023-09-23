@@ -1,4 +1,4 @@
-import { DashboardPie, StatsElement } from "../"
+import { DashboardPie, NewOrders, StatsElement } from "../"
 import { 
     Blocks,
     Buttons,
@@ -20,10 +20,10 @@ export const Dashboard: React.FC = () => {
             <Header>
                 <Blocks>
                     <Stats>
-                        <StatsElement />
-                        <StatsElement />
-                        <StatsElement />
-                        <StatsElement />
+                        <StatsElement amount={240} title="Total Products" img={require('./imgs/box.png')} />
+                        <StatsElement amount={1200} title="Total Sales" img={require('./imgs/sales.png')} />
+                        <StatsElement amount={240} title="Pending Orders" img={require('./imgs/productStar.png')} />
+                        <StatsElement amount={240} title="On Proccess to Delivary" img={require('./imgs/delivery-truck.png')} />
                     </Stats>
                     <Line />
                     <Buttons>
@@ -36,7 +36,7 @@ export const Dashboard: React.FC = () => {
                                     introduce your new product to the market.
                                 </BtnSubHeader>
                             </BtnText>
-                            <BtnImg src={require('./product.png')} />
+                            <BtnImg src={require('./imgs/product.png')} />
                         </Btn>
                         <Btn>
                             <BtnText>
@@ -47,12 +47,13 @@ export const Dashboard: React.FC = () => {
                                     increase the product ha.
                                 </BtnSubHeader>
                             </BtnText>
-                            <BtnImg src={require('./add.png')} />
+                            <BtnImg src={require('./imgs/add.png')} />
                         </Btn>
                     </Buttons>
                 </Blocks>
                 <DashboardPie />
             </Header>
+            <NewOrders />
         </Container>
     )
 }
