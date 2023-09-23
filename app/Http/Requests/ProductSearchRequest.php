@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\ProductCategoryEnum;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class ProductSearchRequest extends FormRequest
 {
@@ -15,11 +17,15 @@ class ProductSearchRequest extends FormRequest
     {
         return [
             (new LimitRequest())->rules(),
-//            'page' => 'required|integer',
-//            'per_page' => 'integer|default:10',
+            'page' => 'required|integer',
+            'per_page' => 'required|integer',
+
             'name' => 'string',
-//            'category' => 'int',
-//            'sub_category' => 'int'
+
+            'category' => 'array',
+            'sub_category' => 'array',
+            'category.*' => ['nullable', 'integer', Rule::in(ProductCategoryEnum::values())],
+            'sub_category.*' => ['nullable', 'integer', Rule::in(ProductCategoryEnum::values())],
         ];
     }
 }

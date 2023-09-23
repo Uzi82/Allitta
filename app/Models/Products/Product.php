@@ -10,13 +10,9 @@ class Product extends Model
 {
     use HasFactory;
 
-    public function scopeSearchByName(Builder $query, string $name): Builder
+    public function searchByName(Builder $query, string $name): Builder
     {
-        if ($name) {
-            $tsQuery = implode(':* & ', explode(' ', trim($name))) . ':*';
-            $query->whereRaw('name_tsvector @@ to_tsquery(?)', $tsQuery);
-        }
-
-        return $query;
+        $tsQuery = implode(':* & ', explode(' ', trim($name))) . ':*';
+        return $query->whereRaw('name_tsvector @@ to_tsquery(?)', $tsQuery);
     }
 }
