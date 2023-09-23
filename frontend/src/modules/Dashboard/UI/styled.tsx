@@ -1,10 +1,12 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    padding: 35px 44px 0px 23px;
+    padding: 35px 44px 20px 23px;
     width: calc(100vw - 250px);
     display: flex;
     flex-direction: column;
+    align-items: center;
+    gap: 30px;
 `
 
 export const Header = styled.div`

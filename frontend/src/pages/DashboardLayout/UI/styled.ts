@@ -4,13 +4,14 @@ export const Container = styled.div`
     width: 100vw;
     min-height: 100vh;
     display: flex;
+    align-items: stretch;
     flex-direction: row;
     justify-content: space-between;
 `
 
 export const SideBlock = styled.div`
     width: 250px;
-    height: 100vh;
+    /* height: 100%; */
     background-color: rgba(93,32,214, 0.2);
 `
 
