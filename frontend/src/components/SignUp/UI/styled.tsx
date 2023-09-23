@@ -34,8 +34,7 @@ export const CreateLink = styled(Link) <CreateLinkStyles>`
     background: ${props => props.active ? '#fff' : 'transparent'} ;
     color: ${props => props.active ? '#FF9C00' : '#000'} ;
     font-family: Inter-regular;
-    font-size: 14px;color: ;
-    font-weight: 500;
+    font-size: 14px;
     padding:14px 22px;
     transition: .2s ease color;
     &:hover {
@@ -43,20 +42,20 @@ export const CreateLink = styled(Link) <CreateLinkStyles>`
     }
 `
 export const Title = styled.h2<MarginBottom>`
+    max-width:352px;
     margin: 0 0 ${props => props.$mb || 0} 0;
     color: #000;
-    max-width:352px;
     font-family: Inter-bold;
     font-size: 36px;
     text-align: center;
     font-size: 32px;
 `
 export const Subtitle = styled.p<MarginBottom>`
-    margin: 0 0 ${props => props.$mb || 0} 0;
+    align-self: start;
     max-width: 320px;
+    margin: 0 0 ${props => props.$mb || 0} 0;
     font-family: Inter-Bold;
     color: #000;
-    align-self: start;
     font-size: 18px;
 `
 export const Img = styled.img<MarginBottom>`
@@ -68,22 +67,40 @@ export const Flex = styled.div<MarginBottom>`
     align-items: center;
     gap: 20px;
 `
-export const Upload = styled.div<MarginBottom>`
-    margin: 0 0 ${props => props.$mb || 0} 0;
-    display: flex;
-    flex-direction: column;
+export const UploadWrapper = styled.div<MarginBottom>`
     width: 315px;
     height: 315px;
-    color: #BFBFBF;
-    text-align: center;
-    font-family: Inter-regular;
-    font-size: 18px;
+    position: relative;
+    margin: 0 0 ${props => props.$mb || 0} 0;
     border-radius: 315px;
     border: 2px dashed #000;
     background: #FFF;
+`
+export const UploadInput = styled.input<MarginBottom>`
+    width: 315px;
+    height: 315px;
+    position: absolute;
+    z-index: 3;
+    margin: 0 0 ${props => props.$mb || 0} 0;
+    border-radius: 315px;
+    background-color: transparent;
+    font-size: 0;
+`
+export const UploadContent = styled.div<MarginBottom>`
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    padding: 105px 50px;
-    cursor: pointer;
+    position: absolute;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0 0 ${props => props.$mb || 0} 0;
+    color: #BFBFBF;
+    font-family: Inter-regular;
+    font-size: 18px;
 `
 
 
