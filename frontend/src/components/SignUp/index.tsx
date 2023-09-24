@@ -1,0 +1,5 @@
+export { SignUp } from './UI/'
+export { CreateCustomerAccount } from './UI/CreateCustomerAccount'
+export { CreateShoperAccount } from './UI/CreateShoperAccount'
+export { ProfilePicture } from './UI/ProfilePicture'
+export { Verification } from './UI/Verification'

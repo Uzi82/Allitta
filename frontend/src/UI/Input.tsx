@@ -17,8 +17,7 @@ type StylesProps = {
 }
 const InputStyled = styled.input<StylesProps>`
     width: ${props => props.width || '100%'};
-    max-width: ${props => props.$maxwidth || '388px'};
-    margin: 0 0 ${props => props.$mb || '20px'} 0;
+    margin: 0 0 ${props => props.$mb || '0'} 0;
     box-sizing: border-box;
     padding: 14px;
     border: 1px solid #A1A1A1;

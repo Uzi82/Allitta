@@ -5,6 +5,8 @@ export const Wrapper = styled.div`
     height: 100%;
     min-height: 100vh;
     display: flex;
+    position:relative;
+    overflow: hidden;
 `
 
 export const LeftContent = styled.div`
@@ -40,11 +42,11 @@ export const Text = styled.p`
     font-weight: 700;
     max-width:564px;
 `
-export const BackgroundImage = styled.div`
-    background: url('./assets/Gray.png');
+export const BackgroundImage = styled.img`
     position: absolute;
-    bottom: 0;
+    bottom: -200px;
     right: 0;
 `
+
 
 

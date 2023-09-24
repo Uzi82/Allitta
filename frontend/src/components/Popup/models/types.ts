@@ -1,12 +1,7 @@
 export type Props = {
     children?: string | JSX.Element | JSX.Element[],
-    type: 'signIn' | 'reset' | 'forget' | 'verifying',
-}
-export type FormStyles = {
-    width?: string,
-    $maxwidth?: string,
-    height?: string,
-    $mb?: string
+    type: 'email' | 'password',
+    success?: boolean
 }
 export type MarginBottom = {
     $mb?: string
