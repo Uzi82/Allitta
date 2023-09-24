@@ -15,9 +15,24 @@ export const Head = styled.div`
     width: 1110px;
     grid-column-gap: 10px;
     grid-template-columns: 190px 165px 165px 115px 230px 153px;
+    @media screen and (max-width: 1400px) and (min-width: 1024px) {
+        width: 100%;
+        grid-template-columns: 118.75px 103.125px 103.125px 71.875px 143.75px 95.625px;
+    }
+    @media screen and (max-width: 1023px) and (min-width: 767px) {
+        width: 100%;
+        grid-template-columns: 118.75px 103.125px 103.125px 71.875px 143.75px 95.625px;
+    }
+    @media screen and (max-width: 766px) {
+        width: 100%;
+        grid-template-columns: 40px 60px 0px 40px 80px auto 10px;
+        padding: 5px 5px;
+        height: 30px;
+        align-items: center;
+    }
 `
 
-export const HeadEl = styled.div<{ $margin: string }>`
+export const HeadEl = styled.div`
     color: #000;
     font-family: Inter-Regular, sans-serif;
     font-size: 14px;
@@ -26,10 +41,18 @@ export const HeadEl = styled.div<{ $margin: string }>`
     line-height: normal;
     text-align: center;
     opacity: 0.6;
-    /* margin: ${({ $margin }) => `${$margin}`}; */
     transition-duration: 300ms;
     &:hover {
         opacity: 1;
+    }
+    @media screen and (max-width: 1400px) and (min-width: 1024px) {
+        font-size: 10px;
+    }
+    @media screen and (max-width: 1023px) and (min-width: 767px) {
+        font-size: 10px;
+    }
+    @media screen and (max-width: 766px) {
+        font-size: 8px;
     }
 `
 
@@ -40,12 +63,20 @@ export const HeadTitle = styled.h1`
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    @media screen and (max-width: 1400px) and (min-width: 1024px) {
+        font-size: 16px;
+    }
+    @media screen and (max-width: 1023px) and (min-width: 767px) {
+        font-size: 16px;
+    }
+    @media screen and (max-width: 766px) {
+        font-size: 10px;
+    }
 `
 
 export const Order = styled.div`
     display: grid;
     align-items: center;
-    width: 1110px;
     border-radius: 10px;
     border: 1px solid rgba(0, 0, 0, 0.06);
     background: #FFF;
@@ -55,6 +86,20 @@ export const Order = styled.div`
     grid-column-gap: 10px;
     box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.02);
     grid-template-columns: 110px 280px 110px 115px 230px auto 10px;
+    @media screen and (max-width: 1400px) and (min-width: 1024px) {
+        width: 100%;
+        grid-template-columns: 68.75px 175px 68.75px 71.875px 143.75px auto 6.25px;
+    }
+    @media screen and (max-width: 1023px) and (min-width: 767px) {
+        width: 100%;
+        grid-template-columns: 68.75px 175px 68.75px 71.875px 143.75px auto 6.25px;
+    }
+    @media screen and (max-width: 766px) {
+        width: 100%;
+        grid-template-columns: 40px 60px 0px 40px 80px auto 10px;
+        padding: 5px 5px;
+        height: 30px;
+    }
 `
 
 export const OrderEl = styled.div`
@@ -74,6 +119,15 @@ export const OrderEl = styled.div`
     &:hover {
         opacity: 1;
     }
+    @media screen and (max-width: 1400px) and (min-width: 1024px) {
+        font-size: 12px;
+    }
+    @media screen and (max-width: 1023px) and (min-width: 767px) {
+        font-size: 12px;
+    }
+    @media screen and (max-width: 766px) {
+        font-size: 8px;
+    }
 `
 
 export const Status = styled.div<{ $process: boolean }>`
@@ -91,6 +145,12 @@ export const Status = styled.div<{ $process: boolean }>`
     line-height: normal;
     color: ${({$process})=> $process ? '#5D20D6' : '#28D764'};
     border: 1px solid ${({$process})=> $process ? '#5D20D6' : '#28D764'};
+    @media screen and (max-width: 766px) {
+        width: 50px;
+        height: 80%;
+        font-size: 8px;
+        border-radius: 2px;
+    }
 `
 
 export const OrderLink = styled(Link)`
@@ -100,4 +160,10 @@ export const OrderLink = styled(Link)`
     background-image: url(${require('./Vector.png')});
     background-position: center;
     background-repeat: no-repeat;
+    @media screen and (max-width: 766px) {
+        width: 5px;
+        height: 8px;
+        background-size: 5px 8px;
+        margin: 5px;
+    }
 `
