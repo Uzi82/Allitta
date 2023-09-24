@@ -45,28 +45,33 @@ export const links: Array<linkType[]> = [
     [
         {
             id: '2.1',
-            title: 'Category 1',
-            path: '/'
+            title: 'Tech',
+            path: '/categories/1'
         },
         {
             id: '2.2',
-            title: 'Category 2',
-            path: '/'
+            title: 'Electronics',
+            path: '/categories/2'
         },
         {
             id: '2.3',
-            title: 'Category 3',
-            path: '/'
+            title: 'Health & Beauty',
+            path: '/categories/3'
         },
         {
             id: '2.4',
-            title: 'Category 4',
-            path: '/'
+            title: 'Fashion',
+            path: '/categories/4'
         },
         {
             id: '2.5',
-            title: 'Category 5',
-            path: '/'
+            title: 'Furniture',
+            path: '/categories/5'
+        },
+        {
+            id: '2.6',
+            title: 'Sports',
+            path: '/categories/6'
         }
     ]
 ]
