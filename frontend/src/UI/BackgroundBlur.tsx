@@ -68,17 +68,17 @@ type SvgCircleProps = {
 export const BackgroundBlur: React.FC<Props> = ({ children, circles, close, logo }) => {
     return (
         <BackgroundBlurStyled>
-            {close ? <Link to='/'><StyledCloseSvg src="/closeButton.svg" /></Link> : ''}
+            {close ? <Link to='/'><StyledCloseSvg src="/svg/closeButton.svg" /></Link> : ''}
             {logo ? <LogoWrapper to='/'><Logo>ALLITO</Logo></LogoWrapper> : ''}
             <Content>
                 {children}
             </Content>
             {circles ?
                 <>
-                    <StyledCircleSvg $left='19%' $top='3%' width={455} height={455} src="/circle.svg" alt="circle" />
-                    <StyledCircleSvg $left='51%' $top='-11%' width={647} height={647} src="/circle.svg" alt="circle" />
-                    <StyledCircleSvg $left='14%' $top='62%' width={422} height={422} src="/circle.svg" alt="circle" />
-                    <StyledCircleSvg $left='63%' $top='65%' width={531} height={531} src="/circle.svg" alt="circle" />
+                    <StyledCircleSvg $left='19%' $top='3%' width={455} height={455} src="/svg/circle.svg" alt="circle" />
+                    <StyledCircleSvg $left='51%' $top='-11%' width={647} height={647} src="/svg/circle.svg" alt="circle" />
+                    <StyledCircleSvg $left='14%' $top='62%' width={422} height={422} src="/svg/circle.svg" alt="circle" />
+                    <StyledCircleSvg $left='63%' $top='65%' width={531} height={531} src="/svg/circle.svg" alt="circle" />
                 </> : ''}
         </BackgroundBlurStyled>
     )
