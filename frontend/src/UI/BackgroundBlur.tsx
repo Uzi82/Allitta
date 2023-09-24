@@ -3,7 +3,7 @@ import { Logo } from "./Logo";
 import { Link } from "react-router-dom";
 // <--- styled ---> // 
 const BackgroundBlurStyled = styled.div`
-    position: fixed;
+    position: relative;
     width: 100%;
     height: 100%;
     min-height: 100vh;

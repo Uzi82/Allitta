@@ -1,21 +1,12 @@
 import styled from "styled-components";
 
-type Props = {
-    children?: string | JSX.Element | JSX.Element[],
-    placeholder?: string,
-    type?: string,
-    width?: string,
-    height?: string,
-    maxwidth?: string,
-    mb?: string
-}
 type StylesProps = {
     width?: string,
     $maxwidth?: string,
     height?: string,
     $mb?: string
 }
-const InputStyled = styled.input<StylesProps>`
+export const Input = styled.input<StylesProps>`
     width: ${props => props.width || '100%'};
     margin: 0 0 ${props => props.$mb || '0'} 0;
     padding: 14px;
@@ -26,16 +17,13 @@ const InputStyled = styled.input<StylesProps>`
     color: #000;
     font-family: Inter-Regular;
     font-size: 14px;
+    transition: .3s ease border,.3s ease box-shadow;
     &::placeholder {
         text-transform: capitalize;
         color: #BEBEBE;
     }
+    &:focus {
+        box-shadow: 0px 0px 8px -5px rgba(0,0,0,0.75);
+        border: 1px solid rgba(0, 0, 0, 0.8);
+    }
 `
-
-const Input = ({ placeholder, type, width, maxwidth, mb }: Props) => {
-    return (
-        <InputStyled type={type} placeholder={placeholder} {...{ width, $maxwidth: maxwidth, $mb: mb }} />
-    )       // все что относится к стилям передал в скобках обьектом, все что непосредственно к инпуту передал напрямую                          
-}           // но можно передать все одним обьектом, и так будет короче, но так как сейчас понятнее что к стилям инпута, а что к самому инпуту
-
-export { Input }

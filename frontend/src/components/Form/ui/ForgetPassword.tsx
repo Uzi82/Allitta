@@ -9,7 +9,7 @@ const ForgetPassword: React.FC = () => {
             <Title $mb='20px'>Email Address</Title>
             <Img src="/svg/forgetemail.svg" alt='forget email' $mb='40px' />
             <Subtitle $mb='20px'>First, tell us what is your email address</Subtitle>
-            <Input mb='20px' placeholder='email address' />
+            <Input $mb='20px' placeholder='email address' />
             <Button br={'10px'} mb={'30px'}>Continue</Button>
         </FormStyled>
     )
