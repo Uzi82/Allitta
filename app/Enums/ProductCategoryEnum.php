@@ -10,4 +10,9 @@ enum ProductCategoryEnum: int
     case FASHION = 4;
     case FURNITURE = 5;
     case SPORTS = 6;
+
+    public static function values(): array
+    {
+        return array_column(self::cases(), 'value');
+    }
 }

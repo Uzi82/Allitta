@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 import { Button } from '../../../UI/Button'
 import { CustomLink } from '../../../UI/CustomLink'
 
-
 const SignIn: React.FC = () => {
     return (
         <FormStyled $maxwidth='388px'>
