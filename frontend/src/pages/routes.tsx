@@ -21,31 +21,31 @@ export const publicRoutes = createBrowserRouter([
         element: <SignInPage />
     },
     {
-        path: '/shopMenu/',
+        path: '/shop/',
         element: <DashboardLayout />,
         children: [
             {
-                path: '/shopMenu/',
-                element: <Navigate to={'/shopMenu/Dashboard'} />
+                path: '/shop/',
+                element: <Navigate to={'/shop/dashboard'} />
             },
             {
-                path: 'DashBoard',
+                path: 'dashBoard',
                 element: <Dashboard />
             },
             {
-                path: 'Product',
+                path: 'product',
                 element: <>321</>
             },
             {
-                path: 'Orders',
+                path: 'orders',
                 element: <>321</>
             },
             {
-                path: 'Customers',
+                path: 'customers',
                 element: <>321</>
             },
             {
-                path: 'CusChat',
+                path: 'cusChat',
                 element: <>321</>
             }
         ]

@@ -7,12 +7,28 @@ export const Container = styled.div`
     align-items: stretch;
     flex-direction: row;
     justify-content: space-between;
+    overflow-x: hidden;
+    @media screen and (max-width: 1023px) and (min-width: 767px) {
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+    @media screen and (max-width: 766px) {
+        flex-direction: column;
+        justify-content: flex-start;
+    }
 `
 
 export const SideBlock = styled.div`
     width: 250px;
-    /* height: 100%; */
     background-color: rgba(93,32,214, 0.2);
+    @media screen and (max-width: 1023px) and (min-width: 767px) {
+        width: 100vw;
+        height: 50px;
+    }
+    @media screen and (max-width: 766px) {
+        width: 100vw;
+        height: 75px;
+    }
 `
 
 export const Content = styled.div`
@@ -20,6 +36,16 @@ export const Content = styled.div`
     flex-direction: column;
     padding: 35px 44px 0px 23px;
     width: calc(100vw - 250px);
+    @media screen and (max-width: 1023px) and (min-width: 767px) {
+        width: 100vw;
+        height: auto;
+        padding: 10px;
+    }
+    @media screen and (max-width: 766px) {
+        width: 100vw;
+        height: auto;
+        padding: 10px;
+    }
 `
 
 export const Header = styled.div`
@@ -33,6 +59,13 @@ export const Header = styled.div`
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    width: 100%;
+    @media screen and (max-width: 766px) {
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+        &>div{text-align:center}
+    }
 `
 
 export const OutletContainer = styled.div`
@@ -41,4 +74,10 @@ export const OutletContainer = styled.div`
     justify-content: center;
     align-items: center;
     min-height: 80vh;
+    @media screen and (max-width: 1023px) and (min-width: 767px) {
+        width: 100%;
+    }
+    @media screen and (max-width: 766px) {
+        width: 100%;
+    }
 `

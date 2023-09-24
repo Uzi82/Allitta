@@ -9,12 +9,36 @@ export const Container = styled.div`
     align-items: center;
     gap: 85px;
     background-color: #FBF9F8;
+    @media screen and (max-width: 1023px) and (min-width: 767px) {
+        height: 100%;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 0;
+        gap: 10px;
+    }
+    @media screen and (max-width: 766px) {
+        height: 100%;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 0;
+        gap: 10px;
+    }
 `
 
 export const Navigation = styled.div`
     display: flex;
     flex-direction: column;
     gap: 15px;
+    @media screen and (max-width: 1023px) and (min-width: 767px) {
+        flex-direction: row;
+        gap: 10px;
+    }
+    @media screen and (max-width: 766px) {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
 `
 
 export const Element = styled.button<{ $active: boolean }>`
@@ -37,5 +61,27 @@ export const Element = styled.button<{ $active: boolean }>`
     transition-duration: 100ms;
     &:hover {
         opacity: 1;
+    }
+    @media screen and (max-width: 1023px) and (min-width: 767px) {
+        width: 100px;
+        font-size: 10px;
+        gap: 4px;
+        padding: 0;
+        justify-content: space-evenly;
+    }
+    @media screen and (max-width: 766px) {
+        width: 60px;
+        height: 20px;
+        font-size: 8px;
+        gap: 4px;
+        padding: 0;
+        justify-content: space-evenly;
+    }
+`
+
+export const Img = styled.img`
+    @media screen and (max-width: 766px) {
+        width: 20px;
+        height: 20px;
     }
 `

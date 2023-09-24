@@ -7,12 +7,32 @@ export const Container = styled.div`
     background: #FFF;
     box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.25);
     padding: 25px 30px;
+    @media screen and (max-width: 1400px) and (min-width: 1024px) {
+        width: 300px;
+        height: 100%;
+    }
+    @media screen and (max-width: 1023px) and (min-width: 767px) {
+        width: 300px;
+        height: 100%;
+    }
+    @media screen and (max-width: 766px) {
+        width: 100%;
+        height: 100%;
+    }
 `
 
 export const PieContainer = styled.div`
     width: 210px;
     height: 210px;
     margin-top: 25px;
+    @media screen and (max-width: 1400px) and (min-width: 1024px) {
+        width: 120px;
+        height: 120px;
+    }
+    @media screen and (max-width: 1023px) and (min-width: 767px) {
+        width: 120px;
+        height: 120px;
+    }
 `
 
 export const Chart = styled.div`
@@ -35,12 +55,24 @@ export const Header = styled.h1`
     font-weight: 500;
     line-height: normal;
     margin-bottom: 10px;
+    @media screen and (max-width: 1400px) and (min-width: 1024px) {
+        font-size: 14px;
+    }
+    @media screen and (max-width: 1023px) and (min-width: 767px) {
+        font-size: 14px;
+    }
 `
 
 export const DescEl = styled.div`
     display: flex;
     align-items: center;
     gap: 10px;
+    @media screen and (max-width: 1400px) and (min-width: 1024px) {
+        gap: 5px;
+    }
+    @media screen and (max-width: 1023px) and (min-width: 767px) {
+        gap: 5px;
+    }
 `
 
 export const Color = styled.div<{ $color: string }>`
@@ -56,6 +88,12 @@ export const DescTitle = styled.p`
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    @media screen and (max-width: 1400px) and (min-width: 1024px) {
+        font-size: 10px;
+    }
+    @media screen and (max-width: 1023px) and (min-width: 767px) {
+        font-size: 10px;
+    }
 `
 
 export const LowStock = styled.div`
@@ -70,6 +108,7 @@ export const List = styled.div`
     flex-direction: column;
     overflow-y: scroll;
     max-height: 130px;
+    overflow-x: hidden;
     &::-webkit-scrollbar {
         width: 10px;
     }
@@ -81,6 +120,27 @@ export const List = styled.div`
         background-color: #C1C1C1;
         width: 8px;
         border-radius: 9px;
+    }
+    @media screen and (max-width: 1400px) and (min-width: 1024px) {
+        height: 70px;
+    }
+    @media screen and (max-width: 1023px) and (min-width: 767px) {
+        height: 70px;
+        &::-webkit-scrollbar {
+            width: 8px;
+        }
+        &::-webkit-scrollbar-thumb {
+            width: 4px;
+        }
+    }
+    @media screen and (max-width: 766px) {
+        height: 70px;
+        &::-webkit-scrollbar {
+            width: 0px;
+        }
+        &::-webkit-scrollbar-thumb {
+            width: 0px;
+        }
     }
 `
 
