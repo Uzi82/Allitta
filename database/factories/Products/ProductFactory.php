@@ -6,6 +6,7 @@ use App\Enums\CurrencyEnum;
 use App\Enums\PathEnum;
 use App\Enums\ProductStatusEnum;
 use App\Models\Products\ProductCategory;
+use App\Services\Searching\TextSearchService;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -22,10 +23,12 @@ class ProductFactory extends Factory
     {
         $statuses = ProductStatusEnum::cases();
         $currencies = CurrencyEnum::cases();
+        $name = $this->faker->words(2, true);
 
         return [
             'shop_id' => null,
-            'name' => $this->faker->words(2, true),
+            'name' => $name,
+            'name_tsvector' => (new TextSearchService())->getTsVector($name),
             'logotype_path' => PathEnum::PRODUCT_IMAGES_LOGOTYPES->value . 'no_product_logotype.png',
             'images' => '[]',
             'description' => $this->faker->sentence(10),

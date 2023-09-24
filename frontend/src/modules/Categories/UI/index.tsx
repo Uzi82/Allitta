@@ -5,12 +5,10 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import './styles.css';
 import {useQuery} from 'react-query';
-import { useAppDispatch } from '../';
 
 export const Categories: React.FC = () => {
     let width = document.documentElement.clientWidth
-    const dispatch = useAppDispatch()
-    const { data, isLoading, isError } = useQuery('categories', () => getCategories(dispatch), {
+    const { data, isLoading, isError } = useQuery('categories', getCategories, {
         refetchOnWindowFocus: false
     })
     if(isError) console.error('Categories: Quety error')
