@@ -6,12 +6,12 @@ import { Button } from '../../../UI/Button'
 
 export const Verification: React.FC = () => {
     return (
-        <FormWrapper>
-            <Title $mb='30px'>Create Account</Title>
-            <Img src='/svg/email.svg' $mb='40px' />
-            <Subtitle $mb='30px'>Enter the 6 Digits code you received to shasheesha@gmail.com</Subtitle>
-            <Input mb='20px' placeholder='6 Digits Code '></Input>
-            <Button mb='20px' br='10px'>Submit</Button>
+        <FormWrapper $gap='20px'>
+            <Title $mb='10px'>Create Account</Title>
+            <Img src='/svg/email.svg' $mb='20px' />
+            <Subtitle $mb='10px'>Enter the 6 Digits code you received to shasheesha@gmail.com</Subtitle>
+            <Input placeholder='6 Digits Code '></Input>
+            <Button br='10px'>Submit</Button>
             <CustomLink $transparent to='/signup'><Img src="/svg/backward.svg" />{' '}Back</CustomLink>
         </FormWrapper>
     )

@@ -23,15 +23,15 @@ export const CreateCustomerAccount: React.FC = () => {
         defaultValues: {}
     })
     return (
-        <FormWrapper>
-            <Title $mb='30px'>Your Profile</Title>
-            <Subtitle $mb='12px'>Your Informations</Subtitle>
-            <Flex $mb='20px'>
+        <FormWrapper $gap='20px'>
+            <Title $mb='10px'>Your Profile</Title>
+            <Subtitle >Your Informations</Subtitle>
+            <Flex >
                 <Input placeholder='First Name' type='text' />
                 <Input placeholder='Last Name' type='text' />
             </Flex>
-            <Input mb='20px' placeholder='Full Name' type='text' />
-            <Flex $mb='20px'>
+            <Input placeholder='Full Name' type='text' />
+            <Flex >
                 <Input placeholder='Birthday (DD/MM/YYYY)' type='date' />
                 <Select placeholder='Gender' >
                     <option value="not-specified">Not Specified</option>
@@ -40,13 +40,13 @@ export const CreateCustomerAccount: React.FC = () => {
                     <option value="own-gender">Own Gender</option>
                 </Select>
             </Flex>
-            <Flex $mb='30px'>
+            <Flex $mb='10px'>
                 <Input placeholder='NIC Number' type='number' />
                 <Input placeholder='Mobile Number' type='tel' />
             </Flex>
-            <Subtitle $mb='20px'>Home Address</Subtitle>
-            <Input mb='20px' placeholder='Street Address' />
-            <Flex $mb='40px'>
+            <Subtitle >Home Address</Subtitle>
+            <Input placeholder='Street Address' />
+            <Flex $mb='20px'>
                 <Input placeholder='City' type='text' />
                 <Input placeholder='Zip Code' type='number' />
             </Flex>

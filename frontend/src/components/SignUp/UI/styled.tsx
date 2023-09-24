@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export const FormWrapper = styled.form<FormWrapperStyles>`
     display: flex;
-    ${({ gap }) => gap && `gap:${gap};`}
+    ${({ $gap }) => $gap && `gap:${$gap};`}
     flex-direction: column;
     width: 100%;
     height: 100%;
