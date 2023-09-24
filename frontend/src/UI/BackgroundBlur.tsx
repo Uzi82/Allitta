@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Logo } from "./Logo";
+import { Link } from "react-router-dom";
 // <--- styled ---> // 
 const BackgroundBlurStyled = styled.div`
     position: fixed;
@@ -17,7 +18,7 @@ const Content = styled.div`
     left:50%;
     transform: translateX(-50%);
 `
-const LogoWrapper = styled.div`
+const LogoWrapper = styled(Link)`
     position: absolute;
     z-index: 5;
     top:40px;
@@ -67,17 +68,17 @@ type SvgCircleProps = {
 export const BackgroundBlur: React.FC<Props> = ({ children, circles, close, logo }) => {
     return (
         <BackgroundBlurStyled>
-            {close ? <StyledCloseSvg src="/closeButton.svg" /> : ''}
-            {logo ? <LogoWrapper><Logo>ALLITO</Logo></LogoWrapper> : ''}
+            {close ? <Link to='/'><StyledCloseSvg src="/closeButton.svg" /></Link> : ''}
+            {logo ? <LogoWrapper to='/'><Logo>ALLITO</Logo></LogoWrapper> : ''}
             <Content>
                 {children}
             </Content>
             {circles ?
                 <>
-                    <StyledCircleSvg $left='19%' $top='3%' width={455} height={455} src="/circle.svg" alt="circle"></StyledCircleSvg>
-                    <StyledCircleSvg $left='51%' $top='-11%' width={647} height={647} src="/circle.svg" alt="circle"></StyledCircleSvg>
-                    <StyledCircleSvg $left='14%' $top='62%' width={422} height={422} src="/circle.svg" alt="circle"></StyledCircleSvg>
-                    <StyledCircleSvg $left='63%' $top='65%' width={531} height={531} src="/circle.svg" alt="circle"></StyledCircleSvg>
+                    <StyledCircleSvg $left='19%' $top='3%' width={455} height={455} src="/circle.svg" alt="circle" />
+                    <StyledCircleSvg $left='51%' $top='-11%' width={647} height={647} src="/circle.svg" alt="circle" />
+                    <StyledCircleSvg $left='14%' $top='62%' width={422} height={422} src="/circle.svg" alt="circle" />
+                    <StyledCircleSvg $left='63%' $top='65%' width={531} height={531} src="/circle.svg" alt="circle" />
                 </> : ''}
         </BackgroundBlurStyled>
     )

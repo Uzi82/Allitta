@@ -1,9 +1,10 @@
 import styled from "styled-components";
-import { CreateLinkStyles, MarginBottom } from "../models/types";
+import { CreateLinkStyles, FormWrapperStyles, MarginBottom } from "../models/types";
 import { Link } from "react-router-dom";
 
-export const Wrapper = styled.div`
+export const FormWrapper = styled.form<FormWrapperStyles>`
     display: flex;
+    ${({ gap }) => gap && `gap:${gap};`}
     flex-direction: column;
     width: 100%;
     height: 100%;
@@ -13,7 +14,7 @@ export const Wrapper = styled.div`
     background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(50px);
 `
-export const CreateLinks = styled.div<MarginBottom>`
+export const CreateLinkWrapper = styled.div<MarginBottom>`
     display: flex;
     width: 100%;
     height: 100%;
@@ -63,6 +64,7 @@ export const Img = styled.img<MarginBottom>`
 `
 export const Flex = styled.div<MarginBottom>`
     margin: 0 0 ${props => props.$mb || 0} 0;
+    width: 100%;
     display: flex;
     align-items: center;
     gap: 20px;
@@ -101,6 +103,26 @@ export const UploadContent = styled.div<MarginBottom>`
     color: #BFBFBF;
     font-family: Inter-regular;
     font-size: 18px;
+`
+export const Select = styled.select<MarginBottom>`
+    margin: 0 0 ${props => props.$mb || 0} 0;
+    flex: 0 0 50%;
+    color: #BFBFBF;
+    font-family: Inter-regular;
+    font-size: 18px;
+    padding: 14px;
+    border: 1px solid #A1A1A1;
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    max-width:229px;
+    color: #000;
+    font-family: Inter-Regular;
+    font-size: 14px;
+    &::placeholder {
+        text-transform: capitalize;
+        color: #BEBEBE;
+    }
 `
 
 

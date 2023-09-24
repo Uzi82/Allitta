@@ -1,11 +1,11 @@
 import React from 'react'
-import { Img, Title, UploadContent, UploadInput, UploadWrapper, Wrapper } from './styled'
+import { Img, Title, UploadContent, UploadInput, UploadWrapper, FormWrapper } from './styled'
 import { CustomLink } from '../../../UI/CustomLink'
 
 
 export const ProfilePicture: React.FC = () => {
     return (
-        <Wrapper>
+        <FormWrapper>
             <Title $mb='40px'>Profile Picture</Title>
             <UploadWrapper $mb='50px'>
                 <UploadInput placeholder='something' type="file" />
@@ -16,6 +16,6 @@ export const ProfilePicture: React.FC = () => {
             </UploadWrapper>
             <CustomLink $mb='10px' to='/signup'>Submit</CustomLink>
             <CustomLink $transparent to='/signup'>Skip</CustomLink>
-        </Wrapper>
+        </FormWrapper>
     )
 }
