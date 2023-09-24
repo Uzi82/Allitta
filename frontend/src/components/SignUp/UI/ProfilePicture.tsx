@@ -1,6 +1,7 @@
 import React from 'react'
 import { Img, Title, UploadContent, UploadInput, UploadWrapper, FormWrapper } from './styled'
 import { CustomLink } from '../../../UI/CustomLink'
+import { BackLink } from '../../../UI/BackLink'
 
 
 export const ProfilePicture: React.FC = () => {
@@ -16,6 +17,7 @@ export const ProfilePicture: React.FC = () => {
             </UploadWrapper>
             <CustomLink $mb='10px' to='/signup'>Submit</CustomLink>
             <CustomLink $transparent to='/signup'>Skip</CustomLink>
+            <BackLink $left='10px' $top='10px' />
         </FormWrapper>
     )
 }

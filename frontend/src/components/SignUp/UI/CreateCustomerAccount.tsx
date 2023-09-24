@@ -3,6 +3,7 @@ import { Flex, Select, Subtitle, Title, FormWrapper } from './styled'
 import { Input } from '../../../UI/Input'
 import { CustomLink } from '../../../UI/CustomLink'
 import { useForm } from 'react-hook-form'
+import { BackLink } from '../../../UI/BackLink'
 
 interface ICreateCustomer {
     firstName: string,
@@ -50,6 +51,7 @@ export const CreateCustomerAccount: React.FC = () => {
                 <Input placeholder='Zip Code' type='number' />
             </Flex>
             <CustomLink to='/signup/customer/photo'>Continue</CustomLink>
+            <BackLink $left='10px' $top='10px' />
         </FormWrapper>
     )
 }
