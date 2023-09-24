@@ -9,13 +9,13 @@ const Fail: React.FC<IFail> = ({ type }) => {
             {type === "email" ?
                 <>
                     <Title $mb="40px">Verification Failed</Title>
-                    <Img src="/fail.svg" alt="fail" $mb='40px' />
+                    <Img src="/svg/fail.svg" alt="fail" $mb='40px' />
                     <Subtitle $mb="40px" >Your Email address verification is failed.</Subtitle>
                     <CustomLink to={'/'} $mb="20px" >Try Again</CustomLink>
                 </> :
                 <>
                     <Title $mb="40px">Your Password is fully Changed</Title>
-                    <Img src="/fail.svg" alt="fail" $mb='40px' />
+                    <Img src="/svg/fail.svg" alt="fail" $mb='40px' />
                     <CustomLink to={'/signin'}>Sign in</CustomLink>
                 </>
             }

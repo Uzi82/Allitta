@@ -1,9 +1,12 @@
 import { Navigate, createBrowserRouter } from 'react-router-dom'
 import { Home } from './Home/'
-import { SignInPage } from './SignIn'
+import { SignUpPage } from './SignUpPage'
+import { SignInPage } from './SignInPage'
+import { CreateCustomerAccount, CreateShoperAccount, ProfilePicture, Verification } from '../components/SignUp'
 import { Layout } from './Layout'
 import { DashboardLayout } from './DashboardLayout'
 import { Dashboard } from '../modules/Dashboard'
+
 
 export const publicRoutes = createBrowserRouter([
     {
@@ -15,6 +18,30 @@ export const publicRoutes = createBrowserRouter([
                 element: <Home />
             }
         ]
+    },
+    {
+        path: '/signup',
+        element: <SignUpPage />,
+        children: [
+            {
+                index: true,
+                element: <CreateShoperAccount />,
+            },
+            {
+                path: '/signup/verify',
+                element: <Verification />,
+            },
+            {
+                path: '/signup/customer',
+                element: <CreateCustomerAccount />,
+            },
+            {
+                path: '/signup/customer/photo',
+                element: <ProfilePicture />,
+            },
+        ]
+
+
     },
     {
         path: '/signin',
