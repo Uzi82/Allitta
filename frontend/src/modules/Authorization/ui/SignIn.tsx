@@ -10,7 +10,7 @@ const SignIn: React.FC = () => {
         <FormStyled $maxwidth='388px'>
             <Title $mb='20px'>Sign In</Title>
             <Subtitle $mb='20px'>Sign in with your email address and password</Subtitle>
-            <Input placeholder='email address' />
+            <Input placeholder='email address' $mb='20px' />
             <Input placeholder='password' type='password' $mb='10px' />
             <FormLink $mb='20px' $justify='end' ><Link to='/'>Forget password?</Link></FormLink>
             <Button br={'10px'} mb={'20px'} >Sign In</Button>

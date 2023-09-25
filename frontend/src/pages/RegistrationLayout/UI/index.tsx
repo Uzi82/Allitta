@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom"
 import { BackgroundBlur } from "../../../UI/BackgroundBlur"
 
-export const SignUpPage: React.FC = () => {
+export const RegistrationLayout: React.FC = () => {
     return (
         <BackgroundBlur circles close logo >
             <Outlet></Outlet>

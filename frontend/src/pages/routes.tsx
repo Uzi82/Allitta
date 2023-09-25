@@ -1,11 +1,12 @@
 import { Navigate, createBrowserRouter } from 'react-router-dom'
 import { Home } from './Home/'
-import { SignUpPage } from './SignUpPage'
-import { SignInPage } from './SignInPage'
-import { CreateCustomerAccount, CreateShoperAccount, ProfilePicture, Verification } from '../components/SignUp'
+import { RegistrationLayout } from './RegistrationLayout'
+import { AuthorizationLayout } from './AuthorizationLayout'
 import { Layout } from './Layout'
 import { DashboardLayout } from './DashboardLayout'
 import { Dashboard } from '../modules/Dashboard'
+import { CreateCustomerAccount, CreateShoperAccount, ProfilePicture, Verification } from '../modules/Registration'
+import { ForgetPassword, ResetPassword, SignIn, VerifyingEmail } from '../modules/Authorization'
 
 
 export const publicRoutes = createBrowserRouter([
@@ -21,7 +22,7 @@ export const publicRoutes = createBrowserRouter([
     },
     {
         path: '/signup',
-        element: <SignUpPage />,
+        element: <RegistrationLayout />,
         children: [
             {
                 index: true,
@@ -45,7 +46,25 @@ export const publicRoutes = createBrowserRouter([
     },
     {
         path: '/signin',
-        element: <SignInPage />
+        element: <AuthorizationLayout />,
+        children: [
+            {
+                index: true,
+                element: <SignIn />,
+            },
+            {
+                path: '/signin/verify',
+                element: <VerifyingEmail />,
+            },
+            {
+                path: '/signin/forget',
+                element: <ForgetPassword />,
+            },
+            {
+                path: '/signin/reset',
+                element: <ResetPassword />,
+            },
+        ]
     },
     {
         path: '/shop/',

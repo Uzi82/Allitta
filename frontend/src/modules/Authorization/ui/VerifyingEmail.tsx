@@ -1,10 +1,9 @@
 import React from 'react'
 import { FormStyled, FormLink, Subtitle, Title, VerifyingActions } from './styled'
 import { Input } from '../../../UI/Input'
-import { Button } from '../'
-import { Link } from 'react-router-dom'
+import { Button } from '../../../UI/Button'
 
-const VerifyingPassword: React.FC = () => {
+const VerifyingEmail: React.FC = () => {
     return (
         <FormStyled $maxwidth='388px'>
             <Title $mb='20px'>Verifying</Title>
@@ -19,4 +18,4 @@ const VerifyingPassword: React.FC = () => {
     )
 }
 
-export { VerifyingPassword }
+export { VerifyingEmail }
