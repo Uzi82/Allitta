@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Products\ProductCategoriesController;
 use App\Http\Controllers\Products\ProductSearchController;
+use App\Http\Controllers\Products\ProductSubcategoriesController;
 use App\Http\Controllers\Recommendations\ProductsCategoriesRecommendationsController;
 use App\Http\Controllers\Recommendations\ProductsRecommendationsController;
 use App\Http\Controllers\Recommendations\ShopsRecommendationsController;
@@ -27,7 +28,10 @@ Route::prefix('products')->group(function () {
         Route::get('personal', [ProductsRecommendationsController::class, 'personal']);
     });
 
-    Route::get('categories', [ProductCategoriesController::class, 'index']);
+    Route::get('categories', [ProductCategoriesController::class, 'getProductCategories']);
+    Route::get('subcategories', [ProductSubcategoriesController::class, 'getProductSubcategories']);
+    Route::get('subcategories/category/{id}', [ProductSubcategoriesController::class, 'getProductSubcategoriesByCategory']);
+
     Route::get('categories/recommendations/best', [ProductsCategoriesRecommendationsController::class, 'bestCategories']);
 });
 

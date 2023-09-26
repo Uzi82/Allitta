@@ -35,8 +35,15 @@ class ProductSearchController extends Controller
             ->leftJoin('shops', 'shops.id', '=', 'products.shop_id')
             ->where('shops.active', true)
             ->select('products.id', 'products.name', 'products.logotype_path', 'products.currency', 'products.cost')
-            ->simplePaginate($request->input('per_page'));
+            ->paginate($request->input('per_page'));
 
-        return ProductSearchResource::collection($query);
+        $data = [
+            'data' => ProductSearchResource::collection($query),
+            'total' => $query->total(),
+            'current_page' => $query->currentPage(),
+            'last_page' => $query->lastPage(),
+        ];
+
+        return response()->json($data);
     }
 }
