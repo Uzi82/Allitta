@@ -28,10 +28,10 @@ export const CreateCustomerAccount: React.FC = () => {
                 </CreateLinkWrapper>
                 <Subtitle >Your Informations</Subtitle>
                 <Flex >
-                    <Input placeholder='First Name' type='text' {...register('firstName', validateName(),)}{...hasError('firstName')} />
-                    <Input placeholder='Last Name' type='text' {...register('lastName', validateName())}{...hasError('lastName')} />
+                    <Input placeholder='First Name' type='text' {...register('first name', validateName(),)}{...hasError('first name')} />
+                    <Input placeholder='Last Name' type='text' {...register('last name', validateName())}{...hasError('last name')} />
                 </Flex>
-                <Input placeholder='Full Name' type='text' {...register('fullName', validateName())}{...hasError('fullName')} />
+                <Input placeholder='Full Name' type='text' {...register('full name', validateName())}{...hasError('full name')} />
                 <Flex >
                     <Input placeholder='Birthday (DD/MM/YYYY)' type='date' {...register('date', validateDate())} {...hasError('date')} />
                     <Select placeholder='Gender'{...register('gender')} >
@@ -57,7 +57,7 @@ export const CreateCustomerAccount: React.FC = () => {
             </FormWrapper>
             <ToastContainer
                 position="bottom-right"
-                autoClose={false}
+                autoClose={2000}
                 limit={2}
                 newestOnTop
                 closeOnClick
@@ -65,7 +65,6 @@ export const CreateCustomerAccount: React.FC = () => {
                 pauseOnFocusLoss
                 draggable
                 theme="dark"
-
             />
         </>
 
@@ -76,10 +75,10 @@ export const CreateCustomerAccount: React.FC = () => {
 // и использовать как на фронте так и на беке
 // function validateRegistration(values: ICreateCustomer) {
 //     const errors = {
-//         firstName: validateName(values.firstName),
+//         'first name': validateName(values.first name),
 //         ...
-//         lastName: '',
-//         fullName: '',
+//         'last name': '',
+//         'full name': '',
 //         date: '',
 //         gender: '',
 //         nic: '',

@@ -58,10 +58,6 @@ export const onSubmit: SubmitHandler<ICreateCustomer> = (data) => {
 }
 
 export const onError: SubmitErrorHandler<ICreateCustomer> = (data) => {
-    for (let key in data) {
-        console.log(key);
-        data[key as keyof FieldErrors<ICreateCustomer>]?.type === 'required' && toast.error(`${key} is required`);
-    }
     const toastOptions: ToastOptions = {
         position: "bottom-right",
         autoClose: false,
@@ -72,13 +68,18 @@ export const onError: SubmitErrorHandler<ICreateCustomer> = (data) => {
         progress: undefined,
         theme: "dark",
     }
-    data.firstName && toast.error('first name is required', toastOptions);
-    data.lastName && toast.error('last name is required', toastOptions);
-    data.fullName && toast.error('full name is required', toastOptions);
-    data.date && toast.error('date is required', toastOptions);
-    data.nic && toast.error('nic is required', toastOptions);
-    data.tel && toast.error('tel is required', toastOptions);
-    data.city && toast.error('city is required', toastOptions);
-    data.zip && toast.error('zip is required', toastOptions);
-    data.address && toast.error('address is required', toastOptions);
+    for (let key in data) {
+        const typeOfError = data[key as keyof FieldErrors<ICreateCustomer>]?.type
+        key = key.toLowerCase()
+        if (typeOfError === 'required') {
+            toast.error(`${key} is required`, toastOptions)
+        } else if (typeOfError === 'minLength') {
+            toast.error(`${key} is too short`, toastOptions)
+        } else if (typeOfError === 'maxLength') {
+            toast.error(`${key} is too long`, toastOptions)
+        } else if (typeOfError === 'pattern') {
+            toast.error(`${key} is invalid`, toastOptions)
+        }
+        break;
+    }
 }

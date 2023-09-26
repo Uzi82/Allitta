@@ -13,9 +13,9 @@ export type FormWrapperStyles = {
 }
 
 export interface ICreateCustomer {
-    firstName: string,
-    lastName: string,
-    fullName: string,
+    'first name': string,
+    'last name': string,
+    'full name': string,
     date: typeof Date,
     gender: 'not-specified' | 'male' | 'female' | 'own-gender',
     nic: number,
