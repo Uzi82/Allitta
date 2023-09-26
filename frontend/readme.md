@@ -1,4 +1,5 @@
 ### Категории:
+
 #### Получение категорий продуктов:
 
     URL: GET http://api.localhost/api/products/categories
@@ -9,6 +10,7 @@
     Ответ: JSON массив объектов вида {{id, logotype_path (если image = 1), name}, ...}
 
 ### Подкатегории:
+
 #### Получение подкатегорий продуктов:
 
     URL: GET http://api.localhost/api/products/subcategories
@@ -23,6 +25,7 @@
     Ответ: JSON массив объектов вида {{id, category_id, name}, ...}
 
 ### Продукты:
+
 #### Получение категорий продуктов:
 
     URL: GET http://api.localhost/api/products/categories
@@ -56,6 +59,7 @@
     Ответ: JSON массив объектов вида {data: {{id, logotype_path, name}, ...}, 'total': {int}, 'current_page': {int}, 'last_page': {int}}
 
 ### Рекомендации:
+
 #### Лучшие продукты:
 
     URL: GET http://api.localhost/api/products/recommendations/best
@@ -74,14 +78,15 @@
     Опционально: ?limit={int} (по умолчанию 10)
     Ответ: JSON массив объектов вида {{id, name, logotype_path, currency, cost, description}, ...}
 
-## Магазины:
+### Магазины:
+
 #### Лучшие магазины:
 
     URL: GET http://api.localhost/api/shops/recommendations/best
     Опционально: ?limit={int} (по умолчанию 10)
     Ответ: JSON массив объектов вида {{id, name, logotype_path, products_count}, ...}
 
-## Пользователи:
+### Пользователи:
 
 #### Подписка на email рассылку:
 
