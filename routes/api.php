@@ -6,6 +6,7 @@ use App\Http\Controllers\Products\ProductSubcategoriesController;
 use App\Http\Controllers\Recommendations\ProductsCategoriesRecommendationsController;
 use App\Http\Controllers\Recommendations\ProductsRecommendationsController;
 use App\Http\Controllers\Recommendations\ShopsRecommendationsController;
+use App\Http\Controllers\Users\UserEmailDistributionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,6 +39,12 @@ Route::prefix('products')->group(function () {
 Route::prefix('shops')->group(function () {
     Route::prefix('recommendations')->group(function () {
         Route::get('best', [ShopsRecommendationsController::class, 'bestShops']);
+    });
+});
+
+Route::prefix('users')->group(function () {
+    Route::prefix('email/distribution')->group(function () {
+        Route::post('subscribe', [UserEmailDistributionController::class, 'store']);
     });
 });
 

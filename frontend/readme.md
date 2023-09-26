@@ -9,7 +9,6 @@
     Ответ: JSON массив объектов вида {{id, logotype_path (если image = 1), name}, ...}
 
 ### Подкатегории:
-
 #### Получение подкатегорий продуктов:
 
     URL: GET http://api.localhost/api/products/subcategories
@@ -24,7 +23,6 @@
     Ответ: JSON массив объектов вида {{id, category_id, name}, ...}
 
 ### Продукты:
-
 #### Получение категорий продуктов:
 
     URL: GET http://api.localhost/api/products/categories
@@ -82,3 +80,13 @@
     URL: GET http://api.localhost/api/shops/recommendations/best
     Опционально: ?limit={int} (по умолчанию 10)
     Ответ: JSON массив объектов вида {{id, name, logotype_path, products_count}, ...}
+
+## Пользователи:
+
+#### Подписка на email рассылку:
+
+    URL: POST http://api.localhost/api/users/email/distribution/subscribe
+    Обязательные поля тела запроса:
+        - email: {string}
+
+    Ответ: пустое тело, код 201 Created
