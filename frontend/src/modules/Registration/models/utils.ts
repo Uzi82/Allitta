@@ -1,3 +1,8 @@
+import { SubmitErrorHandler, SubmitHandler } from "react-hook-form"
+import { ICreateCustomer, ICreateShoper } from "./types"
+import { ToastOptions, toast } from 'react-toastify';
+import { FieldErrors } from "react-hook-form";
+
 // <--- Shoper ---> //
 export const validateName = () => ({
     required: 'required',
@@ -48,3 +53,32 @@ export const validateEmail = () => ({
     pattern: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
 })
 // </--- Shoper ---/> //
+export const onSubmit: SubmitHandler<ICreateCustomer> = (data) => {
+    console.log('success', data);
+}
+
+export const onError: SubmitErrorHandler<ICreateCustomer> = (data) => {
+    for (let key in data) {
+        console.log(key);
+        data[key as keyof FieldErrors<ICreateCustomer>]?.type === 'required' && toast.error(`${key} is required`);
+    }
+    const toastOptions: ToastOptions = {
+        position: "bottom-right",
+        autoClose: false,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+    }
+    data.firstName && toast.error('first name is required', toastOptions);
+    data.lastName && toast.error('last name is required', toastOptions);
+    data.fullName && toast.error('full name is required', toastOptions);
+    data.date && toast.error('date is required', toastOptions);
+    data.nic && toast.error('nic is required', toastOptions);
+    data.tel && toast.error('tel is required', toastOptions);
+    data.city && toast.error('city is required', toastOptions);
+    data.zip && toast.error('zip is required', toastOptions);
+    data.address && toast.error('address is required', toastOptions);
+}

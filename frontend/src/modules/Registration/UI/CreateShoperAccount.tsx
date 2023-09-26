@@ -14,7 +14,11 @@ export const CreateShoperAccount: React.FC = () => {
     })
     const password = watch('password')
     const confirmPassword = watch('confirmPassword')
-
+    const confirmPasswordValidation = () => {
+        if (confirmPassword === '') return 'required'
+        if (confirmPassword === password) return ''
+        return 'Passwords do not match';
+    };
     const onSubmit: SubmitHandler<ICreateShoper> = (data) => {
         console.log('success', data);
     }
@@ -22,19 +26,8 @@ export const CreateShoperAccount: React.FC = () => {
         console.log(data);
     }
 
-    const confirmPasswordValidation = () => {
-        if (confirmPassword === '') {
-            return 'required'
-        }
-        if (confirmPassword === password) {
-            return '';
-        }
-        return 'Passwords do not match';
-    };
-
-
     return (
-        <FormWrapper onSubmit={handleSubmit(onSubmit)} $gap='20px'>
+        <FormWrapper autoComplete='off' onSubmit={handleSubmit(onSubmit, onError)} $gap='20px'>
             <Title $mb='10px'>Create Account</Title>
             <CreateLinkWrapper $mb='10px' >
                 <CreateLink to='/signup/customer'>Customer Account</CreateLink>
