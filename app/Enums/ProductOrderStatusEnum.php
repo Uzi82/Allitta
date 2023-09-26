@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-enum OrderStatusEnum: int
+enum ProductOrderStatusEnum: int
 {
     case NEW = 1;
     case ON_PROCESS = 2;

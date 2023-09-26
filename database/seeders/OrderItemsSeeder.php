@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\Orders\OrderItem;
 use App\Models\Orders\ProductOrder;
+use App\Models\Orders\ProductOrderItem;
 use App\Models\Products\Product;
 use Illuminate\Database\Seeder;
 
@@ -21,7 +21,7 @@ class OrderItemsSeeder extends Seeder
                 $quantity = rand(1, 3);
                 $product = Product::where('shop_id', $order->shop_id)->inRandomOrder()->first();
 
-                OrderItem::create(
+                ProductOrderItem::create(
                     [
                         'order_id' => $order->id,
                         'product_id' => $product->id,

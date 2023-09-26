@@ -3,14 +3,13 @@
 namespace App\Filters\Products;
 
 use App\Filters\Interfaces\FilterInterface;
-use App\Models\Products\Product;
 use Illuminate\Database\Eloquent\Builder;
 
-class ProductNameFilter implements FilterInterface
+class ProductSubcategoryFilter implements FilterInterface
 {
-    private string $value;
+    private array $value;
 
-    public function __construct(string $value)
+    public function __construct(array $value)
     {
         $this->value = $value;
     }
@@ -18,7 +17,7 @@ class ProductNameFilter implements FilterInterface
     public function filter(Builder $query): Builder
     {
         if (!empty($this->value)) {
-            return (new Product())->searchByName($query, $this->value);
+            return $query->where('subcategory_id', $this->value);
         }
 
         return $query;

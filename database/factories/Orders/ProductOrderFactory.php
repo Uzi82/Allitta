@@ -3,7 +3,7 @@
 namespace Database\Factories\Orders;
 
 use App\Enums\CurrencyEnum;
-use App\Enums\OrderStatusEnum;
+use App\Enums\ProductOrderStatusEnum;
 use App\Models\Shops\Shop;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
@@ -20,7 +20,7 @@ class ProductOrderFactory extends Factory
      */
     public function definition(): array
     {
-        $statuses = OrderStatusEnum::cases();
+        $statuses = ProductOrderStatusEnum::cases();
 
         return [
             'user_id' => rand(1, 100000),
