@@ -86,6 +86,19 @@
     Опционально: ?limit={int} (по умолчанию 10)
     Ответ: JSON массив объектов вида {{id, name, logotype_path, products_count}, ...}
 
+#### Информация о магазине с товарами с группированными по категориям и отсортированными по продажам:
+
+    URL: GET http://api.localhost/api/shops/{id}
+    Опционально: ?product_limit={int} (по умолчанию 10)
+    Опционально: ?category_limit={int} (по умолчанию 10)
+    Ответ: JSON массив объектов вида 
+        {
+	        shop: {id, name, logotype_path, banner_path, description, rating},
+	        data: {
+	        	{category_id, category_name, products: {{id, name, logotype_path, currency, cost, description}, ...}},
+	        	...
+        }
+
 ### Пользователи:
 
 #### Подписка на email рассылку:

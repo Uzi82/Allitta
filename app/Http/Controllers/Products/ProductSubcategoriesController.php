@@ -9,7 +9,6 @@ use App\Models\Products\ProductCategory;
 use App\Models\Products\ProductSubcategory;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
-use Illuminate\Support\Facades\Validator;
 
 class ProductSubcategoriesController extends Controller
 {
@@ -25,17 +24,7 @@ class ProductSubcategoriesController extends Controller
     public function getProductSubcategoriesByCategory(LimitRequest $request): AnonymousResourceCollection|JsonResponse
     {
         $data = [];
-        $categoryId = $request->route('id');
-
-        $validator = Validator::make(['category_id' => $categoryId], [
-            'category_id' => ['required', 'integer'],
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], 422);
-        }
-
-        $category = ProductCategory::find($categoryId);
+        $category = ProductCategory::find($this->getId($request));
 
         if (!empty($category)) {
             $data = $category->subcategories->take($request->input('limit', 10));

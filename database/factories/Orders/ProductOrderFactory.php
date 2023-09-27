@@ -28,7 +28,8 @@ class ProductOrderFactory extends Factory
             'status' => $statuses[array_rand($statuses)]->value,
             'amount' => 0,
             'currency' => CurrencyEnum::USD->value,
-            'delivery_code' => Str::random(6)
+            'delivery_code' => Str::random(6),
+            'rating' => rand(1, 5),
         ];
     }
 }
