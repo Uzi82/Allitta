@@ -10,14 +10,6 @@ const BackgroundBlurStyled = styled.div`
     background: #fff;
     backdrop-filter: blur(30px); 
 `
-const Content = styled.div`
-    position: absolute;
-    z-index: 6;
-    color: black;
-    top: 20%;
-    left:50%;
-    transform: translateX(-50%);
-`
 const LogoWrapper = styled(Link)`
     position: absolute;
     z-index: 5;
@@ -70,9 +62,7 @@ export const BackgroundBlur: React.FC<Props> = ({ children, circles, close, logo
         <BackgroundBlurStyled>
             {close ? <Link to='/'><StyledCloseSvg src="/svg/closeButton.svg" /></Link> : ''}
             {logo ? <LogoWrapper to='/'><Logo>ALLITTA</Logo></LogoWrapper> : ''}
-            <Content>
-                {children}
-            </Content>
+            {children}
             {circles ?
                 <>
                     <StyledCircleSvg $left='19%' $top='3%' width={455} height={455} src="/svg/circle.svg" alt="circle" />

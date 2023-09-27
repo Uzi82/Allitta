@@ -53,10 +53,9 @@ export const CreateCustomerAccount: React.FC = () => {
                 </Flex>
                 <Button type='submit' /*onClick={() => navigate('/signup/customer/photo')}*/ br='10px'>Continue</Button>
                 <BackLink $left='10px' $top='10px' />
-
             </FormWrapper>
             <ToastContainer
-                position="bottom-right"
+                position="top-center"
                 autoClose={2000}
                 limit={2}
                 newestOnTop

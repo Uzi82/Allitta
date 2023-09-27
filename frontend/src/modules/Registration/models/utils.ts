@@ -59,11 +59,11 @@ export const onSubmit: SubmitHandler<ICreateCustomer> = (data) => {
 
 export const onError: SubmitErrorHandler<ICreateCustomer> = (data) => {
     const toastOptions: ToastOptions = {
-        position: "bottom-right",
-        autoClose: false,
+        position: "top-center",
+        autoClose: 2000,
         hideProgressBar: false,
         closeOnClick: true,
-        pauseOnHover: true,
+        pauseOnHover: false,
         draggable: true,
         progress: undefined,
         theme: "dark",

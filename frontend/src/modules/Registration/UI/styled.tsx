@@ -6,17 +6,20 @@ export const FormWrapper = styled.form<FormWrapperStyles>`
     display: flex;
     ${({ $gap }) => $gap && `gap:${$gap};`}
     flex-direction: column;
-    width: 100%;
-    height: 100%;
+    max-width:644px;
     padding:40px 50px;
     align-items: center;
     border-radius: 15px;
     background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(50px);
+    position: absolute;
+    z-index: 6;
+    top: 20%;
+    left:50%;
+    transform: translateX(-50%);
 `
 export const CreateLinkWrapper = styled.div<MarginBottom>`
     display: flex;
-    width: 100%;
     height: 100%;
     align-items: center;
     max-width:356px;
@@ -106,7 +109,6 @@ export const UploadContent = styled.div<MarginBottom>`
 `
 export const Select = styled.select<MarginBottom>`
     margin: 0 0 ${props => props.$mb || 0} 0;
-    flex: 0 0 50%;
     color: #BFBFBF;
     font-family: Inter-regular;
     font-size: 18px;
@@ -115,7 +117,7 @@ export const Select = styled.select<MarginBottom>`
     background: rgba(255, 255, 255, 0.55);
     backdrop-filter: blur(10px);
     border-radius: 10px;
-    max-width:229px;
+    width:100%;
     color: #000;
     font-family: Inter-Regular;
     font-size: 14px;
