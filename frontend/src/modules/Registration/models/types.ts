@@ -27,5 +27,5 @@ export interface ICreateProfile {
 export interface ICreateAccount {
     email: string,
     password: string,
-    confirmPassword: string,
+    'confirm password': string,
 }

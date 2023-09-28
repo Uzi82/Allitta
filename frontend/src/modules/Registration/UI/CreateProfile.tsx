@@ -4,7 +4,6 @@ import { Input } from '../../../UI/Input'
 import { BackLink } from '../../../UI/BackLink'
 import { onError, onSubmit, useProfileForm } from '../models/utils'
 import { Button } from '../../../UI/Button'
-import 'react-toastify/dist/ReactToastify.css';
 
 export const CreateProfile: React.FC = () => {
     const { handleSubmit, registerInput } = useProfileForm()

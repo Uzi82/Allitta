@@ -4,7 +4,6 @@ import { Input } from '../../../UI/Input'
 import { onError, onSubmit, useAccountForm } from '../models/utils'
 import { Button } from '../../../UI/Button'
 
-
 export const CreateAccount: React.FC = () => {
     const { handleSubmit, registerInput } = useAccountForm()
     return (
@@ -16,7 +15,7 @@ export const CreateAccount: React.FC = () => {
             </CreateLinkWrapper>
             <Input placeholder='Email Address' type='email' {...registerInput('email')} />
             <Input placeholder='Create Password' type='password' {...registerInput('password')} />
-            <Input placeholder='Confirm Password' type='password' {...registerInput('confirmPassword')} />
+            <Input placeholder='Confirm Password' type='password'   {...registerInput('confirm password')} />
             <Button type='submit' /*onClick={() => navigate('/signup/verify')}*/ br='10px'>Continue</Button>
         </FormWrapper>
     )

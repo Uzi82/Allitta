@@ -44,13 +44,12 @@ export const validatePassword = () => ({
     minLength: 4,
     maxLength: 30,
 })
+
 export const validateEmail = () => ({
     required: 'required',
     pattern: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
 })
 // </--- Account Validation Functions  ---/> //
-
-
 
 // <--- onSubmit onError  ---> //
 export const onSubmit: SubmitHandler<ICreateProfile | ICreateAccount> = (data) => {
@@ -77,6 +76,8 @@ export const onError: SubmitErrorHandler<ICreateProfile | ICreateAccount> = (dat
             toast.error(`${key} is too long`, toastOptions)
         } else if (typeOfError === 'pattern') {
             toast.error(`${key} is invalid`, toastOptions)
+        } else if (typeOfError === 'validate') {
+            toast.error(`passwords should match`, toastOptions)
         }
         break;
     }
@@ -84,18 +85,17 @@ export const onError: SubmitErrorHandler<ICreateProfile | ICreateAccount> = (dat
 // </--- onSubmit onError  ---/> //
 
 export const validateInput = (which: keyof ICreateAccount | keyof ICreateProfile) => {
-    {
-        if (which === 'first name' || which === 'last name' || which === 'full name') return validateName()
-        if (which === 'date') return validateDate()
-        if (which === 'nic') return validateNic()
-        if (which === 'address') return validateAddress()
-        if (which === 'tel') return validateTel()
-        if (which === 'city') return validateCity()
-        if (which === 'zip') return validateZIP()
-        if (which === 'email') return validateEmail()
-        if (which === 'password') return validatePassword()
-    }
+    if (which === 'first name' || which === 'last name' || which === 'full name') return validateName()
+    if (which === 'date') return validateDate()
+    if (which === 'nic') return validateNic()
+    if (which === 'address') return validateAddress()
+    if (which === 'tel') return validateTel()
+    if (which === 'city') return validateCity()
+    if (which === 'zip') return validateZIP()
+    if (which === 'email') return validateEmail()
+    if (which === 'password') return validatePassword()
 }
+
 // <--- HOOKS ---> //
 export const useAccountForm = () => {
     const { register, watch, formState: { errors }, ...rest } = useForm<ICreateAccount>({
@@ -104,21 +104,26 @@ export const useAccountForm = () => {
     const hasError = (where: keyof ICreateAccount) => ({ error: errors[where]?.type, })
 
     const password = watch('password')
-    const confirmPassword = watch('confirmPassword')
+    const confirmPassword = watch('confirm password')
 
-    const confirmPasswordValidation = () => {
-        if (confirmPassword === '') return 'required'
-        if (confirmPassword === password) return ''
-        return 'Passwords do not match';
-    };
-
+    const validateConfirmPassword = () => ({
+        required: 'required',
+        minLength: 4,
+        maxLength: 30,
+        validate: () => confirmPassword === password
+    })
     function registerInput(name: keyof ICreateAccount,) {
+        if (name === 'confirm password') {
+            return {
+                ...hasError(name),
+                ...register(name, validateConfirmPassword()),
+            }
+        }
         return {
             ...hasError(name),
             ...register(name, validateInput(name)),
         }
     }
-
     return {
         registerInput,
         ...rest
