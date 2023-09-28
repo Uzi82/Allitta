@@ -11,7 +11,7 @@ export const ProfilePicture: React.FC = () => {
             <UploadWrapper $mb='30px'>
                 <UploadInput placeholder='something' type="file" />
                 <UploadContent>
-                    <Img $mb='12px' src='/svg/upload.svg'></Img>
+                    <Img $mb='12px' src='/svg/upload.svg' />
                     Upload a Profile Picture
                 </UploadContent>
             </UploadWrapper>
