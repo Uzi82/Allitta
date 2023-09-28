@@ -5,7 +5,7 @@ import { AuthorizationLayout } from './AuthorizationLayout'
 import { Layout } from './Layout'
 import { DashboardLayout } from './DashboardLayout'
 import { Dashboard } from '../modules/Dashboard'
-import { CreateCustomerAccount, CreateShoperAccount, ProfilePicture, Verification } from '../modules/Registration'
+import { CreateProfile, CreateAccount, ProfilePicture, Verification } from '../modules/Registration'
 import { ForgetPassword, ResetPassword, SignIn, VerifyingEmail } from '../modules/Authorization'
 
 
@@ -26,7 +26,7 @@ export const publicRoutes = createBrowserRouter([
         children: [
             {
                 index: true,
-                element: <CreateShoperAccount />,
+                element: <CreateAccount />,
             },
             {
                 path: '/signup/verify',
@@ -34,7 +34,7 @@ export const publicRoutes = createBrowserRouter([
             },
             {
                 path: '/signup/customer',
-                element: <CreateCustomerAccount />,
+                element: <CreateProfile />,
             },
             {
                 path: '/signup/customer/photo',

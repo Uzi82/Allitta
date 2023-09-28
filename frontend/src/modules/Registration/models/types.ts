@@ -12,7 +12,7 @@ export type FormWrapperStyles = {
     $gap?: string
 }
 
-export interface ICreateCustomer {
+export interface ICreateProfile {
     'first name': string,
     'last name': string,
     'full name': string,
@@ -24,7 +24,7 @@ export interface ICreateCustomer {
     city: string,
     zip: number,
 }
-export interface ICreateShoper {
+export interface ICreateAccount {
     email: string,
     password: string,
     confirmPassword: string,
