@@ -15,4 +15,9 @@ export type FormLinkStyles = {
     $justify?: string,
     $mb?: string
     width?: string,
-} 
+}
+
+export interface ISignIn {
+    email: string,
+    password: string
+}
