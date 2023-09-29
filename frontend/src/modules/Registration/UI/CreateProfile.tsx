@@ -12,8 +12,8 @@ export const CreateProfile: React.FC = () => {
         <FormWrapper autoComplete='off' $gap='20px' onSubmit={handleSubmit(onSubmit, onError)}>
             <Title $mb='10px'>Your Profile</Title>
             <CreateLinkWrapper $mb='10px' >
-                <CreateLink active to='/signup/customer'>Customer Account</CreateLink>
-                <CreateLink to='/signup'>Shopper Account</CreateLink>
+                <CreateLink active to='/signup/customer'>Create Account</CreateLink>
+                <CreateLink to='/signup'>Create Profile</CreateLink>
             </CreateLinkWrapper>
             <Subtitle >Your Informations</Subtitle>
             <Flex >
@@ -41,7 +41,6 @@ export const CreateProfile: React.FC = () => {
                 <Input placeholder='Zip Code' type='number'{...registerInput('zip')} />
             </Flex>
             <Button type='submit' /*onClick={() => navigate('/signup/customer/photo')}*/ br='10px'>Continue</Button>
-            <BackLink $left='10px' $top='10px' />
         </FormWrapper>
     )
 }

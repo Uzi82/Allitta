@@ -17,6 +17,15 @@ export const FormWrapper = styled.form<FormWrapperStyles>`
     top: 20%;
     left:50%;
     transform: translateX(-50%);
+    @media screen and (max-width: 920px) {
+        padding:30px 40px;
+    }
+    @media screen and (max-width: 767px) {
+        padding:80px 20px;
+        position: static;
+        transform: none;
+        margin: 0 auto;
+    }
 `
 export const CreateLinkWrapper = styled.div<MarginBottom>`
     display: flex;
@@ -29,11 +38,17 @@ export const CreateLinkWrapper = styled.div<MarginBottom>`
     box-shadow: 2px 4px 10px 0px rgba(0, 0, 0, 0.05);
     backdrop-filter: blur(20px);
     padding:5px;
+    @media screen and (max-width: 830px) {
+        display: block;
+        width:100%;
+    }
 `
 export const CreateLink = styled(Link) <CreateLinkStyles>`
     display: flex;
     align-items: center;
+    justify-content:center;
     flex-shrink: 0;
+    text-align:center;
     border-radius: 10px;
     background: ${props => props.active ? '#fff' : 'transparent'} ;
     color: ${props => props.active ? '#FF9C00' : '#000'} ;
@@ -53,6 +68,9 @@ export const Title = styled.h2<MarginBottom>`
     font-size: 36px;
     text-align: center;
     font-size: 32px;
+    @media screen and (max-width: 767px) {
+        font-size: 24px;
+    }
 `
 export const Subtitle = styled.p<MarginBottom>`
     align-self: start;
@@ -61,6 +79,9 @@ export const Subtitle = styled.p<MarginBottom>`
     font-family: Inter-Bold;
     color: #000;
     font-size: 18px;
+    @media screen and (max-width: 767px) {
+        font-size: 15px;
+    }
 `
 export const Img = styled.img<MarginBottom>`
     margin: 0 0 ${props => props.$mb || 0} 0;
@@ -124,6 +145,16 @@ export const Select = styled.select<MarginBottom>`
     &::placeholder {
         text-transform: capitalize;
         color: #BEBEBE;
+    }
+    &:focus {
+        box-shadow: 0px 0px 8px -5px rgba(0,0,0,0.75);
+        border: 1px solid rgba(0, 0, 0, 0.8);
+    }
+    @media screen and (max-width: 980px) {
+        padding: 12px;
+    }
+    @media screen and (max-width: 767px) {
+        padding: 10px;
     }
 `
 
