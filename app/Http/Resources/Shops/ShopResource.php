@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Resources\Products;
+namespace App\Http\Resources\Shops;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ProductSearchResource extends JsonResource
+class ShopResource extends JsonResource
 {
     public function toArray(Request $request): array
     {
@@ -13,8 +13,9 @@ class ProductSearchResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'logotype_path' => asset($this->logotype_path),
-            'currency' => config('currencies')[$this->currency],
-            'cost' => (int)$this->cost
+            'banner_path' => asset($this->banner_path),
+            'description' => $this->description,
+            'rating' => round(($this->rating ?? 0) * 2) / 2,
         ];
     }
 }

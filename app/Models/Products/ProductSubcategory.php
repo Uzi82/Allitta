@@ -1,18 +1,17 @@
 <?php
 
-namespace App\Models\Orders;
+namespace App\Models\Products;
 
-use App\Models\Shops\Shop;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class ProductOrder extends Model
+class ProductSubcategory extends Model
 {
     use HasFactory;
 
-    public function shop(): BelongsTo
+    public function category(): BelongsTo
     {
-        return $this->belongsTo(Shop::class);
+        return $this->belongsTo(ProductCategory::class);
     }
 }

@@ -2,16 +2,16 @@
 
 namespace Database\Seeders;
 
-use App\Models\Orders\ProductOrder;
+use App\Models\Users\EmailSubscription;
 use Illuminate\Database\Seeder;
 
-class ProductOrdersSeeder extends Seeder
+class EmailSubscriptionSeeders extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        ProductOrder::factory()->count(100)->create();
+        EmailSubscription::factory()->count(50)->create();
     }
 }
