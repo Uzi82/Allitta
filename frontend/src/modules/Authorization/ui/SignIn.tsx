@@ -15,7 +15,7 @@ const SignIn: React.FC = () => {
             <Subtitle $mb='20px'>Sign in with your email address and password</Subtitle>
             <Input placeholder='email address' $mb='20px' {...registerInput('email')} />
             <Input placeholder='password' type='password' $mb='10px' {...registerInput('password')} />
-            <FormLink $mb='20px' $justify='end' ><Link to='/signin/verify'>Forget password?</Link></FormLink>
+            <FormLink $mb='20px' $justify='end' ><Link to='/signin/forget'>Forget password?</Link></FormLink>
             <Button br={'10px'} mb={'20px'}>Sign In</Button>
             <CustomLink $transparent to='/signup'>Create Account</CustomLink>
         </FormStyled>

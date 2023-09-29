@@ -1,15 +1,18 @@
 import { SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form"
-import { ISignIn } from "./types"
+import { IForgetPassword, ISignIn } from "./types"
 import { ToastOptions, toast } from 'react-toastify';
 import { FieldErrors } from "react-hook-form";
 
 // <---SignIn Validation Functions  ---> //
+export const validateInput = (which: keyof ISignIn) => {
+    if (which === 'password') return validatePassword()
+    if (which === 'email') return validateEmail()
+}
 export const validatePassword = () => ({
     required: 'required',
     minLength: 4,
     maxLength: 30,
 })
-
 export const validateEmail = () => ({
     required: 'required',
     pattern: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
@@ -17,10 +20,10 @@ export const validateEmail = () => ({
 // </---SignIn Validation Functions  ---/> //
 
 // <--- onSubmit onError  ---> //
-export const onSubmit: SubmitHandler<ISignIn> = (data) => {
+export const onSubmit: SubmitHandler<ISignIn | IForgetPassword> = (data) => {
     console.log('success', data);
 }
-export const onError: SubmitErrorHandler<ISignIn> = (data) => {
+export const onError: SubmitErrorHandler<ISignIn | IForgetPassword> = (data) => {
     const toastOptions: ToastOptions = {
         position: "top-center",
         autoClose: 2000,
@@ -32,7 +35,7 @@ export const onError: SubmitErrorHandler<ISignIn> = (data) => {
         theme: "dark",
     }
     for (let key in data) {
-        const typeOfError = data[key as keyof FieldErrors<ISignIn>]?.type
+        const typeOfError = data[key as keyof FieldErrors<ISignIn | IForgetPassword>]?.type
         if (typeOfError === 'required') {
             toast.error(`${key} is required`, toastOptions)
         } else if (typeOfError === 'minLength') {
@@ -47,10 +50,6 @@ export const onError: SubmitErrorHandler<ISignIn> = (data) => {
 }
 // </--- onSubmit onError  ---/> //
 
-export const validateInput = (which: keyof ISignIn) => {
-    if (which === 'password') return validatePassword()
-}
-
 // <--- HOOKS ---> //
 export const useSignInForm = () => {
     const { register, formState: { errors }, ...rest } = useForm<ISignIn>({
@@ -58,15 +57,24 @@ export const useSignInForm = () => {
     })
     const hasError = (where: keyof ISignIn) => ({ error: errors[where]?.type, })
 
-    function registerInput(name: keyof ISignIn,) {
-        return {
-            ...hasError(name),
-            ...register(name, validateInput(name)),
-        }
-    }
-    return {
-        registerInput,
-        ...rest
-    }
+    const registerInput = (name: keyof ISignIn,) => ({
+        ...hasError(name),
+        ...register(name, validateInput(name)),
+    })
+
+    return { registerInput, ...rest }
+}
+export const useForgetPasswordForm = () => {
+    const { register, formState: { errors }, ...rest } = useForm<IForgetPassword>({
+        mode: 'onChange',
+    })
+    const hasError = (where: keyof IForgetPassword) => ({ error: errors[where]?.type, })
+
+    const registerInput = (name: keyof IForgetPassword,) => ({
+        ...hasError(name),
+        ...register(name, validateInput(name)),
+    })
+
+    return { registerInput, ...rest }
 }
 // </--- HOOKS  ---/> //

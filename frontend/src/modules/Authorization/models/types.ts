@@ -17,7 +17,11 @@ export type FormLinkStyles = {
     width?: string,
 }
 
+
 export interface ISignIn {
     email: string,
     password: string
+}
+export interface IForgetPassword {
+    email: string,
 }
