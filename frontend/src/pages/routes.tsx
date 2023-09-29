@@ -6,6 +6,7 @@ import { CreateCustomerAccount, CreateShoperAccount, ProfilePicture, Verificatio
 import { Layout } from './Layout'
 import { DashboardLayout } from './DashboardLayout'
 import { Dashboard } from '../modules/Dashboard'
+import { ShopProducts } from '../modules/ShopProducts'
 
 
 export const publicRoutes = createBrowserRouter([
@@ -61,7 +62,7 @@ export const publicRoutes = createBrowserRouter([
             },
             {
                 path: 'product',
-                element: <>321</>
+                element: <ShopProducts />
             },
             {
                 path: 'orders',

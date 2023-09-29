@@ -83,5 +83,3 @@ export const BackgroundBlur: React.FC<Props> = ({ children, circles, close, logo
         </BackgroundBlurStyled>
     )
 }
-
-
