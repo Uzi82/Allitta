@@ -2,12 +2,14 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 type initialType = {
     type: string,
-    opened: boolean
+    opened: boolean,
+    editId: string
 }
 
 const initialState: initialType = {
     type: 'addProduct',
-    opened: false
+    opened: false,
+    editId: ''
 }
 
 const productsSlice = createSlice({

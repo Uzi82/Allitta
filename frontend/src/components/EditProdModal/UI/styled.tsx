@@ -295,3 +295,22 @@ export const Cancel = styled.button`
         color: white;
     }
 `
+
+export const Delete = styled.button`
+    color: #DD3A3A;
+    width: 20%;
+    border-radius: 5px;
+    background: none;
+    cursor: pointer;
+    text-align: center;
+    font-family: Inter-Bold, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    transition-duration: 300ms;
+    &:hover {
+        background-color: #DD3A3A;
+        color: white;
+    }
+`
