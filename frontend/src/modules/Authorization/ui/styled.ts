@@ -15,6 +15,12 @@ export const Title = styled.h2<MarginBottom>`
     color: #000;
     font-family: Inter-bold;
     font-size: 36px;
+    @media (max-width: 1080px) {
+        font-size: 32px;
+    }
+    @media (max-width: 767px) {
+        font-size: 24px;
+    }
 `
 export const Subtitle = styled.p<MarginBottom>`
     margin: 0 0 ${props => props.$mb || '0'} 0;
@@ -23,7 +29,9 @@ export const Subtitle = styled.p<MarginBottom>`
     color: #000;
     font-family: Inter-Regular;
     font-size: 16px;
-    font-style: normal;
+    @media (max-width: 767px) {
+        font-size: 12px;
+    }
 `
 export const FormLink = styled.div<FormLinkStyles>`
     margin-bottom: ${props => props.$mb || 0};
@@ -40,7 +48,10 @@ export const FormLink = styled.div<FormLinkStyles>`
         text-decoration: none;
     }
     &:hover {
-        opacity: .5;    // позже норм хавер поведение
+        opacity: .5;
+    }
+    @media (max-width: 767px) {
+        font-size: 12px;
     }
 `
 export const VerifyingActions = styled.div<FormLinkStyles>`
