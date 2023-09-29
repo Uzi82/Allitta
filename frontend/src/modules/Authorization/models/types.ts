@@ -28,3 +28,7 @@ export interface IForgetPassword {
 export interface IVerification {
     verification: number,
 }
+export interface IResetPassword {
+    password: string,
+    'confirm password': string,
+}

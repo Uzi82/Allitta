@@ -1,5 +1,5 @@
 import { SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form"
-import { IForgetPassword, ISignIn, IVerification } from "./types"
+import { IForgetPassword, IResetPassword, ISignIn, IVerification } from "./types"
 import { ToastOptions, toast } from 'react-toastify';
 import { FieldErrors } from "react-hook-form";
 
@@ -27,10 +27,10 @@ export const validateInput = (which: keyof ISignIn | keyof IVerification) => {
 // </---SignIn Validation Functions  ---/> //
 
 // <--- onSubmit onError  ---> //
-export const onSubmit: SubmitHandler<ISignIn | IForgetPassword | IVerification> = (data) => {
+export const onSubmit: SubmitHandler<ISignIn | IForgetPassword | IVerification | IResetPassword> = (data) => {
     console.log('success', data);
 }
-export const onError: SubmitErrorHandler<ISignIn | IForgetPassword | IVerification> = (data) => {
+export const onError: SubmitErrorHandler<ISignIn | IForgetPassword | IVerification | IResetPassword> = (data) => {
     const toastOptions: ToastOptions = {
         position: "top-center",
         autoClose: 2000,
@@ -42,7 +42,7 @@ export const onError: SubmitErrorHandler<ISignIn | IForgetPassword | IVerificati
         theme: "dark",
     }
     for (let key in data) {
-        const typeOfError = data[key as keyof FieldErrors<ISignIn | IForgetPassword | IVerification>]?.type
+        const typeOfError = data[key as keyof FieldErrors<ISignIn | IForgetPassword | IVerification | IResetPassword>]?.type
         if (typeOfError === 'required') {
             toast.error(`${key} is required`, toastOptions)
         } else if (typeOfError === 'minLength') {
@@ -51,6 +51,8 @@ export const onError: SubmitErrorHandler<ISignIn | IForgetPassword | IVerificati
             toast.error(`${key} is too long`, toastOptions)
         } else if (typeOfError === 'pattern') {
             toast.error(`${key} is invalid`, toastOptions)
+        } else if (typeOfError === 'validate') {
+            toast.error(`password should match`, toastOptions)
         }
         break;
     }
@@ -69,6 +71,35 @@ export const useSignInForm = () => {
         ...register(name, validateInput(name)),
     })
 
+    return { registerInput, ...rest }
+}
+export const useResetPasswordForm = () => {
+    const { register, watch, formState: { errors }, ...rest } = useForm<IResetPassword>({
+        mode: 'onChange',
+    })
+    const hasError = (where: keyof IResetPassword) => ({ error: errors[where]?.type, })
+
+    const password = watch('password')
+    const confirmPassword = watch('confirm password')
+
+    const validateConfirmPassword = () => ({
+        required: 'required',
+        minLength: 4,
+        maxLength: 30,
+        validate: () => confirmPassword === password
+    })
+    function registerInput(name: keyof IResetPassword,) {
+        if (name === 'confirm password') {
+            return {
+                ...hasError(name),
+                ...register(name, validateConfirmPassword()),
+            }
+        }
+        return {
+            ...hasError(name),
+            ...register(name, validateInput(name)),
+        }
+    }
     return { registerInput, ...rest }
 }
 export const useForgetPasswordForm = () => {
