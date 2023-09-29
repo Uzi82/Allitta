@@ -25,3 +25,6 @@ export interface ISignIn {
 export interface IForgetPassword {
     email: string,
 }
+export interface IVerification {
+    verification: number,
+}

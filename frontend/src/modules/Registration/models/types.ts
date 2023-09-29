@@ -29,3 +29,6 @@ export interface ICreateAccount {
     password: string,
     'confirm password': string,
 }
+export interface IVerification {
+    verification: number,
+}
