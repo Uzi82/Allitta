@@ -5,7 +5,8 @@ import { Products,
          SimpleBlur,
          open,
          setType,
-         AddProdModal
+         AddProdModal,
+         EditProdModal
 } from "../"
 import { 
     AddNew,
@@ -16,7 +17,7 @@ import {
 } from "./styled"
 
 export const ShopProducts: React.FC = () => {
-    const { type, opened } = useAppSelector(state=>state.products)
+    const { type, opened, editId } = useAppSelector(state=>state.products)
     const dispatch = useAppDispatch()
     return(
         <Content>
@@ -34,7 +35,7 @@ export const ShopProducts: React.FC = () => {
                     type === 'add'
                         ? <AddProdModal />
                         : type === 'edit'
-                            ? <>edit</>
+                            ? <EditProdModal id={editId} />
                             : <>Feedback</>
                 }
             </SimpleBlur>

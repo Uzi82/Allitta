@@ -3,6 +3,7 @@ import { type Product as ProductType,
          open,
          setType,
          useAppDispatch,
+         useAppSelector,
 } from '../'
 import { Product, 
          ProductEl, 
@@ -14,9 +15,11 @@ import { Product,
          ToolTipBtn
 } from './styled'
 
+
 export const ProductComponent: React.FC<{ el: ProductType }> = ({ el }) => {
     const [active, setActive] = useState<boolean>(false)
     const dispatch = useAppDispatch()
+    const opened = useAppSelector(state=>state.products.opened)
     const changeActive = () => active ? setActive(false) : setActive(true)
     return (
         <Product key={el.number}>
@@ -43,7 +46,7 @@ export const ProductComponent: React.FC<{ el: ProductType }> = ({ el }) => {
             </ProductEl>
             <ProductBtnContainer>
                 <ProductBtn onClick={()=>changeActive()} />
-                <ToolTip $active={active}>
+                <ToolTip $active={active && !opened}>
                     <Arrow src={require('./Beak.png')} />
                     <ToolTipBtn onClick={()=>{dispatch(setType('edit')); changeActive(); dispatch(open())}}>
                         Edit

@@ -1,4 +1,10 @@
-import { Cancel, CheckBox, CheckBoxContainer, CheckBoxText, CheckBoxes, Container, 
+import { Cancel, 
+         CheckBox, 
+         CheckBoxContainer, 
+         CheckBoxText, 
+         CheckBoxes, 
+         Container, 
+         Delete, 
          Exit, 
          Filter, 
          Filters, 
@@ -16,14 +22,16 @@ import { Cancel, CheckBox, CheckBoxContainer, CheckBoxText, CheckBoxes, Containe
 } from "./styled"
 import {
          useAppDispatch,
-         open
+         open,
+         type Props
 } from '../'
 import { useState } from "react"
+import { useForm } from 'react-hook-form'
 
-
-export const AddProdModal: React.FC = () => {
+export const EditProdModal: React.FC<Props> = ({ id }) => {
     const dispatch = useAppDispatch()
-    const [img, setImg] = useState<string | ArrayBuffer | null>(null)
+    const { register, handleSubmit } = useForm()
+    const [img, setImg] = useState<string | ArrayBuffer | null>(null) // добавить сюда фото из бд
     function imgHandle(e: React.ChangeEvent<HTMLInputElement>) {
         var target = e.target;
         if(target.files){
@@ -49,7 +57,7 @@ export const AddProdModal: React.FC = () => {
         <Container>
             <Head>
                 <Title>
-                    Add Product
+                    Edit Product
                 </Title>
                 <Exit onClick={()=>dispatch(open())} />
             </Head>
@@ -64,7 +72,7 @@ export const AddProdModal: React.FC = () => {
                         <CheckBoxContainer>
                             <CheckBox type="checkbox" />
                             <CheckBoxText>
-                                Active
+                                Active {/*Поставить Active из бд*/}
                             </CheckBoxText>
                         </CheckBoxContainer>
                         <CheckBoxContainer>
@@ -78,13 +86,16 @@ export const AddProdModal: React.FC = () => {
                 <RightSide>
                     <SimpleInput placeholder="Public Name" />
                     <Filters>
-                        <Filter placeholder={'Product Category'} classNamePrefix={'Select'} />
+                        <Filter placeholder={'Product Category'} classNamePrefix={'Select'} /> {/*Добавить категории из бд*/}
                         <Filter placeholder={'Sub Category'} classNamePrefix={'Select'} />
                     </Filters>
                     <SimpleTextArea $height={'272px'} placeholder="Product  Description" />
                     <PublishBtns>
+                        <Delete>
+                            Delete
+                        </Delete>
                         <Publish>
-                            Publish
+                            Save
                         </Publish>
                         <Cancel onClick={()=>dispatch(open())}>
                             Cancel
