@@ -3,28 +3,14 @@ import { IForgetPassword, IResetPassword, ISignIn, IVerification } from "./types
 import { ToastOptions, toast } from 'react-toastify';
 import { FieldErrors } from "react-hook-form";
 
-// <---SignIn Validation Functions  ---> //
-
-export const validatePassword = () => ({
-    required: 'required',
-    minLength: 4,
-    maxLength: 30,
-})
-export const validateEmail = () => ({
-    required: 'required',
-    pattern: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
-})
-export const validateVerification = () => ({
-    required: 'required',
-    maxLength: 6,
-    minLength: 6
-})
-export const validateInput = (which: keyof ISignIn | keyof IVerification) => {
-    if (which === 'password') return validatePassword()
-    if (which === 'email') return validateEmail()
-    if (which === 'verification') return validateVerification()
+// <--- Validation Input objects  ---> //
+const validateInput = (which: keyof ISignIn | keyof IVerification) => {
+    if (which === 'password') return { required: 'required', minLength: 4, maxLength: 30, }
+    if (which === 'email') return { required: 'required', pattern: /^[\w-]+@([\w-]+\.)+[\w-]{2,4}$/ }
+    if (which === 'verification') return { required: 'required', maxLength: 6, minLength: 6 }
 }
-// </---SignIn Validation Functions  ---/> //
+export const hasError = <T extends FieldErrors>(field: string, errors: T): FieldErrors => ({ error: errors[field as string] });
+// </--- Validation Input objects ---/> //
 
 // <--- onSubmit onError  ---> //
 export const onSubmit: SubmitHandler<ISignIn | IForgetPassword | IVerification | IResetPassword> = (data) => {
@@ -61,23 +47,17 @@ export const onError: SubmitErrorHandler<ISignIn | IForgetPassword | IVerificati
 
 // <--- HOOKS ---> //
 export const useSignInForm = () => {
-    const { register, formState: { errors }, ...rest } = useForm<ISignIn>({
-        mode: 'onChange',
-    })
-    const hasError = (where: keyof ISignIn) => ({ error: errors[where]?.type, })
+    const { register, formState: { errors }, ...rest } = useForm<ISignIn>({ mode: 'onChange', })
 
     const registerInput = (name: keyof ISignIn,) => ({
-        ...hasError(name),
+        ...hasError(name, errors),
         ...register(name, validateInput(name)),
     })
 
     return { registerInput, ...rest }
 }
 export const useResetPasswordForm = () => {
-    const { register, watch, formState: { errors }, ...rest } = useForm<IResetPassword>({
-        mode: 'onChange',
-    })
-    const hasError = (where: keyof IResetPassword) => ({ error: errors[where]?.type, })
+    const { register, watch, formState: { errors }, ...rest } = useForm<IResetPassword>({ mode: 'onChange', })
 
     const password = watch('password')
     const confirmPassword = watch('confirm password')
@@ -91,38 +71,32 @@ export const useResetPasswordForm = () => {
     function registerInput(name: keyof IResetPassword,) {
         if (name === 'confirm password') {
             return {
-                ...hasError(name),
+                ...hasError(name, errors),
                 ...register(name, validateConfirmPassword()),
             }
         }
         return {
-            ...hasError(name),
+            ...hasError(name, errors),
             ...register(name, validateInput(name)),
         }
     }
     return { registerInput, ...rest }
 }
 export const useForgetPasswordForm = () => {
-    const { register, formState: { errors }, ...rest } = useForm<IForgetPassword>({
-        mode: 'onChange',
-    })
-    const hasError = (where: keyof IForgetPassword) => ({ error: errors[where]?.type, })
+    const { register, formState: { errors }, ...rest } = useForm<IForgetPassword>({ mode: 'onChange', })
 
     const registerInput = (name: keyof IForgetPassword,) => ({
-        ...hasError(name),
+        ...hasError(name, errors),
         ...register(name, validateInput(name)),
     })
 
     return { registerInput, ...rest }
 }
 export const useVerificationForm = () => {
-    const { register, formState: { errors }, ...rest } = useForm<IVerification>({
-        mode: 'onChange',
-    })
-    const hasError = (where: keyof IVerification) => ({ error: errors[where]?.type, })
+    const { register, formState: { errors }, ...rest } = useForm<IVerification>({ mode: 'onChange', })
 
     const registerInput = (name: keyof IVerification) => ({
-        ...hasError(name),
+        ...hasError(name, errors),
         ...register(name, validateInput(name)),
     })
 

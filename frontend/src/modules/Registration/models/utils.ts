@@ -1,70 +1,23 @@
-import { SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form"
-import { ICreateProfile, ICreateAccount, IVerification } from "./types"
+import { DeepMap, FieldError, FieldValues, SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form"
+import { ICreateProfile, ICreateAccount, IVerification, FormErrors } from "./types"
 import { ToastOptions, toast } from 'react-toastify';
 import { FieldErrors } from "react-hook-form";
 
-// <--- Profile Validation Functions ---> //
-export const validateName = () => ({
-    required: 'required',
-    minLength: 2,
-    maxLength: 20,
-})
-export const validateDate = () => ({
-    required: 'required',
-})
-export const validateNic = () => ({
-    required: 'required',
-    maxLength: 13,
-    minLength: 7,
-})
-export const validateAddress = () => ({
-    required: 'required',
-    minLength: 4,
-    maxLength: 60,
-})
-export const validateTel = () => ({
-    required: 'required',
-    pattern: /^\+(?:[0-9] ?){6,14}[0-9]$/
-})
-export const validateCity = () => ({
-    required: 'required',
-    pattern: /^[a-zA-Z]+(?:(?:\\s+|-)[a-zA-Z]+)*$/
-})
-export const validateZIP = () => ({
-    required: 'required',
-    pattern: /^\d{5}$/
-})
-// </--- Profile Validation Functions ---/> //
-
-// <--- Account Validation Functions  ---> //
-export const validatePassword = () => ({
-    required: 'required',
-    minLength: 4,
-    maxLength: 30,
-})
-
-export const validateEmail = () => ({
-    required: 'required',
-    pattern: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
-})
-export const validateVerification = () => ({
-    required: 'required',
-    maxLength: 6,
-    minLength: 6
-})
-// </--- Account Validation Functions  ---/> //
-export const validateInput = (which: keyof ICreateAccount | keyof ICreateProfile | keyof IVerification) => {
-    if (which === 'first name' || which === 'last name' || which === 'full name') return validateName()
-    if (which === 'date') return validateDate()
-    if (which === 'nic') return validateNic()
-    if (which === 'address') return validateAddress()
-    if (which === 'tel') return validateTel()
-    if (which === 'city') return validateCity()
-    if (which === 'zip') return validateZIP()
-    if (which === 'email') return validateEmail()
-    if (which === 'password') return validatePassword()
-    if (which === 'verification') return validateVerification()
+// <--- Validation Functions  ---> //
+const validateInput = (which: keyof ICreateAccount | keyof ICreateProfile | keyof IVerification) => {
+    if (which === 'first name' || which === 'last name' || which === 'full name') return { required: 'required', minLength: 2, maxLength: 20 }
+    if (which === 'date') return { required: 'required' }
+    if (which === 'nic') return { required: 'required', maxLength: 13, minLength: 7, }
+    if (which === 'address') return { required: 'required', minLength: 4, maxLength: 60, }
+    if (which === 'tel') return { required: 'required', pattern: /^\+(?:[0-9] ?){6,14}[0-9]$/ }
+    if (which === 'city') return { required: 'required', pattern: /^[a-zA-Z]+(?:(?:\\s+|-)[a-zA-Z]+)*$/ }
+    if (which === 'zip') return { required: 'required', pattern: /^\d{5}$/ }
+    if (which === 'email') return { required: 'required', pattern: /^[\w-]+@([\w-]+\.)+[\w-]{2,4}$/ }
+    if (which === 'password') return { required: 'required', minLength: 4, maxLength: 30, }
+    if (which === 'verification') return { required: 'required', maxLength: 6, minLength: 6 }
 }
+const hasError = <T extends FieldValues>(field: string, errors: DeepMap<T, FieldError>): FormErrors<T> => ({ error: errors[field as string] });
+// </--- Validation Functions  ---/> //
 
 // <--- onSubmit onError  ---> //
 export const onSubmit: SubmitHandler<ICreateProfile | ICreateAccount | IVerification> = (data) => {
@@ -82,7 +35,7 @@ export const onError: SubmitErrorHandler<ICreateProfile | ICreateAccount | IVeri
         theme: "dark",
     }
     for (let key in data) {
-        const typeOfError = data[key as keyof FieldErrors<ICreateProfile | ICreateAccount>]?.type
+        const typeOfError = data[key as keyof FieldErrors<ICreateProfile | ICreateAccount | IVerification>]?.type
         if (typeOfError === 'required') {
             toast.error(`${key} is required`, toastOptions)
         } else if (typeOfError === 'minLength') {
@@ -100,10 +53,7 @@ export const onError: SubmitErrorHandler<ICreateProfile | ICreateAccount | IVeri
 // </--- onSubmit onError  ---/> //
 // <--- HOOKS ---> //
 export const useAccountForm = () => {
-    const { register, watch, formState: { errors }, ...rest } = useForm<ICreateAccount>({
-        mode: 'onChange',
-    })
-    const hasError = (where: keyof ICreateAccount) => ({ error: errors[where]?.type, })
+    const { register, watch, formState: { errors }, ...rest } = useForm<ICreateAccount>({ mode: 'onChange' })
 
     const password = watch('password')
     const confirmPassword = watch('confirm password')
@@ -117,38 +67,33 @@ export const useAccountForm = () => {
     function registerInput(name: keyof ICreateAccount,) {
         if (name === 'confirm password') {
             return {
-                ...hasError(name),
+                ...hasError(name, errors),
                 ...register(name, validateConfirmPassword()),
             }
         }
         return {
-            ...hasError(name),
+            ...hasError(name, errors),
             ...register(name, validateInput(name)),
         }
     }
     return { registerInput, ...rest }
 }
 export const useProfileForm = () => {
-    const { register, formState: { errors }, ...rest } = useForm<ICreateProfile>({
-        mode: 'onChange',
-    })
-    const hasError = (where: keyof ICreateProfile) => ({ error: errors[where]?.type, })
+    const { register, formState: { errors }, ...rest } = useForm<ICreateProfile>({ mode: 'onChange' })
 
     const registerInput = (name: keyof ICreateProfile) => ({
-        ...hasError(name),
+        ...hasError(name, errors),
         ...register(name, validateInput(name)),
     })
 
     return { registerInput, ...rest }
 }
+
 export const useVerificationForm = () => {
-    const { register, formState: { errors }, ...rest } = useForm<IVerification>({
-        mode: 'onChange',
-    })
-    const hasError = (where: keyof IVerification) => ({ error: errors[where]?.type, })
+    const { register, formState: { errors }, ...rest } = useForm<IVerification>({ mode: 'onChange' })
 
     const registerInput = (name: keyof IVerification) => ({
-        ...hasError(name),
+        ...hasError(name, errors),
         ...register(name, validateInput(name)),
     })
 

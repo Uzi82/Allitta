@@ -1,3 +1,5 @@
+import { FieldError } from "react-hook-form"
+
 export type Props = {
     children?: string | JSX.Element | JSX.Element[],
     type: 'signIn' | 'reset' | 'forget' | 'verifying',
@@ -17,7 +19,7 @@ export type FormLinkStyles = {
     width?: string,
 }
 
-
+// <--- Form  ---> //
 export interface ISignIn {
     email: string,
     password: string
@@ -32,3 +34,7 @@ export interface IResetPassword {
     password: string,
     'confirm password': string,
 }
+export type FormErrors<T> = {
+    [key: string]: FieldError | T;
+};
+// </--- Form  ---/> //

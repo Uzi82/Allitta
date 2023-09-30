@@ -1,7 +1,6 @@
 import React from 'react'
 import { Flex, Select, Subtitle, Title, FormWrapper, CreateLinkWrapper, CreateLink } from './styled'
 import { Input } from '../../../UI/Input'
-import { BackLink } from '../../../UI/BackLink'
 import { onError, onSubmit, useProfileForm } from '../models/utils'
 import { Button } from '../../../UI/Button'
 
@@ -44,29 +43,3 @@ export const CreateProfile: React.FC = () => {
         </FormWrapper>
     )
 }
-
-// возможно понадобится. это если нам нужно чтобы валидация происходила разными функциями, которые можно вынести в отдельный файл (либо использовать функции из других библиотек)
-// и использовать как на фронте так и на беке
-// function validateRegistration(values: ICreateProfile) {
-//     const errors = {
-//         'first name': validateName(values.first name),
-//         ...
-//         'last name': '',
-//         'full name': '',
-//         date: '',
-//         gender: '',
-//         nic: '',
-//         tel: '',
-//         address: '',
-//         city: '',
-//         zip: '',
-//     }
-
-//     const invalid = Object.values(errors).some(Boolean)
-//     return invalid ? errors : {}
-// }
-// function validateName(value: string) {
-//     if (value.length < 3) {
-//         return 'Name must be at least 3 characters long'
-//     }
-// }

@@ -1,6 +1,5 @@
-export type Props = {
+import { FieldError } from "react-hook-form"
 
-}
 export type MarginBottom = {
     $mb?: string
 }
@@ -13,6 +12,7 @@ export type FormWrapperStyles = {
     $gap?: string
 }
 
+// <--- Form  ---> //
 export interface ICreateProfile {
     'first name': string,
     'last name': string,
@@ -33,3 +33,10 @@ export interface ICreateAccount {
 export interface IVerification {
     verification: number,
 }
+export interface IFormInput {
+    file: FileList
+}
+export type FormErrors<T> = {
+    [key: string]: FieldError | T;
+};
+// </--- Form  ---/> //

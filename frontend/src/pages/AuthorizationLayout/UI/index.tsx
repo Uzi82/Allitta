@@ -1,7 +1,5 @@
 import { Outlet } from "react-router-dom"
-import { BackgroundBlur } from "../../../UI/BackgroundBlur"
-import { BackgroundImage, LeftContent, Logo, RightContent, Text, Wrapper } from "./styled"
-import { Popup } from "../../../components/Popup"
+import { LeftContent, Logo, RightContent, Text, Wrapper } from "./styled"
 import { ToastContainer } from "react-toastify"
 
 export const AuthorizationLayout: React.FC = () => {
@@ -22,6 +20,5 @@ export const AuthorizationLayout: React.FC = () => {
             */}
             <ToastContainer position="top-center" autoClose={2000} limit={2} newestOnTop closeOnClick rtl={false} pauseOnFocusLoss draggable theme="dark" />
         </Wrapper>
-
     )
 }
