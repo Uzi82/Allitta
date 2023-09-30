@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"
-import { Logo, Props, navElements } from "../"
-import { Container, Navigation, Element } from "./styled"
+import { Logo, Props, lowerCase, navElements } from "../"
+import { Container, Navigation, Element, Img } from "./styled"
 
 export const DashboardNav: React.FC<Props> = ({ active = 'Dashboard'}) => {
     const navigate = useNavigate()
@@ -11,11 +11,9 @@ export const DashboardNav: React.FC<Props> = ({ active = 'Dashboard'}) => {
                 {
                     navElements.map(el=>{
                         return(
-                            <Element key={el.title} $active={active === el.title} onClick={() => navigate(`/shopMenu/${el.title}`)}>
-                                <img src={active === el.title ? el.active : el.img} />
-                                {
-                                    el.title
-                                }
+                            <Element key={el.title} $active={lowerCase(active) === lowerCase(el.title)} onClick={() => navigate(`/shop/${el.title.replace(/[A-Z]/g, (u) => u.toLowerCase())}`)}>
+                                <Img src={lowerCase(active) === lowerCase(el.title) ? el.active : el.img} />
+                                { el.title }
                             </Element>
                         )
                     })

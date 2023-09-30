@@ -11,7 +11,6 @@ class ProductCategoryResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'logotype_path' => asset($this->logotype_path),
             'name' => __('categories')[$this->id],
         ];
     }

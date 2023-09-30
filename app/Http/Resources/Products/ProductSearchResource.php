@@ -14,7 +14,7 @@ class ProductSearchResource extends JsonResource
             'name' => $this->name,
             'logotype_path' => asset($this->logotype_path),
             'currency' => config('currencies')[$this->currency],
-            'cost' => (int)$this->cost,
+            'cost' => (int)$this->cost
         ];
     }
 }

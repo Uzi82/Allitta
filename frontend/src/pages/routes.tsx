@@ -1,9 +1,13 @@
 import { Navigate, createBrowserRouter } from 'react-router-dom'
 import { Home } from './Home/'
-import { SignInPage } from './SignIn'
+import { SignUpPage } from './SignUpPage'
+import { SignInPage } from './SignInPage'
+import { CreateCustomerAccount, CreateShoperAccount, ProfilePicture, Verification } from '../components/SignUp'
 import { Layout } from './Layout'
 import { DashboardLayout } from './DashboardLayout'
 import { Dashboard } from '../modules/Dashboard'
+import { ShopProducts } from '../modules/ShopProducts'
+
 
 export const publicRoutes = createBrowserRouter([
     {
@@ -17,35 +21,59 @@ export const publicRoutes = createBrowserRouter([
         ]
     },
     {
+        path: '/signup',
+        element: <SignUpPage />,
+        children: [
+            {
+                index: true,
+                element: <CreateShoperAccount />,
+            },
+            {
+                path: '/signup/verify',
+                element: <Verification />,
+            },
+            {
+                path: '/signup/customer',
+                element: <CreateCustomerAccount />,
+            },
+            {
+                path: '/signup/customer/photo',
+                element: <ProfilePicture />,
+            },
+        ]
+
+
+    },
+    {
         path: '/signin',
         element: <SignInPage />
     },
     {
-        path: '/shopMenu/',
+        path: '/shop/',
         element: <DashboardLayout />,
         children: [
             {
-                path: '/shopMenu/',
-                element: <Navigate to={'/shopMenu/Dashboard'} />
+                path: '/shop/',
+                element: <Navigate to={'/shop/dashboard'} />
             },
             {
-                path: 'DashBoard',
+                path: 'dashBoard',
                 element: <Dashboard />
             },
             {
-                path: 'Product',
+                path: 'product',
+                element: <ShopProducts />
+            },
+            {
+                path: 'orders',
                 element: <>321</>
             },
             {
-                path: 'Orders',
+                path: 'customers',
                 element: <>321</>
             },
             {
-                path: 'Customers',
-                element: <>321</>
-            },
-            {
-                path: 'CusChat',
+                path: 'cusChat',
                 element: <>321</>
             }
         ]

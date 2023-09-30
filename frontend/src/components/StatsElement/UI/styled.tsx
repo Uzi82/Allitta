@@ -28,6 +28,12 @@ export const Amount = styled.h1`
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    @media screen and (max-width: 1400px) and (min-width: 1024px) {
+        font-size: 24px;
+    }
+    @media screen and (max-width: 1023px) and (min-width: 767px) {
+        font-size: 24px;
+    }
 `
 
 export const Title = styled.p`
@@ -36,9 +42,23 @@ export const Title = styled.p`
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    @media screen and (max-width: 1400px) and (min-width: 1024px) {
+        font-size: 10px;
+    }
+    @media screen and (max-width: 1023px) and (min-width: 767px) {
+        font-size: 10px;
+    }
 `
 
 export const Img = styled.img`
     width: 40px;
     height: 40px;
+    @media screen and (max-width: 1400px) and (min-width: 1024px) {
+        width: 20px;
+        height: 20px;
+    }
+    @media screen and (max-width: 1023px) and (min-width: 767px) {
+        width: 20px;
+        height: 20px;
+    }
 `

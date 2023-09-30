@@ -24,17 +24,17 @@ export const NewOrders: React.FC = () => {
                 <HeadTitle>
                     New Orders
                 </HeadTitle>
-                <HeadEl $margin="0 75px">
+                <HeadEl>
                     Customer Name
                 </HeadEl>
-                <HeadEl $margin="0 75px"> {/* Элемент пустого места в центре */} </HeadEl>
-                <HeadEl $margin="0 0 0 165px">
+                <HeadEl> {/* Элемент пустого места в центре */} </HeadEl>
+                <HeadEl>
                     Ordered Date
                 </HeadEl>
-                <HeadEl $margin="0 100px">
+                <HeadEl>
                     Amount
                 </HeadEl>
-                <HeadEl $margin="0 70px">
+                <HeadEl>
                     Status  
                 </HeadEl>
             </Head>
