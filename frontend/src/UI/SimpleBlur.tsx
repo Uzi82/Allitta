@@ -8,10 +8,11 @@ const Bg = styled.div<{ $active: boolean }>`
     align-items: center;
     justify-content: center;
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     backdrop-filter: blur(10px);
     animation-name: appear;
     animation-duration: 300ms;
+    padding: 10px;
     @keyframes appear {
         0%{
             opacity: 0

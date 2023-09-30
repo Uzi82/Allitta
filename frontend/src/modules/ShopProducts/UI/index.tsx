@@ -22,9 +22,9 @@ export const ShopProducts: React.FC = () => {
     return(
         <Content>
             <Buttons>
-                <Search />
+                <Search placeholder="Search Products" />
                 <ProductsFilter />
-                <AddNew onClick={()=>{dispatch(setType('add')); dispatch(open())}}>
+                <AddNew type="button" onClick={()=>{dispatch(setType('add')); dispatch(open())}}>
                     Add New Product
                     <AddNewPng src={require('./addNew.png')} />
                 </AddNew>

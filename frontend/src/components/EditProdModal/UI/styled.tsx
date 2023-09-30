@@ -45,6 +45,13 @@ export const Form = styled.form`
     gap: 40px;
     justify-content: stretch;
     align-items: stretch;
+    @media screen and (max-width: 1023px) {
+        gap: 20px;
+        justify-content: space-between;
+    }
+    @media screen and (max-width: 767px) {
+        flex-direction: column;
+    }
 `
 
 export const LeftSide = styled.div`
@@ -52,6 +59,13 @@ export const LeftSide = styled.div`
     flex-direction: column;
     gap: 30px;
     width: 262px;
+    @media screen and (max-width: 1023px) {
+        width: 182px;
+    }
+    @media screen and (max-width: 767px) {
+        width: 100%;
+        align-items: center;
+    }
 `
 
 export const ImgInput = styled.input<{ $bg: string | ArrayBuffer | null }>`
@@ -64,6 +78,11 @@ export const ImgInput = styled.input<{ $bg: string | ArrayBuffer | null }>`
     background-repeat: no-repeat;
     font-size: 0px;
     content-visibility: hidden;
+    @media screen and (max-width: 1023px) {
+        width: 30vh;
+        height: 30vh;
+        background-size: 100% 100%;
+    }
 `
 
 export const LeftInputs = styled.div`
@@ -114,6 +133,9 @@ export const SimpleTextArea = styled.textarea<{ $height?: string }>`
     &:focus {
         opacity: 1;
     }
+    @media screen and (max-width: 1023px) {
+        height: calc(${({ $height }) => $height || '45px'} / 1.5);
+    }
 `
 
 export const CheckBoxes = styled.div`
@@ -135,6 +157,9 @@ export const CheckBoxText = styled.p`
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    @media screen and (max-width: 1023px) {
+        font-size: 12px;
+    }
 `
 
 export const CheckBox = styled.input`
@@ -143,6 +168,10 @@ export const CheckBox = styled.input`
     border-radius: 3px;
     border: 1px solid #BEBEBE;
     background: #F5F4F4;
+    @media screen and (max-width: 1023px) {
+        width: 12px;
+        height: 12px;
+    }
 `
 
 export const RightSide = styled.div`
@@ -150,6 +179,12 @@ export const RightSide = styled.div`
     display: flex;
     flex-direction: column;
     gap: 20px;
+    @media screen and (max-width: 1023px) {
+        width: calc(100% - 182px);
+    }
+    @media screen and (max-width: 767px) {
+        width: 100%;
+    }
 `
 
 export const Filters = styled.div`
@@ -176,6 +211,9 @@ export const Filter = styled(ReactSelect)`
         &--is-focused {
             box-shadow: none;
             opacity: 1;
+        }
+        @media screen and (max-width: 767px) {
+            font-size: 10px;
         }
     }
     .Select__option {
@@ -224,10 +262,12 @@ export const Filter = styled(ReactSelect)`
             font-weight: 500;
             line-height: normal;
         }
+        @media screen and (max-width: 767px) {
+            font-size: 10px;
+        }
     }
     @media screen and (max-width: 1023px) {
         & > div.Select__control {
-            width: 200px;
             height: 40px;
             &--is-focused {
                 box-shadow: none;
@@ -235,7 +275,6 @@ export const Filter = styled(ReactSelect)`
             }
         }
         .Select__option {
-            color: black;
             font-family: Inter-Regular, sans-serif;
             font-size: 14px;
             font-style: normal;
@@ -296,6 +335,9 @@ export const Cancel = styled.button`
     }
 `
 
+export const HiddenInput = styled.input`
+    display: none;
+`
 export const Delete = styled.button`
     color: #DD3A3A;
     width: 20%;
@@ -313,8 +355,4 @@ export const Delete = styled.button`
         background-color: #DD3A3A;
         color: white;
     }
-`
-
-export const HiddenInput = styled.input`
-    display: none;
 `

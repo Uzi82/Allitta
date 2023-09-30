@@ -42,7 +42,7 @@ export const EditProdModal: React.FC<Props> = ({ id }) => {
     const sendForm = useMutation((values: Edit)=>sendEditForm(values))
     const { data, isLoading, isError } = useQuery('productCategories', getCategories)
     if(isError) console.error('EditModal: Categories query error')
-    const { register, handleSubmit, setValue } = useForm<Edit>()
+    const { register, handleSubmit, setValue, reset } = useForm<Edit>()
     const [img, setImg] = useState<string | ArrayBuffer | null>(null) // добавить сюда фото из бд
     function imgHandle(e: React.ChangeEvent<HTMLInputElement>) {
         var target = e.target;
@@ -67,6 +67,8 @@ export const EditProdModal: React.FC<Props> = ({ id }) => {
     }
     const onSubmit: SubmitHandler<Edit> = (data) => {
         sendForm.mutate(data)
+        setImg(null)
+        reset()
     }
     function onError() {
         toast('Something went wrong, check your inputs.')
@@ -135,7 +137,7 @@ export const EditProdModal: React.FC<Props> = ({ id }) => {
                         <Publish>
                             Save
                         </Publish>
-                        <Cancel onClick={()=>dispatch(open())}>
+                        <Cancel type="button" onClick={()=>dispatch(open())}>
                             Cancel
                         </Cancel>
                     </PublishBtns>
