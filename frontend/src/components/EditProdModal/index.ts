@@ -1,0 +1,7 @@
+export { EditProdModal } from './UI'
+export { useAppDispatch } from '../../hooks/reduxHooks' 
+export { open } from '../../store/slices/productsSlice'
+export { getCategories } from './models/getCategories'
+export { categories } from './models/categories'
+export { sendEditForm } from './models/sendEditForm'
+export type { Props, Edit, option, category, subcategory } from './models/types'

@@ -1,7 +1,7 @@
 <?php
 
 use App\Enums\CurrencyEnum;
-use App\Enums\OrderStatusEnum;
+use App\Enums\ProductOrderStatusEnum;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -18,7 +18,7 @@ return new class extends Migration {
             // TODO Add a foreign key when I create the customer table
             $table->integer('user_id');
             $table->foreignId('shop_id')->constrained('shops');
-            $table->smallInteger('status')->default(OrderStatusEnum::NEW->value);
+            $table->smallInteger('status')->default(ProductOrderStatusEnum::NEW->value);
             $table->float('amount');
             $table->tinyInteger('currency')->default(CurrencyEnum::USD->value);
             $table->string('delivery_code', 10);

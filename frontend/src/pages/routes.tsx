@@ -7,7 +7,7 @@ import { DashboardLayout } from './DashboardLayout'
 import { Dashboard } from '../modules/Dashboard'
 import { CreateProfile, CreateAccount, ProfilePicture, Verification } from '../modules/Registration'
 import { ForgetPassword, ResetPassword, SignIn, VerifyingEmail } from '../modules/Authorization'
-
+import { ShopProducts } from '../modules/ShopProducts'
 
 export const publicRoutes = createBrowserRouter([
     {
@@ -80,7 +80,7 @@ export const publicRoutes = createBrowserRouter([
             },
             {
                 path: 'product',
-                element: <>321</>
+                element: <ShopProducts />
             },
             {
                 path: 'orders',

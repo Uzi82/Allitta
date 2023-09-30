@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Builder;
 
 class ProductNameFilter implements FilterInterface
 {
-    private string|int $value;
+    private string $value;
 
-    public function __construct(int|string $value)
+    public function __construct(string $value)
     {
-        $this->value = (string)$value;
+        $this->value = $value;
     }
 
     public function filter(Builder $query): Builder

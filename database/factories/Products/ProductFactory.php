@@ -5,12 +5,13 @@ namespace Database\Factories\Products;
 use App\Enums\CurrencyEnum;
 use App\Enums\PathEnum;
 use App\Enums\ProductStatusEnum;
+use App\Models\Products\Product;
 use App\Models\Products\ProductCategory;
 use App\Services\Searching\TextSearchService;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Products\Product>
+ * @extends Factory<Product>
  */
 class ProductFactory extends Factory
 {
@@ -24,6 +25,8 @@ class ProductFactory extends Factory
         $statuses = ProductStatusEnum::cases();
         $currencies = CurrencyEnum::cases();
         $name = $this->faker->words(2, true);
+        $categoryId = ProductCategory::inRandomOrder()->first()->id;
+        $categoryChildren = config('app.categories.category.children')[$categoryId];
 
         return [
             'shop_id' => null,
@@ -33,8 +36,8 @@ class ProductFactory extends Factory
             'images' => '[]',
             'description' => $this->faker->sentence(10),
             'status' => $statuses[array_rand($statuses)]->value,
-            'category_id' => ProductCategory::inRandomOrder()->first(),
-            'subcategory' => rand(1, 5),
+            'category_id' => $categoryId,
+            'subcategory_id' => $categoryChildren[array_rand($categoryChildren)],
             'active' => (bool)rand(0, 1),
             'draft' => (bool)rand(0, 1),
             'quantity' => rand(0, 100),
