@@ -106,7 +106,7 @@ export const UploadInput = styled.input<MarginBottom>`
     width: 315px;
     height: 315px;
     position: absolute;
-    z-index: 3;
+    z-index: 1000;
     margin: 0 0 ${props => props.$mb || 0} 0;
     border-radius: 315px;
     background-color: transparent;
@@ -118,7 +118,6 @@ export const UploadContent = styled.div<MarginBottom>`
     align-items: center;
     position: absolute;
     text-align: center;
-    position: relative;
     z-index: 2;
     top: 50%;
     left: 50%;
@@ -127,6 +126,17 @@ export const UploadContent = styled.div<MarginBottom>`
     color: #BFBFBF;
     font-family: Inter-regular;
     font-size: 18px;
+`
+export const ImgInput = styled.img<MarginBottom>`
+    position: absolute;
+    z-index: 4;
+    margin: 0 0 ${props => props.$mb || 0} 0;
+    width: 319px;
+    height: 319px;
+    border-radius: 319px;
+    object-fit: cover;
+    top: -3px;
+    left: -3px;
 `
 export const Select = styled.select<MarginBottom>`
     margin: 0 0 ${props => props.$mb || 0} 0;
