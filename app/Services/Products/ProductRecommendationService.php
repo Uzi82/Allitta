@@ -2,7 +2,7 @@
 
 namespace App\Services\Products;
 
-use App\Enums\OrderStatusEnum;
+use App\Enums\ProductOrderStatusEnum;
 use App\Models\Products\Product;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
@@ -19,9 +19,11 @@ class ProductRecommendationService
             'products.cost',
             'products.description',
         )
-            ->leftJoin('order_items', 'products.id', '=', 'order_items.product_id')
-            ->leftJoin('product_orders', 'product_orders.id', '=', 'order_items.order_id')
-            ->where('product_orders.status', OrderStatusEnum::DONE)
+            ->leftJoin('product_order_items', 'products.id', '=', 'product_order_items.product_id')
+            ->leftJoin('product_orders', 'product_orders.id', '=', 'product_order_items.order_id')
+            ->leftJoin('shops', 'shops.id', '=', 'products.shop_id')
+            ->where('product_orders.status', ProductOrderStatusEnum::DONE)
+            ->where('shops.active', true)
             ->groupBy('products.id', 'products.name', 'products.logotype_path', 'products.currency', 'products.cost', 'products.description')
             ->orderByDesc(DB::raw('COUNT(*)'))
             ->limit($limit)
