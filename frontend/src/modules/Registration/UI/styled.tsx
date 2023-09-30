@@ -51,8 +51,8 @@ export const CreateLink = styled(Link) <CreateLinkStyles>`
     flex-shrink: 0;
     text-align:center;
     border-radius: 10px;
-    background: ${props => props.active ? '#fff' : 'transparent'} ;
-    color: ${props => props.active ? '#FF9C00' : '#000'} ;
+    background: ${props => props.$active ? '#fff' : 'transparent'} ;
+    color: ${props => props.$active ? '#FF9C00' : '#000'} ;
     font-family: Inter-regular;
     font-size: 14px;
     padding:14px 22px;
