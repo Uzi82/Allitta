@@ -1,4 +1,4 @@
-import { FlexCenter, Header, Footer, StyledInput, Categories, BestDeals, ChooseShop, MostPopular, TrandingProducts } from "../"
+import { StyledInput, Categories, BestDeals, ChooseShop, MostPopular, TrandingProducts } from "../"
 import { Content, Purple, Search, SearchHead, SearchText } from "./styled"
 export const Home: React.FC = () => {
     return(
