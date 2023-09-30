@@ -38,7 +38,7 @@ export const Title = styled.h1`
     line-height: normal;
 `
 
-export const Form = styled.div`
+export const Form = styled.form`
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -186,7 +186,7 @@ export const Filter = styled(ReactSelect)`
         font-weight: 500;
         line-height: normal;
         border-radius: 3px;
-        width: 203px;
+        width: calc(100% - 10px);
         margin: 5px;
         &--is-focused {
             background-color: rgba(93,32,214,0.7);
@@ -313,4 +313,8 @@ export const Delete = styled.button`
         background-color: #DD3A3A;
         color: white;
     }
+`
+
+export const HiddenInput = styled.input`
+    display: none;
 `

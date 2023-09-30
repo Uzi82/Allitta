@@ -4,6 +4,7 @@ import { Cancel, CheckBox, CheckBoxContainer, CheckBoxText, CheckBoxes, Containe
          Filters, 
          Form, 
          Head,
+         HiddenInput,
          ImgInput,
          LeftInputs,
          LeftSide,
@@ -16,14 +17,26 @@ import { Cancel, CheckBox, CheckBoxContainer, CheckBoxText, CheckBoxes, Containe
 } from "./styled"
 import {
          useAppDispatch,
-         open
+         open,
+         type Add,
+         type option,
+         getCategories,
+         categories,
+         sendAddForm
 } from '../'
 import { useState } from "react"
-
+import { useForm } from "react-hook-form"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useMutation, useQuery } from "react-query";
 
 export const AddProdModal: React.FC = () => {
     const dispatch = useAppDispatch()
+    const { data, isLoading, isError } = useQuery('productCategories', getCategories)
+    const sendForm = useMutation((values: Add) => sendAddForm(values))
+    if(isError) console.error('AddModal: Categories query error')
     const [img, setImg] = useState<string | ArrayBuffer | null>(null)
+    const { register, handleSubmit, setValue } = useForm<Add>()
     function imgHandle(e: React.ChangeEvent<HTMLInputElement>) {
         var target = e.target;
         if(target.files){
@@ -45,30 +58,54 @@ export const AddProdModal: React.FC = () => {
             fileReader.readAsDataURL(target.files[0]);
         }
     }
+    const onSubmit = (data: Add) => {
+        sendForm.mutate(data)
+    }
+    const onError = () => {
+        toast('Something went wrong, check your inputs.')
+    }
+    const category = (data: option | null) => {
+        if(data) setValue('category', data?.value)
+    }
+    const subcategory = (data: option | null) => {
+        if(data) setValue('subcategory', data?.value)
+    }
     return(
         <Container>
             <Head>
+                <ToastContainer
+                    position="top-center"
+                    autoClose={10000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick={false}
+                    rtl={false}
+                    draggable={false}
+                    pauseOnFocusLoss={false}
+                    pauseOnHover={false}
+                    theme="dark"
+                    />
                 <Title>
                     Add Product
                 </Title>
                 <Exit onClick={()=>dispatch(open())} />
             </Head>
-            <Form>
+            <Form onSubmit={handleSubmit(onSubmit, onError)}>
                 <LeftSide>
-                    <ImgInput $bg={img} type="file" onChange={imgHandle} />
+                    <ImgInput {...register('img', { required: true })} $bg={img} type="file" onChange={imgHandle} />
                     <LeftInputs>
-                        <SimpleInput placeholder="Quantity" />
-                        <SimpleInput placeholder="Per Price" />
+                        <SimpleInput {...register('quantity', { required: true })} placeholder="Quantity" />
+                        <SimpleInput {...register('price', { required: true })} placeholder="Per Price" />
                     </LeftInputs>
                     <CheckBoxes>
                         <CheckBoxContainer>
-                            <CheckBox type="checkbox" />
+                            <CheckBox {...register('active')} type="checkbox" />
                             <CheckBoxText>
                                 Active
                             </CheckBoxText>
                         </CheckBoxContainer>
                         <CheckBoxContainer>
-                            <CheckBox type="checkbox" />
+                            <CheckBox {...register('draft')} type="checkbox" />
                             <CheckBoxText>
                                 Draft
                             </CheckBoxText>
@@ -76,12 +113,14 @@ export const AddProdModal: React.FC = () => {
                     </CheckBoxes>
                 </LeftSide>
                 <RightSide>
-                    <SimpleInput placeholder="Public Name" />
+                    <SimpleInput {...register('publicName', { required: true })} placeholder="Public Name" />
                     <Filters>
-                        <Filter placeholder={'Product Category'} classNamePrefix={'Select'} />
-                        <Filter placeholder={'Sub Category'} classNamePrefix={'Select'} />
+                        <Filter isLoading={isLoading} options={categories(data?.categories)} onChange={category} placeholder={'Product Category'} classNamePrefix={'Select'} />
+                        <HiddenInput {...register('category', { required: true })} />
+                        <Filter isLoading={isLoading} options={categories(data?.subcategories)} onChange={subcategory} placeholder={'Sub Category'} classNamePrefix={'Select'} />
+                        <HiddenInput {...register('subcategory', { required: true })} />
                     </Filters>
-                    <SimpleTextArea $height={'272px'} placeholder="Product  Description" />
+                    <SimpleTextArea {...register('description', { required: true, minLength: 50 })} $height={'272px'} placeholder="Product Description" />
                     <PublishBtns>
                         <Publish>
                             Publish
