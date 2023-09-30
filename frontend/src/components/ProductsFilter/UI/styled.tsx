@@ -74,7 +74,6 @@ export const Filters = styled(ReactSelect)`
             }
         }
         .Select__option {
-            color: black;
             font-family: Inter-Regular, sans-serif;
             font-size: 14px;
             font-style: normal;

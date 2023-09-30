@@ -36,7 +36,7 @@ export const AddProdModal: React.FC = () => {
     const sendForm = useMutation((values: Add) => sendAddForm(values))
     if(isError) console.error('AddModal: Categories query error')
     const [img, setImg] = useState<string | ArrayBuffer | null>(null)
-    const { register, handleSubmit, setValue } = useForm<Add>()
+    const { register, handleSubmit, setValue, reset } = useForm<Add>()
     function imgHandle(e: React.ChangeEvent<HTMLInputElement>) {
         var target = e.target;
         if(target.files){
@@ -60,6 +60,8 @@ export const AddProdModal: React.FC = () => {
     }
     const onSubmit = (data: Add) => {
         sendForm.mutate(data)
+        setImg(null)
+        reset()
     }
     const onError = () => {
         toast('Something went wrong, check your inputs.')
@@ -94,8 +96,8 @@ export const AddProdModal: React.FC = () => {
                 <LeftSide>
                     <ImgInput {...register('img', { required: true })} $bg={img} type="file" onChange={imgHandle} />
                     <LeftInputs>
-                        <SimpleInput {...register('quantity', { required: true })} placeholder="Quantity" />
-                        <SimpleInput {...register('price', { required: true })} placeholder="Per Price" />
+                        <SimpleInput type="number" {...register('quantity', { required: true })} placeholder="Quantity" />
+                        <SimpleInput type="number" {...register('price', { required: true })} placeholder="Per Price" />
                     </LeftInputs>
                     <CheckBoxes>
                         <CheckBoxContainer>
