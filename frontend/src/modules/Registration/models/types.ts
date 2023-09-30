@@ -9,6 +9,7 @@ export type CreateLinkStyles = {
     active?: boolean
 }
 export type FormWrapperStyles = {
+    $maxWidth?: string
     $gap?: string
 }
 

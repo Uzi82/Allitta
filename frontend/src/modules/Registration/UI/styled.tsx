@@ -6,8 +6,9 @@ export const FormWrapper = styled.form<FormWrapperStyles>`
     display: flex;
     ${({ $gap }) => $gap && `gap:${$gap};`}
     flex-direction: column;
-    max-width:644px;
     padding:40px 50px;
+    max-width: ${({ $maxWidth }) => `${$maxWidth}` || 'none'};
+    width: 100%;
     align-items: center;
     border-radius: 15px;
     background: rgba(255, 255, 255, 0.8);

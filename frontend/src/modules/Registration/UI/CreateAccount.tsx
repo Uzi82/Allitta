@@ -7,7 +7,7 @@ import { Button } from '../../../UI/Button'
 export const CreateAccount: React.FC = () => {
     const { handleSubmit, registerInput } = useAccountForm()
     return (
-        <FormWrapper onSubmit={handleSubmit(onSubmit, onError)} autoComplete='off' $gap='20px'>
+        <FormWrapper onSubmit={handleSubmit(onSubmit, onError)} autoComplete='off' $gap='20px' $maxWidth='456px'>
             <Title $mb='10px'>Create Account</Title>
             <CreateLinkWrapper $mb='10px' >
                 <CreateLink to='/signup/customer'>Create Account</CreateLink>

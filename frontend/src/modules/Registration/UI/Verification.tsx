@@ -9,7 +9,7 @@ export const Verification: React.FC = () => {
     const { handleSubmit, registerInput } = useVerificationForm()
 
     return (
-        <FormWrapper onSubmit={handleSubmit(onSubmit, onError)} $gap='20px'>
+        <FormWrapper onSubmit={handleSubmit(onSubmit, onError)} $gap='20px' $maxWidth='456px'>
             <Title $mb='10px'>Create Account</Title>
             <Img src='/svg/email.svg' $mb='20px' />
             <Subtitle $mb='10px'>Enter the 6 Digits code you received to shasheesha@gmail.com</Subtitle>

@@ -20,7 +20,7 @@ export const ProfilePicture: React.FC = () => {
     const fileinput = watch('file')
 
     return (
-        <FormWrapper $gap='20px' onSubmit={handleSubmit(onSubmit, onError)}>
+        <FormWrapper $gap='20px' onSubmit={handleSubmit(onSubmit, onError)} $maxWidth='644px'>
             <Title $mb='20px'>Profile Picture</Title>
             <UploadWrapper $mb='30px'>
                 <UploadInput placeholder='avatar' type="file" {...register('file', { required: 'required' })} />
@@ -32,7 +32,6 @@ export const ProfilePicture: React.FC = () => {
             </UploadWrapper>
             <Button br='10px' >Submit</Button>
             <CustomLink $transparent to='/signup'>Skip</CustomLink>
-            <BackLink $left='10px' $top='10px' />
         </FormWrapper>
     )
 }
