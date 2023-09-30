@@ -11,7 +11,7 @@ export const CreateProfile: React.FC = () => {
         <FormWrapper onSubmit={handleSubmit(onSubmit, onError)} autoComplete='off' $gap='20px' $maxWidth='644px' >
             <Title $mb='10px'>Your Profile</Title>
             <CreateLinkWrapper $mb='10px' >
-                <CreateLink active to='/signup/customer'>Create Account</CreateLink>
+                <CreateLink $active to='/signup/customer'>Create Account</CreateLink>
                 <CreateLink to='/signup'>Create Profile</CreateLink>
             </CreateLinkWrapper>
             <Subtitle >Your Informations</Subtitle>

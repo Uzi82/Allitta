@@ -27,12 +27,6 @@ const StyledCircleSvg = styled.img<SvgCircleProps>`
     top:${props => props.$top};
     background: rgba(255, 156, 0, 0.20);
     filter: blur(75px);
-    // @media screen and (max-width: 1500px) {
-    //     width: ${props => props.width}; 
-    // }
-    //     @media screen and (max-width: 766px) {
-    //     width: ${props => props.width}; 
-    // }
 `
 const StyledCloseSvg = styled.img`
     width: 25px; 

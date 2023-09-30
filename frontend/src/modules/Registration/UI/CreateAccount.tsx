@@ -11,7 +11,7 @@ export const CreateAccount: React.FC = () => {
             <Title $mb='10px'>Create Account</Title>
             <CreateLinkWrapper $mb='10px' >
                 <CreateLink to='/signup/customer'>Create Account</CreateLink>
-                <CreateLink active to='/signup'>Create Profile</CreateLink>
+                <CreateLink $active to='/signup'>Create Profile</CreateLink>
             </CreateLinkWrapper>
             <Input placeholder='Email Address' type='email' {...registerInput('email')} />
             <Input placeholder='Create Password' type='password' {...registerInput('password')} />

@@ -5,7 +5,7 @@ export type MarginBottom = {
 }
 export type CreateLinkStyles = {
     $mb?: string
-    active?: boolean
+    $active?: boolean | undefined
 }
 export type FormWrapperStyles = {
     $maxWidth?: string
