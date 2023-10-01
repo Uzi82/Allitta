@@ -1,1 +1,1 @@
-export { SuccessPopup } from './UI/'
+export { Popup } from './UI/'

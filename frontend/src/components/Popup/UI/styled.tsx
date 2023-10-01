@@ -11,6 +11,8 @@ export const Wrapper = styled.div`
     backdrop-filter: blur(50px);
     padding:40px 50px;
     align-items: center;
+    max-width: 456px;
+    margin: 0 auto;
 `
 export const Title = styled.h2<MarginBottom>`
     margin: 0 0 ${props => props.$mb || 0} 0;

@@ -1,8 +1,4 @@
-export type Props = {
-    id: string
-}
-
-export type Edit = {
+export type Add = {
     img: FileList,
     quantity: number,
     price: number,
