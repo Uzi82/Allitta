@@ -2,19 +2,20 @@ import { DeepMap, FieldError, FieldValues, SubmitErrorHandler, SubmitHandler, us
 import { ICreateProfile, ICreateAccount, IVerification, FormErrors } from "./types"
 import { ToastOptions, toast } from 'react-toastify';
 import { FieldErrors } from "react-hook-form";
+import React from "react";
 
 // <--- Validation Functions  ---> //
 const validateInput = (which: keyof ICreateAccount | keyof ICreateProfile | keyof IVerification) => {
     if (which === 'first name' || which === 'last name' || which === 'full name') return { required: 'required', minLength: 2, maxLength: 20 }
-    if (which === 'date') return { required: 'required' }
     if (which === 'nic') return { required: 'required', maxLength: 13, minLength: 7, }
     if (which === 'address') return { required: 'required', minLength: 4, maxLength: 60, }
-    if (which === 'tel') return { required: 'required', pattern: /^\+(?:[0-9] ?){6,14}[0-9]$/ }
+    if (which === 'phone') return { required: 'required', maxLength: 17, minLength: 17, }
     if (which === 'city') return { required: 'required', pattern: /^[a-zA-Z]+(?:(?:\\s+|-)[a-zA-Z]+)*$/ }
     if (which === 'zip') return { required: 'required', pattern: /^\d{5}$/ }
     if (which === 'email') return { required: 'required', pattern: /^[\w-]+@([\w-]+\.)+[\w-]{2,4}$/ }
     if (which === 'password') return { required: 'required', minLength: 4, maxLength: 30, }
     if (which === 'verification') return { required: 'required', maxLength: 6, minLength: 6 }
+    return { required: 'required' }
 }
 const hasError = <T extends FieldValues>(field: string, errors: DeepMap<T, FieldError>): FormErrors<T> => ({ error: errors[field as string] });
 // </--- Validation Functions  ---/> //
@@ -24,6 +25,7 @@ export const onSubmit: SubmitHandler<ICreateProfile | ICreateAccount | IVerifica
     console.log('success', data);
 }
 export const onError: SubmitErrorHandler<ICreateProfile | ICreateAccount | IVerification> = (data) => {
+    console.log(data);
     const toastOptions: ToastOptions = {
         position: "top-center",
         autoClose: 2000,
@@ -79,12 +81,36 @@ export const useAccountForm = () => {
     return { registerInput, ...rest }
 }
 export const useProfileForm = () => {
-    const { register, formState: { errors }, ...rest } = useForm<ICreateProfile>({ mode: 'onChange' })
+    const { register, formState: { errors }, watch, setValue, ...rest } = useForm<ICreateProfile>({ mode: 'onChange' })
 
     const registerInput = (name: keyof ICreateProfile) => ({
         ...hasError(name, errors),
         ...register(name, validateInput(name)),
     })
+
+    const telInput = watch('phone')
+
+    React.useEffect(() => {
+        if (telInput) {
+            let telValue = telInput.toString().replace(/\D/g, "");
+            if (telValue.length) {
+                telValue = "+" + telValue;
+            }
+            if (telValue.length >= 3) {
+                telValue = telValue.slice(0, 2) + " (" + telValue.slice(2);
+            }
+            if (telValue.length >= 8) {
+                telValue = telValue.slice(0, 7) + ") " + telValue.slice(7);
+            }
+            if (telValue.length >= 13) {
+                telValue = telValue.slice(0, 12) + "-" + telValue.slice(12);
+            }
+            if (telValue.length >= 18) {
+                telValue = telValue.slice(0, 17);
+            }
+            setValue('phone', telValue)
+        }
+    }, [telInput, setValue])
 
     return { registerInput, ...rest }
 }

@@ -31,7 +31,7 @@ export const CreateProfile: React.FC = () => {
             </Flex>
             <Flex $mb='10px'>
                 <Input placeholder='NIC Number' type='number' {...registerInput('nic')} />
-                <Input placeholder='Mobile Number' type='tel' {...registerInput('tel')} />
+                <Input placeholder='Mobile Number' type='tel' {...registerInput('phone')} />
             </Flex>
             <Subtitle >Home Address</Subtitle>
             <Input placeholder='Street Address' {...registerInput('address')} />
