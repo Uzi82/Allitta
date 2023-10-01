@@ -20,7 +20,7 @@ export interface ICreateProfile {
     date: typeof Date,
     gender: 'not-specified' | 'male' | 'female' | 'own-gender',
     nic: number,
-    tel: number,
+    phone: string,
     address: string,
     city: string,
     zip: number,
