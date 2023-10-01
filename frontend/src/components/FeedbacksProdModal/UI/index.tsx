@@ -1,9 +1,10 @@
-import { useQuery } from "react-query"
+import { useMutation, useQuery } from "react-query"
 import { Props,
          getFeedbacks,
          makeStars,
          useAppDispatch,
-         open
+         open,
+         sendFeedbacks
 } from "../"
 import { Buttons, Cancel, Content, 
          Exit, 
@@ -19,9 +20,10 @@ import { Buttons, Cancel, Content,
 import { Element } from "./Element"
 
 export const FeedbacksProdModal: React.FC<Props> = ({ id, name }) => {
-    const { data, isLoading, isError } = useQuery(`feedBacks${id}`, () => getFeedbacks(id), {
+    const { data, isError } = useQuery(`feedBacks${id}`, () => getFeedbacks(id), {
         refetchOnWindowFocus: false
     })
+    const sendAll = useMutation('feedbacksSend', (id: string) => sendFeedbacks(id))
     const dispatch = useAppDispatch()
     if(isError) console.error('FeedBacks: Query error')
     return(
@@ -48,7 +50,7 @@ export const FeedbacksProdModal: React.FC<Props> = ({ id, name }) => {
                 }
             </List>
             <Buttons>
-                <Publish>Publish</Publish>
+                <Publish onClick={()=>{dispatch(open()); sendAll.mutate(id)}}>Publish</Publish>
                 <Cancel type="button" onClick={()=>dispatch(open())}>Cancel</Cancel>
             </Buttons>
         </Content>

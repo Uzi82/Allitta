@@ -6,6 +6,9 @@ export const Content = styled.div`
     flex-direction: column;
     padding: 40px 50px;
     gap: 20px;
+    @media screen and (max-width: 1023px) {
+        gap: 10px;
+    }
 `
 
 export const Head = styled.div`
@@ -26,6 +29,12 @@ export const Title = styled.h1`
     white-space: nowrap;
     overflow-x: hidden;
     text-overflow: ellipsis;
+    @media screen and (max-width: 1023px) {
+        font-size: 24px;
+    }
+    @media screen and (max-width: 767px) {
+        font-size: 14px;
+    }
 `
 
 export const Overall = styled.div`
@@ -38,12 +47,25 @@ export const Overall = styled.div`
     display: flex;
     flex-direction: column;
     gap: 10px;
+    @media screen and (max-width: 1023px) {
+        font-size: 10px;
+        gap: 3px;
+    }
+    @media screen and (max-width: 767px) {
+        font-size: 8px;
+    }
 `
 
 export const ExitStars = styled.div`
     display: flex;
     gap: 50px;
     align-items: flex-start;
+    @media screen and (max-width: 1023px) {
+        gap: 10px;
+    }
+    @media screen and (max-width: 767px) {
+        gap: 3px;
+    }
 `
 
 export const Exit = styled.button`
@@ -53,11 +75,22 @@ export const Exit = styled.button`
     background-color: inherit;
     background-size: 25px 25px;
     background-image: url(${ require('./exit.png') });
+    @media screen and (max-width: 1023px) {
+        width: 10px;
+        height: 10px;
+        background-size: 10px 10px;
+    }
 `
 
 export const Stars = styled.div`
     display: flex;
     gap: 10px;
+    @media screen and (max-width: 1023px) {
+        gap: 3px;
+    }
+    @media screen and (max-width: 767px) {
+        gap: 1px;
+    }
 `
 
 export const Star = styled.div<{ $big?: boolean, $active: boolean }>`
@@ -67,6 +100,17 @@ export const Star = styled.div<{ $big?: boolean, $active: boolean }>`
     height: ${ ({ $big }) => $big ? `25px` : `20px` };
     background-position: center;
     opacity: ${ ({ $active }) => $active ? '1': '0.6' };
+    background-repeat: no-repeat;
+    @media screen and (max-width: 1023px) {
+        background-size: calc(${ ({ $big }) => $big ? `25px` : `20px` } / 1.5) calc(${ ({ $big }) => $big ? `25px` : `20px` } / 1.5);
+        width: calc(${ ({ $big }) => $big ? `25px` : `20px` } / 1.5);
+        height: calc(${ ({ $big }) => $big ? `25px` : `20px` } / 1.5);
+    }
+    @media screen and (max-width: 767px) {
+        background-size: calc(${ ({ $big }) => $big ? `25px` : `20px` } / 2) calc(${ ({ $big }) => $big ? `25px` : `20px` } / 2);
+        width: calc(${ ({ $big }) => $big ? `25px` : `20px` } / 2);
+        height: calc(${ ({ $big }) => $big ? `25px` : `20px` } / 2);
+    }
 `
 
 export const List = styled.div`
@@ -99,6 +143,9 @@ export const ElText = styled.div`
     display: flex;
     flex-direction: column;
     gap: 10px;
+    @media screen and (max-width: 1023px) {
+        gap: 3px;
+    }
 `
 
 export const ElTitle = styled.h1`
@@ -108,6 +155,9 @@ export const ElTitle = styled.h1`
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    @media screen and (max-width: 1023px) {
+        font-size: 12px;
+    }
 `
 
 export const ElFeedback = styled.p`
@@ -117,6 +167,9 @@ export const ElFeedback = styled.p`
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    @media screen and (max-width: 1023px) {
+        font-size: 12px;
+    }
 `
 
 export const Buttons = styled.div`
@@ -144,6 +197,10 @@ export const Publish = styled.button`
         background: none;
         color: #5D20D6;
     }
+    @media screen and (max-width: 1023px) {
+        font-size: 12px;
+        height: 30px;
+    }
 `
 
 export const Cancel = styled.button`
@@ -164,5 +221,9 @@ export const Cancel = styled.button`
     &:hover {
         background: #5D20D6;
         color: white;
+    }
+    @media screen and (max-width: 1023px) {
+        font-size: 12px;
+        height: 30px;
     }
 `
