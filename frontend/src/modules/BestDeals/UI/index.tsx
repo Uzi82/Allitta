@@ -1,5 +1,6 @@
 import { useQuery } from "react-query"
 import { Content, Header, List } from "./styled"
+import {useEffect} from 'react';
 import { LazyLoad, getDeals, ProductCard } from '../'
 
 export const BestDeals: React.FC = () => {
@@ -7,6 +8,7 @@ export const BestDeals: React.FC = () => {
         refetchOnWindowFocus: false
     })
     if(isError) console.error('BestDeals: Query error')
+    
     return(
         <Content>
             <Header>
