@@ -1,0 +1,8 @@
+export { ShopProducts } from './UI'
+export { ProductsFilter } from '../../components/ProductsFilter'
+export { Products } from '../../components/Products'
+export { SimpleBlur } from '../../UI/SimpleBlur'
+export { open, setType } from '../../store/slices/productsSlice'
+export { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks'
+export { AddProdModal } from '../../components/AddProdModal'
+export { EditProdModal } from '../../components/EditProdModal'

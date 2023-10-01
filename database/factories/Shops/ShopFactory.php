@@ -28,7 +28,8 @@ class ShopFactory extends Factory
             'city' => $this->faker->city(),
             'zip_code' => $this->faker->postcode(),
             'logotype_path' => PathEnum::SHOP_IMAGES_LOGOTYPES->value . 'no_shop_logotype.png',
-            'banner_path' => PathEnum::SHOP_IMAGES_BANNERS->value . 'no_shop_banner.png'
+            'banner_path' => PathEnum::SHOP_IMAGES_BANNERS->value . 'no_shop_banner.png',
+            'description' => $this->faker->text(500),
         ];
     }
 }

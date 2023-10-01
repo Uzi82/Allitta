@@ -1,11 +1,10 @@
-import { useEffect } from "react"
-import { Outlet, useLocation, useParams } from "react-router-dom"
+import { Outlet, useLocation } from "react-router-dom"
 import { Container, Content, Header, OutletContainer, SideBlock } from "./styled"
 import { DashboardNav } from "../../../components/DashboardNav"
 import moment from "moment"
 
 export const DashboardLayout: React.FC = () => {
-    const location = useLocation().pathname.split('/')[2]
+    const location = useLocation().pathname.split('/')[2].replace(/^[a-z]/, letter=>letter.toUpperCase())
     let date = new Date()
     console.log(date)
     return(
