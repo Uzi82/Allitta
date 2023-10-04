@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Users\ShopUser>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Users\MerchantUser>
  */
-class ShopUserFactory extends Factory
+class MerchantUserFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -32,7 +32,6 @@ class ShopUserFactory extends Factory
             'password' => Hash::make('pass'),
             'birthday' => $this->faker->date(),
             'gender' => rand(1, 2),
-            'nic_number' => rand(1000000, 100000000),
             'phone_number' => $this->faker->phoneNumber(),
             'street' => $this->faker->streetAddress(),
             'city' => $this->faker->city(),

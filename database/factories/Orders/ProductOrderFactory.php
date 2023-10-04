@@ -5,6 +5,7 @@ namespace Database\Factories\Orders;
 use App\Enums\CurrencyEnum;
 use App\Enums\ProductOrderStatusEnum;
 use App\Models\Shops\Shop;
+use App\Models\Users\CustomerUser;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -21,9 +22,10 @@ class ProductOrderFactory extends Factory
     public function definition(): array
     {
         $statuses = ProductOrderStatusEnum::cases();
+        $userId = CustomerUser::inRandomOrder()->first()->id;
 
         return [
-            'user_id' => rand(1, 100000),
+            'user_id' => $userId,
             'shop_id' => Shop::inRandomOrder()->first()->id,
             'status' => $statuses[array_rand($statuses)]->value,
             'amount' => 0,

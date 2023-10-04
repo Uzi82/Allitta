@@ -10,19 +10,20 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('shops', function (Blueprint $table) {
+        Schema::create('customer_users', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('merchant_users');
             $table->string('name');
-            $table->smallInteger('category');
-            $table->bigInteger('reg_number')->nullable();
+            $table->string('last_name');
+            $table->string('full_name');
             $table->string('email');
+            $table->string('img_path');
+            $table->text('password');
+            $table->date('birthday');
+            $table->tinyInteger('gender');
             $table->string('phone_number', 18);
             $table->string('street');
             $table->string('city');
-            $table->string('zip_code', 10);
-            $table->string('logotype_path');
-            $table->string('banner_path');
+            $table->string('zip-code');
             $table->timestamps();
         });
     }
@@ -32,6 +33,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('shops');
+        Schema::dropIfExists('customer_users');
     }
 };

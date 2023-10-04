@@ -10,7 +10,7 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('shop_users', function (Blueprint $table) {
+        Schema::create('merchant_users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('last_name');
@@ -20,7 +20,6 @@ return new class extends Migration {
             $table->text('password');
             $table->date('birthday');
             $table->tinyInteger('gender');
-            $table->bigInteger('nic_number');
             $table->string('phone_number', 18);
             $table->string('street');
             $table->string('city');
@@ -34,6 +33,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('shop_users');
+        Schema::dropIfExists('merchant_users');
     }
 };

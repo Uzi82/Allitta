@@ -8,6 +8,7 @@ use App\Http\Controllers\Recommendations\ProductsRecommendationsController;
 use App\Http\Controllers\Recommendations\ShopsRecommendationsController;
 use App\Http\Controllers\Shops\ShopsController;
 use App\Http\Controllers\Users\UserEmailDistributionController;
+use App\Http\Controllers\Users\UserEmailVerifyController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,8 +47,10 @@ Route::prefix('shops')->group(function () {
 });
 
 Route::prefix('users')->group(function () {
-    Route::prefix('email/distribution')->group(function () {
-        Route::post('subscribe', [UserEmailDistributionController::class, 'store']);
+    Route::prefix('email')->group(function () {
+        Route::post('distribution/subscribe', [UserEmailDistributionController::class, 'store']);
+        Route::post('verify', [UserEmailVerifyController::class, 'store']);
+        Route::post('verify/check', [UserEmailVerifyController::class, 'check']);
     });
 });
 

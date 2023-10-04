@@ -10,12 +10,12 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('product_order_items', function (Blueprint $table) {
+        Schema::create('user_email_verifies', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('order_id')->constrained('product_orders');
-            $table->foreignId('product_id')->constrained('products');
-            $table->integer('quantity');
-            $table->float('cost');
+            $table->string('email');
+            $table->tinyInteger('user_type');
+            $table->integer('code');
+            $table->boolean('verified')->default(false);
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('product_order_items');
+        Schema::dropIfExists('user_email_verifies');
     }
 };
