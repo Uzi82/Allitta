@@ -108,3 +108,22 @@
         - email: {string}
 
     Ответ: пустое тело, код 201 Created
+
+#### Отправка email на верификацию:
+
+    URL: POST http://api.localhost/api/users/email/verify
+    Обязательные поля тела запроса:
+        - email: {string}
+        - user_type: {int} (2 - customer, 3 - merchant)
+
+    Ответ: пустое тело, код 201 Created
+
+#### Проверка кода для подтверждения email:
+
+    URL: GET http://api.localhost/api/users/email/verify/check
+    Обязательные поля тела запроса:
+        - email: {string}
+        - user_type: {int} (2 - customer, 3 - merchant)
+        - code: {int} (от 100000 до 999999) *универсальное значение для прохождения тестирования - 100000
+
+    Ответ: пустое тело, код 200 OK

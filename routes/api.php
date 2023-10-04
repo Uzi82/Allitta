@@ -50,7 +50,7 @@ Route::prefix('users')->group(function () {
     Route::prefix('email')->group(function () {
         Route::post('distribution/subscribe', [UserEmailDistributionController::class, 'store']);
         Route::post('verify', [UserEmailVerifyController::class, 'store']);
-        Route::post('verify/check', [UserEmailVerifyController::class, 'check']);
+        Route::get('verify/check', [UserEmailVerifyController::class, 'check']);
     });
 });
 
