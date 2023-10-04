@@ -38,9 +38,10 @@ export const FormLink = styled.div<FormLinkStyles>`
     justify-content: ${props => props.$justify || 'stretch'};
     width: ${props => props.width || 'auto'} ;
     align-self: flex-end;
-    cursor: pointer;
+    cursor: ${({ $disabled }) => $disabled ? 'default' : 'pointer'};
     display: flex;
     color: #5D20D6;
+    opacity: ${({ $disabled }) => $disabled ? '.5' : '1'};
     font-family: Inter-Regular;
     font-size: 14px;
     transition: opacity .2s ease-out;
@@ -54,7 +55,7 @@ export const FormLink = styled.div<FormLinkStyles>`
         font-size: 12px;
     }
 `
-export const VerifyingActions = styled.div<FormLinkStyles>`
+export const VerifyingActions = styled.div<MarginBottom>`
     margin-bottom: ${props => props.$mb || 0};
     justify-content: space-between;
     align-items:center;

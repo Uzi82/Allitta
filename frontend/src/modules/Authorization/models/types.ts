@@ -17,6 +17,7 @@ export type FormLinkStyles = {
     $justify?: string,
     $mb?: string
     width?: string,
+    $disabled?: boolean
 }
 
 // <--- Form  ---> //
