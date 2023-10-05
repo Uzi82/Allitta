@@ -1,11 +1,11 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 type initialTS = {
-    opened: boolean
+    opened: boolean | undefined
 }
 
 const initialState: initialTS = {
-    opened: false
+    opened: undefined
 }
 
 const shopMenuBurgerSlice = createSlice({

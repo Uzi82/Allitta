@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.div<{ $active: boolean }>`
+export const Container = styled.div<{ $active: boolean | undefined }>`
     width: 100%;
     height: 100%;
     display: flex;
@@ -16,12 +16,12 @@ export const Container = styled.div<{ $active: boolean }>`
         z-index: 999;
         position: absolute;
         height: 100%;
-        display: ${({ $active }) => $active ? `flex` : `none`};
-        animation: appearBurger 1s;
+        display: flex;
+        transform: ${({ $active }) => $active === true ? 'translateX(0)' : 'translateX(-100%)'};
+        animation: ${({ $active }) => $active !== undefined ? $active === true ? `appearBurger 200ms` : `disappearBurger 200ms` : `none`};
     }
     @media screen and (max-width: 767px) {
         width: 98vw;
-        display: ${({ $active }) => $active ? `flex` : `none`};
     }
     @keyframes appearBurger {
         0% {
@@ -29,6 +29,14 @@ export const Container = styled.div<{ $active: boolean }>`
         }
         100% {
             transform: translateX(0);
+        }
+    }
+    @keyframes disappearBurger {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-100%);
         }
     }
 `
