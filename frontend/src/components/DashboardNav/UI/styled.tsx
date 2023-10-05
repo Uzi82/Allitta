@@ -17,9 +17,8 @@ export const Container = styled.div<{ $active: boolean | undefined }>`
         position: absolute;
         height: 100%;
         display: flex;
-        transition-duration: 300ms;
         transform: ${({ $active }) => $active === true ? 'translateX(0)' : 'translateX(-100%)'};
-        animation: ${({ $active }) => $active !== undefined ? $active === true ? `appearBurger 1s` : `disappearBurger 1s` : `none`};
+        animation: ${({ $active }) => $active !== undefined ? $active === true ? `appearBurger 200ms` : `disappearBurger 200ms` : `none`};
     }
     @media screen and (max-width: 767px) {
         width: 98vw;
