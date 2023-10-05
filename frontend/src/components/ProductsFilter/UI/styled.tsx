@@ -83,4 +83,15 @@ export const Filters = styled(ReactSelect)`
             width: 190px;
         }
     }
+    @media screen and (max-width: 767px) {
+        width: 90%;
+        & > div.Select__control {
+            width: 100%;
+            height: 40px;
+            &--is-focused {
+                box-shadow: none;
+                border: 1px solid #5D20D6;
+            }
+        }
+    }
 `

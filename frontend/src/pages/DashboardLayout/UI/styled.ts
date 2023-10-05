@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.div<{ $scroll: boolean }>`
     width: 100vw;
-    min-height: 100vh;
     display: flex;
     align-items: stretch;
     flex-direction: row;
     justify-content: space-between;
     overflow-x: hidden;
+    ${({ $scroll }) => $scroll ? 'height: 100vh;' : 'min-height: 100vh;'}
     @media screen and (max-width: 1023px) and (min-width: 767px) {
         flex-direction: column;
         justify-content: flex-start;
@@ -20,15 +20,6 @@ export const Container = styled.div`
 
 export const SideBlock = styled.div`
     width: 250px;
-    background-color: rgba(93,32,214, 0.2);
-    @media screen and (max-width: 1023px) and (min-width: 767px) {
-        width: 100vw;
-        height: 50px;
-    }
-    @media screen and (max-width: 766px) {
-        width: 100vw;
-        height: 75px;
-    }
 `
 
 export const Content = styled.div`
@@ -36,15 +27,10 @@ export const Content = styled.div`
     flex-direction: column;
     padding: 35px 44px 0px 23px;
     width: calc(100vw - 250px);
-    @media screen and (max-width: 1023px) and (min-width: 767px) {
+    @media screen and (max-width: 1023px) {
         width: 100vw;
         height: auto;
-        padding: 10px;
-    }
-    @media screen and (max-width: 766px) {
-        width: 100vw;
-        height: auto;
-        padding: 10px;
+        padding:  60px 10px 10px 10px;
     }
 `
 
@@ -69,15 +55,35 @@ export const Header = styled.div`
 `
 
 export const OutletContainer = styled.div`
-    width: calc(100vw - 250px);
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 80vh;
-    @media screen and (max-width: 1023px) and (min-width: 767px) {
-        width: 100%;
+`
+
+export const TopLine = styled.div`
+    width: 100vw;
+    height: 50px;
+    top: 0;
+    left: 0;
+    display: none;
+    background-color: #FBF9F8;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 20px;
+    @media screen and (max-width: 1023px) {
+        display: flex;
+        position: absolute;
+        z-index: 999999999;
     }
-    @media screen and (max-width: 766px) {
-        width: 100%;
-    }
+`
+
+export const MenuBtn = styled.button`
+    background-image: url(${require('./menuBtn.png')});
+    background-position: center;
+    background-color: inherit;
+    background-size: 100% 100%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
 `
