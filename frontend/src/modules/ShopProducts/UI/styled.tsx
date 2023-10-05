@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const Content = styled.div`
     width: 100%;
     height: 100%;
-    padding-right: 50px;
     padding-top: 30px;
     @media screen and (max-width: 1023px) {
         padding: 0;
@@ -50,6 +49,11 @@ export const AddNew = styled.button`
         height: 40px;
         font-size: 12px;
     }
+    @media screen and (max-width: 766px) {
+        width: 90%;
+        justify-content: center;
+        gap: 10px;
+    }
 `
 
 export const AddNewPng = styled.img`
@@ -77,5 +81,8 @@ export const Search = styled.input`
     @media screen and (max-width: 1023px) {
         width: 150px;
         height: 40px;;
+    }
+    @media screen and (max-width: 766px) {
+        width: 90%;
     }
 `

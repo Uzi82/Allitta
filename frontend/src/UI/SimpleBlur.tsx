@@ -8,7 +8,7 @@ const Bg = styled.div<{ $active: boolean }>`
     align-items: center;
     justify-content: center;
     width: 100vw;
-    min-height: 100vh;
+    min-height: 100%;
     backdrop-filter: blur(10px);
     animation-name: appear;
     animation-duration: 300ms;
