@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.div<{ $scroll: boolean }>`
+export const Container = styled.div<{ $scroll: boolean | undefined }>`
     width: 100vw;
     display: flex;
     align-items: stretch;
