@@ -78,8 +78,8 @@ export const TopLine = styled.div`
     }
 `
 
-export const MenuBtn = styled.button`
-    background-image: url(${require('./menuBtn.png')});
+export const MenuBtn = styled.button<{ $close: boolean | undefined }>`
+    background-image: url(${({ $close }) => $close === true && $close !== undefined ? require('./closeBtn.png') : require('./menuBtn.png')});
     background-position: center;
     background-color: inherit;
     background-size: 100% 100%;
