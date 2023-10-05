@@ -12,18 +12,18 @@ export const DashboardLayout: React.FC = () => {
     const location = useLocation().pathname.split('/')[2].replace(/^[a-z]/, letter=>letter.toUpperCase())
     const dispatch = useAppDispatch()
     const [disabled, setDisabled] = useState<boolean>(false)
-    const scroll = useAppSelector(state => state.shopMenuBurger.opened)
+    const opened = useAppSelector(state => state.shopMenuBurger.opened)
     const openBurger = () => {
         dispatch(open())
         setDisabled(true)
         setTimeout(()=>setDisabled(false), 200)
     }
     return(
-        <Container $scroll={scroll}>
+        <Container $scroll={opened}>
             <SideBlock>
                 <DashboardNav active={location}/>
                 <TopLine>
-                    <MenuBtn onClick={openBurger} disabled={disabled} />
+                    <MenuBtn $close={opened} onClick={openBurger} disabled={disabled} />
                 </TopLine>
             </SideBlock>
             <Content>
