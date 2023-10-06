@@ -7,14 +7,14 @@ import { Products,
          setType,
          AddProdModal,
          EditProdModal,
-         FeedbacksProdModal
+         FeedbacksProdModal,
+         Search
 } from "../"
 import { 
     AddNew,
     AddNewPng,
     Buttons, 
     Content,
-    Search
 } from "./styled"
 
 export const ShopProducts: React.FC = () => {

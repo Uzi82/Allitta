@@ -10,22 +10,23 @@ import { filtersOptions,
          setType,
          setId,
          setName,
+         Search,
+         Filters, 
          open
 } from "../"
 import { Buttons, 
          Content, 
-         Filters, 
          Head, 
          HeadEl, 
          List, 
          ModalButton, 
          Order, 
          OrderEl, 
-         Orders, 
-         Search,
+         Orders,
          Status
 } from "./styled"
 import { useQuery } from "react-query"
+import { DeliveryModal } from "../../../components/DeliveryModal"
 
 export const ShopOrders: React.FC = () => {
     const [filter, setFilter] = useState<string|null>(null)
@@ -90,9 +91,7 @@ export const ShopOrders: React.FC = () => {
                 </List>
             </Orders>
             <SimpleBlur active={opened}>
-                { name }
-                { id }
-                { type }
+                <DeliveryModal id="123" />
             </SimpleBlur>
         </Content>
     )

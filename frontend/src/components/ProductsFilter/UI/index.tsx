@@ -1,7 +1,8 @@
-import { Filters } from "./styled"
 import { useState } from "react"
 import { useQuery } from "react-query"
-import { getCategories } from "../"
+import { getCategories,
+         Filters 
+} from "../"
 
 export const ProductsFilter: React.FC = () => {
     const { data, isLoading, isError } = useQuery('productsFilter', getCategories)
