@@ -4,7 +4,7 @@ import ReactSelect from "react-select"
 export const Filters = styled(ReactSelect)`
     & > div.Select__control {
         width: 213px;
-        height: 45px;
+        height: 40px;
         border-radius: 9px;
         border: 1px solid #6F6F6F;
         font-family: Inter-Bold, sans-serif;
@@ -81,17 +81,6 @@ export const Filters = styled(ReactSelect)`
             line-height: normal;
             border-radius: 3px;
             width: 190px;
-        }
-    }
-    @media screen and (max-width: 767px) {
-        width: 90%;
-        & > div.Select__control {
-            width: 100%;
-            height: 40px;
-            &--is-focused {
-                box-shadow: none;
-                border: 1px solid #5D20D6;
-            }
         }
     }
 `
