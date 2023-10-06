@@ -8,6 +8,7 @@ import { Dashboard } from '../modules/Dashboard'
 import { CreateProfile, CreateAccount, ProfilePicture, Verification } from '../modules/Registration'
 import { ForgetPassword, ResetPassword, SignIn, VerifyingEmail } from '../modules/Authorization'
 import { ShopProducts } from '../modules/ShopProducts'
+import { ProductDetails } from '../components/ProductDetails'
 
 export const publicRoutes = createBrowserRouter([
     {
@@ -77,6 +78,10 @@ export const publicRoutes = createBrowserRouter([
             {
                 path: 'dashBoard',
                 element: <Dashboard />
+            },
+            {
+                path: 'admin',
+                element: <ProductDetails />
             },
             {
                 path: 'product',
