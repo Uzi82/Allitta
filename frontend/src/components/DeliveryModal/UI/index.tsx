@@ -1,5 +1,7 @@
 import { useAppDispatch, type Props, open } from "../"
 import { Content, 
+         ElTitle, 
+         ElValue, 
          Exit, 
          Head, 
          Info,
@@ -7,9 +9,20 @@ import { Content,
          InfoName,
          InfoText,
          InfoTitle,
+         List,
          Message,
          MessageText,
-         MessageTitle
+         MessageTitle,
+         Product,
+         ProductEl,
+         ProductImg,
+         ProductName,
+         Products,
+         Ready,
+         ReadyBtn,
+         ReadyCurrency,
+         ReadyInput,
+         ReadyPrice
 } from "./styled"
 
 export const DeliveryModal: React.FC<Props> = ({ id }) => {
@@ -53,6 +66,62 @@ export const DeliveryModal: React.FC<Props> = ({ id }) => {
                     </MessageText>
                 </Message>
             </Head>
+            <Products>
+                <List>
+                    <Product>
+                        <ProductImg />
+                        <ProductName>
+                            Nike modern 5 shoes for men
+                        </ProductName>
+                        <div>{/* Пустой div для grid */}</div>
+                        <ProductEl>
+                            <ElTitle>
+                                Quantity
+                            </ElTitle>
+                            <ElValue>
+                                5x
+                            </ElValue>
+                        </ProductEl>
+                        <ProductEl $right>
+                            <ElTitle>
+                                Total Price
+                            </ElTitle>
+                            <ElValue>
+                                100,000.00
+                            </ElValue>
+                        </ProductEl>
+                    </Product>
+                    <Product>
+
+                    </Product>
+                    <Product>
+
+                    </Product>
+                    <Product>
+
+                    </Product>
+                    <Product>
+
+                    </Product>
+                    <Product>
+
+                    </Product>
+                    <Product>
+
+                    </Product>
+                </List>
+            </Products>
+            <Ready>
+                <ReadyPrice>
+                    <ReadyCurrency>
+                        Rs.
+                    </ReadyCurrency>
+                    <ReadyInput type="number" placeholder="Delivery Charges" />
+                </ReadyPrice>
+                <ReadyBtn>
+                    Package Ready
+                </ReadyBtn>
+            </Ready>
         </Content>
     )
 }
