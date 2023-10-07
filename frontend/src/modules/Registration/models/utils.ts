@@ -13,7 +13,7 @@ const validateInput = (which: keyof ICreateAccount | keyof ICreateProfile | keyo
     if (which === 'address') return { required: 'required', minLength: 4, maxLength: 60, }
     if (which === 'phone') return { required: 'required', maxLength: 17, minLength: 17, }
     if (which === 'city') return { required: 'required', pattern: /^[a-zA-Z]+(?:(?:\\s+|-)[a-zA-Z]+)*$/ }
-    if (which === 'zip') return { required: 'required', pattern: /^\d{5}$/ }
+    if (which === 'zip') return { required: 'required', pattern: /^[0-9]{5}(?:-[0-9]{4})?$/ }
     if (which === 'email') return { required: 'required', pattern: /^[\w-]+@([\w-]+\.)+[\w-]{2,4}$/ }
     if (which === 'password') return { required: 'required', minLength: 4, maxLength: 30, }
     if (which === 'verification') return { required: 'required', maxLength: 6, minLength: 6 }
