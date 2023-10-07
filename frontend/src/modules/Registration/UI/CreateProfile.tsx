@@ -16,10 +16,10 @@ export const CreateProfile: React.FC = () => {
             </CreateLinkWrapper>
             <Subtitle >Your Informations</Subtitle>
             <Flex >
-                <Input placeholder='First Name' type='text' {...registerInput('first name')} />
-                <Input placeholder='Last Name' type='text' {...registerInput('last name')} />
+                <Input placeholder='First name' type='text' {...registerInput('first_name')} />
+                <Input placeholder='Last name' type='text' {...registerInput('last_name')} />
             </Flex>
-            <Input placeholder='Full Name' type='text' {...registerInput('full name')} />
+            <Input placeholder='Full name' type='text' {...registerInput('full_name')} />
             <Flex >
                 <Input placeholder='Birthday (DD/MM/YYYY)' type='date' {...registerInput('date')} />
                 <Select placeholder='Gender'{...registerInput('gender')} >
