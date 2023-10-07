@@ -3,10 +3,12 @@ import { ICreateProfile, ICreateAccount, IVerification, FormErrors } from "./typ
 import { ToastOptions, toast } from 'react-toastify';
 import { FieldErrors } from "react-hook-form";
 import React from "react";
+import axios from "axios";
+
 
 // <--- Validation Functions  ---> //
 const validateInput = (which: keyof ICreateAccount | keyof ICreateProfile | keyof IVerification) => {
-    if (which === 'first name' || which === 'last name' || which === 'full name') return { required: 'required', minLength: 2, maxLength: 20 }
+    if (which === 'first_name' || which === 'last_name' || which === 'full_name') return { required: 'required', minLength: 2, maxLength: 45 }
     if (which === 'nic') return { required: 'required', maxLength: 13, minLength: 7, }
     if (which === 'address') return { required: 'required', minLength: 4, maxLength: 60, }
     if (which === 'phone') return { required: 'required', maxLength: 17, minLength: 17, }
@@ -20,12 +22,16 @@ const validateInput = (which: keyof ICreateAccount | keyof ICreateProfile | keyo
 const hasError = <T extends FieldValues>(field: string, errors: DeepMap<T, FieldError>): FormErrors<T> => ({ error: errors[field as string] });
 // </--- Validation Functions  ---/> //
 
+
 // <--- onSubmit onError  ---> //
-export const onSubmit: SubmitHandler<ICreateProfile | ICreateAccount | IVerification> = (data) => {
-    console.log('success', data);
-}
+export const onSubmit: SubmitHandler<ICreateProfile | ICreateAccount | IVerification> = async (data) => {
+    try {
+        const response = await axios.post('http://api.localhost/api/users/customer/register', data);
+    } catch (error) {
+        console.error('Error:', error);
+    }
+};
 export const onError: SubmitErrorHandler<ICreateProfile | ICreateAccount | IVerification> = (data) => {
-    console.log(data);
     const toastOptions: ToastOptions = {
         position: "top-center",
         autoClose: 2000,
@@ -39,13 +45,13 @@ export const onError: SubmitErrorHandler<ICreateProfile | ICreateAccount | IVeri
     for (let key in data) {
         const typeOfError = data[key as keyof FieldErrors<ICreateProfile | ICreateAccount | IVerification>]?.type
         if (typeOfError === 'required') {
-            toast.error(`${key} is required`, toastOptions)
+            toast.error(`${key.replace(/_/g, ' ')} is required`, toastOptions)
         } else if (typeOfError === 'minLength') {
-            toast.error(`${key} is too short`, toastOptions)
+            toast.error(`${key.replace(/_/g, ' ')} is too short`, toastOptions)
         } else if (typeOfError === 'maxLength') {
-            toast.error(`${key} is too long`, toastOptions)
+            toast.error(`${key.replace(/_/g, ' ')} is too long`, toastOptions)
         } else if (typeOfError === 'pattern') {
-            toast.error(`${key} is invalid`, toastOptions)
+            toast.error(`${key.replace(/_/g, ' ')} is invalid`, toastOptions)
         } else if (typeOfError === 'validate') {
             toast.error(`passwords should match`, toastOptions)
         }
@@ -53,6 +59,9 @@ export const onError: SubmitErrorHandler<ICreateProfile | ICreateAccount | IVeri
     }
 }
 // </--- onSubmit onError  ---/> //
+
+
+
 // <--- HOOKS ---> //
 export const useAccountForm = () => {
     const { register, watch, formState: { errors }, ...rest } = useForm<ICreateAccount>({ mode: 'onChange' })
@@ -67,11 +76,9 @@ export const useAccountForm = () => {
         validate: () => confirmPassword === password
     })
     function registerInput(name: keyof ICreateAccount,) {
-        if (name === 'confirm password') {
-            return {
-                ...hasError(name, errors),
-                ...register(name, validateConfirmPassword()),
-            }
+        if (name === 'confirm password') return {
+            ...hasError(name, errors),
+            ...register(name, validateConfirmPassword()),
         }
         return {
             ...hasError(name, errors),

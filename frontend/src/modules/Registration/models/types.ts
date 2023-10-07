@@ -14,9 +14,9 @@ export type FormWrapperStyles = {
 
 // <--- Form  ---> //
 export interface ICreateProfile {
-    'first name': string,
-    'last name': string,
-    'full name': string,
+    first_name: string,
+    last_name: string,
+    full_name: string,
     date: typeof Date,
     gender: 'not-specified' | 'male' | 'female' | 'own-gender',
     nic: number,
