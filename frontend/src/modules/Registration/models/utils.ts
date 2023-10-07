@@ -1,9 +1,8 @@
-import { DeepMap, FieldError, FieldValues, SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form"
+import { DeepMap, FieldError, FieldValues, SubmitErrorHandler, useForm } from "react-hook-form"
 import { ICreateProfile, ICreateAccount, IVerification, FormErrors } from "./types"
 import { ToastOptions, toast } from 'react-toastify';
 import { FieldErrors } from "react-hook-form";
 import React from "react";
-import axios from "axios";
 
 
 // <--- Validation Functions  ---> //
@@ -13,7 +12,7 @@ const validateInput = (which: keyof ICreateAccount | keyof ICreateProfile | keyo
     if (which === 'address') return { required: 'required', minLength: 4, maxLength: 60, }
     if (which === 'phone') return { required: 'required', maxLength: 17, minLength: 17, }
     if (which === 'city') return { required: 'required', pattern: /^[a-zA-Z]+(?:(?:\\s+|-)[a-zA-Z]+)*$/ }
-    if (which === 'zip') return { required: 'required', pattern: /^\d{5}$/ }
+    if (which === 'zip') return { required: 'required', pattern: /^[0-9]{5}(?:-[0-9]{4})?$/ }
     if (which === 'email') return { required: 'required', pattern: /^[\w-]+@([\w-]+\.)+[\w-]{2,4}$/ }
     if (which === 'password') return { required: 'required', minLength: 4, maxLength: 30, }
     if (which === 'verification') return { required: 'required', maxLength: 6, minLength: 6 }
@@ -23,14 +22,7 @@ const hasError = <T extends FieldValues>(field: string, errors: DeepMap<T, Field
 // </--- Validation Functions  ---/> //
 
 
-// <--- onSubmit onError  ---> //
-export const onSubmit: SubmitHandler<ICreateProfile | ICreateAccount | IVerification> = async (data) => {
-    try {
-        const response = await axios.post('http://api.localhost/api/users/customer/register', data);
-    } catch (error) {
-        console.error('Error:', error);
-    }
-};
+// <--- onError  ---> //
 export const onError: SubmitErrorHandler<ICreateProfile | ICreateAccount | IVerification> = (data) => {
     const toastOptions: ToastOptions = {
         position: "top-center",
@@ -58,7 +50,7 @@ export const onError: SubmitErrorHandler<ICreateProfile | ICreateAccount | IVeri
         break;
     }
 }
-// </--- onSubmit onError  ---/> //
+// </--- onError  ---/> //
 
 
 
