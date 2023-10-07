@@ -148,7 +148,7 @@ export const Product = styled.div`
     padding: 20px;
 `
 
-export const ProductImg = styled.div<{ $img?: FileList }>`
+export const ProductImg = styled.div<{ $img?: FileList | null }>`
     width: 110px;
     height: 110px;
     background: ${({ $img }) => $img ? `url(${$img})` : `#D9D9D9`};
@@ -197,7 +197,7 @@ export const ElValue = styled.p`
     line-height: normal;
 `
 
-export const Ready = styled.div`
+export const Status = styled.div`
     display: flex;
     width: 100%;
     justify-content: space-between;
@@ -259,4 +259,35 @@ export const ReadyInput = styled.input`
         opacity: 1;
         border-color: #5D20D6; 
     }
+`
+
+export const Bill = styled.h1`
+    color: #000;
+    font-family: Inter-Bold, sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+`
+
+export const BillNum = styled.span`
+    color: #5D20D6;
+    font-family: Inter-Regular, sans-serif;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+`
+
+export const StatusTitle = styled.h1<{ $color: string }>`
+    color: ${({ $color }) => $color};
+    text-align: right;
+    font-family: Inter-Regular, sans-serif;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
 `

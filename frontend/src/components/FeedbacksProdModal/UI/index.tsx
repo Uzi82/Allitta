@@ -37,7 +37,7 @@ export const FeedbacksProdModal: React.FC<Props> = ({ id, name }) => {
                         Overall rate
                         <Stars>
                             {
-                                data !== undefined && makeStars(data.overall).map(el=><Star $big $active={el} />).reverse()
+                                data !== undefined && makeStars(data.overall).map((el, index)=><Star key={index} $big $active={el} />).reverse()
                             }
                         </Stars>
                     </Overall>
@@ -46,7 +46,7 @@ export const FeedbacksProdModal: React.FC<Props> = ({ id, name }) => {
             </Head>
             <List>
                 {
-                    data !== undefined && data.list.map(el=><Element name={el.name} text={el.text} stars={el.stars} />)
+                    data !== undefined && data.list.map(el=><Element key={el.id} id={el.id} name={el.name} text={el.text} stars={el.stars} />)
                 }
             </List>
             <Buttons>

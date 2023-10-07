@@ -1,4 +1,7 @@
 export { DeliveryModal } from './UI'
-export type { Props } from './models/types'
+export type { Props, info, statusesTS } from './models/types'
 export { useAppDispatch } from '../../hooks/reduxHooks'
 export { open } from '../../store/slices/productsSlice'
+export { getInfo } from './models/getInfo'
+export { LazyLoad } from '../../UI/LazyLoading'
+export { statuses } from './models/statuses'

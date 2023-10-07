@@ -8,12 +8,16 @@ export type info = {
     telephone: string,
     message: string,
     products: {
-        img: FileList,
+        img: FileList | null,
+        id: string,
         name: string,
         quantity: number,
-        totalPrice: number,
-        currency: string
+        totalPrice: number
     }[],
     status: string,
-    bill?: number
+    currency: string
+}
+
+export interface statusesTS {
+    [key: string]: string,
 }
