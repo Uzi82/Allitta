@@ -15,13 +15,13 @@ export const RegistrationLayout: React.FC = () => {
             <Outlet context={{ email, setEmail, password, setPassword, isShoper, setIsShoper } satisfies AccountContext}></Outlet>
             <ToastContainer position="top-center" autoClose={2000} limit={2} newestOnTop closeOnClick rtl={false} pauseOnFocusLoss draggable theme="dark" />
             <div style={{ position: 'absolute', right: 0, }}>
-                <Link to={'/signup/verify'}>verify</Link>
-                <br />
                 <Link to={'/signup'}>account</Link>
                 <br />
-                <Link to={'/signup/customer'}>profile</Link>
+                <Link to={'/signup/verify'}>verify</Link>
                 <br />
-                <Link to={'/signup/customer/photo'}>photo profile</Link>
+                <Link to={'/signup/profile'}>profile</Link>
+                <br />
+                <Link to={'/signup/profile/photo'}>photo profile</Link>
             </div>
         </BackgroundBlur>
     )

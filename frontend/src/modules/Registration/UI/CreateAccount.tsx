@@ -23,7 +23,6 @@ export const CreateAccount: React.FC = () => {
         } catch (error) {
             console.log(error)
         }
-
     };
     return (
         <FormWrapper onSubmit={handleSubmit(onSubmit, onError)} autoComplete='off' $gap='20px' $maxWidth='456px'>
@@ -34,7 +33,7 @@ export const CreateAccount: React.FC = () => {
             </CreateLinkWrapper>
             <Input placeholder='Email Address' type='email' {...registerInput('email')} />
             <Input placeholder='Create Password' type='password' {...registerInput('password')} />
-            <Input placeholder='Confirm Password' type='password'   {...registerInput('confirm password')} />
+            <Input placeholder='Confirm Password' type='password' {...registerInput('confirm password')} />
             <Button br='10px'>Continue</Button>
         </FormWrapper>
     )

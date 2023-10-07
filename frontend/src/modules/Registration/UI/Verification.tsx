@@ -23,6 +23,7 @@ export const Verification: React.FC = () => {
                 params: { email, user_type: isShoper ? 3 : 2, code: data.verification },
             });
             console.log(response)
+            navigate('/signup/profile')
         } catch (error) {
             console.log(error);
         }

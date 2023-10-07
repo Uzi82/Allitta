@@ -39,11 +39,11 @@ export const publicRoutes = createBrowserRouter([
                 element: <Verification />,
             },
             {
-                path: '/signup/customer',
+                path: '/signup/profile',
                 element: <CreateProfile />,
             },
             {
-                path: '/signup/customer/photo',
+                path: '/signup/profile/photo',
                 element: <ProfilePicture />,
             },
         ]
