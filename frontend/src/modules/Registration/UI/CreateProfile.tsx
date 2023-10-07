@@ -1,9 +1,9 @@
 import React from 'react'
-import { Flex, Select, Subtitle, Title, FormWrapper, CreateLinkWrapper, CreateLink } from './styled'
+import { Flex, Select, Subtitle, Title, FormWrapper } from './styled'
 import { Input } from '../../../UI/Input'
 import { onError, useProfileForm } from '../models/utils'
 import { Button } from '../../../UI/Button'
-import { useOutletContext } from 'react-router-dom'
+import { useNavigate, useOutletContext } from 'react-router-dom'
 import { SubmitHandler } from 'react-hook-form'
 import { AccountContext, ICreateProfile } from '../models/types'
 import axios from 'axios'
@@ -11,11 +11,12 @@ import axios from 'axios'
 export const CreateProfile: React.FC = () => {
     const { handleSubmit, registerInput } = useProfileForm()
     const { email, password, isShoper } = useOutletContext<AccountContext>()
-
+    const navigate = useNavigate()
     const onSubmit: SubmitHandler<ICreateProfile> = async (data) => {
         try {
-            const cookieRes = await axios.get('http://api.localhost/sanctum/csrf-cookie');
+            await axios.get('http://api.localhost/sanctum/csrf-cookie');
             const response = await axios.post('http://api.localhost/api/users/customer/register', { params: { email, password, ...data } });
+            if (response.status === 200) navigate('/signup/profile/photo')
         } catch (error) {
             console.error('Error:', error);
         }
@@ -46,7 +47,7 @@ export const CreateProfile: React.FC = () => {
                 <Input placeholder='City' type='text'{...registerInput('city')} />
                 <Input placeholder='Zip Code' {...registerInput('zip')} />
             </Flex>
-            <Button type='submit' /*onClick={() => navigate('/signup/customer/photo')}*/ br='10px'>Continue</Button>
+            <Button type='submit' br='10px'>Continue</Button>
         </FormWrapper>
     )
 }

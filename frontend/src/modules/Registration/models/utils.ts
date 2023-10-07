@@ -1,9 +1,8 @@
-import { DeepMap, FieldError, FieldValues, SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form"
+import { DeepMap, FieldError, FieldValues, SubmitErrorHandler, useForm } from "react-hook-form"
 import { ICreateProfile, ICreateAccount, IVerification, FormErrors } from "./types"
 import { ToastOptions, toast } from 'react-toastify';
 import { FieldErrors } from "react-hook-form";
 import React from "react";
-import axios from "axios";
 
 
 // <--- Validation Functions  ---> //

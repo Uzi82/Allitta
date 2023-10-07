@@ -19,7 +19,9 @@ export const CreateAccount: React.FC = () => {
             const response = await axios.post('http://api.localhost/api/users/email/verify', {
                 params: { email: data.email, user_type: isShoper ? 3 : 2 }
             });
-            navigate('/signup/verify')
+            if (response.status === 201) {
+                navigate('/signup/verify')
+            }
         } catch (error) {
             console.log(error)
         }
