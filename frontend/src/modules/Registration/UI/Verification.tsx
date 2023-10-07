@@ -3,10 +3,18 @@ import { Img, Subtitle, Title, FormWrapper } from './styled'
 import { Input } from '../../../UI/Input'
 import { CustomLink } from '../../../UI/CustomLink'
 import { Button } from '../../../UI/Button'
-import { onError, onSubmit, useVerificationForm } from '../models/utils'
+import { onError, useVerificationForm } from '../models/utils'
+import { SubmitHandler } from 'react-hook-form'
+import { IVerification } from '../models/types'
 
 export const Verification: React.FC = () => {
     const { handleSubmit, registerInput } = useVerificationForm()
+
+    const onSubmit: SubmitHandler<IVerification> = async (data) => {
+        try {
+        } catch (error) {
+        }
+    };
 
     return (
         <FormWrapper onSubmit={handleSubmit(onSubmit, onError)} $gap='20px' $maxWidth='456px'>

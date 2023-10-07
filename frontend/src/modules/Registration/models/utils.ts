@@ -23,14 +23,7 @@ const hasError = <T extends FieldValues>(field: string, errors: DeepMap<T, Field
 // </--- Validation Functions  ---/> //
 
 
-// <--- onSubmit onError  ---> //
-export const onSubmit: SubmitHandler<ICreateProfile | ICreateAccount | IVerification> = async (data) => {
-    try {
-        const response = await axios.post('http://api.localhost/api/users/customer/register', data);
-    } catch (error) {
-        console.error('Error:', error);
-    }
-};
+// <--- onError  ---> //
 export const onError: SubmitErrorHandler<ICreateProfile | ICreateAccount | IVerification> = (data) => {
     const toastOptions: ToastOptions = {
         position: "top-center",
@@ -58,7 +51,7 @@ export const onError: SubmitErrorHandler<ICreateProfile | ICreateAccount | IVeri
         break;
     }
 }
-// </--- onSubmit onError  ---/> //
+// </--- onError  ---/> //
 
 
 
