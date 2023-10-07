@@ -6,6 +6,7 @@ import { Button } from '../../../UI/Button'
 import { SubmitHandler } from 'react-hook-form'
 import { AccountContext, ICreateAccount } from '../models/types'
 import { useNavigate, useOutletContext } from 'react-router-dom'
+import axios from 'axios'
 
 export const CreateAccount: React.FC = () => {
     const navigate = useNavigate()
@@ -14,7 +15,15 @@ export const CreateAccount: React.FC = () => {
     const onSubmit: SubmitHandler<ICreateAccount> = async (data) => {
         setEmail(data.email)
         setPassword(data.password)
-        navigate('/signup/verify')
+        try {
+            const response = await axios.post('http://api.localhost/api/users/email/verify', {
+                params: { email: data.email, user_type: isShoper ? 3 : 2 }
+            });
+            navigate('/signup/verify')
+        } catch (error) {
+            console.log(error)
+        }
+
     };
     return (
         <FormWrapper onSubmit={handleSubmit(onSubmit, onError)} autoComplete='off' $gap='20px' $maxWidth='456px'>
