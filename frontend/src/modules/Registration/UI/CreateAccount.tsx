@@ -15,13 +15,13 @@ export const CreateAccount: React.FC = () => {
     const onSubmit: SubmitHandler<ICreateAccount> = async (data) => {
         setEmail(data.email)
         setPassword(data.password)
+        console.log({ email: data.email, user_type: isShoper ? 3 : 2 })
         try {
             const response = await axios.post('http://api.localhost/api/users/email/verify', {
                 params: { email: data.email, user_type: isShoper ? 3 : 2 }
             });
-            if (response.status === 201) {
-                navigate('/signup/verify')
-            }
+            console.log(response)
+            navigate('/signup/verify')
         } catch (error) {
             console.log(error)
         }

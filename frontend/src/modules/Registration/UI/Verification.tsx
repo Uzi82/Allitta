@@ -14,13 +14,13 @@ export const Verification: React.FC = () => {
     const { isShoper, email, setIsVerifyPassed } = useOutletContext<AccountContext>()
 
     const onSubmit: SubmitHandler<IVerification> = async (data) => {
-        if (email === undefined) return;
         try {
+            if (email === undefined) throw new Error('THERE IS NO EMAIL. PLEASE ADD THE EMAIL IN THE PREVIOUS PAGE')
             const response = await axios.get('http://api.localhost/api/users/email/verify/check', {
                 params: { email, user_type: isShoper ? 3 : 2, code: data.verification },
             });
-            console.log(response)
             setIsVerifyPassed(1)
+            console.log(response)
         } catch (error) {
             console.log(error);
             setIsVerifyPassed(2)
