@@ -10,6 +10,7 @@ export const Wrapper = styled.div`
     background: rgba(255, 255, 255, 0.60);
     backdrop-filter: blur(50px);
     padding:40px 50px;
+    justify-content: center;
     align-items: center;
     max-width: 456px;
     margin: 0 auto;
