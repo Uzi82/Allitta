@@ -101,6 +101,24 @@
 
 ### Пользователи:
 
+#### Регистрация кастомера:
+
+    URL: POST http://localhost/api/users/customer/register
+    Обязательные поля тела запроса:
+        - first_name: {string max: 25}
+        - last_name: {string max: 25}
+        - full_name: {string max: 50}
+        - email: {string}
+        - password: {string min: 6 max:100}
+        - birthday: {date, format:Y-m-d}
+        - gender: {int} (1 - male, 2 - female)
+        - phone_number: {string}
+        - street: {string max: 100}
+        - city: {string max: 25}
+        - zip_code: {string max: 50}
+
+    Ответ: пустое тело, код 201 Created
+
 #### Подписка на email рассылку:
 
     URL: POST http://localhost/api/users/email/distribution/subscribe
