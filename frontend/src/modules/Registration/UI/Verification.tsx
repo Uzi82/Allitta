@@ -6,25 +6,24 @@ import { Button } from '../../../UI/Button'
 import { onError, useVerificationForm } from '../models/utils'
 import { SubmitHandler } from 'react-hook-form'
 import { AccountContext, IVerification } from '../models/types'
-import { useNavigate, useOutletContext } from 'react-router-dom'
+import { useOutletContext } from 'react-router-dom'
 import axios from 'axios'
 
 export const Verification: React.FC = () => {
     const { handleSubmit, registerInput } = useVerificationForm()
-    const navigate = useNavigate()
-    const { isShoper, email } = useOutletContext<AccountContext>()
+    const { isShoper, email, setIsVerifyPassed } = useOutletContext<AccountContext>()
 
     const onSubmit: SubmitHandler<IVerification> = async (data) => {
-        if (email === undefined) return;
         try {
+            if (email === undefined) throw new Error('THERE IS NO EMAIL. PLEASE ADD THE EMAIL IN THE PREVIOUS PAGE')
             const response = await axios.get('http://api.localhost/api/users/email/verify/check', {
                 params: { email, user_type: isShoper ? 3 : 2, code: data.verification },
             });
-            if (response.status === 200) {
-                navigate('/signup/profile')
-            }
+            setIsVerifyPassed(1)
+            console.log(response)
         } catch (error) {
             console.log(error);
+            setIsVerifyPassed(2)
         }
     };
 

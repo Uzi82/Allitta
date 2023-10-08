@@ -47,4 +47,6 @@ export type AccountContext = {
     setPassword: React.Dispatch<React.SetStateAction<string | undefined>>,
     isShoper: boolean | undefined,
     setIsShoper: React.Dispatch<React.SetStateAction<boolean | undefined>>,
+    isVerifyPassed: 0 | 1 | 2,
+    setIsVerifyPassed: React.Dispatch<React.SetStateAction<0 | 1 | 2>>,
 }
