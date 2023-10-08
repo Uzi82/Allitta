@@ -17,7 +17,7 @@ export const CreateAccount: React.FC = () => {
         setPassword(data.password)
         console.log({ email: data.email, user_type: isShoper ? 3 : 2 })
         try {
-            const response = await axios.post('http://api.localhost/api/users/email/verify', {
+            const response = await axios.post('http://localhost/api/users/email/verify', {
                 params: { email: data.email, user_type: isShoper ? 3 : 2 }
             });
             console.log(response)

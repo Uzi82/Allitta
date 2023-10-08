@@ -13,7 +13,6 @@ export const ProfilePicture: React.FC = () => {
         console.log('success', data);
     }
     const onError: SubmitErrorHandler<IFormInput> = (data) => {
-
     }
     const fileinput = watch('file')
     return (

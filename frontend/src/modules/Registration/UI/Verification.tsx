@@ -16,7 +16,8 @@ export const Verification: React.FC = () => {
     const onSubmit: SubmitHandler<IVerification> = async (data) => {
         try {
             if (email === undefined) throw new Error('THERE IS NO EMAIL. PLEASE ADD THE EMAIL IN THE PREVIOUS PAGE')
-            const response = await axios.get('http://api.localhost/api/users/email/verify/check', {
+            await axios.get('http://localhost/sanctum/csrf-cookie');
+            const response = await axios.get('http://localhost/api/users/email/verify/check', {
                 params: { email, user_type: isShoper ? 3 : 2, code: data.verification },
             });
             setIsVerifyPassed(1)
