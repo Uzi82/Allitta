@@ -6,6 +6,9 @@ export const Content = styled.div`
     flex-direction: column;
     gap: 20px;
     padding: 40px 50px;
+    @media screen and (max-width: 767px) {
+        padding: 20px;
+    }
 `
 
 export const Head = styled.div`
@@ -20,12 +23,20 @@ export const Info = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    @media screen and (max-width: 767px) {
+        position: relative;
+        flex-direction: column;
+        gap: 5px;
+    }
 `
 
 export const InfoEl = styled.div`
     display: flex;
     flex-direction: column;
     gap: 5px;
+    @media screen and (max-width: 1023px) {
+        gap: 3px;
+    }
 `
 
 export const InfoTitle = styled.h1`
@@ -40,6 +51,9 @@ export const InfoTitle = styled.h1`
     &:hover {
         opacity: 1;
     }
+    @media screen and (max-width: 1023px) {
+        font-size: 14px;
+    }
 `
 
 export const InfoText = styled.p`
@@ -50,6 +64,9 @@ export const InfoText = styled.p`
     font-weight: 500;
     line-height: normal;
     max-width: 285px;
+    @media screen and (max-width: 1023px) {
+        font-size: 10px;
+    }
 `
 
 export const InfoName = styled.h1`
@@ -59,6 +76,9 @@ export const InfoName = styled.h1`
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    @media screen and (max-width: 1023px) {
+        font-size: 12px;
+    }
 `
 
 export const Exit = styled.button`
@@ -69,12 +89,20 @@ export const Exit = styled.button`
     background-position: center;
     background-repeat: no-repeat;
     cursor: pointer;
+    @media screen and (max-width: 767px) {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
 `
 
 export const Message = styled.div`
     display: flex;
     flex-direction: column;
     gap: 5px;
+    @media screen and (max-width: 1023px) {
+        gap: 3px;
+    }
 `
 
 export const MessageTitle = styled.h1`
@@ -89,6 +117,9 @@ export const MessageTitle = styled.h1`
     &:hover {
         opacity: 1;
     }
+    @media screen and (max-width: 1023px) {
+        font-size: 14px;
+    }
 `
 
 export const MessageText = styled.p`
@@ -99,6 +130,9 @@ export const MessageText = styled.p`
     font-weight: 500;
     line-height: normal;
     max-width: 912px;
+    @media screen and (max-width: 1023px) {
+        font-size: 12px;
+    }
 `
 
 export const Products = styled.div`
@@ -110,6 +144,9 @@ export const Products = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    @media screen and (max-width: 1023px) {
+        padding: 5px;
+    }
 `
 
 export const List = styled.div`
@@ -134,6 +171,9 @@ export const List = styled.div`
         width: 8px;
         border-radius: 9px;
     }
+    @media screen and (max-width: 1023px) {
+        width: calc(100% - 10px);
+    }
 `
 
 export const Product = styled.div`
@@ -146,6 +186,15 @@ export const Product = styled.div`
     grid-template-columns: 15% 35% 10% 20% 20%;
     align-items: center;
     padding: 20px;
+    @media screen and (max-width: 1023px) {
+        grid-template-columns: 20% 30% 10% 20% 20%;
+    }
+    @media screen and (max-width: 767px) {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        min-height: fit-content;
+    }
 `
 
 export const ProductImg = styled.div<{ $img?: FileList | null }>`
@@ -165,6 +214,10 @@ export const ProductName = styled.h1`
     max-width: 320px;
     align-self: flex-start;
     padding-top: 10px;
+    @media screen and (max-width: 767px) {
+        text-align: center;
+        align-self: center;
+    }
 `
 
 export const ProductEl = styled.div<{ $right?: boolean }>`
@@ -172,6 +225,9 @@ export const ProductEl = styled.div<{ $right?: boolean }>`
     flex-direction: column;
     align-items: ${({ $right }) => $right ? "flex-end" : 'center' };
     gap: 10px;
+    @media screen and (max-width: 767px) {
+        align-items: center;
+    }
 `
 
 export const ElTitle = styled.h1`
@@ -201,6 +257,10 @@ export const Status = styled.div`
     display: flex;
     width: 100%;
     justify-content: space-between;
+    @media screen and (max-width: 767px) {
+        flex-direction: column;
+        gap: 5px;
+    }
 `
 
 export const ReadyBtn = styled.button`
@@ -222,6 +282,10 @@ export const ReadyBtn = styled.button`
         background: none;
         color: #5D20D6;
     }
+    @media screen and (max-width: 767px) {
+        width: 100%;
+        height: 40px;
+    }
 `
 
 export const ReadyPrice = styled.div`
@@ -229,6 +293,10 @@ export const ReadyPrice = styled.div`
     width: 30%;
     justify-content: stretch;
     gap: 10px;
+    @media screen and (max-width: 767px) {
+        width: 100%;
+        height: 40px;
+    }
 `
 
 export const ReadyCurrency = styled.h1`
@@ -239,6 +307,9 @@ export const ReadyCurrency = styled.h1`
     font-weight: 500;
     line-height: normal;
     align-self: center;
+    @media screen and (max-width: 767px) {
+        width: 15%;
+    }
 `
 
 export const ReadyInput = styled.input`
@@ -258,6 +329,10 @@ export const ReadyInput = styled.input`
     &:focus {
         opacity: 1;
         border-color: #5D20D6; 
+    }
+    @media screen and (max-width: 767px) {
+        width: 85%;
+        height: 40px;
     }
 `
 

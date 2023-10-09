@@ -76,9 +76,14 @@ export const ImgInput = styled.input<{ $bg: string | ArrayBuffer | null }>`
     border-radius: ${({ $bg }) => $bg && `8px`};
     background-position: center;
     background-repeat: no-repeat;
+    background-size: 100% 100%;
     font-size: 0px;
     content-visibility: hidden;
-    @media screen and (max-width: 1023px) {
+    @media screen and (max-width: 1023px) and (min-width: 767px) {
+        width: 182px;
+        height: 182px;
+    }
+    @media screen and (max-width: 767px) {
         width: 30vh;
         height: 30vh;
         background-size: 100% 100%;
