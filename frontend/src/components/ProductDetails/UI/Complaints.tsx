@@ -1,9 +1,9 @@
 import React from 'react'
-import { ComplaintsItem, ComplaintsRow, ComplaintsWrapper, Id, Name, SeeMore, Select, SentDate, Subject, Subtitle, Text } from './styled'
+import { ComplaintsItem, ComplaintsRow, ComplaintsWrapper, Id, SentDate, Subject, Subtitle } from './styled'
+import { SeeMore } from './SeeMore'
 
-interface IComplaints { }
 
-export const Complaints: React.FC<IComplaints> = () => {
+export const Complaints: React.FC = () => {
     return (
         <ComplaintsWrapper>
             <Subtitle>Complaints</Subtitle>
@@ -17,7 +17,7 @@ export const Complaints: React.FC<IComplaints> = () => {
                     <Id>#{item}</Id>
                     <Subject>my order is not received</Subject>
                     <SentDate>12/12/23</SentDate>
-                    <SeeMore src='/svg/seemore.svg'></SeeMore>
+                    <SeeMore />
                 </ComplaintsItem>)}
         </ComplaintsWrapper>
     )

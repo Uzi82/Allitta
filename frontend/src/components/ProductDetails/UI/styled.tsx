@@ -61,16 +61,6 @@ text-overflow: ellipsis;
 export const SentDate = styled.div`
     grid-area: 1 / 8 / 2 / 12;
 `
-export const SeeMore = styled.img`
-    grid-area: 1 / 12 / 2 / 13;
-    cursor: pointer;
-    padding: 3px;
-    margin-left: auto;
-    transition: transform 0.25s ease-out;
-    &:hover {
-        transform: rotate(90deg);
-    }
-`
 export const ProductAvatar = styled.div`
     display: flex;
     flex-direction: column;
