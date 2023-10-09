@@ -60,19 +60,17 @@ export const Header = styled.div`
     font-weight: 500;
     line-height: normal;
     width: 100%;
+    @media screen and (max-width: 1023px) and (min-width: 767px) {
+        font-size: 16px;
+    }
     @media screen and (max-width: 766px) {
-        flex-direction: column;
-        align-items: center;
-        gap: 5px;
-        &>div{text-align:center}
+        font-size: 12px;
     }
 `
 
 export const OutletContainer = styled.div`
     width: calc(100vw - 250px);
     display: flex;
-    justify-content: center;
-    align-items: center;
     min-height: 80vh;
     @media screen and (max-width: 1023px) and (min-width: 767px) {
         width: 100%;

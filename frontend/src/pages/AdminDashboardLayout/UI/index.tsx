@@ -4,10 +4,7 @@ import moment from "moment"
 import { AdminDashboardNav } from "../../../components/AdminDashboardNav"
 
 export const AdminDashboardLayout: React.FC = () => {
-    const location = useLocation().pathname[2]
-
-    let date = new Date()
-    console.log(date)
+    const header = { 'dashboard': 'Dashboard', 'complaint': 'Complaints & Reporting', 'accounts': 'Accounts Management', 'products': 'Products' }[useLocation().pathname.split('/')[2]]
     return (
         <Container>
             <SideBlock>
@@ -15,12 +12,10 @@ export const AdminDashboardLayout: React.FC = () => {
             </SideBlock>
             <Content>
                 <Header>
-                    <div>{{ 'dashboard': 'Dashboard', 'complaint': 'Complaints & Reporting', 'accounts': 'Accounts Management', 'products': 'Products' }[location]}</div>
+                    <div>{header}</div>
                     <div>{moment().format('Do MMMM of YYYY, hh:mm a')}</div>
                 </Header>
-                <OutletContainer>
-                    <Outlet />
-                </OutletContainer>
+                <Outlet />
             </Content>
         </Container>
     )

@@ -8,11 +8,11 @@ export const Container = styled.div`
     align-items: center;
     gap: 30px;
     @media screen and (max-width: 1023px) and (min-width: 767px) {
-        width: 100vw;
+        width: 100%;
         padding: 10px;
     }
     @media screen and (max-width: 766px) {
-        width: 100vw;
+        width: 100%;
         padding: 10px;
     }
 `
@@ -49,29 +49,12 @@ export const Blocks = styled.div`
 `
 
 export const Stats = styled.div`
-    display: grid;
+    display: flex;
+    width: 100%;
     column-gap: 24px;
     row-gap: 20px;
-    grid-template-columns: 325px 325px;
-    grid-template-rows: 100px 100px;
-    @media screen and (max-width: 1400px) and (min-width: 1024px) {
-        column-gap: 13px;
-        grid-template-columns: 200px 200px;
-        row-gap: 10px;
-        grid-template-rows: 66px 66px;
-    }
-    @media screen and (max-width: 1023px) and (min-width: 767px) {
-        column-gap: 13px;
-        grid-template-columns: 200px 200px;
-        row-gap: 10px;
-        grid-template-rows: 66px 66px;
-    }
     @media screen and (max-width: 766px) {
-        column-gap: 13px;
-        width: 100%;
-        grid-template-columns: 100%;
-        row-gap: 10px;
-        grid-template-rows: 80px 80px 80px 80px;
+        flex-direction: column;
     }
 `
 
