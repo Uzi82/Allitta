@@ -2,8 +2,12 @@ import React from 'react'
 import { ComplaintsItem, ComplaintsRow, ComplaintsWrapper, Id, SentDate, Subject, Subtitle } from './styled'
 import { SeeMore } from '../../../UI/SeeMore'
 
-
-export const Complaints: React.FC = () => {
+interface IComplaint {
+    id: number
+    subject: string
+    sentDate: string
+}
+export const Complaints: React.FC<{ data: IComplaint[] }> = ({ data }) => {
     return (
         <ComplaintsWrapper>
             <Subtitle>Complaints</Subtitle>
@@ -12,11 +16,11 @@ export const Complaints: React.FC = () => {
                 <Subject>Subject</Subject>
                 <SentDate>Sent Date</SentDate>
             </ComplaintsRow>
-            {[231212135612, 3463463462, 2, 2, 2].map((item) =>
-                <ComplaintsItem key={item}>
-                    <Id>#{item}</Id>
-                    <Subject>my order is not received</Subject>
-                    <SentDate>12/12/23</SentDate>
+            {data.map(({ id, sentDate, subject }) =>
+                <ComplaintsItem key={id}>
+                    <Id>#{id}</Id>
+                    <Subject>{subject}</Subject>
+                    <SentDate>{sentDate}</SentDate>
                     <SeeMore />
                 </ComplaintsItem>)}
         </ComplaintsWrapper>

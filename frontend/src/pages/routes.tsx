@@ -10,6 +10,7 @@ import { ForgetPassword, ResetPassword, SignIn, VerifyingEmail } from '../module
 import { ShopProducts } from '../modules/ShopProducts'
 import { AdminDashboardLayout } from './AdminDashboardLayout'
 import { AdminDashboard } from '../modules/AdminDashboard'
+import { ProductDetailed } from '../components/AdminDetailedItem'
 
 export const publicRoutes = createBrowserRouter([
     {
@@ -60,7 +61,7 @@ export const publicRoutes = createBrowserRouter([
             },
             {
                 path: 'complaint',
-                element: <>complaint</>,
+                element: <ProductDetailed></ProductDetailed>,
             },
             {
                 path: 'accounts',
