@@ -9,6 +9,7 @@ import { CreateProfile, CreateAccount, ProfilePicture, Verification } from '../m
 import { ForgetPassword, ResetPassword, SignIn, VerifyingEmail } from '../modules/Authorization'
 import { ShopProducts } from '../modules/ShopProducts'
 import { ShopOrders } from '../modules/ShopOrders'
+import { ShopCustomers } from '../modules/ShopCustomers'
 
 export const publicRoutes = createBrowserRouter([
     {
@@ -89,7 +90,7 @@ export const publicRoutes = createBrowserRouter([
             },
             {
                 path: 'customers',
-                element: <>321</>
+                element: <ShopCustomers />
             },
             {
                 path: 'cusChat',
