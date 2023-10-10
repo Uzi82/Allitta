@@ -57,10 +57,12 @@ Route::prefix('users')->group(function () {
 
     Route::prefix('customer')->group(function () {
         Route::post('register', [CustomerAccountController::class, 'register']);
+        Route::post('login', [CustomerAccountController::class, 'login']);
     });
 
     Route::prefix('merchant')->group(function () {
         Route::post('register', [MerchantAccountController::class, 'register']);
+        Route::post('login', [MerchantAccountController::class, 'login']);
     });
 });
 

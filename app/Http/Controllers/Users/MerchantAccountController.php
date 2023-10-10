@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Users;
 
 use App\Enums\UserTypesEnum;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserLoginRequest;
 use App\Http\Requests\UserRegisterRequest;
 use App\Models\Users\MerchantUser;
 use App\Services\Users\UsersAccountService;
@@ -35,5 +36,22 @@ class MerchantAccountController extends Controller
         (new UsersAccountService())->register($user, UserTypesEnum::MERCHANT);
 
         return response()->json(null, 201);
+    }
+
+    /**
+     * @throws AuthenticationException
+     */
+    public function login(UserLoginRequest $request): void
+    {
+        $user = (new MerchantUser())->fill([
+                'email' => $request->input('email'),
+                'password' => $request->input('password')]
+        );
+
+        if (!(new UsersAccountService())->login($user, 'merchant')) {
+            throw new AuthenticationException('Invalid email or password');
+        }
+
+        $request->session()->regenerate();
     }
 }

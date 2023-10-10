@@ -29,4 +29,14 @@ class UsersAccountService
         $userModel->save();
         Auth::login($userModel);
     }
+
+    public function login(User $userModel, string $guard): bool
+    {
+        $creds = [
+            'email' => $userModel->email,
+            'password' => $userModel->password,
+        ];
+
+        return Auth::guard($guard)->attempt($creds);
+    }
 }
