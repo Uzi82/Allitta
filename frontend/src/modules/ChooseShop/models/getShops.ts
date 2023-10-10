@@ -1,5 +1,5 @@
-import { axios, type shop } from '..'
+import {axios, type shop} from '..'
 
 export async function getShops(): Promise<shop[]> {
-    return await axios.get('http://api.localhost/api/shops/recommendations/best?limit=8').then(res=>res.data)
+    return await axios.get('http://localhost/api/shops/recommendations/best?limit=8').then(res => res.data)
 }

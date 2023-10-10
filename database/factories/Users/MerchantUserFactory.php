@@ -2,7 +2,6 @@
 
 namespace Database\Factories\Users;
 
-use App\Enums\PathEnum;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 
@@ -24,18 +23,17 @@ class MerchantUserFactory extends Factory
         $fullName = $firstName . ' ' . $lastName;
 
         return [
-            'name' => $firstName,
+            'first_name' => $firstName,
             'last_name' => $lastName,
             'full_name' => $fullName,
             'email' => $this->faker->email(),
-            'img_path' => PathEnum::USER_IMAGES_PROFILE->value . 'no_photo.png',
             'password' => Hash::make('pass'),
             'birthday' => $this->faker->date(),
             'gender' => rand(1, 2),
             'phone_number' => $this->faker->phoneNumber(),
             'street' => $this->faker->streetAddress(),
             'city' => $this->faker->city(),
-            'zip-code' => $this->faker->postcode(),
+            'zip_code' => $this->faker->postcode(),
         ];
     }
 }

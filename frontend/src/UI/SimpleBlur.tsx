@@ -5,6 +5,7 @@ const Bg = styled.div<{ $active: boolean }>`
     position: absolute;
     left: 0;
     top: 0;
+    z-index: 9999999999999999;
     align-items: center;
     justify-content: center;
     width: 100vw;

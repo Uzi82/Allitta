@@ -9,6 +9,7 @@ export type feedBacks = {
 }
 
 export type feedBack = {
+    id: string,
     name: string,
     text: string,
     stars: number
