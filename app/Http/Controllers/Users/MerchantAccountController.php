@@ -5,20 +5,20 @@ namespace App\Http\Controllers\Users;
 use App\Enums\UserTypesEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRegisterRequest;
-use App\Models\Users\CustomerUser;
+use App\Models\Users\MerchantUser;
 use App\Services\Users\UsersAccountService;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Hash;
 
-class CustomerAccountController extends Controller
+class MerchantAccountController extends Controller
 {
     /**
      * @throws AuthenticationException
      */
     public function register(UserRegisterRequest $request): JsonResponse
     {
-        $user = (new CustomerUser())->fill([
+        $user = (new MerchantUser())->fill([
             'first_name' => $request->input('first_name'),
             'last_name' => $request->input('last_name'),
             'full_name' => $request->input('full_name'),
@@ -32,7 +32,7 @@ class CustomerAccountController extends Controller
             'zip_code' => $request->input('zip_code')],
         );
 
-        (new UsersAccountService())->register($user, UserTypesEnum::CUSTOMER);
+        (new UsersAccountService())->register($user, UserTypesEnum::MERCHANT);
 
         return response()->json(null, 201);
     }

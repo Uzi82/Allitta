@@ -8,6 +8,7 @@ use App\Http\Controllers\Recommendations\ProductsRecommendationsController;
 use App\Http\Controllers\Recommendations\ShopsRecommendationsController;
 use App\Http\Controllers\Shops\ShopsController;
 use App\Http\Controllers\Users\CustomerAccountController;
+use App\Http\Controllers\Users\MerchantAccountController;
 use App\Http\Controllers\Users\UserEmailDistributionController;
 use App\Http\Controllers\Users\UserEmailVerifyController;
 use Illuminate\Support\Facades\Route;
@@ -59,7 +60,7 @@ Route::prefix('users')->group(function () {
     });
 
     Route::prefix('merchant')->group(function () {
-        Route::post('register', [UserEmailVerifyController::class, 'store']);
+        Route::post('register', [MerchantAccountController::class, 'register']);
     });
 });
 
