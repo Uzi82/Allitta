@@ -9,13 +9,11 @@ export const ProductDetailed: React.FC<Props> = () => {
         <BackgroundBlur $isShown>
             <Wrapper>
                 <InfoWrapper>
-
                     <ProductAvatar>
-                        <Avatar src='' alt='there is no picture yet' />
-                        <Text>Product Ratings</Text>
+                        <Avatar src='' alt='there is no picture yet' $mb="20px" />
+                        <Text $mb="10px">Product Ratings</Text>
                         <RatingStars $activeStars={2} />
                     </ProductAvatar>
-
                     <ProductInfo>
                         <Name $mb="5px">Product Name - #123456789</Name>
                         <Title $mb="20px">Product Name</Title>

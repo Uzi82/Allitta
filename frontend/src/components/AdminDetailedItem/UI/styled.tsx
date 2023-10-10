@@ -25,7 +25,6 @@ export const InfoWrapper = styled.div`
     @media screen and (max-width: 767px) {
         flex-direction: column;
         gap: 16px;
-        align-items: center;
     }
 `
 export const ProductAvatar = styled.div`
@@ -36,6 +35,9 @@ export const ProductAvatar = styled.div`
     margin: 0 0 0 0;
     @media screen and (max-width: 767px) {
         max-width: 300px;
+        width: 100%;
+        align-items: center;
+        margin: 0 auto;
     }
 `
 export const AccountLeft = styled.div`
@@ -52,40 +54,7 @@ export const AccountLeft = styled.div`
         flex-wrap: wrap;
     }
 `
-export const Shops = styled.div`
-    display: flex;
-    width: 100%;
-    padding: 20px 14px;
-    flex-direction: column;
-    border-radius: 10px;
-    background: #FBF9F9;
-    max-width: 250px;
-    gap: 10px;
-    height: 100%;
-    min-height: 500px;
-    box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.10) inset;
-    @media screen and (max-width: 767px) {
-        min-height: 300px;
-    }
-`
-export const Shop = styled.div`
-    font-family: Inter-regular;
-    font-size: 14px;
-    border-radius: 10px;
-    background: #FFF;
-    padding: 20px 16px;
-    box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.10);
-    transition: background 0.2s ease-in-out, border 0.2s ease-in-out;
-    cursor: pointer;
-    border: #fff 1px solid;
-    &:hover {
-        border: #5D20D6 1px solid;
-        color: #5D20D6;
-    }
-    @media screen and (max-width: 767px) {
-        max-width: 300px;
-    }
-`
+
 export const ProductInfo = styled.div`
     display: flex;
     flex-direction: column;
@@ -107,13 +76,16 @@ export const RatingStarsStyled = styled.div`
     gap: 12px;
 `
 export const Avatar = styled.img<MarginBottom>`
-    max-width: 250px;
+    width: 250px;
     height: 250px;
     flex-shrink: 0;
     border-radius: 10px;
     background: #D9D9D9;
     margin: 0 0 ${({ $mb }) => $mb || 0} 0;
-    width: 100%;
+    @media screen and (max-width: 767px) {
+        max-width: 300px;
+        width: 100%;
+    }
 `
 export const ButtonRight = styled(Button)`
     margin-left: auto;
@@ -226,6 +198,41 @@ export const ComplaintsItem = styled(ComplaintsRow)`
         box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.2);
     }
 `
+//<--- Shops --->//
+export const Shops = styled.div`
+    display: flex;
+    width: 100%;
+    padding: 20px 14px;
+    flex-direction: column;
+    border-radius: 10px;
+    background: #FBF9F9;
+    max-width: 250px;
+    gap: 10px;
+    height: 100%;
+    min-height: 500px;
+    box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.10) inset;
+    @media screen and (max-width: 767px) {
+        min-height: 300px;
+    }
+`
+export const Shop = styled.div`
+    font-family: Inter-regular;
+    font-size: 14px;
+    border-radius: 10px;
+    background: #FFF;
+    padding: 20px 16px;
+    box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.10);
+    transition: background 0.2s ease-in-out, border 0.2s ease-in-out;
+    cursor: pointer;
+    border: #fff 1px solid;
+    &:hover {
+        border: #5D20D6 1px solid;
+        color: #5D20D6;
+    }
+    @media screen and (max-width: 767px) {
+        max-width: 300px;
+    }
+`
 //<--- Description --->//
 export const ProductDescription = styled.ul`
     display: grid;
@@ -309,7 +316,7 @@ export const SentDate = styled.div`
         display: none;
     }
 `
-export const LeftAccDesc = styled.div`
+export const LeftAccountDesc = styled.div`
     flex: 1 1 50%;
     display: flex;
     flex-direction: column;
@@ -318,7 +325,7 @@ export const LeftAccDesc = styled.div`
         justify-items: center;
     }
 `
-export const RightAccDesc = styled.div`
+export const RightAccountDesc = styled.div`
     flex: 1 1 50%;
     display: flex;
     flex-direction: column;

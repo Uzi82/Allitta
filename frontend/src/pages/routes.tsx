@@ -61,7 +61,7 @@ export const publicRoutes = createBrowserRouter([
             },
             {
                 path: 'complaint',
-                element: <ProductDetailed></ProductDetailed>,
+                element: <></>,
             },
             {
                 path: 'accounts',
@@ -69,7 +69,7 @@ export const publicRoutes = createBrowserRouter([
             },
             {
                 path: 'products',
-                element: <>products</>
+                element: <ProductDetailed>products</ProductDetailed>
             },
         ]
 

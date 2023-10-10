@@ -1,7 +1,6 @@
 import { BackgroundBlur } from "../../../UI/BackgroundBlur"
 import { Props } from "../models/types"
-import { AccountDescription, Title, AccountInfo, Avatar, ButtonRight, DescriptionItem, InfoWrapper, Name, Text, Wrapper, DescriptionSelectItem, Select, LeftAccDesc, RightAccDesc, Veriified, AccountLeft, Shops, Subtitle, Shop, Fullname } from "./styled"
-import RatingStars from "./RatingStars"
+import { AccountDescription, Title, AccountInfo, Avatar, ButtonRight, DescriptionItem, InfoWrapper, Name, Text, Wrapper, DescriptionSelectItem, Select, Veriified, AccountLeft, Shops, Subtitle, Shop, Fullname, RightAccountDesc, LeftAccountDesc } from "./styled"
 
 export const AccountDetailed: React.FC<Props> = () => {
     return (
@@ -21,7 +20,7 @@ export const AccountDetailed: React.FC<Props> = () => {
                         <Title>Ahinsa De Silva</Title>
                         <Veriified $mb="20px">Verified</Veriified>
                         <AccountDescription >
-                            <LeftAccDesc>
+                            <LeftAccountDesc>
                                 <DescriptionItem>
                                     <Name>Full Name</Name>
                                     <Fullname>Ahinsa Thennakon De Silva</Fullname>
@@ -54,8 +53,8 @@ export const AccountDetailed: React.FC<Props> = () => {
                                     <Name>Registered Date</Name>
                                     <Text>12/12/2023</Text>
                                 </DescriptionItem>
-                            </LeftAccDesc>
-                            <RightAccDesc>
+                            </LeftAccountDesc>
+                            <RightAccountDesc>
                                 <DescriptionItem>
                                     <Name>Totally Earn (without delivery charges)</Name>
                                     <Text>Rs. 1,000,000.00 </Text>
@@ -75,7 +74,7 @@ export const AccountDetailed: React.FC<Props> = () => {
                                         <option value="disactive">disactive</option>
                                     </Select >
                                 </DescriptionSelectItem >
-                            </RightAccDesc>
+                            </RightAccountDesc>
                         </AccountDescription>
                         <ButtonRight br="10px" width="262px">Save</ButtonRight>
                     </AccountInfo>
