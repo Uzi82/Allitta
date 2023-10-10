@@ -4,7 +4,7 @@ import { Complaints } from "./Complaints"
 import { Info } from "./Info"
 import { ButtonRight, Wrapper } from "./styled"
 
-export const ProductDetails: React.FC<Props> = () => {
+export const ProductDetailed: React.FC<Props> = () => {
     return (
         <BackgroundBlur $isShown>
             <Wrapper>
@@ -13,6 +13,5 @@ export const ProductDetails: React.FC<Props> = () => {
                 <ButtonRight br="10px" width="262px">Save</ButtonRight>
             </Wrapper>
         </BackgroundBlur>
-
     )
 }

@@ -1,9 +1,9 @@
-import { SeeMore } from "../../../components/ProductDetails/UI/SeeMore"
+import { SeeMore } from "../../../UI/SeeMore"
 import { StatsElement } from "../../Dashboard"
 import { AccountButton } from "./AccountButton"
 import {
     Accounts,
-    AccountsHeader,
+    Row,
     AccountsItem,
     Container,
     CustomerName,
@@ -27,14 +27,14 @@ export const AdminDashboard: React.FC = () => {
             </Stats>
             <Line />
             <Accounts>
-                <AccountsHeader>
+                <Row>
                     <IdHeader>New Accounts</IdHeader>
                     <CustomerName>Customer Name</CustomerName>
                     <Date>Registered Date</Date>
                     <VerificationType>AC. Verification</VerificationType>
                     <TypeOfUser>Type</TypeOfUser >
                     <div style={{ width: '13px' }}></div >
-                </AccountsHeader>
+                </Row>
                 {[1, 2, 3, 4, 5, 6].map((item) => (
                     <AccountsItem key={item}>
                         <Id>#231212135612</Id>

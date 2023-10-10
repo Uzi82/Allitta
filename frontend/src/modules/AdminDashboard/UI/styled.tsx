@@ -81,7 +81,7 @@ export const Accounts = styled.div`
     @media screen and (max-width: 1023px)  {
     }
 `
-export const AccountsHeader = styled.div`
+export const Row = styled.div`
     display: flex;
     gap:16px;
     align-items: center;
@@ -91,20 +91,12 @@ export const AccountsHeader = styled.div`
         padding: 16px 10px;
     }
 `
-export const AccountsItem = styled.div`
-    display: flex;
-    align-items: center;
-    width: 100%;
-    gap:16px;
+export const AccountsItem = styled(Row)`
     border-radius: 10px;
     border: 1px solid rgba(0, 0, 0, 0.06);
     background: #FFF;
     box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.02);
-    padding: 16px 20px;
     transition: box-shadow .1s ease-in-out;
-    @media screen and (max-width: 1023px)  {
-        padding: 16px 10px;
-    }
     &:hover {
         box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.1);
     }

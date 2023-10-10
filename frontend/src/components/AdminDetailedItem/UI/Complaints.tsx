@@ -1,6 +1,6 @@
 import React from 'react'
 import { ComplaintsItem, ComplaintsRow, ComplaintsWrapper, Id, SentDate, Subject, Subtitle } from './styled'
-import { SeeMore } from './SeeMore'
+import { SeeMore } from '../../../UI/SeeMore'
 
 
 export const Complaints: React.FC = () => {
