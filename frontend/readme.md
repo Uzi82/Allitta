@@ -137,6 +137,24 @@
 
     Ответ: пустое тело, код 201 Created
 
+#### Аутентификация кастомера:
+
+    URL: POST http://localhost/api/users/customer/login
+    Обязательные поля тела запроса:
+        - email: {string}
+        - password: {string min: 6 max:100}
+
+    Ответ: пустое тело, код 200 OK
+
+#### Аутентификация мерчанта:
+
+    URL: POST http://localhost/api/users/customer/login
+    Обязательные поля тела запроса:
+        - email: {string}
+        - password: {string min: 6 max:100}
+
+    Ответ: пустое тело, код 200 OK
+
 #### Подписка на email рассылку:
 
     URL: POST http://localhost/api/users/email/distribution/subscribe
