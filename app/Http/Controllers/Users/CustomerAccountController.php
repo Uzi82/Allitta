@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers\Users;
 
+use App\Enums\EmailVerifyEventEnum;
 use App\Enums\UserTypesEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserLoginRequest;
 use App\Http\Requests\UserRegisterRequest;
+use App\Http\Requests\UserRestoreRequest;
 use App\Models\Users\CustomerUser;
 use App\Services\Users\UsersAccountService;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class CustomerAccountController extends Controller
@@ -33,7 +36,7 @@ class CustomerAccountController extends Controller
             'zip_code' => $request->input('zip_code')],
         );
 
-        (new UsersAccountService())->register($user, UserTypesEnum::CUSTOMER);
+        (new UsersAccountService())->register($user, UserTypesEnum::CUSTOMER, EmailVerifyEventEnum::REGISTRATION);
 
         return response()->json(null, 201);
     }
@@ -53,5 +56,25 @@ class CustomerAccountController extends Controller
         }
 
         $request->session()->regenerate();
+    }
+
+    /**
+     * @throws AuthenticationException
+     */
+    public function restore(UserRestoreRequest $request): void
+    {
+        $user = (new CustomerUser())->fill([
+                'email' => $request->input('email'),
+                'password' => $request->input('password')]
+        );
+
+        (new UsersAccountService())->restore($user, UserTypesEnum::CUSTOMER, EmailVerifyEventEnum::PASSWORD_RESTORE);
+    }
+
+    public function logout(UserRestoreRequest $request): void
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
     }
 }

@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers\Users;
 
-use App\Enums\UserTypesEnum;
+use App\Factories\Users\EmailVerifyEventStrategyStaticFactory;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EmailVerifyCheckRequest;
 use App\Http\Requests\EmailVerifyStoreRequest;
-use App\Models\Users\CustomerUser;
-use App\Models\Users\MerchantUser;
 use App\Models\Users\UserEmailVerify;
 use Illuminate\Http\JsonResponse;
 
@@ -17,19 +15,14 @@ class UserEmailVerifyController extends Controller
     {
         $email = $request->input('email');
         $userType = (int)$request->input('user_type');
-        $model = new CustomerUser();
+        $eventType = (int)$request->input('event_type');
 
-        if ($userType === UserTypesEnum::MERCHANT->value) {
-            $model = new MerchantUser();
-        }
-
-        $alreadyRegistered = $model::where('email', $email)->exists();
-
-        if (!$alreadyRegistered) {
+        if (EmailVerifyEventStrategyStaticFactory::getStrategyByEventType($eventType)->getAccess($email, $userType)) {
             UserEmailVerify::create([
                 'email' => $email,
                 'user_type' => $userType,
                 'code' => rand(100000, 999999),
+                'event_type' => $eventType
             ]);
 
             return response()->json(null, 201);
@@ -43,10 +36,12 @@ class UserEmailVerifyController extends Controller
         $email = $request->input('email');
         $userType = (int)$request->input('user_type');
         $code = (int)$request->input('code');
+        $eventType = (int)$request->input('event_type');
 
         $verification = UserEmailVerify::where('email', $email)
             ->where('user_type', $userType)
             ->where('code', $code)
+            ->where('event_type', $eventType)
             ->where('verified', false)
             ->first();
 

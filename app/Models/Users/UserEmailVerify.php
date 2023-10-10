@@ -10,14 +10,15 @@ class UserEmailVerify extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['email', 'user_type', 'code', 'verified'];
+    protected $fillable = ['email', 'user_type', 'code', 'verified', 'event_type'];
 
-    public function checkEmailVerified(string $email, int $userType): bool
+    public function checkEmailVerified(string $email, int $userType, int $eventType): bool
     {
         return UserEmailVerify::where('email', $email)
             ->where('user_type', $userType)
             ->where('verified', true)
-            ->where('created_at', '>=', Carbon::now()->subMinutes(30))
+            ->where('event_type', $eventType)
+            ->where('created_at', '>=', Carbon::now()->subMinutes())
             ->exists();
     }
 }

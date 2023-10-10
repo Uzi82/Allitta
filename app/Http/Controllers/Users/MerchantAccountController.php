@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers\Users;
 
+use App\Enums\EmailVerifyEventEnum;
 use App\Enums\UserTypesEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserLoginRequest;
 use App\Http\Requests\UserRegisterRequest;
+use App\Http\Requests\UserRestoreRequest;
 use App\Models\Users\MerchantUser;
 use App\Services\Users\UsersAccountService;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class MerchantAccountController extends Controller
@@ -33,7 +36,7 @@ class MerchantAccountController extends Controller
             'zip_code' => $request->input('zip_code')],
         );
 
-        (new UsersAccountService())->register($user, UserTypesEnum::MERCHANT);
+        (new UsersAccountService())->register($user, UserTypesEnum::MERCHANT, EmailVerifyEventEnum::REGISTRATION);
 
         return response()->json(null, 201);
     }
@@ -53,5 +56,12 @@ class MerchantAccountController extends Controller
         }
 
         $request->session()->regenerate();
+    }
+
+    public function restore(UserRestoreRequest $request): void
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
     }
 }

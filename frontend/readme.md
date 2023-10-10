@@ -148,12 +148,42 @@
 
 #### Аутентификация мерчанта:
 
-    URL: POST http://localhost/api/users/customer/login
+    URL: POST http://localhost/api/users/merchant/login
     Обязательные поля тела запроса:
         - email: {string}
         - password: {string min: 6 max:100}
 
     Ответ: пустое тело, код 200 OK
+
+#### Смена пароля кастомера:
+
+    URL: POST http://localhost/api/users/customer/restore
+    Обязательные поля тела запроса:
+        - email: {string}
+        - password: {string min: 6 max:100}
+
+    Ответ: пустое тело, код 200 OK
+
+#### Смена пароля мерчанта:
+
+    URL: POST http://localhost/api/users/merchant/restore
+    Обязательные поля тела запроса:
+        - email: {string}
+        - password: {string min: 6 max:100}
+
+    Ответ: пустое тело, код 200 OK
+
+#### Выход из аккаунта кастомера:
+
+    URL: GET http://localhost/api/users/customer/logout
+  
+    Ответ: пустое тело, 401 Unauthorized
+
+#### Выход из аккаунта мерчанта:
+
+    URL: GET http://localhost/api/users/merchant/logout
+   
+    Ответ: пустое тело, код 401 Unauthorized
 
 #### Подписка на email рассылку:
 
@@ -169,6 +199,7 @@
     Обязательные поля тела запроса:
         - email: {string}
         - user_type: {int} (2 - customer, 3 - merchant)
+        - event_type: {int} (1 - registration, 2 - password restore)
 
     Ответ: пустое тело, код 201 Created
 
@@ -179,5 +210,6 @@
         - email: {string}
         - user_type: {int} (2 - customer, 3 - merchant)
         - code: {int} (от 100000 до 999999) *универсальное значение для прохождения тестирования - 100000
+        - event_type: {int} (1 - registration, 2 - password restore)
 
     Ответ: пустое тело, код 200 OK

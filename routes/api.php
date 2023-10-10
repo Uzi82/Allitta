@@ -58,11 +58,17 @@ Route::prefix('users')->group(function () {
     Route::prefix('customer')->group(function () {
         Route::post('register', [CustomerAccountController::class, 'register']);
         Route::post('login', [CustomerAccountController::class, 'login']);
+        Route::post('restore', [CustomerAccountController::class, 'restore']);
+
+        Route::get('logout', [CustomerAccountController::class, 'logout'])->middleware('auth:customer');
     });
 
     Route::prefix('merchant')->group(function () {
         Route::post('register', [MerchantAccountController::class, 'register']);
         Route::post('login', [MerchantAccountController::class, 'login']);
+        Route::post('restore', [MerchantAccountController::class, 'restore']);
+
+        Route::get('logout', [MerchantAccountController::class, 'logout'])->middleware('auth:merchant');
     });
 });
 
