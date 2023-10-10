@@ -38,12 +38,50 @@ export const ProductAvatar = styled.div`
         max-width: 300px;
     }
 `
-export const AccountAvatar = styled.div`
+export const AccountLeft = styled.div`
     display: flex;
     flex-direction: column;
     max-width: 250px;
     align-items: start;
-    margin: 0 0 0 0;
+    width: 100%;
+    @media screen and (max-width: 767px) {
+        flex-direction: row;
+        max-width: none;
+        justify-content: space-evenly;
+        gap: 16px;
+        flex-wrap: wrap;
+    }
+`
+export const Shops = styled.div`
+    display: flex;
+    width: 100%;
+    padding: 20px 14px;
+    flex-direction: column;
+    border-radius: 10px;
+    background: #FBF9F9;
+    max-width: 250px;
+    gap: 10px;
+    height: 100%;
+    min-height: 500px;
+    box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.10) inset;
+    @media screen and (max-width: 767px) {
+        min-height: 300px;
+    }
+`
+export const Shop = styled.div`
+    font-family: Inter-regular;
+    font-size: 14px;
+    border-radius: 10px;
+    background: #FFF;
+    padding: 20px 16px;
+    box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.10);
+    transition: background 0.2s ease-in-out, border 0.2s ease-in-out;
+    cursor: pointer;
+    border: #fff 1px solid;
+    &:hover {
+        border: #5D20D6 1px solid;
+        color: #5D20D6;
+    }
     @media screen and (max-width: 767px) {
         max-width: 300px;
     }
@@ -68,16 +106,18 @@ export const RatingStarsStyled = styled.div`
     display: flex;
     gap: 12px;
 `
-export const Avatar = styled.img`
-    width: 250px;
+export const Avatar = styled.img<MarginBottom>`
+    max-width: 250px;
     height: 250px;
     flex-shrink: 0;
     border-radius: 10px;
     background: #D9D9D9;
-    margin: 0 0 20px 0;
+    margin: 0 0 ${({ $mb }) => $mb || 0} 0;
+    width: 100%;
 `
 export const ButtonRight = styled(Button)`
     margin-left: auto;
+    margin-top: auto;
     @media screen and (max-width: 767px) {
         width: 100%;
         max-width: 250px;
@@ -99,6 +139,9 @@ export const Subtitle = styled.h2<MarginBottom>`
     color: #000;
     font-family: Inter-bold;
     font-size: 20px;
+    @media screen and (max-width: 992px) {
+        font-size: 18px;
+    }
     @media screen and (max-width: 767px) {
         font-size: 16px;
     }
@@ -111,6 +154,18 @@ export const Name = styled.h5<MarginBottom>`
         font-size: 10px;
     }
 `
+export const Fullname = styled.h5<MarginBottom>`
+    margin: 0 0  ${({ $mb }) => $mb || 0} 0;
+    color: #000;
+    font-family: Inter-bold;
+    font-size: 20px;
+    @media screen and (max-width: 992px) {
+        font-size: 16px;
+    }
+    @media screen and (max-width: 767px) {
+        font-size: 14px;
+    }
+`
 export const Text = styled.p<TextStyles>`
     font-family: Inter-bold;
     font-size: 14px;
@@ -120,6 +175,18 @@ export const Text = styled.p<TextStyles>`
     @media screen and (max-width: 767px) {
         text-align: center;
         font-size: 14px;
+    }
+    @media screen and (max-width: 480px) {
+        font-size: 12px;
+    }
+`
+export const Veriified = styled.p<TextStyles>`
+    color: #28D764;
+    font-family: Inter-regular;
+    font-size: 14px;
+    margin: 0 0  ${({ $mb }) => $mb || 0} 0;
+    @media screen and (max-width: 767px) {
+        font-size: 12px;
     }
 `
 //<--- Complaints --->//
@@ -144,7 +211,6 @@ export const ComplaintsRow = styled.div`
     align-items: center;
     padding:15px;
     gap: 5px;
-
     @media screen and (max-width: 767px) {
         padding:10px;
         font-size: 12px;
@@ -175,14 +241,12 @@ export const ProductDescription = styled.ul`
     }
 `
 export const AccountDescription = styled.ul`
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    grid-column-gap: 16px;
-    grid-row-gap: 20px;
+    display: flex;
+    column-gap: 16px;
+    row-gap: 20px;
     list-style: none;
     width: 100%;
-    align-items: center;
+    margin: 0 0 20px 0;
     @media screen and (max-width: 767px) {
         justify-items: center;
     }
@@ -191,6 +255,7 @@ export const DescriptionItem = styled.li`
     display: flex;
     flex-direction: column;
     gap: 5px;
+    align-items: start;
 `
 export const DescriptionSelectItem = styled(DescriptionItem)`
     grid-area: 4 / 2 / 5 / 3; 
@@ -243,4 +308,19 @@ export const SentDate = styled.div`
     @media screen and (max-width: 480px) {
         display: none;
     }
+`
+export const LeftAccDesc = styled.div`
+    flex: 1 1 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    @media screen and (max-width: 767px) {
+        justify-items: center;
+    }
+`
+export const RightAccDesc = styled.div`
+    flex: 1 1 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 `
