@@ -84,7 +84,7 @@ export const ImgInput = styled.input<{ $bg: string | ArrayBuffer | null }>`
     background-repeat: no-repeat;
     font-size: 0px;
     content-visibility: hidden;
-    @media screen and (max-width: 1023px) {
+    @media screen and (max-width: 1023px) and (min-width: 767px) {
         width: 182px;
         height: 182px;
     }

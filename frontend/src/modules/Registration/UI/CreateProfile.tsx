@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex, Select, Subtitle, Title, FormWrapper } from './styled'
+import { Flex, FormWrapper, Select, Subtitle, Title } from './styled'
 import { Input } from '../../../UI/Input'
 import { onError, useProfileForm } from '../models/utils'
 import { Button } from '../../../UI/Button'
@@ -14,9 +14,12 @@ export const CreateProfile: React.FC = () => {
     const navigate = useNavigate()
     const onSubmit: SubmitHandler<ICreateProfile> = async (data) => {
         try {
-            const response = await axios.post('http://localhost/api/users/customer/register', { params: { email, password, ...data } });
-            console.log(response)
-            navigate('/signup/profile/photo')
+            await axios.get('http://localhost/api/sanctum/csrf-cookie');
+            const response = await axios.post('http://localhost/api/users/customer/register', {
+                email,
+                password, ...data
+            });
+            if (response.status === 200) navigate('/signup/profile/photo')
         } catch (error) {
             console.error('Error:', error);
         }

@@ -7,7 +7,7 @@ import { El,
          Stars 
 } from "./styled"
 
-export const Element: React.FC<feedBack> = ({ name, text, stars}) => {
+export const Element: React.FC<feedBack> = ({ name, text, stars }) => {
     return(
         <El>
             <ElText>
@@ -24,7 +24,7 @@ export const Element: React.FC<feedBack> = ({ name, text, stars}) => {
             </ElText>
             <Stars>
                 {
-                    makeStars(stars).map(el=><Star $active={el} />).reverse()
+                    makeStars(stars).map((el, index)=><Star key={index} $active={el} />).reverse()
                 }
             </Stars>
         </El>
