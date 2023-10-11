@@ -14,8 +14,6 @@ return new class extends Migration {
     {
         Schema::create('product_orders', function (Blueprint $table) {
             $table->id();
-
-            // TODO Add a foreign key when I create the customer table
             $table->integer('user_id');
             $table->foreignId('shop_id')->constrained('shops');
             $table->smallInteger('status')->default(ProductOrderStatusEnum::NEW->value);

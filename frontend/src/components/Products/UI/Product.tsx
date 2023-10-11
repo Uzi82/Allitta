@@ -4,6 +4,7 @@ import { type Product as ProductType,
          setType,
          useAppDispatch,
          useAppSelector,
+         setName,
 } from '../'
 import { Product, 
          ProductEl, 
@@ -51,7 +52,7 @@ export const ProductComponent: React.FC<{ el: ProductType }> = ({ el }) => {
                     <ToolTipBtn onClick={()=>{dispatch(setType('edit')); changeActive(); dispatch(open())}}>
                         Edit
                     </ToolTipBtn>
-                    <ToolTipBtn onClick={()=>{dispatch(setType('feedbacks')); changeActive(); dispatch(open())}}>
+                    <ToolTipBtn onClick={()=>{dispatch(setType('feedbacks')); changeActive(); dispatch(open()); dispatch(setName(el.name))}}>
                         Feedbacks
                     </ToolTipBtn>
                 </ToolTip>

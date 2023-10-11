@@ -1,11 +1,13 @@
 import { useNavigate } from "react-router-dom"
-import { Logo, Props, lowerCase, navElements } from "../"
-import { Container, Navigation, Element, Img } from "./styled"
+import { Logo, Props, lowerCase, navElements, useAppSelector } from "../"
+import { Container, Navigation, Element, Img, Profile, ProfileHead, LogoutBtn, LogoutImg, LogoutText } from "./styled"
+import { User } from "./User"
 
 export const DashboardNav: React.FC<Props> = ({ active = 'Dashboard'}) => {
     const navigate = useNavigate()
+    const opened = useAppSelector(state=>state.shopMenuBurger.opened)
     return(
-        <Container>
+        <Container $active={opened}>
             <Logo color="#5D20D6">ALLITTA</Logo>
             <Navigation>
                 {
@@ -19,6 +21,18 @@ export const DashboardNav: React.FC<Props> = ({ active = 'Dashboard'}) => {
                     })
                 }
             </Navigation>
+            <Profile>
+                <ProfileHead>
+                    Profile
+                </ProfileHead>
+                <User name="Admin" status="Admin" />
+                <LogoutBtn>
+                    <LogoutImg />
+                    <LogoutText>
+                        Logout
+                    </LogoutText>
+                </LogoutBtn>
+            </Profile>
         </Container>
     )
 }

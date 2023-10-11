@@ -14,9 +14,6 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('order_id')->constrained('product_orders');
             $table->foreignId('product_id')->constrained('products');
-
-            // TODO Add a foreign key when I create the customer table
-            $table->integer('user_id');
             $table->integer('quantity');
             $table->float('cost');
             $table->timestamps();

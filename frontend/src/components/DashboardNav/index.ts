@@ -1,5 +1,6 @@
 export { Logo } from '../Header'
 export { DashboardNav } from './UI'
-export type { navEl, Props } from './models/types'
+export type { navEl, Props, UserProps } from './models/types'
 export { navElements } from './models/navElements'
 export { lowerCase } from './models/lowerCase'
+export { useAppSelector } from '../../hooks/reduxHooks'

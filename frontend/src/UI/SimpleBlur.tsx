@@ -5,10 +5,11 @@ const Bg = styled.div<{ $active: boolean }>`
     position: absolute;
     left: 0;
     top: 0;
+    z-index: 9999999999999999;
     align-items: center;
     justify-content: center;
     width: 100vw;
-    min-height: 100vh;
+    min-height: 100%;
     backdrop-filter: blur(10px);
     animation-name: appear;
     animation-duration: 300ms;
@@ -34,6 +35,9 @@ const Content = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    @media screen and (max-width: 1120px) {
+        width: 100%;
+    }
 `
 
 type Props = {

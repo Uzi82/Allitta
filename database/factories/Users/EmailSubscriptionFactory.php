@@ -2,11 +2,11 @@
 
 namespace Database\Factories\Users;
 
-use App\Models\Users\ShopUser;
+use App\Models\Users\MerchantUser;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<ShopUser>
+ * @extends Factory<MerchantUser>
  */
 class EmailSubscriptionFactory extends Factory
 {

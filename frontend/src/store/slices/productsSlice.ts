@@ -3,13 +3,15 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 type initialType = {
     type: string,
     opened: boolean,
-    editId: string
+    id: string,
+    name: string
 }
 
 const initialState: initialType = {
     type: 'addProduct',
     opened: false,
-    editId: ''
+    id: '',
+    name: ''
 }
 
 const productsSlice = createSlice({
@@ -21,9 +23,21 @@ const productsSlice = createSlice({
         },
         setType(state, action: PayloadAction<string>) {
             state.type = action.payload
+        },
+        setId(state, action: PayloadAction<string>) {
+            state.id = action.payload
+        },
+        setName(state, action: PayloadAction<string>) {
+            state.name = action.payload
+        },
+        openModal(state, action: PayloadAction<{ type?: string, id: string, name?: string }>) {
+            if(action.payload.type !== undefined )state.type = action.payload.type
+            if(action.payload.name !== undefined )state.name = action.payload.name
+            state.id = action.payload.id
+            state.opened = true
         }
     }
 })
 
 export default productsSlice.reducer
-export const { open, setType } = productsSlice.actions
+export const { open, setType, setId, setName, openModal } = productsSlice.actions

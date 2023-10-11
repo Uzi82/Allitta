@@ -4,8 +4,7 @@ import { Cancel,
          CheckBoxText, 
          CheckBoxes, 
          Container, 
-         Delete, 
-         Exit, 
+         Delete,
          Filter, 
          Filters, 
          Form, 
@@ -31,6 +30,7 @@ import {
          option,
          getCategories,
          categories,
+         Exit, 
          sendEditForm
 } from '../'
 import { useState } from "react"
@@ -81,6 +81,7 @@ export const EditProdModal: React.FC<Props> = ({ id }) => {
     }
     return(
         <Container>
+            <Exit onClick={()=>dispatch(open())} />
             <Head>
                 <ToastContainer
                     position="top-center"
@@ -97,7 +98,6 @@ export const EditProdModal: React.FC<Props> = ({ id }) => {
                 <Title>
                     Edit Product
                 </Title>
-                <Exit onClick={()=>dispatch(open())} />
             </Head>
             <Form onSubmit={handleSubmit(onSubmit, onError)}>
                 <LeftSide>

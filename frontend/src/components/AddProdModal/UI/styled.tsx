@@ -7,6 +7,7 @@ export const Container = styled.div`
     flex-direction: column;
     gap: 40px;
     padding: 40px 50px;
+    position: relative;
 `
 
 export const Head = styled.div`
@@ -19,15 +20,6 @@ export const Head = styled.div`
             width: 100%;
         }   
     }
-`
-
-export const Exit = styled.button`
-    cursor: pointer;
-    width: 25px;
-    position: absolute;
-    background-color: inherit;
-    height: 25px;
-    background-image: url(${require('./Exit.png')});
 `
 
 export const Title = styled.h1`
@@ -84,7 +76,7 @@ export const ImgInput = styled.input<{ $bg: string | ArrayBuffer | null }>`
     background-repeat: no-repeat;
     font-size: 0px;
     content-visibility: hidden;
-    @media screen and (max-width: 1023px) {
+    @media screen and (max-width: 1023px) and (min-width: 767px) {
         width: 182px;
         height: 182px;
     }

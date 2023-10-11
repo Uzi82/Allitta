@@ -25,7 +25,6 @@ class ProductOrderItemsSeeder extends Seeder
                     [
                         'order_id' => $order->id,
                         'product_id' => $product->id,
-                        'user_id' => rand(1, 100000),
                         'quantity' => $quantity,
                         'cost' => $product->cost
                     ]

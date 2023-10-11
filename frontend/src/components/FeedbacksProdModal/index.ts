@@ -1,0 +1,8 @@
+export { FeedbacksProdModal } from './UI'
+export type { Props, feedBacks, feedBack } from './models/types'
+export { getFeedbacks } from './models/getFeedbacks'
+export { makeStars } from './models/makeStars'
+export { useAppDispatch } from '../../hooks/reduxHooks'
+export { open } from '../../store/slices/productsSlice'
+export { sendFeedbacks } from './models/sendFeedbacks'
+export { Exit } from '../../UI/ExitModal'
