@@ -6,6 +6,7 @@ export const Content = styled.div`
     flex-direction: column;
     gap: 20px;
     padding: 40px 50px;
+    position: relative;
     @media screen and (max-width: 767px) {
         padding: 20px;
     }
@@ -81,21 +82,6 @@ export const InfoName = styled.h1`
     }
 `
 
-export const Exit = styled.button`
-    width: 25px;
-    height: 25px;
-    background-image: url(${require('./close.png')});
-    background-color: inherit;
-    background-position: center;
-    background-repeat: no-repeat;
-    cursor: pointer;
-    @media screen and (max-width: 767px) {
-        position: absolute;
-        right: 0;
-        top: 0;
-    }
-`
-
 export const Message = styled.div`
     display: flex;
     flex-direction: column;
@@ -150,7 +136,6 @@ export const Products = styled.div`
 `
 
 export const List = styled.div`
-    display: flex;
     display: flex;
     flex-direction: column;
     align-items: stretch;
