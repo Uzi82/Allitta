@@ -39,7 +39,7 @@ export const CreateLinkWrapper = styled.div<MarginBottom>`
     backdrop-filter: blur(20px);
     padding:5px;
     @media screen and (max-width: 830px) {
-        display: block;
+        flex-direction:column;
         width:100%;
     }
 `
@@ -59,6 +59,9 @@ export const CreateLink = styled.button<CreateLinkStyles>`
     transition: .2s ease color;
     &:hover {
         color: #FF9C00;
+    }
+    @media screen and (max-width: 830px) {
+        width:100%;
     }
 `
 export const Title = styled.h2<MarginBottom>`

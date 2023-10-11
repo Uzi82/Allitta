@@ -17,13 +17,13 @@ export interface ICreateProfile {
     first_name: string,
     last_name: string,
     full_name: string,
-    date: typeof Date,
+    birthday: typeof Date,
     gender: 'not-specified' | 'male' | 'female' | 'own-gender',
     nic: number,
-    phone: string,
-    address: string,
+    phone_number: string,
+    street: string,
     city: string,
-    zip: number,
+    zip_code: number,
 }
 export interface ICreateAccount {
     email: string,

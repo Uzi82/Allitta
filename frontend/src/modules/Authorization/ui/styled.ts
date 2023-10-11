@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { FormStyles, FormLinkStyles, MarginBottom } from "../models/types";
+import { FormStyles, FormLinkStyles, MarginBottom, CreateLinkStyles } from "../models/types";
 
 export const FormStyled = styled.form<FormStyles>`
     width: ${props => props.width || '100%'};
@@ -64,5 +64,41 @@ export const VerifyingActions = styled.div<FormLinkStyles>`
 export const Img = styled.img<MarginBottom>`
 margin-bottom: ${props => props.$mb || 0};
 `
-
+export const CreateLinkWrapper = styled.div<MarginBottom>`
+    display: flex;
+    align-items: center;
+    max-width:356px;
+    border-radius: 12px;
+    margin: 0 0 ${props => props.$mb || 0} 0;
+    background: rgba(243, 243, 243, 0.60);
+    box-shadow: 2px 4px 10px 0px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(20px);
+    padding:5px;
+    gap:5px;
+    @media screen and (max-width: 830px) {
+        flex-direction:column;
+        width:100%;
+    }
+`
+export const CreateLink = styled.button<CreateLinkStyles>`
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    flex-shrink: 0;
+    text-align:center;
+    border-radius: 10px;
+    cursor: pointer;
+    background: ${props => props.$active ? '#fff' : 'transparent'} ;
+    color: ${props => props.$active ? '#FF9C00' : '#000'} ;
+    font-family: Inter-regular;
+    font-size: 14px;
+    padding:14px 22px;
+    transition: .2s ease color;
+    &:hover {
+        color: #FF9C00;
+    }
+    @media screen and (max-width: 830px) {
+        width:100%;
+    }
+`
 

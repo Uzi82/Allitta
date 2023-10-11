@@ -1,11 +1,11 @@
 import React from 'react'
-import {CreateLink, CreateLinkWrapper, FormWrapper, Title} from './styled'
-import {Input} from '../../../UI/Input'
-import {onError, useAccountForm} from '../models/utils'
-import {Button} from '../../../UI/Button'
-import {SubmitHandler} from 'react-hook-form'
-import {AccountContext, ICreateAccount} from '../models/types'
-import {useNavigate, useOutletContext} from 'react-router-dom'
+import { CreateLink, CreateLinkWrapper, FormWrapper, Title } from './styled'
+import { Input } from '../../../UI/Input'
+import { onError, useAccountForm } from '../models/utils'
+import { Button } from '../../../UI/Button'
+import { SubmitHandler } from 'react-hook-form'
+import { AccountContext, ICreateAccount } from '../models/types'
+import { useNavigate, useOutletContext } from 'react-router-dom'
 import axios from 'axios'
 
 export const CreateAccount: React.FC = () => {
@@ -18,7 +18,7 @@ export const CreateAccount: React.FC = () => {
         console.log({ email: data.email, user_type: isShoper ? 3 : 2 })
         try {
             const response = await axios.post('http://localhost/api/users/email/verify', {
-                email: data.email, user_type: isShoper ? 3 : 2
+                params: { email: data.email, user_type: isShoper ? 3 : 2 }
             });
             console.log(response)
             navigate('/signup/verify')

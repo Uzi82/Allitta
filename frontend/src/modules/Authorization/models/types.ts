@@ -18,7 +18,10 @@ export type FormLinkStyles = {
     $mb?: string
     width?: string,
 }
-
+export type CreateLinkStyles = {
+    $mb?: string
+    $active?: boolean | undefined
+}
 // <--- Form  ---> //
 export interface ISignIn {
     email: string,
