@@ -2,13 +2,29 @@ import styled from "styled-components";
 import { Logo } from "./Logo";
 import { Link } from "react-router-dom";
 // <--- styled ---> // 
-const BackgroundBlurStyled = styled.div`
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    min-height: 100vh;
+const BackgroundBlurStyled = styled.div<BackgroungBlurStyles>`
+    display: ${props => props.$isShown ? 'flex' : 'none'};
+    align-items: center;
+    justify-content: center;
     background: #fff;
     backdrop-filter: blur(30px); 
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    min-height: 100vh;
+    backdrop-filter: blur(10px);
+    animation-name: appear;
+    animation-duration:500ms;
+    padding: 10px;
+    @keyframes appear {
+        0%{
+            opacity: 0
+        }
+        100%{
+            opacity: 1
+        }
+    }
 `
 const LogoWrapper = styled(Link)`
     position: absolute;
@@ -49,6 +65,7 @@ type Props = {
     circles?: boolean
     close?: boolean
     logo?: boolean
+    $isShown?: boolean
 }
 type SvgCircleProps = {
     width: string;
@@ -56,10 +73,13 @@ type SvgCircleProps = {
     $left: string,
     $top: string,
 }
+type BackgroungBlurStyles = {
+    $isShown?: boolean
+}
 // </--- types ---/> // 
-export const BackgroundBlur: React.FC<Props> = ({ children, circles, close, logo }) => {
+export const BackgroundBlur: React.FC<Props> = ({ children, circles, close, logo, $isShown }) => {
     return (
-        <BackgroundBlurStyled>
+        <BackgroundBlurStyled $isShown={$isShown} >
             {close ? <Link to='/'><StyledCloseSvg src="/svg/closeButton.svg" /></Link> : ''}
             {logo ? <LogoWrapper to='/'><Logo>ALLITTA</Logo></LogoWrapper> : ''}
             {children}
