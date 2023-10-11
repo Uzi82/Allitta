@@ -4,10 +4,12 @@ import { Props,
          makeStars,
          useAppDispatch,
          open,
-         sendFeedbacks
+         sendFeedbacks,
+         Exit
 } from "../"
-import { Buttons, Cancel, Content, 
-         Exit, 
+import { Buttons, 
+         Cancel, 
+         Content, 
          ExitStars, 
          Head, 
          List, 
@@ -28,6 +30,7 @@ export const FeedbacksProdModal: React.FC<Props> = ({ id, name }) => {
     if(isError) console.error('FeedBacks: Query error')
     return(
         <Content>
+            <Exit onClick={()=> dispatch(open())} />
             <Head>
                 <Title>
                     { name }
@@ -41,7 +44,6 @@ export const FeedbacksProdModal: React.FC<Props> = ({ id, name }) => {
                             }
                         </Stars>
                     </Overall>
-                    <Exit onClick={()=> dispatch(open())} />
                 </ExitStars>
             </Head>
             <List>

@@ -6,6 +6,7 @@ export const Content = styled.div`
     flex-direction: column;
     padding: 40px 50px;
     gap: 20px;
+    position: relative;
     @media screen and (max-width: 1023px) {
         gap: 10px;
     }
@@ -65,20 +66,6 @@ export const ExitStars = styled.div`
     }
     @media screen and (max-width: 767px) {
         gap: 3px;
-    }
-`
-
-export const Exit = styled.button`
-    width: 25px;
-    height: 25px;
-    cursor: pointer;
-    background-color: inherit;
-    background-size: 25px 25px;
-    background-image: url(${ require('./exit.png') });
-    @media screen and (max-width: 1023px) {
-        width: 10px;
-        height: 10px;
-        background-size: 10px 10px;
     }
 `
 

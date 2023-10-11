@@ -20,6 +20,9 @@ export const Customers = styled.div`
     flex-direction: column;
     gap: 20px;
     width: 1130px;
+    @media screen and (max-width: 1440px) {
+        width: 100%;
+    }
 `
 
 export const ListHead = styled.div`
@@ -29,6 +32,10 @@ export const ListHead = styled.div`
     width: calc(100% - 20px);
     justify-content: space-between;
     grid-template-columns: 15% 20% 15% 20% 12% 5%;
+    @media screen and (max-width: 767px) {
+        column-gap: 1px;
+        grid-template-columns: 18% 21% 15% 20% 14% 0;
+    }
 `
 
 export const ListHeadEl = styled.h1`
@@ -42,6 +49,12 @@ export const ListHeadEl = styled.h1`
     transition-duration: 300ms;
     &:hover {
         opacity: 1;
+    }
+    @media screen and (max-width: 1120px) {
+        font-size: 12px;
+    }
+    @media screen and (max-width: 767px) {
+        font-size: 10px;
     }
 `
 
@@ -63,6 +76,9 @@ export const List = styled.div`
         width: 8px;
         border-radius: 9px;
     }
+    @media screen and (max-width: 767px) {
+        max-height: 50vh;
+    }
 `
 
 export const Customer = styled.div`
@@ -78,6 +94,11 @@ export const Customer = styled.div`
     background: #FFF;
     min-height: 50px;
     box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.02);
+    @media screen and (max-width: 767px) {
+        column-gap: 1px;
+        grid-template-columns: 18% 21% 15% 20% 14% 0;
+        position: relative;
+    }
 `
 
 export const CustomerEl = styled.h1<{ $halfHidden?: boolean }>`
@@ -92,6 +113,15 @@ export const CustomerEl = styled.h1<{ $halfHidden?: boolean }>`
     &:hover {
         opacity: 1;
     }
+    @media screen and (max-width: 1120px) {
+        font-size: 12px;
+    }
+    @media screen and (max-width: 767px) {
+        font-size: 10px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 `
 
 export const Modal = styled.button`
@@ -102,4 +132,12 @@ export const Modal = styled.button`
     width: 100%;
     height: 100%;
     cursor: pointer;
+    @media screen and (max-width: 767px) {
+        position: absolute;
+        background: none;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+    }
 `

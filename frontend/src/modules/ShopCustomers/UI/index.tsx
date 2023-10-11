@@ -1,5 +1,5 @@
 import { useQuery } from "react-query"
-import { Search, getCustomers } from "../"
+import { CustomerInfoModal, Search, SimpleBlur, getCustomers, openModal, useAppDispatch, useAppSelector } from "../"
 import { Container,
          Customer,
          CustomerEl,
@@ -17,11 +17,13 @@ export const ShopCustomers: React.FC = () => {
     const { data, isFetching, isError } = useQuery(['ShopCustomers', { name }], () => getCustomers(name), {
         refetchOnWindowFocus: false
     })
+    const opened = useAppSelector(state => state.products.opened)
+    const dispatch = useAppDispatch()
     if(isError) console.error('ShopCustomers: Query error')
     return(
         <Container>
             <Head>
-                <Search placeholder="Search Customer" value={name} onChange={(e)=>setName(e.target.value)} />
+                <Search $fullOnMobile placeholder="Search Customer" onBlur={(e)=>setName(e.target.value)} />
             </Head>
             <Customers>
                 <ListHead>
@@ -65,11 +67,18 @@ export const ShopCustomers: React.FC = () => {
                                 <CustomerEl $halfHidden>
                                     { el.currency } { el.income.toFixed(2).toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1,') }
                                 </CustomerEl>
-                                <Modal />
+                                <Modal onClick={()=>dispatch(openModal({
+                                    type: 'customerInfo',
+                                    id: el.id,
+                                    name: el.name
+                                }))} />
                             </Customer>)
                     }
                 </List>
             </Customers>
+            <SimpleBlur active={opened}>
+                <CustomerInfoModal />
+            </SimpleBlur>
         </Container>
     )
 }
