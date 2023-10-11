@@ -8,6 +8,9 @@ import { Dashboard } from '../modules/Dashboard'
 import { CreateProfile, CreateAccount, ProfilePicture, Verification } from '../modules/Registration'
 import { ForgetPassword, ResetPassword, SignIn, VerifyingEmail } from '../modules/Authorization'
 import { ShopProducts } from '../modules/ShopProducts'
+import { AdminDashboardLayout } from './AdminDashboardLayout'
+import { AdminDashboard } from '../modules/AdminDashboard'
+import { AccountDetailed, ProductDetailed } from '../components/AdminDetailedItem'
 import { ShopOrders } from '../modules/ShopOrders'
 import { ShopCustomers } from '../modules/ShopCustomers'
 import { ShopPage } from './ShopPage'
@@ -46,6 +49,34 @@ export const publicRoutes = createBrowserRouter([
             {
                 path: '/signup/profile/photo',
                 element: <ProfilePicture />,
+            },
+        ]
+
+
+    },
+    {
+        path: '/admin',
+        element: <AdminDashboardLayout />,
+        children: [
+            {
+                path: '/admin/',
+                element: <Navigate to={'/admin/dashboard'} />
+            },
+            {
+                path: 'dashboard',
+                element: <AdminDashboard />
+            },
+            {
+                path: 'complaint',
+                element: <></>,
+            },
+            {
+                path: 'accounts',
+                element: <AccountDetailed></AccountDetailed>,
+            },
+            {
+                path: 'products',
+                element: <ProductDetailed>products</ProductDetailed>
             },
         ]
 

@@ -13,7 +13,7 @@ export const RegistrationLayout: React.FC = () => {
     const [isVerifyPassed, setIsVerifyPassed] = useState<0 | 1 | 2>(0) // 0 = not yet, 1 = passed with success, 2 = passed with fail
 
     return (
-        <BackgroundBlur circles close logo >
+        <BackgroundBlur $isShown circles close logo >
             {isVerifyPassed ?
                 <SignUpPopup {...{ isVerifyPassed, setIsVerifyPassed }} />
                 :
