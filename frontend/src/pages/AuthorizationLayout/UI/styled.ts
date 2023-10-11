@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
 `
 
 export const LeftContent = styled.div`
-    flex: 1 0 45%;
+    flex: 1 0 48%;
     display: flex;
     flex-direction: column;
     align-items:center;

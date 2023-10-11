@@ -1,14 +1,27 @@
 import React from 'react'
 import { FormStyled, FormLink, Subtitle, Title } from './styled'
 import { Input } from '../../../UI/Input'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate, useOutletContext } from 'react-router-dom'
 import { Button } from '../../../UI/Button'
 import { CustomLink } from '../../../UI/CustomLink'
-import { onError, onSubmit, useSignInForm } from '../models/utils'
+import { onError, useSignInForm } from '../models/utils'
+import { SubmitHandler } from 'react-hook-form'
+import { ISignIn, SignInContext } from '../models/types'
+import axios from 'axios'
 
 const SignIn: React.FC = () => {
-    const { handleSubmit, registerInput } = useSignInForm()
+    const { isShoper } = useOutletContext<SignInContext>()
+    const navigate = useNavigate()
 
+    const { handleSubmit, registerInput } = useSignInForm()
+    const onSubmit: SubmitHandler<ISignIn> = async (data) => {
+        try {
+            await axios.post(`http://localhost/api/users/${isShoper ? 'merchant' : 'customer'}/login`, { params: { email: data.email, password: data.password } });
+            navigate('/')
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
     return (
         <FormStyled onSubmit={handleSubmit(onSubmit, onError)} $maxwidth='388px' autoComplete='off'>
             <Title $mb='20px'>Sign In</Title>
