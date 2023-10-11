@@ -1,5 +1,13 @@
 import { useQuery } from "react-query"
-import { CustomerInfoModal, Search, SimpleBlur, getCustomers, openModal, useAppDispatch, useAppSelector } from "../"
+import { CustomerInfoModal, 
+         ListLinkBtn, 
+         Search, 
+         SimpleBlur, 
+         getCustomers, 
+         openModal, 
+         useAppDispatch, 
+         useAppSelector 
+} from "../"
 import { Container,
          Customer,
          CustomerEl,
@@ -7,8 +15,7 @@ import { Container,
          Head, 
          List, 
          ListHead,
-         ListHeadEl,
-         Modal
+         ListHeadEl
 } from "./styled"
 import { useState } from "react"
 
@@ -67,7 +74,7 @@ export const ShopCustomers: React.FC = () => {
                                 <CustomerEl $halfHidden>
                                     { el.currency } { el.income.toFixed(2).toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1,') }
                                 </CustomerEl>
-                                <Modal onClick={()=>dispatch(openModal({
+                                <ListLinkBtn onClick={()=>dispatch(openModal({
                                     type: 'customerInfo',
                                     id: el.id,
                                     name: el.name

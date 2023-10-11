@@ -123,21 +123,3 @@ export const CustomerEl = styled.h1<{ $halfHidden?: boolean }>`
         text-overflow: ellipsis;
     }
 `
-
-export const Modal = styled.button`
-    background-image: url(${require('./btn.png')});
-    background-color: inherit;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-    @media screen and (max-width: 767px) {
-        position: absolute;
-        background: none;
-        width: 100%;
-        height: 100%;
-        left: 0;
-        top: 0;
-    }
-`

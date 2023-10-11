@@ -62,6 +62,7 @@ export const HeadEl = styled.div`
 export const Product = styled.div`
     display: grid;
     align-items: center;
+    position: relative;
     border-radius: 10px;
     border: 1px solid rgba(0, 0, 0, 0.06);
     background: #FFF;
@@ -143,21 +144,12 @@ export const ProductBtnContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-`
-
-export const ProductBtn = styled.div`
-    width: 10px;
-    height: 10px;
-    cursor: pointer;
-    margin: auto 0;
-    background-image: url(${require('./Vector.png')});
-    background-position: center;
-    background-repeat: no-repeat;
-    @media screen and (max-width: 766px) {
-        width: 5px;
-        height: 8px;
-        background-size: 5px 8px;
-        margin: 5px;
+    @media screen and (max-width: 767px) {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;   
+        height: 100%;
     }
 `
 
