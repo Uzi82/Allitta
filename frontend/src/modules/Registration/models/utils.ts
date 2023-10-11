@@ -7,14 +7,15 @@ import React from "react";
 
 // <--- Validation Functions  ---> //
 const validateInput = (which: keyof ICreateAccount | keyof ICreateProfile | keyof IVerification) => {
-    if (which === 'first_name' || which === 'last_name' || which === 'full_name') return { required: 'required', minLength: 2, maxLength: 45 }
-    if (which === 'nic') return { required: 'required', maxLength: 13, minLength: 7, }
-    if (which === 'address') return { required: 'required', minLength: 4, maxLength: 60, }
-    if (which === 'phone') return { required: 'required', maxLength: 17, minLength: 17, }
-    if (which === 'city') return { required: 'required', pattern: /^[a-zA-Z]+(?:(?:\\s+|-)[a-zA-Z]+)*$/ }
-    if (which === 'zip') return { required: 'required', pattern: /^[0-9]{5}(?:-[0-9]{4})?$/ }
+    if (which === 'first_name' || which === 'last_name') return { required: 'required', minLength: 2, maxLength: 25 }
+    if (which === 'full_name') return { required: 'required', minLength: 4, maxLength: 50 }
     if (which === 'email') return { required: 'required', pattern: /^[\w-]+@([\w-]+\.)+[\w-]{2,4}$/ }
-    if (which === 'password') return { required: 'required', minLength: 4, maxLength: 30, }
+    if (which === 'password') return { required: 'required', minLength: 6, maxLength: 100, }
+    if (which === 'nic') return { required: 'required', maxLength: 13, minLength: 7, }
+    if (which === 'street') return { required: 'required', minLength: 4, maxLength: 100, }
+    if (which === 'phone_number') return { required: 'required', maxLength: 17, minLength: 17, }
+    if (which === 'city') return { required: 'required', maxLength: 25 }
+    if (which === 'zip_code') return { required: 'required', maxLength: 50 }
     if (which === 'verification') return { required: 'required', maxLength: 6, minLength: 6 }
     return { required: 'required' }
 }
@@ -87,7 +88,7 @@ export const useProfileForm = () => {
         ...register(name, validateInput(name)),
     })
 
-    const telInput = watch('phone')
+    const telInput = watch('phone_number')
 
     React.useEffect(() => {
         if (telInput) {
@@ -107,7 +108,7 @@ export const useProfileForm = () => {
             if (telValue.length >= 18) {
                 telValue = telValue.slice(0, 17);
             }
-            setValue('phone', telValue)
+            setValue('phone_number', telValue)
         }
     }, [telInput, setValue])
 

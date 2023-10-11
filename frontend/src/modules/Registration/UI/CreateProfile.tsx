@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex, FormWrapper, Select, Subtitle, Title } from './styled'
+import { Flex, Select, Subtitle, Title, FormWrapper } from './styled'
 import { Input } from '../../../UI/Input'
 import { onError, useProfileForm } from '../models/utils'
 import { Button } from '../../../UI/Button'
@@ -13,13 +13,11 @@ export const CreateProfile: React.FC = () => {
     const { email, password, isShoper } = useOutletContext<AccountContext>()
     const navigate = useNavigate()
     const onSubmit: SubmitHandler<ICreateProfile> = async (data) => {
+        console.log({ email, password, ...data })
         try {
-            await axios.get('http://localhost/api/sanctum/csrf-cookie');
-            const response = await axios.post('http://localhost/api/users/customer/register', {
-                email,
-                password, ...data
-            });
-            if (response.status === 200) navigate('/signup/profile/photo')
+            const response = await axios.post('http://localhost/api/users/customer/register', { params: { email, password, ...data } });
+            console.log(response)
+            navigate('/signup/profile/photo')
         } catch (error) {
             console.error('Error:', error);
         }
@@ -34,7 +32,7 @@ export const CreateProfile: React.FC = () => {
             </Flex>
             <Input placeholder='Full name' type='text' {...registerInput('full_name')} />
             <Flex >
-                <Input placeholder='Birthday (DD/MM/YYYY)' type='date' {...registerInput('date')} />
+                <Input placeholder='Birthday (DD/MM/YYYY)' type='date' {...registerInput('birthday')} />
                 <Select placeholder='Gender'{...registerInput('gender')} >
                     <option value="1">Male</option>
                     <option value="2">Female</option>
@@ -42,13 +40,13 @@ export const CreateProfile: React.FC = () => {
             </Flex>
             <Flex $mb='10px'>
                 {isShoper && <Input placeholder='NIC Number' type='number' {...registerInput('nic')} />}
-                <Input placeholder='Mobile Number' type='tel' {...registerInput('phone')} />
+                <Input placeholder='Mobile Number' type='tel' {...registerInput('phone_number')} />
             </Flex>
             <Subtitle >Home Address</Subtitle>
-            <Input placeholder='Street Address' {...registerInput('address')} />
+            <Input placeholder='Street Address' {...registerInput('street')} />
             <Flex $mb='20px'>
                 <Input placeholder='City' type='text'{...registerInput('city')} />
-                <Input placeholder='Zip Code' {...registerInput('zip')} />
+                <Input placeholder='Zip Code' {...registerInput('zip_code')} />
             </Flex>
             <Button type='submit' br='10px'>Continue</Button>
         </FormWrapper>
