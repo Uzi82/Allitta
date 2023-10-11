@@ -2,10 +2,21 @@ import React from 'react'
 import { FormStyled, FormLink, Subtitle, Title, VerifyingActions } from './styled'
 import { Input } from '../../../UI/Input'
 import { Button } from '../../../UI/Button'
-import { onError, onSubmit, useVerificationForm } from '../models/utils'
+import { onError, useVerificationForm } from '../models/utils'
+import { SubmitHandler } from 'react-hook-form'
+import { IVerification } from '../models/types'
+import axios from 'axios'
 
 const VerifyingEmail: React.FC = () => {
     const { handleSubmit, registerInput } = useVerificationForm()
+
+    const onSubmit: SubmitHandler<IVerification> = async (data) => {
+        // try {
+        //     await axios.post(`http://localhost/api/users/email/verify/check`, { params: { email: data.email, code: data.verification, user_type: isShoper ? 3 : 2, event_type: 2 } });
+        // } catch (error) {
+        //     console.error('Error:', error);
+        // }
+    };
 
     return (
         <FormStyled onSubmit={handleSubmit(onSubmit, onError)} $maxwidth='388px'>

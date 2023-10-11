@@ -41,3 +41,13 @@ export type FormErrors<T> = {
     [key: string]: FieldError | T;
 };
 // </--- Form  ---/> //
+export type SignInContext = {
+    email: string | undefined,
+    setEmail: React.Dispatch<React.SetStateAction<string | undefined>>,
+    password: string | undefined,
+    setPassword: React.Dispatch<React.SetStateAction<string | undefined>>,
+    isShoper: boolean | undefined,
+    setIsShoper: React.Dispatch<React.SetStateAction<boolean | undefined>>,
+    isSuccess: 0 | 1 | 2,
+    setIsSuccess: React.Dispatch<React.SetStateAction<0 | 1 | 2>>,
+}

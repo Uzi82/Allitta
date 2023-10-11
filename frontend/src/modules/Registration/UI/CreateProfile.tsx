@@ -15,8 +15,7 @@ export const CreateProfile: React.FC = () => {
     const onSubmit: SubmitHandler<ICreateProfile> = async (data) => {
         console.log({ email, password, ...data })
         try {
-            const response = await axios.post('http://localhost/api/users/customer/register', { params: { email, password, ...data } });
-            console.log(response)
+            await axios.post(`http://localhost/api/users/${isShoper ? 'merchant' : 'customer'}/register`, { params: { email, password, ...data } });
             navigate('/signup/profile/photo')
         } catch (error) {
             console.error('Error:', error);
