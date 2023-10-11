@@ -7,7 +7,10 @@ use App\Http\Controllers\Recommendations\ProductsCategoriesRecommendationsContro
 use App\Http\Controllers\Recommendations\ProductsRecommendationsController;
 use App\Http\Controllers\Recommendations\ShopsRecommendationsController;
 use App\Http\Controllers\Shops\ShopsController;
+use App\Http\Controllers\Users\CustomerAccountController;
+use App\Http\Controllers\Users\MerchantAccountController;
 use App\Http\Controllers\Users\UserEmailDistributionController;
+use App\Http\Controllers\Users\UserEmailVerifyController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,8 +49,26 @@ Route::prefix('shops')->group(function () {
 });
 
 Route::prefix('users')->group(function () {
-    Route::prefix('email/distribution')->group(function () {
-        Route::post('subscribe', [UserEmailDistributionController::class, 'store']);
+    Route::prefix('email')->group(function () {
+        Route::post('distribution/subscribe', [UserEmailDistributionController::class, 'store']);
+        Route::post('verify', [UserEmailVerifyController::class, 'store']);
+        Route::get('verify/check', [UserEmailVerifyController::class, 'check']);
+    });
+
+    Route::prefix('customer')->group(function () {
+        Route::post('register', [CustomerAccountController::class, 'register']);
+        Route::post('login', [CustomerAccountController::class, 'login']);
+        Route::post('restore', [CustomerAccountController::class, 'restore']);
+
+        Route::get('logout', [CustomerAccountController::class, 'logout'])->middleware('auth:customer');
+    });
+
+    Route::prefix('merchant')->group(function () {
+        Route::post('register', [MerchantAccountController::class, 'register']);
+        Route::post('login', [MerchantAccountController::class, 'login']);
+        Route::post('restore', [MerchantAccountController::class, 'restore']);
+
+        Route::get('logout', [MerchantAccountController::class, 'logout'])->middleware('auth:merchant');
     });
 });
 

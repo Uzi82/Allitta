@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\Users\CustomerUser;
+use App\Models\Users\MerchantUser;
+
 return [
 
     /*
@@ -14,7 +17,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
+        'guard' => 'customer',
         'passwords' => 'users',
     ],
 
@@ -36,9 +39,13 @@ return [
     */
 
     'guards' => [
-        'web' => [
+        'customer' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'customer',
+        ],
+        'merchant' => [
+            'driver' => 'session',
+            'provider' => 'merchant',
         ],
     ],
 
@@ -60,9 +67,13 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'customer' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => CustomerUser::class,
+        ],
+        'merchant' => [
+            'driver' => 'eloquent',
+            'model' => MerchantUser::class,
         ],
 
         // 'users' => [

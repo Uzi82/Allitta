@@ -10,6 +10,7 @@ import { ForgetPassword, ResetPassword, SignIn, VerifyingEmail } from '../module
 import { ShopProducts } from '../modules/ShopProducts'
 import { ShopOrders } from '../modules/ShopOrders'
 import { ShopCustomers } from '../modules/ShopCustomers'
+import { ShopPage } from './ShopPage'
 
 export const publicRoutes = createBrowserRouter([
     {
@@ -19,6 +20,10 @@ export const publicRoutes = createBrowserRouter([
             {
                 path: '/',
                 element: <Home />
+            },
+            {
+                path: '/shops/:id',
+                element: <ShopPage />
             }
         ]
     },
@@ -35,11 +40,11 @@ export const publicRoutes = createBrowserRouter([
                 element: <Verification />,
             },
             {
-                path: '/signup/customer',
+                path: '/signup/profile',
                 element: <CreateProfile />,
             },
             {
-                path: '/signup/customer/photo',
+                path: '/signup/profile/photo',
                 element: <ProfilePicture />,
             },
         ]

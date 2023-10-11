@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { CreateLinkStyles, FormWrapperStyles, MarginBottom } from "../models/types";
-import { Link } from "react-router-dom";
 
 export const FormWrapper = styled.form<FormWrapperStyles>`
     display: flex;
@@ -40,25 +39,29 @@ export const CreateLinkWrapper = styled.div<MarginBottom>`
     backdrop-filter: blur(20px);
     padding:5px;
     @media screen and (max-width: 830px) {
-        display: block;
+        flex-direction:column;
         width:100%;
     }
 `
-export const CreateLink = styled(Link) <CreateLinkStyles>`
+export const CreateLink = styled.button<CreateLinkStyles>`
     display: flex;
     align-items: center;
     justify-content:center;
     flex-shrink: 0;
     text-align:center;
     border-radius: 10px;
-    background: ${props => props.active ? '#fff' : 'transparent'} ;
-    color: ${props => props.active ? '#FF9C00' : '#000'} ;
+    cursor: pointer;
+    background: ${props => props.$active ? '#fff' : 'transparent'} ;
+    color: ${props => props.$active ? '#FF9C00' : '#000'} ;
     font-family: Inter-regular;
     font-size: 14px;
     padding:14px 22px;
     transition: .2s ease color;
     &:hover {
         color: #FF9C00;
+    }
+    @media screen and (max-width: 830px) {
+        width:100%;
     }
 `
 export const Title = styled.h2<MarginBottom>`

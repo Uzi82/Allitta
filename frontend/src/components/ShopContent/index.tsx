@@ -1,0 +1,1 @@
+export { ShopContent } from './UI';

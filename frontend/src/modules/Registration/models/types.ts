@@ -5,7 +5,7 @@ export type MarginBottom = {
 }
 export type CreateLinkStyles = {
     $mb?: string
-    active?: boolean
+    $active?: boolean | undefined
 }
 export type FormWrapperStyles = {
     $maxWidth?: string
@@ -14,16 +14,16 @@ export type FormWrapperStyles = {
 
 // <--- Form  ---> //
 export interface ICreateProfile {
-    'first name': string,
-    'last name': string,
-    'full name': string,
-    date: typeof Date,
+    first_name: string,
+    last_name: string,
+    full_name: string,
+    birthday: typeof Date,
     gender: 'not-specified' | 'male' | 'female' | 'own-gender',
     nic: number,
-    tel: number,
-    address: string,
+    phone_number: string,
+    street: string,
     city: string,
-    zip: number,
+    zip_code: number,
 }
 export interface ICreateAccount {
     email: string,
@@ -40,3 +40,13 @@ export type FormErrors<T> = {
     [key: string]: FieldError | T;
 };
 // </--- Form  ---/> //
+export type AccountContext = {
+    email: string | undefined,
+    setEmail: React.Dispatch<React.SetStateAction<string | undefined>>,
+    password: string | undefined,
+    setPassword: React.Dispatch<React.SetStateAction<string | undefined>>,
+    isShoper: boolean | undefined,
+    setIsShoper: React.Dispatch<React.SetStateAction<boolean | undefined>>,
+    isVerifyPassed: 0 | 1 | 2,
+    setIsVerifyPassed: React.Dispatch<React.SetStateAction<0 | 1 | 2>>,
+}

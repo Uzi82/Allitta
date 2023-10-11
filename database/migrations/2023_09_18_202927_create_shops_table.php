@@ -12,7 +12,7 @@ return new class extends Migration {
     {
         Schema::create('shops', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('shop_users');
+            $table->foreignId('user_id')->constrained('merchant_users');
             $table->string('name');
             $table->smallInteger('category');
             $table->bigInteger('reg_number')->nullable();
