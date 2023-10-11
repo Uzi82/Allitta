@@ -1,9 +1,15 @@
 import { useQuery } from "react-query"
-import { useAppDispatch, type Props, open, getInfo, LazyLoad, statuses } from "../"
+import { useAppDispatch, 
+         type Props, 
+         open, 
+         getInfo, 
+         LazyLoad, 
+         Exit, 
+         statuses 
+} from "../"
 import { Content, 
          ElTitle, 
          ElValue, 
-         Exit, 
          Head, 
          Info,
          InfoEl,
@@ -37,6 +43,7 @@ export const DeliveryModal: React.FC<Props> = ({ id }) => {
     if(isError) console.error('DeliveryModal: Quety error')
     return(
         <Content>
+            <Exit onClick={() => dispatch(open())} />
             {
                 isFetching || data === undefined
                     ? <LazyLoad $height="70vh" $width="100%" />
@@ -73,7 +80,6 @@ export const DeliveryModal: React.FC<Props> = ({ id }) => {
                                     }
                                 </InfoText>
                             </InfoEl>
-                            <Exit onClick={() => dispatch(open())} />
                         </Info>
                         <Message>
                             <MessageTitle>

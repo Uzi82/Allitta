@@ -1,5 +1,9 @@
-import { Cancel, CheckBox, CheckBoxContainer, CheckBoxText, CheckBoxes, Container, 
-         Exit, 
+import { Cancel, 
+         CheckBox, 
+         CheckBoxContainer, 
+         CheckBoxText, 
+         CheckBoxes, 
+         Container, 
          Filter, 
          Filters, 
          Form, 
@@ -22,7 +26,8 @@ import {
          type option,
          getCategories,
          categories,
-         sendAddForm
+         sendAddForm,
+         Exit
 } from '../'
 import { useState } from "react"
 import { useForm } from "react-hook-form"
@@ -74,6 +79,7 @@ export const AddProdModal: React.FC = () => {
     }
     return(
         <Container>
+            <Exit onClick={()=>dispatch(open())} />
             <Head>
                 <ToastContainer
                     position="top-center"
@@ -90,7 +96,6 @@ export const AddProdModal: React.FC = () => {
                 <Title>
                     Add Product
                 </Title>
-                <Exit onClick={()=>dispatch(open())} />
             </Head>
             <Form onSubmit={handleSubmit(onSubmit, onError)}>
                 <LeftSide>
