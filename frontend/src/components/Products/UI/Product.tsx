@@ -5,15 +5,15 @@ import { type Product as ProductType,
          useAppDispatch,
          useAppSelector,
          setName,
+         ListLinkBtn,
 } from '../'
 import { Product, 
          ProductEl, 
-         Status, 
-         ProductBtn, 
+         Status,
          ProductBtnContainer,
          ToolTip, 
-         Arrow,
-         ToolTipBtn
+         ToolTipBtn,
+         Arrow
 } from './styled'
 
 
@@ -46,7 +46,7 @@ export const ProductComponent: React.FC<{ el: ProductType }> = ({ el }) => {
                 </Status>
             </ProductEl>
             <ProductBtnContainer>
-                <ProductBtn onClick={()=>changeActive()} />
+                <ListLinkBtn onClick={()=>changeActive()} />
                 <ToolTip $active={active && !opened}>
                     <Arrow src={require('./Beak.png')} />
                     <ToolTipBtn onClick={()=>{dispatch(setType('edit')); changeActive(); dispatch(open())}}>

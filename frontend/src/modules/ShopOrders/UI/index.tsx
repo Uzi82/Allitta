@@ -12,14 +12,14 @@ import { filtersOptions,
          setName,
          Search,
          Filters, 
-         open
+         open,
+         ListLinkBtn
 } from "../"
 import { Buttons, 
          Content, 
          Head, 
          HeadEl, 
-         List, 
-         ModalButton, 
+         List,
          Order, 
          OrderEl, 
          Orders,
@@ -84,7 +84,7 @@ export const ShopOrders: React.FC = () => {
                                     <Status $color={statuses[el.status.replace(/\s/, '_')]}>
                                         {el.status}
                                     </Status>
-                                    <ModalButton onClick={()=>{dispatch(setType('orderInfo')); dispatch(setId(el.id)); dispatch(setName(el.name)); dispatch(open())}} />
+                                    <ListLinkBtn onClick={()=>{dispatch(setType('orderInfo')); dispatch(setId(el.id)); dispatch(setName(el.name)); dispatch(open())}} />
                                 </Order>    
                             )
                     }

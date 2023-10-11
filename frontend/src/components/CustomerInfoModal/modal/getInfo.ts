@@ -18,26 +18,26 @@ export const getInfo = async (id: string): Promise<CustomerInfo> => {
                 date: '12/12/23',
                 price: 100000,
                 currency: 'Rs.',
-                status: 'New'
+                status: 'On Process'
             },
             {
                 id: '231212135614',
                 date: '12/12/23',
                 price: 100000,
                 currency: 'Rs.',
-                status: 'New'
+                status: 'On Delivery'
             },
             {
                 id: '231212135615',
                 date: '12/12/23',
                 price: 100000,
                 currency: 'Rs.',
-                status: 'New'
+                status: 'Done'
             },
             {
-                id: '231212135616',
-                date: '12/12/23',
-                price: 100000,
+                id: '231212213123123123123135616',
+                date: '12/11231231212222222222331231122/23',
+                price: 1000000000000000,
                 currency: 'Rs.',
                 status: 'New'
             },

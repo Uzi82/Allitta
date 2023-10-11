@@ -3,15 +3,21 @@ import { useAppSelector,
          useAppDispatch,
          Exit,
          open,
-         getInfo
+         getInfo,
+         statuses,
+         ListLinkBtn
 } from "../"
 import { Container, 
          Info, 
          InfoContainer, 
          InfoEl, 
          InfoHead, 
+         List, 
          Name, 
+         Order, 
+         OrderEl, 
          Orders, 
+         Status, 
          Total, 
          TotalSum 
 } from "./styled"
@@ -57,7 +63,25 @@ export const CustomerInfoModal: React.FC = () => {
                 </TotalSum>
             </Total>
             <Orders>
-                
+                <List>
+                    {
+                        data !== undefined && data.orders.map(el => <Order key={el.id}>
+                            <OrderEl>
+                                #{ el.id }
+                            </OrderEl>
+                            <OrderEl $center>
+                                { el.date }
+                            </OrderEl>
+                            <OrderEl $center>
+                                { el.currency+el.price.toFixed(2).toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1,') }
+                            </OrderEl>
+                            <Status $color={statuses[el.status.replace(/\s/, '_')]}>
+                                { el.status }
+                            </Status>
+                            <ListLinkBtn />
+                        </Order>)
+                    }
+                </List>
             </Orders>
         </Container>
     )
