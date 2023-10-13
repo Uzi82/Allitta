@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Container = styled.div<{ $active: boolean | undefined }>`
@@ -175,4 +176,8 @@ export const UserStatus = styled.p`
     font-style: normal;
     font-weight: 600;
     line-height: normal;
+`
+
+export const LogoLink = styled(Link)`
+    cursor: pointer;
 `

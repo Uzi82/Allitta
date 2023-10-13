@@ -15,6 +15,7 @@ import { ShopOrders } from '../modules/ShopOrders'
 import { ShopCustomers } from '../modules/ShopCustomers'
 import { ShopPage } from './ShopPage'
 import { ShopChat } from '../modules/ShopChat'
+import { ShopChoose } from '../modules/ShopChoose'
 
 export const publicRoutes = createBrowserRouter([
     {
@@ -111,7 +112,7 @@ export const publicRoutes = createBrowserRouter([
         children: [
             {
                 path: '/shop/',
-                element: <>123</>
+                element: <ShopChoose />
             },
             {
                 path: 'dashBoard',

@@ -20,8 +20,18 @@ export const Customers = styled.div`
     flex-direction: column;
     gap: 20px;
     width: 1130px;
+    animation-name: customersShopAppear;
+    animation-duration: 1s;
     @media screen and (max-width: 1440px) {
         width: 100%;
+    }
+    @keyframes customersShopAppear {
+        0% {
+            opacity: 0;
+        }
+        100%{
+            opacity: 1;
+        }
     }
 `
 
