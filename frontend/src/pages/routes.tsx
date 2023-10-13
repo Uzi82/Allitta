@@ -14,6 +14,7 @@ import { AccountDetailed, ProductDetailed } from '../components/AdminDetailedIte
 import { ShopOrders } from '../modules/ShopOrders'
 import { ShopCustomers } from '../modules/ShopCustomers'
 import { ShopPage } from './ShopPage'
+import { ShopChat } from '../modules/ShopChat'
 
 export const publicRoutes = createBrowserRouter([
     {
@@ -110,7 +111,7 @@ export const publicRoutes = createBrowserRouter([
         children: [
             {
                 path: '/shop/',
-                element: <Navigate to={'/shop/dashboard'} />
+                element: <>123</>
             },
             {
                 path: 'dashBoard',
@@ -130,7 +131,7 @@ export const publicRoutes = createBrowserRouter([
             },
             {
                 path: 'cusChat',
-                element: <>321</>
+                element: <ShopChat />
             }
         ]
     }
