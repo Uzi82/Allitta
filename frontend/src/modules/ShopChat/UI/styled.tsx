@@ -7,7 +7,28 @@ export const Container = styled.div`
     align-items: center;
     width: 100%;
     padding: 30px 0 0 25px;
-    height: calc(100vh - 130px);
+    height: calc(100vh - 100px);
+    position: relative;
+    @media screen and (max-width: 1400px) {
+        padding: 5px;
+    }
+    @media screen and (max-width: 767px) {
+        height: calc(100vh - 175px);
+    }
+`
+
+export const BackBtn = styled.div<{ $show: boolean }>`
+    display: ${({ $show })=>$show?'block':'none'};
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width: 25px;
+    height: 25px;
+    background-image: url(${require('./back.png')});
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    z-index: 9999;
 `
 
 export const ChatMenu = styled.div`
@@ -21,6 +42,12 @@ export const ChatMenu = styled.div`
     padding: 20px 15px;
     background: #FBF9F8;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.10) inset;
+    @media screen and (max-width: 1120px) {
+        width: 30%;
+    }
+    @media screen and (max-width: 767px) {
+        width: 100%;
+    }
 `
 
 export const ChatList = styled.div`
@@ -42,6 +69,11 @@ export const ChatList = styled.div`
         width: 8px;
         border-radius: 9px;
     }
+    @media screen and (max-width: 1400px) {
+        &::-webkit-scrollbar {
+            width: 6px;
+        }
+    }
 `
 
 export const Chat = styled.div`
@@ -52,6 +84,47 @@ export const Chat = styled.div`
     flex-direction: column;
     align-items: stretch;
     gap: 10px;
+    @media screen and (max-width: 1120px) {
+        width: 70%;
+        padding: 5px 0 0 5px;
+    }
+    @media screen and (max-width: 767px) {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: 0;
+        z-index: 9;
+        background-color: white;
+        transform: translateX(calc(100% + 10px));
+        &.open{
+            animation-name: appearShopChat;
+            animation-duration: 300ms;
+            transform: translate(0)
+        }
+        &.close{
+            animation-name: disappearShopChat;
+            animation-duration: 300ms;
+        }
+        &.opened {
+            transform: translate(0)
+        }
+    }
+    @keyframes appearShopChat {
+        0% {
+            transform: translateX(calc(100% + 10px));
+        }
+        100% {
+            transform: translateX(0);
+        }
+    }
+    @keyframes disappearShopChat {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(calc(100% + 10px));
+        }
+    }
 `
 
 export const ChatListEl = styled.button`
@@ -74,14 +147,18 @@ export const ChatListEl = styled.button`
 `
 
 export const ElImg = styled.div<{ $img?: FileList | undefined }>`
-    width: 50px;
-    height: 50px;
+    min-width: 50px;
+    min-height: 50px;
     background-image: url(${({ $img })=>$img!==undefined?`${$img}`:`none`});
     background-color: #8B8B8B;
     border-radius: 50%;
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%;
+    @media screen and (max-width: 1400px) {
+        min-width: 35px;
+        min-height: 35px;
+    }
 `
 
 export const ElText = styled.div`
@@ -90,6 +167,9 @@ export const ElText = styled.div`
     justify-content: space-between;
     height: 100%;
     max-width: 200px;
+    @media screen and (max-width: 1400px) {
+        max-width: 70%;
+    }
 `
 
 export const ElName = styled.h1`
@@ -107,6 +187,9 @@ export const ElName = styled.h1`
     text-overflow: ellipsis;
     &:hover {
         opacity: 1;
+    }
+    @media screen and (max-width: 1400px) {
+        font-size: 12px;
     }
 `
 
@@ -126,6 +209,9 @@ export const ElLastMsg = styled.p`
     text-overflow: ellipsis;
     &:hover {
         opacity: 1;
+    }
+    @media screen and (max-width: 1400px) {
+        font-size: 10px;
     }
 `
 
@@ -176,6 +262,10 @@ export const ChatMsg = styled.div<{ $authorIsYou: boolean }>`
     border-radius: 20px;
     background-color: rgba(93, 32, 214, ${({ $authorIsYou })=> $authorIsYou ? `1` : `0.5` });
     align-self: flex-${({ $authorIsYou }) => $authorIsYou ? 'end' : 'start' };
+    @media screen and (max-width: 1120px) {
+        font-size: 12px;
+        max-width: 300px;
+    }
 `
 
 export const SendMsg = styled.div`
