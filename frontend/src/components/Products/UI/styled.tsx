@@ -11,8 +11,8 @@ export const Container = styled.div`
 export const Head = styled.div`
     display: grid;
     align-items: end;
-    width: 1110px;
-    padding: 0 20px;
+    width: 1130px;
+    padding: 0 40px 0 20px;
     margin: 30px 0 10px 0;
     grid-column-gap: 10px;
     grid-template-columns: 110px 220px 160px 20px 80px 200px auto 10px;
@@ -48,14 +48,47 @@ export const HeadEl = styled.div`
     &:hover {
         opacity: 1;
     }
-    @media screen and (max-width: 1400px) and (min-width: 1024px) {
+    @media screen and (max-width: 1400px) {
         font-size: 10px;
     }
-    @media screen and (max-width: 1023px) and (min-width: 767px) {
-        font-size: 10px;
+`
+
+export const List = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 1130px;
+    max-height: 70vh;
+    overflow-y: auto;
+    animation: productsShopAppear 1s;
+    &::-webkit-scrollbar {
+        width: 10px;
     }
-    @media screen and (max-width: 766px) {
-        font-size: 8px;
+    &::-webkit-scrollbar-track {
+        background-color: #F3F3F3;
+        border-radius: 11px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: #C1C1C1;
+        width: 8px;
+        border-radius: 9px;
+    }
+    @media screen and (max-width: 1400px) {
+        width: 100%;
+    }
+    @media screen and (max-width: 767px) {
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        max-height: 50vh;
+    }
+    @keyframes productsShopAppear {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
     }
 `
 
@@ -67,7 +100,7 @@ export const Product = styled.div`
     border: 1px solid rgba(0, 0, 0, 0.06);
     background: #FFF;
     width: 1110px;
-    height: 50px;
+    min-height: 50px;
     padding: 15px 20px;
     grid-column-gap: 10px;
     box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.02);
@@ -85,7 +118,6 @@ export const Product = styled.div`
         grid-column-gap: 5px;
         grid-template-columns: 10% 15% 15% 3% 10% 20% 15% 5%;
         padding: 5px 5px;
-        height: 30px;
     }
 `
 
@@ -113,7 +145,7 @@ export const ProductEl = styled.div`
         font-size: 12px;
     }
     @media screen and (max-width: 766px) {
-        font-size: 8px;
+        font-size: 10px;
     }
 `
 
@@ -166,10 +198,10 @@ export const ToolTip = styled.div<{ $active: boolean }>`
     border-radius: 8px;
     background: white;
     box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.3);
-    transform: translateX(0) translateY(62px);
+    transform: translateX(-30px) translateY(62px);
     padding: 16px;
     @media screen and (max-width: 1440px) {
-        transform: translateX(-60px) translateY(0);
+        transform: translateX(-60px) translateY(62px);
         width: 83px;
         height: 60px;
     }

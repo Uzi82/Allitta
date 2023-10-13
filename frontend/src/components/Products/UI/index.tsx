@@ -2,7 +2,8 @@ import { useQuery } from "react-query"
 import { 
     Container, 
     Head, 
-    HeadEl
+    HeadEl,
+    List
 } from "./styled"
 import { LazyLoad, 
          getShopProducts
@@ -38,17 +39,19 @@ export const Products: React.FC = () => {
                     Status  
                 </HeadEl>
             </Head>
-            {
-                isLoading
-                    ? <LazyLoad $width="1110px" $height="350px" />
-                    : data && data.length > 0
-                        ?   data.map(el=>{
-                            return(
-                                <ProductComponent key={el.number} el={el} />
-                            )
-                        })
-                        : <></>
-            }
+            <List>
+                {
+                    isLoading
+                        ? <LazyLoad $width="1110px" $height="350px" />
+                        : data && data.length > 0
+                            ?   data.map(el=>{
+                                return(
+                                    <ProductComponent key={el.number} el={el} />
+                                )
+                            })
+                            : <></>
+                }
+            </List>
         </Container>
     )
 }
