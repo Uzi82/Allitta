@@ -11,7 +11,8 @@ export const Container = styled.div`
     align-items: center;
     gap: 85px;
     background-color: #4B4B4B;
-    @media screen and (max-width: 1023px) and (min-width: 767px) {
+    overflow-y: scroll;
+    @media screen and (max-width: 1023px) and (min-width: 768px) {
         position: relative;
         width: 100%;
         flex-direction: row;
@@ -19,7 +20,7 @@ export const Container = styled.div`
         padding: 0;
         gap: 10px;
     }
-    @media screen and (max-width: 766px) {
+    @media screen and (max-width: 768px) {
         position: relative;
         width: 100%;
         flex-direction: row;
@@ -33,12 +34,12 @@ export const Navigation = styled.div`
     flex: 1 1 auto;
     flex-direction: column;
     gap: 15px;
-    @media screen and (max-width: 1023px) and (min-width: 767px) {
+    @media screen and (max-width: 1023px) and (min-width: 768px) {
         flex-direction: row;
         gap: 10px;
         flex: 0 0 auto;
     }
-    @media screen and (max-width: 766px) {
+    @media screen and (max-width: 768px) {
         display: none;
     }
 `
@@ -55,7 +56,7 @@ export const ProfileWrapper = styled.div<IProfile>`
         justify-content: center;
         gap: 10px;
     }
-    @media screen and (max-width: 767px) {
+    @media screen and (max-width: 768px) {
         display: none;
     }
 `
@@ -66,7 +67,7 @@ export const ProfileTitle = styled.h3`
     text-transform: uppercase;
     opacity: 0.5;
     margin-bottom: 12px;
-    @media screen and (max-width: 1023px) and (min-width: 767px) {
+    @media screen and (max-width: 1023px) and (min-width: 768px) {
         display: none;
     }
 `
@@ -75,12 +76,12 @@ export const Profile = styled.div`
     gap: 10px;
     margin-bottom: 25px;
     align-items: center;
-    @media screen and (max-width: 1023px) and (min-width: 767px) {
+    @media screen and (max-width: 1023px) and (min-width: 768px) {
         align-items: center;
         justify-content: center;
         margin-bottom: 0;
     }
-    @media screen and (max-width: 767px) {
+    @media screen and (max-width: 768px) {
         padding: 20px;
         margin: 0 auto;
         background: #4B4B4B;
@@ -102,7 +103,7 @@ export const ProfileAvatar = styled.img`
         width: 25px;
         height: 25px;
     }
-    @media screen and (max-width: 767px) {
+    @media screen and (max-width: 768px) {
         width: 45px;
         height: 45px;
     }
@@ -110,9 +111,9 @@ export const ProfileAvatar = styled.img`
 export const ProfileName = styled.div`
     color: #FFF;
     font-family: Inter-regular, sans-serif;
-    font-size: 14px;
-    @media screen and (max-width: 1023px) {
-        font-size: 10px;
+    font-size: 10px;
+    @media screen and (max-width: 768px) {
+        font-size: 14px;
     }
 `
 export const ProfileRole = styled.div`
@@ -122,7 +123,7 @@ export const ProfileRole = styled.div`
     @media screen and (max-width: 1023px) {
         font-size: 10px;
     }
-    @media screen and (max-width: 767px) {
+    @media screen and (max-width: 768px) {
         font-size: 14px;
     }
 `
@@ -150,14 +151,14 @@ export const ProfileButton = styled.button`
         max-width: 100px;
         height: 30px;
     }
-    @media screen and (max-width: 766px) {
+    @media screen and (max-width: 768px) {
         padding: 8px 12px;
         gap: 5px;
         max-width: 180px;
         height: 40px;
         margin: 0 0 0 auto;
     }
-    @media screen and (max-width: 766px) {
+    @media screen and (max-width: 768px) {
         padding: 8px 12px;
         gap: 5px;
         max-width: 100px;
@@ -186,27 +187,27 @@ export const Element = styled.button<{ $active: boolean }>`
     &:hover {
         opacity: 1;
     }
-    @media screen and (max-width: 1023px) and (min-width: 767px) {
+    @media screen and (max-width: 1023px) and (min-width: 768px) {
         width: 100px;
         font-size: 10px;
         gap: 4px;
         padding: 0;
         justify-content: space-evenly;
     }
-    @media screen and (max-width: 766px) {
+    @media screen and (max-width: 768px) {
         display: none;
     }
 `
 
 export const Img = styled.img`
-    @media screen and (max-width: 766px) {
+    @media screen and (max-width: 768px) {
         width: 20px;
         height: 20px;
     }
 `
 export const NavigationMobile = styled.div`
     display: none;
-    @media screen and (max-width: 766px) {
+    @media screen and (max-width: 768px) {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -214,7 +215,7 @@ export const NavigationMobile = styled.div`
 `
 export const NavBurger = styled.div<{ $active: boolean }>`
     display: none;
-    @media screen and (max-width: 766px) {
+    @media screen and (max-width: 768px) {
         transition: transform 0.3s ease;
         display: flex;
         flex-direction: column;
@@ -233,7 +234,7 @@ export const NavBurger = styled.div<{ $active: boolean }>`
 `
 export const NavBurgerItem = styled.button<{ $active: boolean }>`
     display: none;
-    @media screen and (max-width: 766px) {
+    @media screen and (max-width: 768px) {
         padding: 10px 25px;
         gap: 16px;
         align-items: center;

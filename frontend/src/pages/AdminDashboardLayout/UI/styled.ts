@@ -12,7 +12,7 @@ export const Container = styled.div`
         flex-direction: column;
         justify-content: flex-start;
     }
-    @media screen and (max-width: 766px) {
+    @media screen and (max-width: 768px) {
         flex-direction: column;
         justify-content: flex-start;
     }
@@ -25,7 +25,7 @@ export const SideBlock = styled.div`
         width: 100vw;
         height: 50px;
     }
-    @media screen and (max-width: 766px) {
+    @media screen and (max-width: 768px) {
         width: 100vw;
         height: 75px;
     }
@@ -41,7 +41,7 @@ export const Content = styled.div`
         height: auto;
         padding: 10px;
     }
-    @media screen and (max-width: 766px) {
+    @media screen and (max-width: 768px) {
         width: 100vw;
         height: auto;
         padding: 10px;
@@ -63,7 +63,7 @@ export const Header = styled.div`
     @media screen and (max-width: 1023px) and (min-width: 767px) {
         font-size: 16px;
     }
-    @media screen and (max-width: 766px) {
+    @media screen and (max-width: 768px) {
         font-size: 12px;
     }
 `
@@ -75,7 +75,7 @@ export const OutletContainer = styled.div`
     @media screen and (max-width: 1023px) and (min-width: 767px) {
         width: 100%;
     }
-    @media screen and (max-width: 766px) {
+    @media screen and (max-width: 768px) {
         width: 100%;
     }
 `
