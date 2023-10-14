@@ -213,3 +213,19 @@
         - event_type: {int} (1 - registration, 2 - password restore)
 
     Ответ: пустое тело, код 200 OK
+
+#### Смена фото в профиле кастомера:
+
+    URL: GET http://localhost/api/users/customer/profile/photo
+    Обязательные поля тела запроса:
+    - photo: {formdata image}
+  
+    Ответ: пустое тело, код 200 OK
+
+#### ВСмена фото в профиле мерчанта:
+
+    URL: GET http://localhost/api/users/merchant/profile/photo
+    Обязательные поля тела запроса:
+    - photo: {formdata image}
+   
+    Ответ: пустое тело, код 200 OK
