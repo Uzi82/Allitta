@@ -13,9 +13,8 @@ export const CreateProfile: React.FC = () => {
     const { email, password, isShoper } = useOutletContext<AccountContext>()
     const navigate = useNavigate()
     const onSubmit: SubmitHandler<ICreateProfile> = async (data) => {
-        console.log({ email, password, ...data })
         try {
-            await axios.post(`http://localhost/api/users/${isShoper ? 'merchant' : 'customer'}/register`, { params: { email, password, ...data } });
+            await axios.post(`http://localhost/api/users/${isShoper ? 'merchant' : 'customer'}/register`, { email, password, ...data });
             navigate('/signup/profile/photo')
         } catch (error) {
             console.error('Error:', error);
@@ -33,8 +32,8 @@ export const CreateProfile: React.FC = () => {
             <Flex >
                 <Input placeholder='Birthday (DD/MM/YYYY)' type='date' {...registerInput('birthday')} />
                 <Select placeholder='Gender'{...registerInput('gender')} >
-                    <option value="1">Male</option>
-                    <option value="2">Female</option>
+                    <option value={1}>Male</option>
+                    <option value={2}>Female</option>
                 </Select>
             </Flex>
             <Flex $mb='10px'>

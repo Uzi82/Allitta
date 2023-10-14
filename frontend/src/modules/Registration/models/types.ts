@@ -18,7 +18,7 @@ export interface ICreateProfile {
     last_name: string,
     full_name: string,
     birthday: typeof Date,
-    gender: 'not-specified' | 'male' | 'female' | 'own-gender',
+    gender: 1 | 2,
     nic: number,
     phone_number: string,
     street: string,
