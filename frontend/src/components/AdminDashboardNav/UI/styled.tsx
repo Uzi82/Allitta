@@ -1,43 +1,170 @@
 import styled from "styled-components";
+import { IProfile } from "../models/types";
 
 export const Container = styled.div`
-    width: 100%;
-    height: 572px;
+    width: 250px;
+    height: 100%;
     display: flex;
-    padding: 26px 0;
+    padding: 26px 0 0 0;
     flex-direction: column;
+    position: fixed;
     align-items: center;
     gap: 85px;
     background-color: #4B4B4B;
     @media screen and (max-width: 1023px) and (min-width: 767px) {
-        height: 100%;
+        position: relative;
+        width: 100%;
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: space-between;
         padding: 0;
         gap: 10px;
     }
     @media screen and (max-width: 766px) {
-        height: 100%;
+        position: relative;
+        width: 100%;
         flex-direction: row;
         justify-content: space-between;
         padding:0 30px;
         gap: 10px;
     }
 `
-
 export const Navigation = styled.div`
     display: flex;
+    flex: 1 1 auto;
     flex-direction: column;
     gap: 15px;
     @media screen and (max-width: 1023px) and (min-width: 767px) {
         flex-direction: row;
         gap: 10px;
+        flex: 0 0 auto;
     }
     @media screen and (max-width: 766px) {
         display: none;
     }
 `
-
+export const ProfileWrapper = styled.div<IProfile>`
+    background: ${({ $bg }) => $bg || '#343331'} ; 
+    width: 100%; 
+    padding: 30px;
+    height: 100%;
+    @media screen and (max-width: 1023px) {
+        display: flex;
+        width: auto; 
+        padding: 0 20px;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+    @media screen and (max-width: 767px) {
+        display: none;
+    }
+`
+export const ProfileTitle = styled.h3`
+    color: #FFF;
+    font-family: Inter-bold, sans-serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    opacity: 0.5;
+    margin-bottom: 12px;
+    @media screen and (max-width: 1023px) and (min-width: 767px) {
+        display: none;
+    }
+`
+export const Profile = styled.div`
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+    align-items: center;
+    @media screen and (max-width: 1023px) and (min-width: 767px) {
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 0;
+    }
+    @media screen and (max-width: 767px) {
+        padding: 20px;
+        margin: 0 auto;
+        background: #4B4B4B;
+        width: 100%;
+    }
+`
+export const ProfileInfo = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+`
+export const ProfileAvatar = styled.img`
+    width: 45px;
+    height: 45px;
+    border-radius: 100%;
+    background: #D9D9D9;
+    overflow: hidden;
+    @media screen and (max-width: 1023px)  {
+        width: 25px;
+        height: 25px;
+    }
+    @media screen and (max-width: 767px) {
+        width: 45px;
+        height: 45px;
+    }
+`
+export const ProfileName = styled.div`
+    color: #FFF;
+    font-family: Inter-regular, sans-serif;
+    font-size: 14px;
+    @media screen and (max-width: 1023px) {
+        font-size: 10px;
+    }
+`
+export const ProfileRole = styled.div`
+    color: #ffffffd9;
+    font-family: Inter-bold, sans-serif;
+    font-size: 12px;
+    @media screen and (max-width: 1023px) {
+        font-size: 10px;
+    }
+    @media screen and (max-width: 767px) {
+        font-size: 14px;
+    }
+`
+export const ProfileButton = styled.button`
+    border-radius: 8px;
+    background: #FFF;
+    width: 100%;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    padding: 12px 27px;
+    cursor: pointer;
+    border: 1px solid #FFF;
+    transition:background .2s ease, border .2s ease, color .2s ease, stroke .2s ease;
+    stroke: black;
+    &:hover {
+        background: #5D20D6;
+        border: 1px solid black;
+        color: #FFF;
+        stroke: #FFF;
+    }
+    @media screen and (max-width: 1023px) {
+        padding: 8px 12px;
+        gap: 5px;
+        max-width: 100px;
+        height: 30px;
+    }
+    @media screen and (max-width: 766px) {
+        padding: 8px 12px;
+        gap: 5px;
+        max-width: 180px;
+        height: 40px;
+        margin: 0 0 0 auto;
+    }
+    @media screen and (max-width: 766px) {
+        padding: 8px 12px;
+        gap: 5px;
+        max-width: 100px;
+        height: 40px;
+        margin: 0 0 0 auto;
+    }
+`
 export const Element = styled.button<{ $active: boolean }>`
     width: 210px;
     height: 45px;
@@ -101,6 +228,7 @@ export const NavBurger = styled.div<{ $active: boolean }>`
         background-color: #343331;
         z-index: 3;
         transform: ${({ $active }) => $active ? 'translateX(0)' : 'translateX(-100%)'};
+        overflow-y: scroll;
     }
 `
 export const NavBurgerItem = styled.button<{ $active: boolean }>`
