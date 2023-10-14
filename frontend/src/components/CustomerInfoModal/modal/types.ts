@@ -10,3 +10,7 @@ export type CustomerInfo = {
         status: string
     }[]
 }
+
+export interface statusesTS {
+    [key: string]: string,
+}

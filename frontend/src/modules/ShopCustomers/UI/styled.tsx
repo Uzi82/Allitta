@@ -20,8 +20,18 @@ export const Customers = styled.div`
     flex-direction: column;
     gap: 20px;
     width: 1130px;
+    animation-name: customersShopAppear;
+    animation-duration: 1s;
     @media screen and (max-width: 1440px) {
         width: 100%;
+    }
+    @keyframes customersShopAppear {
+        0% {
+            opacity: 0;
+        }
+        100%{
+            opacity: 1;
+        }
     }
 `
 
@@ -121,23 +131,5 @@ export const CustomerEl = styled.h1<{ $halfHidden?: boolean }>`
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-    }
-`
-
-export const Modal = styled.button`
-    background-image: url(${require('./btn.png')});
-    background-color: inherit;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-    @media screen and (max-width: 767px) {
-        position: absolute;
-        background: none;
-        width: 100%;
-        height: 100%;
-        left: 0;
-        top: 0;
     }
 `

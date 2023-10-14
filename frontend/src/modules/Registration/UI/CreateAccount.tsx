@@ -16,7 +16,8 @@ export const CreateAccount: React.FC = () => {
         setEmail(data.email)
         setPassword(data.password)
         try {
-            await axios.post('http://localhost/api/users/email/verify', { params: { email: data.email, user_type: isShoper ? 3 : 2, event_type: 1 } });
+            await axios.get('http://localhost/api/sanctum/csrf-cookie');
+            await axios.post('http://localhost/api/users/email/verify', { email: data.email, user_type: isShoper ? 3 : 2, event_type: 1 });
             navigate('/signup/verify')
         } catch (error) {
             console.log(error)

@@ -25,7 +25,8 @@ export const Head = styled.div`
     }
     @media screen and (max-width: 766px) {
         width: 100%;
-        grid-template-columns: 40px 60px 0px 40px 80px auto 10px;
+        grid-column-gap: 3px;
+        grid-template-columns: 40px 50px 0px 40px 50px auto 5px;
         padding: 5px 5px;
         height: 30px;
         align-items: center;
@@ -96,7 +97,8 @@ export const Order = styled.div`
     }
     @media screen and (max-width: 766px) {
         width: 100%;
-        grid-template-columns: 40px 60px 0px 40px 80px auto 10px;
+        grid-column-gap: 3px;
+        grid-template-columns: 40px 50px 0px 40px 50px auto 5px;
         padding: 5px 5px;
         height: 30px;
     }
