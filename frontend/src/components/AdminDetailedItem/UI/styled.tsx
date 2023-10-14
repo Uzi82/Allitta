@@ -17,6 +17,9 @@ export const Wrapper = styled.div`
     @media screen and (max-width: 767px) {
         padding:30px 30px 20px;
     }
+    @media screen and (max-width: 480px) {
+        padding: 20px 15px 20px;
+    }
 `
 export const InfoWrapper = styled.div`
     margin: 0 0 30px 0;
@@ -54,7 +57,6 @@ export const AccountLeft = styled.div`
         flex-wrap: wrap;
     }
 `
-
 export const ProductInfo = styled.div`
     display: flex;
     flex-direction: column;
@@ -92,64 +94,12 @@ export const ButtonRight = styled(Button)`
     margin-top: auto;
     @media screen and (max-width: 767px) {
         width: 100%;
-        max-width: 250px;
+        max-width: 300px;
         height: 38px;
     }
-`
-export const Title = styled.h2<MarginBottom>`
-    margin: 0 0 ${({ $mb }) => $mb || 0} 0;
-    color: #000;
-    font-family: Inter-bold;
-    font-size: 32px;
-    @media screen and (max-width: 767px) {
-        font-size: 24px;
-    }
-`
-export const Subtitle = styled.h2<MarginBottom>`
-    Text-align: center;
-    margin: 0 0  ${({ $mb }) => $mb || 0} 0;
-    color: #000;
-    font-family: Inter-bold;
-    font-size: 20px;
-    @media screen and (max-width: 992px) {
-        font-size: 18px;
-    }
-    @media screen and (max-width: 767px) {
-        font-size: 16px;
-    }
-`
-export const Name = styled.h5<MarginBottom>`
-    margin: 0 0  ${({ $mb }) => $mb || 0} 0;
-    color: #6B6A6E;
-    font-family: Inter-regular;
-    @media screen and (max-width: 767px) {
-        font-size: 10px;
-    }
-`
-export const Fullname = styled.h5<MarginBottom>`
-    margin: 0 0  ${({ $mb }) => $mb || 0} 0;
-    color: #000;
-    font-family: Inter-bold;
-    font-size: 20px;
-    @media screen and (max-width: 992px) {
-        font-size: 16px;
-    }
-    @media screen and (max-width: 767px) {
-        font-size: 14px;
-    }
-`
-export const Text = styled.p<TextStyles>`
-    font-family: Inter-bold;
-    font-size: 14px;
-    color: #000;
-    ${props => props.$gray ? 'opacity: 0.6;' : ''}
-    margin: 0 0  ${({ $mb }) => $mb || 0} 0;
-    @media screen and (max-width: 767px) {
-        text-align: center;
-        font-size: 14px;
-    }
     @media screen and (max-width: 480px) {
-        font-size: 12px;
+        max-width: none;
+        margin-right: auto;
     }
 `
 export const Veriified = styled.p<TextStyles>`
@@ -170,11 +120,12 @@ export const ComplaintsWrapper = styled.div`
     padding: 20px;
     height: 320px;
     overflow-y: scroll;
+    @media screen and (max-width: 767px) {
+        padding:20px 10px;
+    }
 `
 export const ComplaintsRow = styled.div`
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(1, 1fr);
+    display: flex;
     color: #000;
     font-family: Inter-regular;
     font-size: 14px;
@@ -187,16 +138,54 @@ export const ComplaintsRow = styled.div`
         padding:10px;
         font-size: 12px;
     }
-    `
+`
 export const ComplaintsItem = styled(ComplaintsRow)`
     border-radius: 10px;
-    border: 1px solid #FF9C00;
+    border: 1px solid #5D20D6;
     background: #FFF;
     box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.02);
     margin: 0 0 10px 0;
+    transition: box-shadow 0.2s ease;
+    cursor: pointer;
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
     &:hover {
         box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.2);
+        img {
+            transform: rotate(90deg);
+        }
     }
+`
+export const Id = styled.div`
+    flex: 0 0 18%; 
+    @media screen and (max-width: 767px) {
+        flex: 0 0 24%; 
+    }
+    @media screen and (max-width: 480px) {
+        flex: 0 0 40%; 
+    }
+`
+export const Subject = styled.div`
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    flex: 0 0 42%; 
+    @media screen and (max-width: 767px) {
+        flex: 0 0 41%; 
+    }
+    @media screen and (max-width: 480px) {
+        flex: 1 0 50%; 
+    }
+`
+export const SentDate = styled.div`
+    flex: 1 0 30%;
+    @media screen and (max-width: 480px) {
+        display:none;
+    }
+`
+export const SeeMoreWrapper = styled.div`
+    flex: 0 0 auto;
 `
 //<--- Shops --->//
 export const Shops = styled.div`
@@ -286,36 +275,6 @@ export const Select = styled.select`
         width: 100px;
     }
 `
-export const Id = styled.div`
-    grid-area: 1 / 1 / 2 / 3; 
-    @media screen and (max-width: 767px) {
-        grid-area: 1 / 1 / 2 / 5; 
-    }
-    @media screen and (max-width: 480px) {
-        grid-area: 1 / 1 / 2 / 7; 
-    }
-`
-export const Subject = styled.div`
-    white-space: nowrap; 
-    overflow: hidden; 
-    text-overflow: ellipsis;
-    grid-area: 1 / 3 / 2 / 8; 
-    @media screen and (max-width: 767px) {
-        grid-area: 1 / 5 / 2 / 9;
-    }
-    @media screen and (max-width: 480px) {
-        grid-area: 1 / 7 / 2 / 12;
-    }
-`
-export const SentDate = styled.div`
-    grid-area: 1 / 8 / 2 / 12;
-    @media screen and (max-width: 767px) {
-        grid-area: 1 / 9 / 2 / 12;
-    }
-    @media screen and (max-width: 480px) {
-        display: none;
-    }
-`
 export const LeftAccountDesc = styled.div`
     flex: 1 1 50%;
     display: flex;
@@ -330,4 +289,60 @@ export const RightAccountDesc = styled.div`
     display: flex;
     flex-direction: column;
     gap: 20px;
+`
+export const Title = styled.h2<MarginBottom>`
+    margin: 0 0 ${({ $mb }) => $mb || 0} 0;
+    color: #000;
+    font-family: Inter-bold;
+    font-size: 32px;
+    @media screen and (max-width: 767px) {
+        font-size: 24px;
+    }
+`
+export const Subtitle = styled.h2<MarginBottom>`
+    Text-align: center;
+    margin: 0 0  ${({ $mb }) => $mb || 0} 0;
+    color: #000;
+    font-family: Inter-bold;
+    font-size: 20px;
+    @media screen and (max-width: 992px) {
+        font-size: 18px;
+    }
+    @media screen and (max-width: 767px) {
+        font-size: 16px;
+    }
+`
+export const Name = styled.h5<MarginBottom>`
+    margin: 0 0  ${({ $mb }) => $mb || 0} 0;
+    color: #6B6A6E;
+    font-family: Inter-regular;
+    @media screen and (max-width: 767px) {
+        font-size: 10px;
+    }
+`
+export const Fullname = styled.h5<MarginBottom>`
+    margin: 0 0  ${({ $mb }) => $mb || 0} 0;
+    color: #000;
+    font-family: Inter-bold;
+    font-size: 20px;
+    @media screen and (max-width: 992px) {
+        font-size: 16px;
+    }
+    @media screen and (max-width: 767px) {
+        font-size: 14px;
+    }
+`
+export const Text = styled.p<TextStyles>`
+    font-family: Inter-bold;
+    font-size: 14px;
+    color: #000;
+    ${props => props.$gray ? 'opacity: 0.6;' : ''}
+    margin: 0 0  ${({ $mb }) => $mb || 0} 0;
+    @media screen and (max-width: 767px) {
+        text-align: center;
+        font-size: 14px;
+    }
+    @media screen and (max-width: 480px) {
+        font-size: 12px;
+    }
 `

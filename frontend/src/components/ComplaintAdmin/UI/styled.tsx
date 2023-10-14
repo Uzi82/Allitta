@@ -27,26 +27,28 @@ export const ComplaintsRow = styled.div`
     align-items: center;
     padding:15px;
     gap: 5px;
-
     @media screen and (max-width: 767px) {
         padding:10px;
         font-size: 12px;
     }
-    `
+`
 export const ComplaintItem = styled(ComplaintsRow)`
     border-radius: 10px;
     border: 1px solid rgba(0, 0, 0, 0.06);
     background: #FFF;
     box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.02);
     margin: 0 0 10px 0;
-    white-space: nowrap; 
-    overflow: hidden; 
-    text-overflow: ellipsis;
+        white-space: nowrap; 
+        overflow: hidden; 
+        text-overflow: ellipsis;
     transition: box-shadow 0.2s ease,border 0.2s ease;
     cursor: pointer;
     &:hover {
-        border: 1px solid #FF9C00;
+        border: 1px solid #5D20D6;
         box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.2);
+        img {
+            transform: rotate(90deg);
+        }
     }
 `
 export const Id = styled.div`
@@ -71,24 +73,16 @@ export const Subject = styled.div`
 `
 export const SentDate = styled.div`
     flex: 0 0 20%;
-    @media screen and (max-width: 767px) {
-    }
     @media screen and (max-width: 480px) {
         display: none;
     }
 `
 export const KindOf = styled.div`
     flex: 1 0 20%;
-    @media screen and (max-width: 767px) {
-    }
     @media screen and (max-width: 480px) {
-        flex: 0 0 25%;
+        flex: 1 0 25%;
     }
 `
 export const SeeMoreWrapper = styled.div`
     flex: 0 0 auto;
-    @media screen and (max-width: 767px) {
-    }
-    @media screen and (max-width: 480px) {
-    }
 `

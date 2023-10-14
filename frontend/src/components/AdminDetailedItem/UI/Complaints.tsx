@@ -1,5 +1,5 @@
 import React from 'react'
-import { ComplaintsItem, ComplaintsRow, ComplaintsWrapper, Id, SentDate, Subject, Subtitle } from './styled'
+import { ComplaintsItem, ComplaintsRow, ComplaintsWrapper, Id, SeeMoreWrapper, SentDate, Subject, Subtitle } from './styled'
 import { SeeMore } from '../../../UI/SeeMore'
 
 interface IComplaint {
@@ -21,7 +21,7 @@ export const Complaints: React.FC<{ data: IComplaint[] }> = ({ data }) => {
                     <Id>#{id}</Id>
                     <Subject>{subject}</Subject>
                     <SentDate>{sentDate}</SentDate>
-                    <SeeMore />
+                    <SeeMoreWrapper><SeeMore /></SeeMoreWrapper>
                 </ComplaintsItem>)}
         </ComplaintsWrapper>
     )

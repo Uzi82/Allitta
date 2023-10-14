@@ -11,6 +11,7 @@ const BackgroundBlurStyled = styled.div<BackgroungBlurStyles>`
     position: absolute;
     left: 0;
     top: 0;
+    z-index: 10000;
     width: 100vw;
     min-height: 100vh;
     backdrop-filter: blur(10px);
