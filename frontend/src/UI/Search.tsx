@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
-export const Search = styled.input<{ $fullOnMobile?: boolean}>`
-    width: 335px;
+export const Search = styled.input<{ $fullOnMobile?: boolean, $100allways?: boolean }>`
+    width: ${({ $100allways }) => $100allways ? `100%` : `335px` };
     height: 40px;
     border-radius: 9px;
     border: 1px solid black;
@@ -20,7 +20,7 @@ export const Search = styled.input<{ $fullOnMobile?: boolean}>`
         opacity: 1
     }
     @media screen and (max-width: 767px) {
-        width: ${({ $fullOnMobile }) => $fullOnMobile ? `100%` : `45%`};
+        width: ${({ $fullOnMobile, $100allways }) => $100allways ? `100%` : $fullOnMobile ? `100%` : `45%`};
         font-size: 12px;
         padding: 0 10px;
     }

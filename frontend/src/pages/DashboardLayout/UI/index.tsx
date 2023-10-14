@@ -9,7 +9,8 @@ import { useAppDispatch,
 import { useState } from "react"
 
 export const DashboardLayout: React.FC = () => {
-    const location = useLocation().pathname.split('/')[2].replace(/^[a-z]/, letter=>letter.toUpperCase())
+    let location = useLocation().pathname.split('/')[2]
+    if(location!==undefined) location = location.replace(/^[a-z]/, letter=>letter.toUpperCase())
     const dispatch = useAppDispatch()
     const [disabled, setDisabled] = useState<boolean>(false)
     const opened = useAppSelector(state => state.shopMenuBurger.opened)

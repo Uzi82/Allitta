@@ -1,14 +1,17 @@
 import { useNavigate } from "react-router-dom"
 import { Logo, Props, lowerCase, navElements, useAppSelector } from "../"
-import { Container, Navigation, Element, Img, Profile, ProfileHead, LogoutBtn, LogoutImg, LogoutText } from "./styled"
+import { Container, Navigation, Element, Img, Profile, ProfileHead, LogoutBtn, LogoutImg, LogoutText, LogoLink } from "./styled"
 import { User } from "./User"
 
-export const DashboardNav: React.FC<Props> = ({ active = 'Dashboard'}) => {
+export const DashboardNav: React.FC<Props> = ({ active }) => {
     const navigate = useNavigate()
+    if(active===undefined) active = ''
     const opened = useAppSelector(state=>state.shopMenuBurger.opened)
     return(
         <Container $active={opened}>
-            <Logo color="#5D20D6">ALLITTA</Logo>
+            <LogoLink to={'/shop'}>
+                <Logo color="#5D20D6">ALLITTA</Logo>
+            </LogoLink>
             <Navigation>
                 {
                     navElements.map(el=>{
