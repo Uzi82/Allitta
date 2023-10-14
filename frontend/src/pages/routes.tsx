@@ -16,8 +16,8 @@ import { ShopCustomers } from '../modules/ShopCustomers'
 import { ShopPage } from './ShopPage'
 import { ShopChat } from '../modules/ShopChat'
 import { ShopChoose } from '../modules/ShopChoose'
-import { Complaints } from '../components/AdminDetailedItem/UI/Complaints'
-import { ComplaintAdmin } from '../components/ComplaintAdmin'
+import { ComplaintAdmin } from '../modules/ComplaintAdmin'
+import { AdminAccounts } from '../modules/AdminAccounts'
 
 export const publicRoutes = createBrowserRouter([
     {
@@ -76,7 +76,7 @@ export const publicRoutes = createBrowserRouter([
             },
             {
                 path: 'accounts',
-                element: <AccountDetailed></AccountDetailed>,
+                element: <AdminAccounts />,
             },
             {
                 path: 'products',

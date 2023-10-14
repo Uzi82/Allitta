@@ -1,7 +1,7 @@
 import React from 'react'
 import { AccountButtonStyled } from './styled'
+import { IAccountButton } from '../models/types'
 
-interface IAccountButton { type: 'verified' | 'new' | 'rejected' }
 
 const AccountButton: React.FC<IAccountButton> = ({ type }) => {
     return (
