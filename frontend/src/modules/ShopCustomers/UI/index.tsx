@@ -24,7 +24,7 @@ export const ShopCustomers: React.FC = () => {
     const { data, isFetching, isError } = useQuery(['ShopCustomers', { name }], () => getCustomers(name), {
         refetchOnWindowFocus: false
     })
-    const opened = useAppSelector(state => state.products.opened)
+    const customers = useAppSelector(state => state.products)
     const dispatch = useAppDispatch()
     if(isError) console.error('ShopCustomers: Query error')
     return(
@@ -83,7 +83,7 @@ export const ShopCustomers: React.FC = () => {
                     }
                 </List>
             </Customers>
-            <SimpleBlur active={opened}>
+            <SimpleBlur active={customers.opened && customers.type === 'customerInfo'}>
                 <CustomerInfoModal />
             </SimpleBlur>
         </Container>

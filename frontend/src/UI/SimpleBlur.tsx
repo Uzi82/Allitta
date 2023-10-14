@@ -24,8 +24,8 @@ const Bg = styled.div<{ $active: boolean }>`
     }
 `
 
-const Content = styled.div`
-    width: 1110px;
+const Content = styled.div<{ $customWidth?: boolean }>`
+    width: ${({ $customWidth })=> $customWidth ? `fit-content` : `1110px` };
     min-height: 100px;
     border-radius: 15px;
     flex-direction: column;
@@ -42,7 +42,8 @@ const Content = styled.div`
 
 type Props = {
     children: React.ReactNode,
-    active: boolean
+    active: boolean,
+    customWidth?: boolean
 }
 
-export const SimpleBlur: React.FC<Props> = ({ children, active }) => <Bg $active={active} ><Content>{children}</Content></Bg>
+export const SimpleBlur: React.FC<Props> = ({ children, active, customWidth }) => <Bg $active={active} ><Content $customWidth={customWidth}>{children}</Content></Bg>

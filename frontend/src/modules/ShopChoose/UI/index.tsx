@@ -1,6 +1,15 @@
 import { useQuery } from "react-query"
-import { LazyLoad, getShops } from "../"
-import { Container, 
+import { CreateShopModal, 
+         LazyLoad, 
+         SimpleBlur, 
+         getShops, 
+         openModal, 
+         useAppDispatch, 
+         useAppSelector 
+} from "../"
+import { AddShop, 
+         AddShopPng, 
+         Container, 
          Head, 
          List,
          Shop,
@@ -11,6 +20,8 @@ import { Container,
 export const ShopChoose: React.FC = () => {
     const { data, isFetching, isError } = useQuery('shopChoose', getShops)
     if(isError) console.error('ShopChoose: Query error')
+    const modal = useAppSelector(state=>state.products)
+    const dispatch = useAppDispatch()
     const redirect = (id: string)=>{
         console.log(id)
     }
@@ -30,7 +41,17 @@ export const ShopChoose: React.FC = () => {
                             </ShopName>
                         </Shop>)
                 }
+                <AddShop onClick={()=>dispatch(openModal({
+                    type: 'createShop',
+                    id: ''
+                }))}>
+                    Create Shop
+                    <AddShopPng />
+                </AddShop>
             </List>
+            <SimpleBlur customWidth active={modal.opened && modal.type === 'createShop'}>
+                <CreateShopModal />
+            </SimpleBlur>
         </Container>
     )
 } 
