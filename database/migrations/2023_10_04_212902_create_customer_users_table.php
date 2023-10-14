@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\NoFilePathEnum;
 use App\Enums\PathEnum;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -17,7 +18,7 @@ return new class extends Migration {
             $table->string('last_name');
             $table->string('full_name');
             $table->string('email');
-            $table->string('img_path')->default(PathEnum::USER_IMAGES_PROFILE->value . 'no_photo.png');
+            $table->string('img_path')->default(PathEnum::USER_IMAGES_PROFILE->value . NoFilePathEnum::NO_PHOTO->value);
             $table->text('password');
             $table->date('birthday');
             $table->tinyInteger('gender');

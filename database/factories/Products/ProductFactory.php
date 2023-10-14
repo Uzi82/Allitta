@@ -3,6 +3,7 @@
 namespace Database\Factories\Products;
 
 use App\Enums\CurrencyEnum;
+use App\Enums\NoFilePathEnum;
 use App\Enums\PathEnum;
 use App\Enums\ProductStatusEnum;
 use App\Models\Products\Product;
@@ -32,7 +33,7 @@ class ProductFactory extends Factory
             'shop_id' => null,
             'name' => $name,
             'name_tsvector' => (new TextSearchService())->getTsVector($name),
-            'logotype_path' => PathEnum::PRODUCT_IMAGES_LOGOTYPES->value . 'no_product_logotype.png',
+            'logotype_path' => PathEnum::PRODUCT_IMAGES_LOGOTYPES->value . NoFilePathEnum::NO_PRODUCT_LOGOTYPE->value,
             'images' => '[]',
             'description' => $this->faker->sentence(10),
             'status' => $statuses[array_rand($statuses)]->value,
