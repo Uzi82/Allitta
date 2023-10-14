@@ -7,12 +7,9 @@ import { filtersOptions,
          useAppDispatch,
          useAppSelector,
          SimpleBlur,
-         setType,
-         setId,
-         setName,
          Search,
          Filters, 
-         open,
+         openModal,
          ListLinkBtn
 } from "../"
 import { Buttons, 
@@ -34,7 +31,7 @@ export const ShopOrders: React.FC = () => {
         refetchOnWindowFocus: false
     })
     const dispatch = useAppDispatch()
-    const { id, name, opened, type } = useAppSelector(state => state.products)
+    const { opened, type } = useAppSelector(state => state.products)
     if(isError) console.error('ShopOrders: Query error')
     const changeFilter = (newValue: option | null) => {newValue ? setFilter(newValue.value) : setFilter(null)}
     return(
@@ -84,13 +81,16 @@ export const ShopOrders: React.FC = () => {
                                     <Status $color={statuses[el.status.replace(/\s/, '_')]}>
                                         {el.status}
                                     </Status>
-                                    <ListLinkBtn onClick={()=>{dispatch(setType('orderInfo')); dispatch(setId(el.id)); dispatch(setName(el.name)); dispatch(open())}} />
+                                    <ListLinkBtn onClick={()=>dispatch(openModal({
+                                        id: el.id,
+                                        type: 'orderInfo'
+                                    }))} />
                                 </Order>    
                             )
                     }
                 </List>
             </Orders>
-            <SimpleBlur active={opened}>
+            <SimpleBlur active={opened && type === 'orderInfo'}>
                 <DeliveryModal id="123" />
             </SimpleBlur>
         </Content>

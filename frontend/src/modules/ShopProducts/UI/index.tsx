@@ -37,7 +37,7 @@ export const ShopProducts: React.FC = () => {
                         ? <AddProdModal />
                         : type === 'edit'
                             ? <EditProdModal id={id} />
-                            : <FeedbacksProdModal name={name} id={id} />
+                            : type === 'feedbacks' && <FeedbacksProdModal name={name} id={id} />
                 }
             </SimpleBlur>
         </Content>

@@ -93,3 +93,38 @@ export const ShopName = styled.h1`
     font-weight: 500;
     line-height: normal;
 `
+
+export const AddShop = styled.button`
+    height: 110px;
+    margin-left: 5px;
+    min-width: 340px;
+    padding: 20px 30px; 
+    border-radius: 20px;
+    border: 2px dashed black;
+    background: rgba(243, 243, 243, 0.00);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    gap: 30px;
+    transition-duration: 300ms;
+    opacity: 0.6;
+    color: black;
+    font-family: Inter-Bold, sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    &:hover {
+        opacity: 1;
+    }
+`
+
+export const AddShopPng = styled.div`
+    min-width: 30px;
+    min-height: 30px;
+    background-image: url(${require('./add.png')});
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+`

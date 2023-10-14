@@ -1,14 +1,40 @@
 import { useNavigate } from "react-router-dom"
-import { Logo, Props, lowerCase, navElements, useAppSelector } from "../"
-import { Container, Navigation, Element, Img, Profile, ProfileHead, LogoutBtn, LogoutImg, LogoutText, LogoLink } from "./styled"
+import { Logo, 
+         Props, 
+         SimpleBlur, 
+         lowerCase, 
+         navElements, 
+         openModal, 
+         useAppSelector,
+         open
+} from "../"
+import { Container, 
+         Navigation, 
+         Element, 
+         Img, 
+         Profile, 
+         ProfileHead, 
+         LogoutBtn, 
+         LogoutImg, 
+         LogoutText, 
+         LogoLink, 
+         LogOutModal,
+         LogOutTitle,
+         LogOutText,
+         LogOutBtn,
+         LogOutBtns
+} from "./styled"
 import { User } from "./User"
+import { useAppDispatch } from "../../Products"
 
 export const DashboardNav: React.FC<Props> = ({ active }) => {
     const navigate = useNavigate()
     if(active===undefined) active = ''
-    const opened = useAppSelector(state=>state.shopMenuBurger.opened)
+    const burgerOpened = useAppSelector(state=>state.shopMenuBurger.opened)
+    const modal = useAppSelector(state=>state.products)
+    const dispatch = useAppDispatch()
     return(
-        <Container $active={opened}>
+        <Container $active={burgerOpened}>
             <LogoLink to={'/shop'}>
                 <Logo color="#5D20D6">ALLITTA</Logo>
             </LogoLink>
@@ -29,13 +55,34 @@ export const DashboardNav: React.FC<Props> = ({ active }) => {
                     Profile
                 </ProfileHead>
                 <User name="Admin" status="Admin" />
-                <LogoutBtn>
+                <LogoutBtn onClick={()=>dispatch(openModal({
+                        type: 'logout',
+                        id: ''
+                    }))}>
                     <LogoutImg />
                     <LogoutText>
                         Logout
                     </LogoutText>
                 </LogoutBtn>
             </Profile>
+            <SimpleBlur customWidth active={modal.opened && modal.type === 'logout'}>
+                <LogOutModal>
+                    <LogOutTitle>
+                        Confirm Logout
+                    </LogOutTitle>
+                    <LogOutText>
+                        Are you sure you want to logout ?
+                    </LogOutText>
+                    <LogOutBtns>
+                        <LogOutBtn $confirm>
+                            Logout
+                        </LogOutBtn>
+                        <LogOutBtn onClick={()=>dispatch(open())}>
+                            Cancel
+                        </LogOutBtn>
+                    </LogOutBtns>
+                </LogOutModal>
+            </SimpleBlur>
         </Container>
     )
 }
