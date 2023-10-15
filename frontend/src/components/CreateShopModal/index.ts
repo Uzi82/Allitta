@@ -1,2 +1,6 @@
 export { CreateShopModal } from './UI'
 export { Filters } from '../../UI/Filter'
+export { useShopForm, onError } from './models/formHook'
+export { Exit } from '../../UI/ExitModal'
+export { open } from '../../store/slices/productsSlice'
+export { useAppDispatch } from '../../hooks/reduxHooks'
