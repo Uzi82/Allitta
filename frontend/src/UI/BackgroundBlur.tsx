@@ -6,8 +6,6 @@ const BackgroundBlurStyled = styled.div<BackgroungBlurStyles>`
     display: ${props => props.$isShown ? 'flex' : 'none'};
     align-items: center;
     justify-content: center;
-    background: #fff;
-    backdrop-filter: blur(30px); 
     position: absolute;
     left: 0;
     top: 0;

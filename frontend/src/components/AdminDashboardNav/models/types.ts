@@ -5,4 +5,3 @@ export type navEl = {
 export type IProfile = {
     $bg?: string,
 }
-

@@ -1,4 +1,4 @@
-import { navEl } from "../";
+import { navEl } from "./types";
 
 export const navElements: navEl[] = [
     {
