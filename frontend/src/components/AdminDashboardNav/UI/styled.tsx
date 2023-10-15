@@ -11,7 +11,6 @@ export const Container = styled.div`
     align-items: center;
     gap: 85px;
     background-color: #4B4B4B;
-    overflow-y: scroll;
     @media screen and (max-width: 1023px) and (min-width: 768px) {
         position: relative;
         width: 100%;

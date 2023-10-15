@@ -33,9 +33,17 @@ export const AccountsItem = styled(Row)`
     border: 1px solid rgba(0, 0, 0, 0.06);
     background: #FFF;
     box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.02);
-    transition: box-shadow .1s ease-in-out;
+    transition: box-shadow .1s ease-in-out,box-shadow .1s ease-in-out;
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    cursor: pointer;
     &:hover {
         box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.1);
+        border: 1px solid #5D20D6;);
+        img {
+            transform: rotate(90deg);
+        }
     }
 `
 export const IdHeader = styled.h2`
