@@ -14,6 +14,7 @@ export const CreateProfile: React.FC = () => {
     const navigate = useNavigate()
     const onSubmit: SubmitHandler<ICreateProfile> = async (data) => {
         try {
+            await axios.get('http://localhost/api/sanctum/csrf-cookie')
             await axios.post(`http://localhost/api/users/${isShoper ? 'merchant' : 'customer'}/register`, { email, password, ...data });
             navigate('/signup/profile/photo')
         } catch (error) {
