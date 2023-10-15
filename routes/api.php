@@ -63,6 +63,7 @@ Route::prefix('users')->group(function () {
         Route::post('restore', [CustomerAccountController::class, 'restore']);
 
         Route::get('logout', [CustomerAccountController::class, 'logout'])->middleware('auth:customer');
+        Route::get('refresh', [CustomerAccountController::class, 'refresh'])->middleware('auth:customer');
 
         Route::prefix('profile')->middleware('auth:customer')->group(function () {
             Route::post('photo', [ProfileController::class, 'update']);
@@ -76,6 +77,7 @@ Route::prefix('users')->group(function () {
         Route::post('restore', [MerchantAccountController::class, 'restore']);
 
         Route::get('logout', [MerchantAccountController::class, 'logout'])->middleware('auth:merchant');
+        Route::get('refresh', [MerchantAccountController::class, 'refresh'])->middleware('auth:merchant');
 
         Route::prefix('profile')->middleware('auth:merchant')->group(function () {
             Route::post('photo', [ProfileController::class, 'update']);

@@ -40,11 +40,11 @@ return [
 
     'guards' => [
         'customer' => [
-            'driver' => 'session',
+            'driver' => 'jwt',
             'provider' => 'customer',
         ],
         'merchant' => [
-            'driver' => 'session',
+            'driver' => 'jwt',
             'provider' => 'merchant',
         ],
     ],
