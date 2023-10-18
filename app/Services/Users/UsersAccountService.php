@@ -21,7 +21,7 @@ class UsersAccountService
         $email = $userModel->email;
         $userType = $userTypeEnum->value;
 
-        if (!((new UserEmailVerify)->checkEmailVerified($email, $userType, $eventEnum->value) || str_starts_with($email, 'user@'))) {
+        if (!((new UserEmailVerify)->checkEmailVerified($email, $userType, $eventEnum->value))) {
             throw new AuthenticationException('This email has not been confirmed');
         }
 
@@ -59,7 +59,7 @@ class UsersAccountService
         $email = $userModel->email;
         $password = $userModel->getAuthPassword();
 
-        if (!((new UserEmailVerify)->checkEmailVerified($email, $userTypeEnum->value, $eventEnum->value) || str_starts_with($email, 'user@'))) {
+        if (!((new UserEmailVerify)->checkEmailVerified($email, $userTypeEnum->value, $eventEnum->value))) {
             throw new AuthenticationException('This email has not been confirmed');
         }
 

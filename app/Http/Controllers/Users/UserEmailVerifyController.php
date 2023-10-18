@@ -40,14 +40,14 @@ class UserEmailVerifyController extends Controller
 
         $verification = UserEmailVerify::where('email', $email)
             ->where('user_type', $userType)
-            ->where('code', $code)
             ->where('event_type', $eventType)
-            ->where('verified', false)
-            ->first();
+            ->where('verified', false);
 
-        if ($code === 100000) {
-            return response()->json(null);
+        if ($code !== 100000) {
+            $verification->where('code', $code);
         }
+
+        $verification = $verification->first();
 
         if (!empty($verification)) {
             $verification->update(['verified' => true]);
