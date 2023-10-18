@@ -139,11 +139,16 @@ export const LogoutImg = styled.div`
     background-size: 100% 100%;
 `
 
-export const UserContainer = styled.div`
+export const UserContainer = styled(Link)`
     width: 100%;
     display: flex;
-    padding: 0 10px;
+    padding: 5px 10px;
     gap: 6px;
+    border-radius: 10px;
+    transition-duration: 300ms;
+    &:hover {
+        background-color: #FBF9F8;
+    }
 `
 
 export const UserImg = styled.div<{ $img?: FileList}>`

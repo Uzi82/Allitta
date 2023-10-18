@@ -4,7 +4,7 @@ import { UserContainer, UserData, UserImg, UserName, UserStatus } from "./styled
 
 export const User: React.FC<UserProps> = ({ name, img, status }) => {
     return(
-        <UserContainer>
+        <UserContainer to={'/shop/profile'}>
             <UserImg $img={img} />
             <UserData>
                 <UserName>

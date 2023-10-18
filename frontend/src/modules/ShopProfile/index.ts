@@ -1,0 +1,1 @@
+export { ShopProfile } from './UI'

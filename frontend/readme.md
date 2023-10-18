@@ -227,7 +227,7 @@
     Обязательные поля тела запроса:
         - email: {string}
         - user_type: {int} (2 - customer, 3 - merchant)
-        - event_type: {int} (1 - registration, 2 - password restore)
+        - event_type: {int} (1 - -, 2 - password restore)
 
     Ответ: пустое тело, код 201 Created
 

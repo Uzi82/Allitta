@@ -41,7 +41,7 @@ const StyledCircleSvg = styled.img<SvgCircleProps>`
     z-index: 3;
     left:${props => props.$left};
     top:${props => props.$top};
-    background: rgba(255, 156, 0, 0.20);
+    background: rgba(93, 32, 214, 0.3);
     filter: blur(75px);
 `
 const StyledCloseSvg = styled.img`
