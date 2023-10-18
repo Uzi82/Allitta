@@ -17,6 +17,9 @@ import { ShopPage } from './ShopPage'
 import { ShopChat } from '../modules/ShopChat'
 import { ShopChoose } from '../modules/ShopChoose'
 import { ShopProfile } from '../modules/ShopProfile'
+import { ComplaintAdmin } from '../modules/ComplaintAdmin'
+import { AdminAccounts } from '../modules/AdminAccounts'
+import { AdminProducts } from '../modules/AdminProducts'
 
 export const publicRoutes = createBrowserRouter([
     {
@@ -71,15 +74,15 @@ export const publicRoutes = createBrowserRouter([
             },
             {
                 path: 'complaint',
-                element: <></>,
+                element: <ComplaintAdmin />,
             },
             {
                 path: 'accounts',
-                element: <AccountDetailed></AccountDetailed>,
+                element: <AdminAccounts />,
             },
             {
                 path: 'products',
-                element: <ProductDetailed>products</ProductDetailed>
+                element: <AdminProducts />
             },
         ]
 
