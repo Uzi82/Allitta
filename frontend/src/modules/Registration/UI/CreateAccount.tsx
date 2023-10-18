@@ -1,28 +1,24 @@
-import React from 'react'
 import { CreateLink, CreateLinkWrapper, FormWrapper, Title } from './styled'
-import { Input } from '../../../UI/Input'
-import { onError, useAccountForm } from '../models/utils'
-import { Button } from '../../../UI/Button'
 import { SubmitHandler } from 'react-hook-form'
-import { AccountContext, ICreateAccount } from '../models/types'
+import { AccountContext, type ICreateAccount, Button, onError, useAccountForm, Input } from '../'
 import { useNavigate, useOutletContext } from 'react-router-dom'
-import axios from 'axios'
+import { useMutation } from 'react-query'
+import { sendVerify } from '../'
 
 export const CreateAccount: React.FC = () => {
     const navigate = useNavigate()
     const { handleSubmit, registerInput } = useAccountForm()
     const { setIsShoper, isShoper, setEmail, setPassword } = useOutletContext<AccountContext>()
+    const sendVerifyQuery = useMutation((data: { email: string, isShoper: boolean }) => sendVerify(data))
     const onSubmit: SubmitHandler<ICreateAccount> = async (data) => {
         setEmail(data.email)
         setPassword(data.password)
-        try {
-            await axios.get('http://localhost/api/sanctum/csrf-cookie');
-            await axios.post('http://localhost/api/users/email/verify', { email: data.email, user_type: isShoper ? 3 : 2, event_type: 1 });
-            navigate('/signup/verify')
-        } catch (error) {
-            console.log(error)
-        }
-    };
+        sendVerifyQuery.mutate({
+            email: data.email,
+            isShoper: isShoper
+        })
+        navigate('/signup/verify')
+    }
     return (
         <FormWrapper onSubmit={handleSubmit(onSubmit, onError)} autoComplete='off' $gap='20px' $maxWidth='456px'>
             <Title $mb='10px'>Create Account</Title>

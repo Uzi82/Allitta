@@ -26,7 +26,7 @@ export const SignUpPopup: React.FC<ISignUpPopup> = ({ isVerifyPassed, setIsVerif
                     <Subtitle $mb="40px" >Your Email address verification is failed.</Subtitle>
                     <Button onClick={() => {
                         setIsVerifyPassed(0)
-                        navigate('/signup')
+                        navigate('/signup/verify')
                     }} mb="20px" br='10px'>Try Again</Button>
                 </>
             }

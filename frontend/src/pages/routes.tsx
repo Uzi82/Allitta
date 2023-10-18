@@ -16,6 +16,7 @@ import { ShopCustomers } from '../modules/ShopCustomers'
 import { ShopPage } from './ShopPage'
 import { ShopChat } from '../modules/ShopChat'
 import { ShopChoose } from '../modules/ShopChoose'
+import { ShopProfile } from '../modules/ShopProfile'
 
 export const publicRoutes = createBrowserRouter([
     {
@@ -133,6 +134,10 @@ export const publicRoutes = createBrowserRouter([
             {
                 path: 'cusChat',
                 element: <ShopChat />
+            },
+            {
+                path: 'profile',
+                element: <ShopProfile />
             }
         ]
     }
