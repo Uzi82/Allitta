@@ -36,26 +36,26 @@ class CustomerAccountController extends Controller
             'zip_code' => $request->input('zip_code')],
         );
 
-        (new UsersAccountService())->register($user, UserTypesEnum::CUSTOMER, EmailVerifyEventEnum::REGISTRATION);
+        $userAccountService = new UsersAccountService();
+        $token = $userAccountService->register($user, UserTypesEnum::CUSTOMER, EmailVerifyEventEnum::REGISTRATION);
 
-        return response()->json(null, 201);
+        return $userAccountService->respondWithToken($token);
     }
 
     /**
      * @throws AuthenticationException
      */
-    public function login(UserLoginRequest $request): void
+    public function login(UserLoginRequest $request): JsonResponse
     {
         $user = (new CustomerUser())->fill([
                 'email' => $request->input('email'),
                 'password' => $request->input('password')]
         );
 
-        if (!(new UsersAccountService())->login($user, 'customer')) {
-            throw new AuthenticationException('Invalid email or password');
-        }
+        $userAccountService = new UsersAccountService();
+        $token = $userAccountService->login($user, 'customer');
 
-        $request->session()->regenerate();
+        return $userAccountService->respondWithToken($token);
     }
 
     /**
@@ -71,10 +71,13 @@ class CustomerAccountController extends Controller
         (new UsersAccountService())->restore($user, UserTypesEnum::CUSTOMER, EmailVerifyEventEnum::PASSWORD_RESTORE);
     }
 
-    public function logout(UserRestoreRequest $request): void
+    public function logout(): void
     {
         Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
+    }
+
+    public function refresh(): JsonResponse
+    {
+        return (new UsersAccountService())->respondWithToken(Auth::refresh());
     }
 }

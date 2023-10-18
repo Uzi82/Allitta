@@ -4,8 +4,9 @@ namespace App\Models\Users;
 
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Model implements Authenticatable
+class User extends Model implements JWTSubject, Authenticatable
 {
     public function userExists(string $email): bool
     {
@@ -40,5 +41,15 @@ class User extends Model implements Authenticatable
     public function getRememberTokenName(): string
     {
         return 'remember_token';
+    }
+
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims(): array
+    {
+        return [];
     }
 }

@@ -119,6 +119,7 @@ export const LogoutBtn = styled.button`
     justify-content: center;
     align-items: center;
     gap: 8px;
+    cursor: pointer;
 `
 
 export const LogoutText = styled.h1`
@@ -138,11 +139,16 @@ export const LogoutImg = styled.div`
     background-size: 100% 100%;
 `
 
-export const UserContainer = styled.div`
+export const UserContainer = styled(Link)`
     width: 100%;
     display: flex;
-    padding: 0 10px;
+    padding: 5px 10px;
     gap: 6px;
+    border-radius: 10px;
+    transition-duration: 300ms;
+    &:hover {
+        background-color: #FBF9F8;
+    }
 `
 
 export const UserImg = styled.div<{ $img?: FileList}>`
@@ -180,4 +186,60 @@ export const UserStatus = styled.p`
 
 export const LogoLink = styled(Link)`
     cursor: pointer;
+`
+
+export const LogOutModal = styled.div`
+    width: 644px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 40px 50px;
+`
+
+export const LogOutTitle = styled.h1`
+    color: #000;
+    width: 100%;
+    text-align: center;
+    font-family: Inter-Bold, sans-serif;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+`
+
+export const LogOutText = styled.p`
+    color: #000;
+    width: 100%;
+    font-family: Inter-Regular, sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+`
+
+export const LogOutBtns = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+`
+
+export const LogOutBtn = styled.button<{ $confirm?: boolean }>`
+    height: 45px;
+    width: 48%;
+    border-radius: 10px;
+    border: 1px solid #5D20D6;
+    background: ${({ $confirm })=>$confirm?'#5D20D6':'none'};
+    transition-duration: 300ms;
+    color: ${({ $confirm })=>$confirm?'white':'black'};
+    cursor: pointer;
+    text-align: center;
+    font-family: Inter-Bold, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    &:hover {
+        background: ${({ $confirm })=>$confirm?'none':'#5D20D6'};
+        color: ${({ $confirm })=>$confirm?'black':'white'};
+    }
 `

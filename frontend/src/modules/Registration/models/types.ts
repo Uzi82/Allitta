@@ -19,7 +19,6 @@ export interface ICreateProfile {
     full_name: string,
     birthday: typeof Date,
     gender: 1 | 2,
-    nic: number,
     phone_number: string,
     street: string,
     city: string,
@@ -41,12 +40,27 @@ export type FormErrors<T> = {
 };
 // </--- Form  ---/> //
 export type AccountContext = {
-    email: string | undefined,
-    setEmail: React.Dispatch<React.SetStateAction<string | undefined>>,
-    password: string | undefined,
-    setPassword: React.Dispatch<React.SetStateAction<string | undefined>>,
-    isShoper: boolean | undefined,
-    setIsShoper: React.Dispatch<React.SetStateAction<boolean | undefined>>,
+    email: string,
+    setEmail: React.Dispatch<React.SetStateAction<string>>,
+    password: string,
+    setPassword: React.Dispatch<React.SetStateAction<string>>,
+    isShoper: boolean,
+    setIsShoper: React.Dispatch<React.SetStateAction<boolean>>,
     isVerifyPassed: 0 | 1 | 2,
     setIsVerifyPassed: React.Dispatch<React.SetStateAction<0 | 1 | 2>>,
 }
+
+// </--- Axios ---/> //
+export interface IUser {
+    first_name: string,
+    last_name: string,
+    full_name: string,
+    birthday: typeof Date,
+    gender: 1 | 2,
+    phone_number: string,
+    street: string,
+    city: string,
+    zip_code: number,
+    email: string,
+    password: string
+} 

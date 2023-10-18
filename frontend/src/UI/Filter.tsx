@@ -1,13 +1,13 @@
 import styled from "styled-components"
 import ReactSelect from "react-select"
 
-export const Filters = styled(ReactSelect)`
+export const Filters = styled(ReactSelect)<{ $full?:boolean, $regular?: boolean, $height?: string}>`
     & > div.Select__control {
-        width: 213px;
-        height: 40px;
+        width: ${({ $full }) => $full ? '100%' : '213px' };
+        height: ${({ $height }) => $height ? $height : '40px' };
         border-radius: 9px;
         border: 1px solid #6F6F6F;
-        font-family: Inter-Bold, sans-serif;
+        font-family: Inter-${({ $regular }) => $regular ? 'Regular' : 'Bold' }, sans-serif;
         font-size: 16px;
         font-style: normal;
         font-weight: 500;

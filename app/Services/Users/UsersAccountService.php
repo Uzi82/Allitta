@@ -7,6 +7,7 @@ use App\Enums\UserTypesEnum;
 use App\Models\Users\User;
 use App\Models\Users\UserEmailVerify;
 use Illuminate\Auth\AuthenticationException;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -15,12 +16,12 @@ class UsersAccountService
     /**
      * @throws AuthenticationException
      */
-    public function register(User $userModel, UserTypesEnum $userTypeEnum, EmailVerifyEventEnum $eventEnum): void
+    public function register(User $userModel, UserTypesEnum $userTypeEnum, EmailVerifyEventEnum $eventEnum): string
     {
         $email = $userModel->email;
         $userType = $userTypeEnum->value;
 
-        if (!((new UserEmailVerify)->checkEmailVerified($email, $userType, $eventEnum->value) || $email === 'user@example.com')) {
+        if (!((new UserEmailVerify)->checkEmailVerified($email, $userType, $eventEnum->value) || str_starts_with($email, 'user@'))) {
             throw new AuthenticationException('This email has not been confirmed');
         }
 
@@ -29,17 +30,25 @@ class UsersAccountService
         }
 
         $userModel->save();
-        Auth::login($userModel);
+
+        return Auth::login($userModel);
     }
 
-    public function login(User $userModel, string $guard): bool
+    /**
+     * @throws AuthenticationException
+     */
+    public function login(User $userModel, string $guard): string
     {
-        $creds = [
+        $credentials = [
             'email' => $userModel->email,
             'password' => $userModel->password,
         ];
 
-        return Auth::guard($guard)->attempt($creds);
+        if ($token = Auth::guard($guard)->attempt($credentials)) {
+            return $token;
+        }
+
+        throw new AuthenticationException('Invalid email or password');
     }
 
     /**
@@ -50,10 +59,19 @@ class UsersAccountService
         $email = $userModel->email;
         $password = $userModel->getAuthPassword();
 
-        if (!((new UserEmailVerify)->checkEmailVerified($email, $userTypeEnum->value, $eventEnum->value) || $email === 'user@example.com')) {
+        if (!((new UserEmailVerify)->checkEmailVerified($email, $userTypeEnum->value, $eventEnum->value) || str_starts_with($email, 'user@'))) {
             throw new AuthenticationException('This email has not been confirmed');
         }
 
         return $userModel->where('email', $email)->update(['password' => Hash::make($password)]);
+    }
+
+    public function respondWithToken(string $token): JsonResponse
+    {
+        return response()->json([
+            'jwt_token' => $token,
+            'token_type' => 'bearer',
+            'expires_in' => Auth::factory()->getTTL() * 60
+        ]);
     }
 }

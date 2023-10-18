@@ -9,6 +9,7 @@ use App\Http\Controllers\Recommendations\ShopsRecommendationsController;
 use App\Http\Controllers\Shops\ShopsController;
 use App\Http\Controllers\Users\CustomerAccountController;
 use App\Http\Controllers\Users\MerchantAccountController;
+use App\Http\Controllers\Users\ProfileController;
 use App\Http\Controllers\Users\UserEmailDistributionController;
 use App\Http\Controllers\Users\UserEmailVerifyController;
 use Illuminate\Support\Facades\Route;
@@ -49,6 +50,7 @@ Route::prefix('shops')->group(function () {
 });
 
 Route::prefix('users')->group(function () {
+
     Route::prefix('email')->group(function () {
         Route::post('distribution/subscribe', [UserEmailDistributionController::class, 'store']);
         Route::post('verify', [UserEmailVerifyController::class, 'store']);
@@ -61,6 +63,12 @@ Route::prefix('users')->group(function () {
         Route::post('restore', [CustomerAccountController::class, 'restore']);
 
         Route::get('logout', [CustomerAccountController::class, 'logout'])->middleware('auth:customer');
+        Route::get('refresh', [CustomerAccountController::class, 'refresh'])->middleware('auth:customer');
+
+        Route::prefix('profile')->middleware('auth:customer')->group(function () {
+            Route::post('photo', [ProfileController::class, 'update']);
+        });
+
     });
 
     Route::prefix('merchant')->group(function () {
@@ -69,6 +77,11 @@ Route::prefix('users')->group(function () {
         Route::post('restore', [MerchantAccountController::class, 'restore']);
 
         Route::get('logout', [MerchantAccountController::class, 'logout'])->middleware('auth:merchant');
+        Route::get('refresh', [MerchantAccountController::class, 'refresh'])->middleware('auth:merchant');
+
+        Route::prefix('profile')->middleware('auth:merchant')->group(function () {
+            Route::post('photo', [ProfileController::class, 'update']);
+        });
     });
 });
 

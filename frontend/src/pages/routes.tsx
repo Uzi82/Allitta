@@ -16,6 +16,7 @@ import { ShopCustomers } from '../modules/ShopCustomers'
 import { ShopPage } from './ShopPage'
 import { ShopChat } from '../modules/ShopChat'
 import { ShopChoose } from '../modules/ShopChoose'
+import { ShopProfile } from '../modules/ShopProfile'
 import { ComplaintAdmin } from '../modules/ComplaintAdmin'
 import { AdminAccounts } from '../modules/AdminAccounts'
 import { AdminProducts } from '../modules/AdminProducts'
@@ -136,6 +137,10 @@ export const publicRoutes = createBrowserRouter([
             {
                 path: 'cusChat',
                 element: <ShopChat />
+            },
+            {
+                path: 'profile',
+                element: <ShopProfile />
             }
         ]
     }

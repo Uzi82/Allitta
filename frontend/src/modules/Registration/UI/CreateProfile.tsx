@@ -1,25 +1,47 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Flex, Select, Subtitle, Title, FormWrapper } from './styled'
 import { Input } from '../../../UI/Input'
 import { onError, useProfileForm } from '../models/utils'
 import { Button } from '../../../UI/Button'
 import { useNavigate, useOutletContext } from 'react-router-dom'
 import { SubmitHandler } from 'react-hook-form'
-import { AccountContext, ICreateProfile } from '../models/types'
-import axios from 'axios'
+import { type AccountContext, type ICreateProfile, type IUser } from '../'
+import { useMutation } from 'react-query'
+import { createUser } from '../models/createUser'
+import { toast } from 'react-toastify'
+import { AxiosResponse } from 'axios'
 
 export const CreateProfile: React.FC = () => {
     const { handleSubmit, registerInput } = useProfileForm()
     const { email, password, isShoper } = useOutletContext<AccountContext>()
     const navigate = useNavigate()
+    const createUserQuery = useMutation((data: { user: IUser, isShoper: boolean }) => createUser(data))
     const onSubmit: SubmitHandler<ICreateProfile> = async (data) => {
-        try {
-            await axios.post(`http://localhost/api/users/${isShoper ? 'merchant' : 'customer'}/register`, { email, password, ...data });
-            navigate('/signup/profile/photo')
-        } catch (error) {
-            console.error('Error:', error);
-        }
+        await createUserQuery.mutateAsync({ 
+            user: { ...data,
+                    email: email,
+                    password: password
+            }, 
+            isShoper: isShoper
+        }).then(
+            (res: AxiosResponse<{ jwt_token: string, token_type: string, expires_in: number }>) => {
+                if(res.data?.jwt_token !== undefined && res.data?.expires_in !== undefined) {
+                    document.cookie = `token=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT;`
+                    console.log(document.cookie)
+                    document.cookie = `token=${res.data.jwt_token}; max-age=${res.data.expires_in}`
+                    navigate('/signup/profile/photo')
+                }
+                else console.log(res, 'else')
+                return
+            },
+            err => {
+                toast(err?.request?.response?.split(':')[1].replace(/[^(\w\s\d-)]/g, ''))
+            }
+        )
     };
+    useEffect(()=>{
+        if(email === '' || password === '') navigate('/signup')
+    })
     return (
         <FormWrapper onSubmit={handleSubmit(onSubmit, onError)} autoComplete='off' $gap='20px' $maxWidth='644px' >
             <Title $mb='10px'>Your Profile</Title>
@@ -37,7 +59,6 @@ export const CreateProfile: React.FC = () => {
                 </Select>
             </Flex>
             <Flex $mb='10px'>
-                {isShoper && <Input placeholder='NIC Number' type='number' {...registerInput('nic')} />}
                 <Input placeholder='Mobile Number' type='tel' {...registerInput('phone_number')} />
             </Flex>
             <Subtitle >Home Address</Subtitle>

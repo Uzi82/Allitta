@@ -11,7 +11,6 @@ const validateInput = (which: keyof ICreateAccount | keyof ICreateProfile | keyo
     if (which === 'full_name') return { required: 'required', minLength: 4, maxLength: 50 }
     if (which === 'email') return { required: 'required', pattern: /^[\w-]+@([\w-]+\.)+[\w-]{2,4}$/ }
     if (which === 'password') return { required: 'required', minLength: 6, maxLength: 100, }
-    if (which === 'nic') return { required: 'required', maxLength: 13, minLength: 7, }
     if (which === 'street') return { required: 'required', minLength: 4, maxLength: 100, }
     if (which === 'phone_number') return { required: 'required', maxLength: 17, minLength: 17, }
     if (which === 'city') return { required: 'required', maxLength: 25 }

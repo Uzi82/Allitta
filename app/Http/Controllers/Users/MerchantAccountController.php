@@ -36,32 +36,48 @@ class MerchantAccountController extends Controller
             'zip_code' => $request->input('zip_code')],
         );
 
-        (new UsersAccountService())->register($user, UserTypesEnum::MERCHANT, EmailVerifyEventEnum::REGISTRATION);
+        $userAccountService = new UsersAccountService();
+        $token = $userAccountService->register($user, UserTypesEnum::MERCHANT, EmailVerifyEventEnum::REGISTRATION);
 
-        return response()->json(null, 201);
+        return $userAccountService->respondWithToken($token);
     }
 
     /**
      * @throws AuthenticationException
      */
-    public function login(UserLoginRequest $request): void
+    public function login(UserLoginRequest $request): JsonResponse
     {
         $user = (new MerchantUser())->fill([
                 'email' => $request->input('email'),
                 'password' => $request->input('password')]
         );
 
-        if (!(new UsersAccountService())->login($user, 'merchant')) {
-            throw new AuthenticationException('Invalid email or password');
-        }
+        $userAccountService = new UsersAccountService();
+        $token = $userAccountService->login($user, 'merchant');
 
-        $request->session()->regenerate();
+        return $userAccountService->respondWithToken($token);
     }
 
+    /**
+     * @throws AuthenticationException
+     */
     public function restore(UserRestoreRequest $request): void
     {
+        $user = (new MerchantUser())->fill([
+                'email' => $request->input('email'),
+                'password' => $request->input('password')]
+        );
+
+        (new UsersAccountService())->restore($user, UserTypesEnum::MERCHANT, EmailVerifyEventEnum::PASSWORD_RESTORE);
+    }
+
+    public function logout(): void
+    {
         Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
+    }
+
+    public function refresh(): JsonResponse
+    {
+        return (new UsersAccountService())->respondWithToken(Auth::refresh());
     }
 }

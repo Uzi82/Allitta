@@ -52,13 +52,13 @@ export const CreateLink = styled.button<CreateLinkStyles>`
     border-radius: 10px;
     cursor: pointer;
     background: ${props => props.$active ? '#fff' : 'transparent'} ;
-    color: ${props => props.$active ? '#FF9C00' : '#000'} ;
+    color: ${props => props.$active ? '#5D20D6' : '#000'} ;
     font-family: Inter-regular;
     font-size: 14px;
     padding:14px 22px;
     transition: .2s ease color;
     &:hover {
-        color: #FF9C00;
+        color: #5D20D6;
     }
     @media screen and (max-width: 830px) {
         width:100%;
@@ -171,7 +171,3 @@ export const Select = styled.select<MarginBottom>`
         padding: 10px;
     }
 `
-
-
-
-

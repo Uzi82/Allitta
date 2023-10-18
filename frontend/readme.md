@@ -144,7 +144,7 @@
         - email: {string}
         - password: {string min: 6 max:100}
 
-    Ответ: пустое тело, код 200 OK
+    Ответ: {jwt_token: {string}, token_type: {string}, expires_in: {int seconds}}, код 200 OK
 
 #### Аутентификация мерчанта:
 
@@ -153,9 +153,9 @@
         - email: {string}
         - password: {string min: 6 max:100}
 
-    Ответ: пустое тело, код 200 OK
+    Ответ: {jwt_token: {string}, token_type: {string}, expires_in: {int seconds}}, код 200 OK
 
-#### Смена пароля кастомера:
+#### Восстановление аккаунта кастомера:
 
     URL: POST http://localhost/api/users/customer/restore
     Обязательные поля тела запроса:
@@ -164,7 +164,7 @@
 
     Ответ: пустое тело, код 200 OK
 
-#### Смена пароля мерчанта:
+#### Восстановление аккаунта кастомера:
 
     URL: POST http://localhost/api/users/merchant/restore
     Обязательные поля тела запроса:
@@ -173,17 +173,45 @@
 
     Ответ: пустое тело, код 200 OK
 
-#### Выход из аккаунта кастомера:
+#### JWT | Выход из аккаунта кастомера:
 
     URL: GET http://localhost/api/users/customer/logout
   
     Ответ: пустое тело, 401 Unauthorized
 
-#### Выход из аккаунта мерчанта:
+#### JWT | Выход из аккаунта мерчанта:
 
     URL: GET http://localhost/api/users/merchant/logout
    
     Ответ: пустое тело, код 401 Unauthorized
+
+#### JWT | Смена фото в профиле кастомера:
+
+    URL: GET http://localhost/api/users/customer/profile/photo
+    Обязательные поля тела запроса:
+    - photo: {formdata image}
+  
+    Ответ: пустое тело, код 200 OK
+
+#### JWT | Смена фото в профиле мерчанта:
+
+    URL: GET http://localhost/api/users/merchant/profile/photo
+    Обязательные поля тела запроса:
+    - photo: {formdata image}
+   
+    Ответ: пустое тело, код 200 OK
+
+#### JWT | Обновление токена кастомера:
+
+    URL: GET http://localhost/api/users/customer/refresh
+  
+    Ответ: {jwt_token: {string}, token_type: {string}, expires_in: {int seconds}}, код 200 OK
+
+#### JWT | Обновление токена мерчанта:
+
+    URL: GET http://localhost/api/users/merchant/refresh
+   
+    Ответ: {jwt_token: {string}, token_type: {string}, expires_in: {int seconds}}, код 200 OK
 
 #### Подписка на email рассылку:
 
@@ -199,7 +227,7 @@
     Обязательные поля тела запроса:
         - email: {string}
         - user_type: {int} (2 - customer, 3 - merchant)
-        - event_type: {int} (1 - registration, 2 - password restore)
+        - event_type: {int} (1 - -, 2 - password restore)
 
     Ответ: пустое тело, код 201 Created
 
