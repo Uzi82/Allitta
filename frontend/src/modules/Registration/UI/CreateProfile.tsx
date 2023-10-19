@@ -28,7 +28,7 @@ export const CreateProfile: React.FC = () => {
                 if(res.data?.jwt_token !== undefined && res.data?.expires_in !== undefined) {
                     document.cookie = `token=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT;`
                     console.log(document.cookie)
-                    document.cookie = `token=${res.data.jwt_token}; max-age=${res.data.expires_in}`
+                    document.cookie = `token=${res.data.jwt_token}; path=/; max-age=${res.data.expires_in};`
                     navigate('/signup/profile/photo')
                 }
                 else console.log(res, 'else')

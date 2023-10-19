@@ -7,10 +7,10 @@ import { SignInContext } from "../../../modules/Authorization/models/types"
 import { BackgroundBlur } from "../../../UI/BackgroundBlur"
 
 export const AuthorizationLayout: React.FC = () => {
-    const [email, setEmail] = React.useState<string | undefined>()
-    const [password, setPassword] = React.useState<string | undefined>()
-    const [isShoper, setIsShoper] = React.useState<boolean | undefined>()
-    const [isSuccess, setIsSuccess] = React.useState<0 | 1 | 2>(1) // 0 = not yet, 1 = verification email failed,  2 = password succesfully changed
+    const [email, setEmail] = React.useState<string>('')
+    const [password, setPassword] = React.useState<string>('')
+    const [isShoper, setIsShoper] = React.useState<boolean>(false)
+    const [isSuccess, setIsSuccess] = React.useState<0 | 1 | 2>(0) // 0 = not yet, 1 = verification email failed,  2 = password succesfully changed
 
     return (
         <Wrapper>
