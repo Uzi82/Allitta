@@ -234,7 +234,7 @@
     - zip_code: {string max:50}
 
     Опциональные поля тела запроса:
-    - reg_number: {string max:20}
+    - reg_number: {string max:20} *Уникальное значение для каждого магазина
    
     Ответ: {shop_id: {int}}, код 201 Created
 
