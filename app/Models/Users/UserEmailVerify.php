@@ -18,7 +18,7 @@ class UserEmailVerify extends Model
             ->where('user_type', $userType)
             ->where('verified', true)
             ->where('event_type', $eventType)
-            ->where('created_at', '>=', Carbon::now()->subMinutes())
+            ->where('created_at', '>=', Carbon::now()->subMinutes(5))
             ->exists();
     }
 }
