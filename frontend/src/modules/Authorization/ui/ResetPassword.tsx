@@ -7,16 +7,22 @@ import { SubmitHandler } from 'react-hook-form'
 import { IResetPassword, SignInContext } from '../models/types'
 import { useOutletContext } from 'react-router-dom'
 import { useMutation } from 'react-query'
-import { checkVerify } from '../'
+import { reset } from '../'
+import { toast } from 'react-toastify'
 
 const ResetPassword: React.FC = () => {
     const { handleSubmit, registerInput } = useResetPasswordForm()
     const { email, isShoper, setIsSuccess } = useOutletContext<SignInContext>()
-    const checkVerifyQuery = useMutation((data: { email: string, isShoper: boolean, code: number })=>checkVerify(data))
+    const resetQuery = useMutation((data: { email: string, password: string, isShoper: boolean })=>reset(data))
     const onSubmit: SubmitHandler<IResetPassword> = async (data) => {
-        
+        if(data.password !== data['confirm password']) {
+            toast('Password mismatch!')
+            return
+        }
+        await resetQuery.mutateAsync({
+            email, password: data.password, isShoper
+        })
     };
-    useEffect(()=>console.log('restore'),[])
     return (
         <FormStyled onSubmit={handleSubmit(onSubmit, onError)} $maxwidth='388px'>
             <Title $mb='20px'>Re-Set Password</Title>
