@@ -246,7 +246,7 @@
     - shop_id: {int}
     - photo: {formdata image}
 
-    Ответ: {logotype: {string}}, код 200 Created
+    Ответ: {logotype: {string}}, код 200 OK
 
 #### JWT | Обновление баннера магазина:
 
@@ -256,7 +256,7 @@
     - shop_id: {int}
     - photo: {formdata image}
 
-    Ответ: {banner: {string}}, код 200 Created
+    Ответ: {banner: {string}}, код 200 OK
 
 #### JWT | Получение краткой информации о мерчанте:
 
