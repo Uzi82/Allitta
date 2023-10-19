@@ -6,9 +6,13 @@ use App\Http\Controllers\Products\ProductSubcategoriesController;
 use App\Http\Controllers\Recommendations\ProductsCategoriesRecommendationsController;
 use App\Http\Controllers\Recommendations\ProductsRecommendationsController;
 use App\Http\Controllers\Recommendations\ShopsRecommendationsController;
-use App\Http\Controllers\Shops\ShopsController;
-use App\Http\Controllers\Users\CustomerAccountController;
-use App\Http\Controllers\Users\MerchantAccountController;
+use App\Http\Controllers\Shops\ShopCategoriesController;
+use App\Http\Controllers\Shops\ShopController;
+use App\Http\Controllers\Users\Customer\CustomerAccountController;
+use App\Http\Controllers\Users\Merchant\MerchantAccountController;
+use App\Http\Controllers\Users\Merchant\MerchantController;
+use App\Http\Controllers\Users\Merchant\MerchantShopController;
+use App\Http\Controllers\Users\Merchant\MerchantShopImagesController;
 use App\Http\Controllers\Users\ProfileController;
 use App\Http\Controllers\Users\UserEmailDistributionController;
 use App\Http\Controllers\Users\UserEmailVerifyController;
@@ -46,7 +50,8 @@ Route::prefix('shops')->group(function () {
         Route::get('best', [ShopsRecommendationsController::class, 'bestShops']);
     });
 
-    Route::get('{id}', [ShopsController::class, 'show']);
+    Route::get('categories', [ShopCategoriesController::class, 'index'])->middleware('auth:merchant');
+    Route::get('{id}', [ShopController::class, 'show']);
 });
 
 Route::prefix('users')->group(function () {
@@ -80,8 +85,13 @@ Route::prefix('users')->group(function () {
         Route::get('refresh', [MerchantAccountController::class, 'refresh'])->middleware('auth:merchant');
 
         Route::prefix('profile')->middleware('auth:merchant')->group(function () {
+            Route::get('me', [MerchantController::class, 'show']);
             Route::post('photo', [ProfileController::class, 'update']);
         });
+
+        Route::post('shop', [MerchantShopController::class, 'store'])->middleware('auth:merchant');
+        Route::post('shop/logotype', [MerchantShopImagesController::class, 'logotype'])->middleware('auth:merchant');
+        Route::post('shop/banner', [MerchantShopImagesController::class, 'banner'])->middleware('auth:merchant');
     });
 });
 

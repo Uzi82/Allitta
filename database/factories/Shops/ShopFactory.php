@@ -2,12 +2,12 @@
 
 namespace Database\Factories\Shops;
 
-use App\Enums\NoFilePathEnum;
-use App\Enums\PathEnum;
+use App\Models\Shops\Shop;
+use App\Models\Shops\ShopCategory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Shops\Shop>
+ * @extends Factory<Shop>
  */
 class ShopFactory extends Factory
 {
@@ -18,18 +18,18 @@ class ShopFactory extends Factory
      */
     public function definition(): array
     {
+        $categoryId = ShopCategory::inRandomOrder()->first()->id;
+
         return [
             'user_id' => null,
             'name' => $this->faker->company(),
-            'category' => rand(1, 10),
+            'category_id' => $categoryId,
             'reg_number' => rand(1000000, 10000000),
             'email' => $this->faker->email(),
             'phone_number' => $this->faker->phoneNumber(),
             'street' => $this->faker->streetAddress(),
             'city' => $this->faker->city(),
             'zip_code' => $this->faker->postcode(),
-            'logotype_path' => PathEnum::SHOP_IMAGES_LOGOTYPES->value . NoFilePathEnum::NO_SHOP_LOGOTYPE->value,
-            'banner_path' => PathEnum::SHOP_IMAGES_BANNERS->value . NoFilePathEnum::NO_SHOP_BANNER->value,
             'description' => $this->faker->text(500),
         ];
     }

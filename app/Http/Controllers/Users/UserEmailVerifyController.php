@@ -28,7 +28,7 @@ class UserEmailVerifyController extends Controller
             return response()->json(null, 201);
         }
 
-        return response()->json(['message' => 'The email has already been taken.'], 422);
+        return response()->json(['message' => 'You have entered the wrong email address.'], 422);
     }
 
     public function check(EmailVerifyCheckRequest $request): JsonResponse

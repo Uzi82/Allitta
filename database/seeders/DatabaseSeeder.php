@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
                 MerchantUsersSeeder::class,
                 CustomerUsersSeeder::class,
                 EmailSubscriptionSeeders::class,
+                ShopCategoriesSeeder::class,
                 ShopsSeeder::class,
                 ProductCategoriesSeeder::class,
                 ProductSubcategoriesSeeder::class,

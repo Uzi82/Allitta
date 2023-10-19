@@ -59,9 +59,9 @@ class UsersAccountService
         $email = $userModel->email;
         $password = $userModel->getAuthPassword();
 
-        // if (!((new UserEmailVerify)->checkEmailVerified($email, $userTypeEnum->value, $eventEnum->value))) {
-        //     throw new AuthenticationException('This email has not been confirmed');
-        // }
+        if (!((new UserEmailVerify)->checkEmailVerified($email, $userTypeEnum->value, $eventEnum->value))) {
+            throw new AuthenticationException('This email has not been confirmed');
+        }
 
         return $userModel->where('email', $email)->update(['password' => Hash::make($password)]);
     }

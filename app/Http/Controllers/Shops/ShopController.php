@@ -10,7 +10,7 @@ use App\Models\Products\Product;
 use App\Models\Shops\Shop;
 use Illuminate\Http\JsonResponse;
 
-class ShopsController extends Controller
+class ShopController extends Controller
 {
     public function show(ProductCategoryLimitRequest $request): JsonResponse
     {
@@ -26,7 +26,7 @@ class ShopsController extends Controller
             );
 
             if ($products->count() !== 0) {
-                $data['data'][] = ['category_id' => $categoryId, 'category_name' => __('categories')[$categoryId], 'products' => $products];
+                $data['data'][] = ['category_id' => $categoryId, 'category_name' => __('product_categories')[$categoryId], 'products' => $products];
             }
         }
 
