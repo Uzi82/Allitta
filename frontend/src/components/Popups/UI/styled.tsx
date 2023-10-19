@@ -40,3 +40,22 @@ export const Subtitle = styled.p<MarginBottom>`
 export const Img = styled.img<MarginBottom>`
     margin: 0 0 ${props => props.$mb || 0} 0;
 `
+export const Button = styled.button`
+    width: 100%;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #5D20D6;
+    border: 2px solid #5D20D6;
+    color: #FFF;
+    border-radius: 10px;
+    font-family: Inter-Regular, sans-serif;
+    font-size: 14px;
+    transition: background .2s ease-in-out, border .2s ease-in-out,color .2s ease-in-out;
+    &:hover {
+        background: transparent;
+        border: 2px solid #5D20D6;
+        color: #5D20D6
+    }
+`

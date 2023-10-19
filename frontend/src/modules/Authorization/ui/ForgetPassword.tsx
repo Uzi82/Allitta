@@ -4,21 +4,26 @@ import { Input } from '../../../UI/Input'
 import { Button } from '../../../UI/Button'
 import { onError, useForgetPasswordForm } from '../models/utils'
 import { SubmitHandler } from 'react-hook-form'
-import axios from 'axios'
 import { IForgetPassword, SignInContext } from '../models/types'
-import { useOutletContext } from 'react-router-dom'
+import { useNavigate, useOutletContext } from 'react-router-dom'
+import { useMutation } from 'react-query'
+import { sendVerify } from '../'
 
 const ForgetPassword: React.FC = () => {
     const { handleSubmit, registerInput } = useForgetPasswordForm()
     const { isShoper, setIsShoper, setEmail } = useOutletContext<SignInContext>()
-
+    const sendVerifyQuery = useMutation((data: { email: string, isShoper: boolean }) => sendVerify(data))
+    const navigate = useNavigate()
     const onSubmit: SubmitHandler<IForgetPassword> = async (data) => {
-        try {
-            setEmail(data.email)
-            await axios.post(`http://localhost/api/users/email/verify`, { params: { email: data.email, user_type: isShoper ? 3 : 2, event_type: 2 } });
-        } catch (error) {
-            console.error('Error:', error);
-        }
+        setEmail(data.email)
+        await sendVerifyQuery.mutateAsync({
+            email: data.email,
+            isShoper
+        }).then(res=>{
+            if(res.status===201) navigate('/signin/verify')
+        },
+            err=>console.log(err)
+        )
     };
 
     return (
