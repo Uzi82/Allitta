@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
     height: 100%;
     max-height: 444px;
     border-radius: 15px;
-    background: rgba(225, 225, 225, 0.4);
+    background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(50px);
     padding:40px 50px;
     justify-content: center;
@@ -52,6 +52,7 @@ export const Button = styled.button`
     border-radius: 10px;
     font-family: Inter-Regular, sans-serif;
     font-size: 14px;
+    cursor: pointer;
     transition: background .2s ease-in-out, border .2s ease-in-out,color .2s ease-in-out;
     &:hover {
         background: transparent;

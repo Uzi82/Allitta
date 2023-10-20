@@ -1,14 +1,27 @@
 import React from 'react'
-import { FormStyled, FormLink, Subtitle, Title, CreateLinkWrapper, CreateLink } from './styled'
-import { Input } from '../../../UI/Input'
-import { Link, useNavigate, useOutletContext } from 'react-router-dom'
-import { Button } from '../../../UI/Button'
-import { CustomLink } from '../../../UI/CustomLink'
-import { onError, useSignInForm } from '../models/utils'
+import { FormStyled, 
+         FormLink, 
+         Subtitle, 
+         Title, 
+         CreateLinkWrapper, 
+         CreateLink 
+} from './styled'
+import { Link, 
+         useNavigate, 
+         useOutletContext 
+} from 'react-router-dom'
 import { SubmitHandler } from 'react-hook-form'
-import { ISignIn, SignInContext } from '../models/types'
 import { useMutation } from 'react-query'
-import { auth } from '../models/auth'
+import { auth,
+         Input,
+         Button,
+         CustomLink,
+         onError, 
+         useSignInForm,
+         ISignIn, 
+         SignInContext
+} from '../'
+import { toast } from 'react-toastify'
 
 const SignIn: React.FC = () => {
     const { isShoper, setIsShoper, setEmail, setPassword } = useOutletContext<SignInContext>()
@@ -21,7 +34,7 @@ const SignIn: React.FC = () => {
         await authQuery.mutateAsync({ ...data, isShoper })
             .then(
                 ()=>navigate(`/${isShoper?'shop':'user'}`),
-                (err)=>console.log(err)
+                ()=>toast('Invalid email or password!')
             )
     };
     return (

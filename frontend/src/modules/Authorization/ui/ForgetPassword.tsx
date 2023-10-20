@@ -1,13 +1,21 @@
-import React from 'react'
-import { CreateLink, CreateLinkWrapper, FormStyled, Img, Subtitle, Title } from './styled'
-import { Input } from '../../../UI/Input'
-import { Button } from '../../../UI/Button'
-import { onError, useForgetPasswordForm } from '../models/utils'
+import { CreateLink, 
+         CreateLinkWrapper, 
+         FormStyled, 
+         Img, 
+         Subtitle,
+         Title 
+} from './styled'
+import { Input,
+         Button,
+         onError, 
+         useForgetPasswordForm,
+         type IForgetPassword, 
+         type SignInContext,
+         sendVerify
+} from '../'
 import { SubmitHandler } from 'react-hook-form'
-import { IForgetPassword, SignInContext } from '../models/types'
 import { useNavigate, useOutletContext } from 'react-router-dom'
 import { useMutation } from 'react-query'
-import { sendVerify } from '../'
 
 const ForgetPassword: React.FC = () => {
     const { handleSubmit, registerInput } = useForgetPasswordForm()
