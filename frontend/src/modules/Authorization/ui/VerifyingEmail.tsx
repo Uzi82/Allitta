@@ -4,7 +4,7 @@ import { Button } from '../../../UI/Button'
 import { onError, useVerificationForm } from '../models/utils'
 import { SubmitHandler } from 'react-hook-form'
 import { IVerification, SignInContext } from '../models/types'
-import { useNavigate, useOutletContext } from 'react-router-dom'
+import { useOutletContext } from 'react-router-dom'
 import { useMutation } from 'react-query'
 import { checkVerify, sendVerify } from '../'
 import { useState, useEffect } from 'react'
@@ -36,7 +36,7 @@ const VerifyingEmail: React.FC = () => {
                 ()=>toast('Code resended!'),
                 err=>console.log(err)
             )
-        setCount(30)
+        setCount(5)
     }
     useEffect(() => {
         const timer = setInterval(() => {
@@ -55,13 +55,8 @@ const VerifyingEmail: React.FC = () => {
             <Subtitle $mb='20px'>A 6 Digits OTP code will be sent via e-mail to verify your e-mail address</Subtitle>
             <Input placeholder='6 Digits Code' type='number' {...registerInput('verification')} $mb='20px' />
             <VerifyingActions $mb='20px'>
-                <FormLink $disabled={!!count} $mb='20px' onClick={(e) => {
-                    if (count) return
-                    e.preventDefault()
-                    // повторный запрос????
-                    setCount(30)
-                }} $justify='start'>00:{count < 10 ? `0${count}` : count}s left</FormLink>
-                <FormLink $disabled={!!count} onClick={()=>resend()} $mb='20px' $justify='end'>Resend Code</FormLink>
+                <FormLink $disabled={!!count} $mb='20px' onClick={resend} $justify='start'>00:{count < 10 ? `0${count}` : count}s left</FormLink>
+                <FormLink $disabled={!!count} onClick={resend} $mb='20px' $justify='end'>Resend Code</FormLink>
             </VerifyingActions>
             <Button br={'10px'} mb={'20px'}>Submit</Button>
         </FormStyled>

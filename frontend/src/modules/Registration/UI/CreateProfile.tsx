@@ -1,13 +1,24 @@
-import React, { useEffect } from 'react'
-import { Flex, Select, Subtitle, Title, FormWrapper } from './styled'
-import { Input } from '../../../UI/Input'
-import { onError, useProfileForm } from '../models/utils'
-import { Button } from '../../../UI/Button'
-import { useNavigate, useOutletContext } from 'react-router-dom'
+import { useEffect } from 'react'
+import { Flex, 
+         Select, 
+         Subtitle, 
+         Title, 
+         FormWrapper 
+} from './styled'
+import { Input,
+         onError, 
+         useProfileForm,
+         Button,
+         type AccountContext,
+         type ICreateProfile,
+         type IUser,
+         createUser
+} from '../'
+import { useNavigate, 
+         useOutletContext 
+} from 'react-router-dom'
 import { SubmitHandler } from 'react-hook-form'
-import { type AccountContext, type ICreateProfile, type IUser } from '../'
 import { useMutation } from 'react-query'
-import { createUser } from '../models/createUser'
 import { toast } from 'react-toastify'
 import { AxiosResponse } from 'axios'
 
@@ -27,8 +38,10 @@ export const CreateProfile: React.FC = () => {
             (res: AxiosResponse<{ jwt_token: string, token_type: string, expires_in: number }>) => {
                 if(res.data?.jwt_token !== undefined && res.data?.expires_in !== undefined) {
                     document.cookie = `token=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT;`
+                    document.cookie = `type=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT;`
                     console.log(document.cookie)
                     document.cookie = `token=${res.data.jwt_token}; path=/; max-age=${res.data.expires_in};`
+                    document.cookie = `type=${isShoper?`3`:`2`}; path=/; max-age=${res.data.expires_in};`
                     navigate('/signup/profile/photo')
                 }
                 else console.log(res, 'else')

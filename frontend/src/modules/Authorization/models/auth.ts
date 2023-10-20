@@ -11,7 +11,9 @@ export async function auth({ email, password, isShoper }: { email: string, passw
             expires_in: number
         }>)=>{
             document.cookie = `token=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT;`
+            document.cookie = `type=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT;`
             document.cookie = `token=${res.data.jwt_token}; path=/; max-age=${res.data.expires_in};`
+            document.cookie = `type=${isShoper?`3`:`2`}; path=/; expires=${res.data.expires_in};`
             return
         }
     )
