@@ -1,7 +1,11 @@
 import { Content, Contact, ContactText, ContactHeader, ContactDescription, PagesCategories, PagesCategoriesHeader, PagesCategoriesElement, EmailDescription, EmailHeader } from "./styled"
-import { BlockCenter, Logo, StyledInput, links } from '../'
+import { BlockCenter, Logo, StyledInput, links, sendEmail } from '../'
+import { useState } from "react"
+import { useMutation } from "react-query"
 
 export const Footer: React.FC = () => {
+    const [email, setEmail] = useState<string>('')
+    const sendEmailQuery = useMutation((email: string)=> sendEmail(email))
     return(
         <BlockCenter $background="#393434">
             <Content>
@@ -34,7 +38,7 @@ export const Footer: React.FC = () => {
                     <EmailHeader>News Latter Subscription</EmailHeader>
                     <EmailDescription>Get the Latest Products & Best
 Deals <br/> in Your Inbox as First Person</EmailDescription>
-                    <StyledInput width={'100%'} placeholder="Your Email Address" btnText="Submit"/>
+                    <StyledInput value={email} onClick={()=>sendEmailQuery.mutate(email)} onChange={e=>setEmail(e.target.value)} width={'100%'} placeholder="Your Email Address" btnText="Submit"/>
                 </PagesCategories>
             </Content>
         </BlockCenter>

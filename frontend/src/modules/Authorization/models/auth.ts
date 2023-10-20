@@ -2,7 +2,7 @@ import axios, { AxiosResponse } from "axios";
 
 export async function auth({ email, password, isShoper }: { email: string, password: string, isShoper: boolean }) {
     return axios.post(`http://localhost/api/users/${isShoper?'merchant':'customer'}/login`, {
-        email: `user@${email.split('@')[0]}.com`,
+        email,
         password
     }).then(
         (res: AxiosResponse<{
