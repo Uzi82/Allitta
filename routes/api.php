@@ -89,9 +89,12 @@ Route::prefix('users')->group(function () {
             Route::post('photo', [ProfileController::class, 'update']);
         });
 
-        Route::post('shop', [MerchantShopController::class, 'store'])->middleware('auth:merchant');
-        Route::post('shop/logotype', [MerchantShopImagesController::class, 'logotype'])->middleware('auth:merchant');
-        Route::post('shop/banner', [MerchantShopImagesController::class, 'banner'])->middleware('auth:merchant');
+        Route::prefix('shops')->group(function () {
+            Route::get('/', [MerchantShopController::class, 'index'])->middleware('auth:merchant');
+            Route::post('/', [MerchantShopController::class, 'store'])->middleware('auth:merchant');
+            Route::post('logotype', [MerchantShopImagesController::class, 'logotype'])->middleware('auth:merchant');
+            Route::post('banner', [MerchantShopImagesController::class, 'banner'])->middleware('auth:merchant');
+        });
     });
 });
 

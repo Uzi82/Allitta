@@ -221,7 +221,7 @@
 
 #### JWT | Создание магазина:
 
-    URL: POST http://localhost/api/users/merchant/shop
+    URL: POST http://localhost/api/users/merchant/shops
 
     Обязательные поля тела запроса:
     - name: {string min:3 max:100}
@@ -240,7 +240,7 @@
 
 #### JWT | Обновление логотипа магазина:
 
-    URL: POST http://localhost/api/users/merchant/shop/logotype
+    URL: POST http://localhost/api/users/merchant/shops/logotype
 
     Обязательные поля тела запроса:
     - shop_id: {int}
@@ -250,13 +250,21 @@
 
 #### JWT | Обновление баннера магазина:
 
-    URL: POST http://localhost/api/users/merchant/shop/banner
+    URL: POST http://localhost/api/users/merchant/shops/banner
 
     Обязательные поля тела запроса:
     - shop_id: {int}
     - photo: {formdata image}
 
     Ответ: {banner: {string}}, код 200 OK
+
+#### JWT | Получение списка магазинов мерчанта:
+
+    URL: GET http://localhost/api/users/merchant/shops
+
+    Опционально: ?limit={int} (по умолчанию 10)
+
+    Ответ: {{id, name, logotype_path}, ...}, код 200 OK
 
 #### JWT | Получение краткой информации о мерчанте:
 

@@ -1,5 +1,5 @@
-import axios, { AxiosResponse } from "axios";
-import { type ICreateShop } from "../";
+import axios, {AxiosResponse} from "axios";
+import {type ICreateShop} from "../";
 
 function getJWT() {
     let cookies = document.cookie.split('; ')
@@ -11,7 +11,7 @@ function getJWT() {
 
 export async function createShop(data: ICreateShop) {
     const token = getJWT()
-    const resData = await axios.post('http://localhost/api/users/merchant/shop', {
+    const resData = await axios.post('http://localhost/api/users/merchant/shops', {
         name: data.name,
         description: data.description,
         category_id: data.category_id,
@@ -27,7 +27,7 @@ export async function createShop(data: ICreateShop) {
         }
     }).then((res: AxiosResponse<{shop_id: number}>)=>res)
     if(data.logo !== undefined) {
-        await axios.post('http://localhost/api/users/merchant/shop/logotype', {
+        await axios.post('http://localhost/api/users/merchant/shops/logotype', {
             shop_id: resData.data.shop_id,
             photo: data.logo[0]
         },{
@@ -38,7 +38,7 @@ export async function createShop(data: ICreateShop) {
         })
     }
     if(data.banner !== undefined) {
-        await axios.post('http://localhost/api/users/merchant/shop/banner',{
+        await axios.post('http://localhost/api/users/merchant/shops/banner', {
             shop_id: resData.data.shop_id,
             photo: data.banner[0]
         },{

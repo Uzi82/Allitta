@@ -3,14 +3,26 @@
 namespace App\Http\Controllers\Users\Merchant;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LimitRequest;
 use App\Http\Requests\MerchantStoreShopRequest;
+use App\Http\Resources\Users\MerchantShopsDashboardResource;
 use App\Models\Shops\Shop;
 use Illuminate\Database\UniqueConstraintViolationException;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Support\Facades\Auth;
 
 class MerchantShopController extends Controller
 {
+
+    public function index(LimitRequest $request): AnonymousResourceCollection
+    {
+        return MerchantShopsDashboardResource::collection(Shop::select(['id', 'name', 'logotype_path'])
+            ->where('user_id', Auth::id())
+            ->limit($request->input('limit', 10))
+            ->get());
+    }
+
     public function store(MerchantStoreShopRequest $request): JsonResponse
     {
         try {
