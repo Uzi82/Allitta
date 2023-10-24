@@ -7,7 +7,9 @@ import { Logo,
          openModal, 
          useAppSelector,
          open,
-         logout
+         logout,
+         useJWT,
+         getUser
 } from "../"
 import { Container, 
          Navigation, 
@@ -27,7 +29,7 @@ import { Container,
 } from "./styled"
 import { User } from "./User"
 import { useAppDispatch } from "../../Products"
-import { useMutation } from "react-query"
+import { useMutation, useQuery } from "react-query"
 
 export const DashboardNav: React.FC<Props> = ({ active }) => {
     const navigate = useNavigate()
@@ -35,6 +37,12 @@ export const DashboardNav: React.FC<Props> = ({ active }) => {
     const burgerOpened = useAppSelector(state=>state.shopMenuBurger.opened)
     const modal = useAppSelector(state=>state.products)
     const dispatch = useAppDispatch()
+    const jwt = useJWT()
+    const getUserQuery = useQuery(['userCard', { jwt }], () => {
+        if(jwt !== undefined) return getUser(jwt)
+    }, {
+        refetchOnWindowFocus: false
+    })
     const logoutQuery = useMutation(()=>logout())
     const Logout = async () => {
         await logoutQuery.mutateAsync()
@@ -63,7 +71,7 @@ export const DashboardNav: React.FC<Props> = ({ active }) => {
                 <ProfileHead>
                     Profile
                 </ProfileHead>
-                <User name="Admin" status="Admin" />
+                <User name={getUserQuery.data !== undefined ? getUserQuery.data.data.name : 'User'} img={getUserQuery.data !== undefined ? getUserQuery.data.data.img_path : undefined} status="Merchant" />
                 <LogoutBtn onClick={()=>dispatch(openModal({
                         type: 'logout',
                         id: ''

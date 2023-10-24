@@ -1,7 +1,7 @@
 import { Outlet, 
          useNavigate 
 } from "react-router-dom"
-import { LeftContent, 
+import { IPad, LeftContent, 
          Logo, 
          RightContent, 
          Text, 
@@ -40,9 +40,10 @@ export const AuthorizationLayout: React.FC = () => {
                 <Outlet context={{ email, setEmail, password, setPassword, isShoper, setIsShoper, isSuccess, setIsSuccess } satisfies SignInContext} />
             </LeftContent>
             <RightContent>
-                <Text>“Lorem Ipsum is simply dummy text of the printing and typesetting industry.”</Text>
+                <Text>“Fust delivery is not a dream, it`s the truth!”</Text>
             </RightContent>
             <ToastContainer position="top-center" autoClose={2000} limit={2} newestOnTop closeOnClick rtl={false} pauseOnFocusLoss draggable theme="dark" />
+            <IPad />
         </Wrapper>
     )
 }

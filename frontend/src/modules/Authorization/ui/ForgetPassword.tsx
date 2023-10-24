@@ -16,6 +16,7 @@ import { Input,
 import { SubmitHandler } from 'react-hook-form'
 import { useNavigate, useOutletContext } from 'react-router-dom'
 import { useMutation } from 'react-query'
+import { toast } from 'react-toastify'
 
 const ForgetPassword: React.FC = () => {
     const { handleSubmit, registerInput } = useForgetPasswordForm()
@@ -30,7 +31,7 @@ const ForgetPassword: React.FC = () => {
         }).then(res=>{
             if(res.status===201) navigate('/signin/verify')
         },
-            err=>console.log(err)
+            ()=>{toast('Email is wrong!'); return}
         )
     };
 
