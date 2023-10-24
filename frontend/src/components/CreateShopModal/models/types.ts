@@ -3,7 +3,8 @@ import { FieldError } from "react-hook-form"
 // <--- Form  ---> //
 export interface ICreateShop {
     name: string,
-    category: string,
+    category_id: number,
+    description: string
     regnumber: number,
     email: string,
     phone_number: string,

@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import ReactSelect from "react-select"
-
+import Async from 'react-select/async';
 export const Filters = styled(ReactSelect)<{ $full?:boolean, $regular?: boolean, $height?: string}>`
     & > div.Select__control {
         width: ${({ $full }) => $full ? '100%' : '213px' };

@@ -151,11 +151,14 @@ export const UserContainer = styled(Link)`
     }
 `
 
-export const UserImg = styled.div<{ $img?: FileList}>`
+export const UserImg = styled.div<{ $img?: string}>`
     width: 45px;
     height: 45px;
     border-radius: 50%;
-    ${({ $img }) => $img && `background-image: url(${$img})`}
+    ${({ $img }) => $img && `background-image: url(${$img});`}
+    background-position: center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
     background-color: #D9D9D9;
 `
 
