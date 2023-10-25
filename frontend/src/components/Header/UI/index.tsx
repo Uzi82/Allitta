@@ -3,7 +3,6 @@ import { Logo, useJWT, useUserType } from '../'
 import { HeaderDiv, HeaderContent, Navigation, LinkText, Sign, Button } from './styled'
 
 export const Header: React.FC = () => {
-    const navigate = useNavigate()
     const jwt = useJWT()
     const type = useUserType()
     return (

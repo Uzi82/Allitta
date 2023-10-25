@@ -5,7 +5,8 @@ import { CreateShopModal,
          getShops, 
          openModal, 
          useAppDispatch, 
-         useAppSelector 
+         useAppSelector, 
+         useJWT
 } from "../"
 import { AddShop, 
          AddShopPng, 
@@ -18,7 +19,10 @@ import { AddShop,
 } from "./styled"
 
 export const ShopChoose: React.FC = () => {
-    const { data, isFetching, isError } = useQuery('shopChoose', getShops)
+    const jwt = useJWT()
+    const { data, isFetching, isError } = useQuery(['shopChoose', { jwt }], () => getShops(jwt), {
+        refetchOnWindowFocus: false
+    })
     if(isError) console.error('ShopChoose: Query error')
     const modal = useAppSelector(state=>state.products)
     const dispatch = useAppDispatch()
@@ -34,8 +38,8 @@ export const ShopChoose: React.FC = () => {
                 {
                     isFetching
                         ? <LazyLoad $height="50vh" $width="640px" />
-                        : data !== undefined && data.map(el=><Shop key={el.id} onClick={()=>redirect(el.id)}>
-                            <ShopImg $img={el.img} />
+                        : data !== undefined && data.data.map(el=><Shop key={el.id} onClick={()=>redirect(el.id)}>
+                            <ShopImg $img={el.logotype_path} />
                             <ShopName>
                                 { el.name }
                             </ShopName>
