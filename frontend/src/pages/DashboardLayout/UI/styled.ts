@@ -8,6 +8,7 @@ export const Container = styled.div<{ $scroll: boolean | undefined }>`
     justify-content: space-between;
     overflow-x: hidden;
     ${({ $scroll }) => $scroll ? 'height: 100vh;' : 'min-height: 100vh;'}
+    ${({ $scroll }) => $scroll && 'position: fixed;'}
     @media screen and (max-width: 1023px) and (min-width: 767px) {
         flex-direction: column;
         justify-content: flex-start;

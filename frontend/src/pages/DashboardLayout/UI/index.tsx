@@ -13,18 +13,19 @@ export const DashboardLayout: React.FC = () => {
     if(location!==undefined) location = location.replace(/^[a-z]/, letter=>letter.toUpperCase())
     const dispatch = useAppDispatch()
     const [disabled, setDisabled] = useState<boolean>(false)
-    const opened = useAppSelector(state => state.shopMenuBurger.opened)
+    const openedBurger = useAppSelector(state => state.shopMenuBurger.opened)
+    const openedModal = useAppSelector(state => state.products.opened)
     const openBurger = () => {
         dispatch(open())
         setDisabled(true)
         setTimeout(()=>setDisabled(false), 200)
     }
     return(
-        <Container $scroll={opened}>
+        <Container $scroll={openedBurger || openedModal}>
             <SideBlock>
                 <DashboardNav active={location}/>
                 <TopLine>
-                    <MenuBtn $close={opened} onClick={openBurger} disabled={disabled} />
+                    <MenuBtn $close={openedBurger || openedModal} onClick={openBurger} disabled={disabled} />
                 </TopLine>
             </SideBlock>
             <Content>
