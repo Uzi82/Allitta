@@ -2,11 +2,12 @@
 
 namespace Database\Factories\Users;
 
+use App\Models\Users\MerchantUser;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Users\MerchantUser>
+ * @extends Factory<MerchantUser>
  */
 class MerchantUserFactory extends Factory
 {
@@ -27,7 +28,7 @@ class MerchantUserFactory extends Factory
             'last_name' => $lastName,
             'full_name' => $fullName,
             'email' => $this->faker->email(),
-            'password' => Hash::make('pass'),
+            'password' => Hash::make('password'),
             'birthday' => $this->faker->date(),
             'gender' => rand(1, 2),
             'phone_number' => $this->faker->phoneNumber(),

@@ -11,7 +11,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::table('product_orders', function (Blueprint $table) {
-            $table->tinyInteger('rating');
+            $table->tinyInteger('rating')->nullable();
         });
     }
 
