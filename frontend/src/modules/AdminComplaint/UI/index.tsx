@@ -3,7 +3,7 @@ import { ComplaintItem, ComplaintsRow, Wrapper, Id, KindOf, SeeMoreWrapper, Sent
 import { SeeMore } from '../../../UI/SeeMore'
 
 
-export const ComplaintAdmin: React.FC = () => {
+export const AdminComplaint: React.FC = () => {
     return (
         <Wrapper>
             <ComplaintsRow>

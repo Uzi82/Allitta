@@ -17,7 +17,7 @@ import { ShopPage } from './ShopPage'
 import { ShopChat } from '../modules/ShopChat'
 import { ShopChoose } from '../modules/ShopChoose'
 import { ShopProfile } from '../modules/ShopProfile'
-import { ComplaintAdmin } from '../modules/ComplaintAdmin'
+import { AdminComplaint } from '../modules/AdminComplaint'
 import { AdminAccounts } from '../modules/AdminAccounts'
 import { AdminProducts } from '../modules/AdminProducts'
 import { CustomerDashboardLayout } from './CustomerDashboardLayout'
@@ -75,7 +75,7 @@ export const publicRoutes = createBrowserRouter([
             },
             {
                 path: 'complaint',
-                element: <ComplaintAdmin />,
+                element: <AdminComplaint />,
             },
             {
                 path: 'accounts',
