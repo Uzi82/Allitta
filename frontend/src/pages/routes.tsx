@@ -10,7 +10,6 @@ import { ForgetPassword, ResetPassword, SignIn, VerifyingEmail } from '../module
 import { ShopProducts } from '../modules/ShopProducts'
 import { AdminDashboardLayout } from './AdminDashboardLayout'
 import { AdminDashboard } from '../modules/AdminDashboard'
-import { AccountDetailed, ProductDetailed } from '../components/AdminDetailedItem'
 import { ShopOrders } from '../modules/ShopOrders'
 import { ShopCustomers } from '../modules/ShopCustomers'
 import { ShopPage } from './ShopPage'
@@ -21,6 +20,7 @@ import { AdminComplaint } from '../modules/AdminComplaint'
 import { AdminAccounts } from '../modules/AdminAccounts'
 import { AdminProducts } from '../modules/AdminProducts'
 import { CustomerDashboardLayout } from './CustomerDashboardLayout'
+import { CustomerProfile } from '../modules/CustomerProfile'
 
 export const publicRoutes = createBrowserRouter([
     {
@@ -97,7 +97,7 @@ export const publicRoutes = createBrowserRouter([
             },
             {
                 path: 'profile',
-                element: <>profile</>
+                element: <CustomerProfile />
             },
             {
                 path: 'complaint',

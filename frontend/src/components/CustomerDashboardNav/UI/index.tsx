@@ -55,8 +55,8 @@ export const CustomerDashboardNav: React.FC<{ setIsLogoutShown: React.Dispatch<R
                     <Profile>
                         <ProfileAvatar /> {/*need to provide an src={} */}
                         <ProfileInfo>
-                            <ProfileName>Admin</ProfileName>
-                            <ProfileRole>Admin</ProfileRole>
+                            <ProfileName>Customer</ProfileName>
+                            <ProfileRole>Ashomka</ProfileRole>
                         </ProfileInfo>
                         <ProfileButton onClick={(e) => {
                             e.preventDefault()

@@ -50,6 +50,7 @@ export const ProfileWrapper = styled.div<IProfile>`
         display: flex;
         width: auto; 
         padding: 0 20px;
+        height: 100%;
         align-items: center;
         justify-content: center;
         gap: 10px;
