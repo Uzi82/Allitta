@@ -33,3 +33,9 @@ input::-webkit-inner-spin-button {
     margin: 0;
     /* <-- Apparently some margin are still there even though it's hidden */
 }
+
+.Toastify__toast-container {
+    @media screen and (max-width: 767px) {
+        width: 100%;
+    }
+}
