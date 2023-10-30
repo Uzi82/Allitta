@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Bg = styled.div<{ $active: boolean }>`
+const Bg = styled.div<{ $active: boolean, $fixed?: boolean }>`
     display: ${({ $active }) => $active ? 'flex' : 'none'};
     position: absolute;
     left: 0;
@@ -14,6 +14,9 @@ const Bg = styled.div<{ $active: boolean }>`
     animation-name: appear;
     animation-duration: 300ms;
     padding: 10px;
+    ${
+        ({ $fixed }) => $fixed === true && 'position: fixed;'
+    }
     @keyframes appear {
         0%{
             opacity: 0
@@ -36,7 +39,7 @@ const Content = styled.div<{ $customWidth?: boolean }>`
     justify-content: center;
     align-items: center;
     @media screen and (max-width: 1120px) {
-        width: 100%;
+        ${({ $customWidth })=> !$customWidth && `width: 100%;` };
     }
 `
 
@@ -44,10 +47,11 @@ type Props = {
     children: React.ReactNode,
     active: boolean,
     customWidth?: boolean,
-    bgoff?: boolean
+    bgoff?: boolean,
+    fixed?: boolean
 }
 
-export const SimpleBlur: React.FC<Props> = ({ children, active, customWidth, bgoff }) => {
-    if(!bgoff) return <Bg $active={active} ><Content $customWidth={customWidth}>{children}</Content></Bg>
+export const SimpleBlur: React.FC<Props> = ({ children, active, customWidth, bgoff, fixed }) => {
+    if(!bgoff) return <Bg $fixed $active={active} ><Content $customWidth={customWidth}>{children}</Content></Bg>
     else return <Bg $active={active}>{children}</Bg>
 }
