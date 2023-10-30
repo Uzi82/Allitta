@@ -80,4 +80,18 @@ export const Logo = styled.h1`
     }
 `
 
-
+export const IPad = styled.div`
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 45vw;
+    height: calc(45vw - 120px);
+    background-image: url(${require('./ipad.png')});
+    background-position: center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-color: none;
+    @media screen and (max-width: 766px) {
+        display: none;
+    }
+`

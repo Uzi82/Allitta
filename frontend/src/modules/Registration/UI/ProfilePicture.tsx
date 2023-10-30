@@ -1,15 +1,25 @@
-import React, { useEffect } from 'react'
-import { Img, Title, UploadContent, UploadInput, UploadWrapper, FormWrapper, ImgInput } from './styled'
-import { CustomLink } from '../../../UI/CustomLink'
-import { Button } from '../../../UI/Button'
-import { SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form'
-import { type AccountContext, type IFormInput } from '../'
-import { toast } from 'react-toastify'
+import { useEffect } from 'react'
+import { Img, 
+         Title, 
+         UploadContent, 
+         UploadInput, 
+         UploadWrapper, 
+         FormWrapper, 
+         ImgInput 
+} from './styled'
+import { SubmitHandler, 
+         useForm 
+} from 'react-hook-form'
 import { useMutation } from 'react-query'
-import { sendPhoto } from '../models/sendPhoto'
-import { useNavigate, useOutletContext } from 'react-router-dom'
-
-
+import { sendPhoto,
+         CustomLink,
+         Button,
+         type AccountContext, 
+         type IFormInput
+} from '../'
+import { useNavigate, 
+         useOutletContext 
+} from 'react-router-dom'
 
 export const ProfilePicture: React.FC = () => {
     const { register, handleSubmit, watch } = useForm<IFormInput>()
@@ -37,7 +47,7 @@ export const ProfilePicture: React.FC = () => {
     }
     useEffect(()=>{
         if(!getJwt(document.cookie)) navigate('/signup')
-    }, [])
+    }, [navigate])
     const fileinput = watch('file')
     return (
         <FormWrapper $gap='20px' onSubmit={handleSubmit(onSubmit)} $maxWidth='644px'>

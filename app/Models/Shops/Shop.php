@@ -12,6 +12,8 @@ class Shop extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['user_id', 'name', 'category_id', 'reg_number', 'email', 'phone_number', 'street', 'city', 'zip_code', 'description'];
+
     public function productOrders(): HasMany
     {
         return $this->hasMany(ProductOrder::class, 'shop_id');

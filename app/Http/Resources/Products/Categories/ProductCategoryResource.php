@@ -11,7 +11,7 @@ class ProductCategoryResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => __('categories')[$this->id],
+            'name' => __('product_categories')[$this->id],
         ];
     }
 }

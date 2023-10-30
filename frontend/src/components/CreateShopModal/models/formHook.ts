@@ -59,7 +59,7 @@ export const useShopForm = () => {
     })
 
     const telInput = watch('phone_number')
-    const mainInputs = [watch('name'), watch('category'), watch('email'), watch('phone_number'), watch('street'), watch('city'), watch('zip_code')]
+    const mainInputs = [watch('name'), watch('category_id'), watch('email'), watch('phone_number'), watch('street'), watch('city'), watch('zip_code')]
 
     React.useEffect(() => {
         if (telInput) {

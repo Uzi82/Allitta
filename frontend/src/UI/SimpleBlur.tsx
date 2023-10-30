@@ -43,7 +43,11 @@ const Content = styled.div<{ $customWidth?: boolean }>`
 type Props = {
     children: React.ReactNode,
     active: boolean,
-    customWidth?: boolean
+    customWidth?: boolean,
+    bgoff?: boolean
 }
 
-export const SimpleBlur: React.FC<Props> = ({ children, active, customWidth }) => <Bg $active={active} ><Content $customWidth={customWidth}>{children}</Content></Bg>
+export const SimpleBlur: React.FC<Props> = ({ children, active, customWidth, bgoff }) => {
+    if(!bgoff) return <Bg $active={active} ><Content $customWidth={customWidth}>{children}</Content></Bg>
+    else return <Bg $active={active}>{children}</Bg>
+}

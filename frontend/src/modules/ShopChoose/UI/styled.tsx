@@ -30,7 +30,7 @@ export const List = styled.div`
     max-height: 75vh;
     flex-wrap: wrap;
     padding: 5px;
-    width: 100%;
+    /* width: 100%; */
     &::-webkit-scrollbar {
         width: 10px;
     }
@@ -74,7 +74,7 @@ export const Shop = styled.button`
     }
 `
 
-export const ShopImg = styled.div<{ $img?: FileList }>`
+export const ShopImg = styled.div<{ $img?: string }>`
     min-height: 70px;
     min-width: 70px;
     border-radius: 50%;
@@ -88,10 +88,14 @@ export const ShopImg = styled.div<{ $img?: FileList }>`
 export const ShopName = styled.h1`
     color: #000;
     font-family: Inter-Bold, sans-serif;
-    font-size: 24px;
+    font-size: 16px;
+    max-width: calc(100% - 160px);
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    overflow-x: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 `
 
 export const AddShop = styled.button`

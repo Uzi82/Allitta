@@ -1,19 +1,27 @@
-import React, { useEffect, useRef } from 'react'
-import { Img, Subtitle, Title, FormWrapper } from './styled'
-import { Input } from '../../../UI/Input'
-import { CustomLink } from '../../../UI/CustomLink'
-import { Button } from '../../../UI/Button'
-import { onError, useVerificationForm } from '../models/utils'
+import { useEffect } from 'react'
+import { Img, 
+         Subtitle, 
+         Title, 
+         FormWrapper 
+} from './styled'
 import { SubmitHandler } from 'react-hook-form'
-import { AccountContext, IVerification } from '../models/types'
-import { useNavigate, useOutletContext } from 'react-router-dom'
-import { useMutation, useQuery } from 'react-query'
-import { checkVerify, sendVerify } from '../'
-import { ToastContainer, toast } from 'react-toastify'
+import { useNavigate, 
+         useOutletContext 
+} from 'react-router-dom'
+import { useMutation } from 'react-query'
+import { checkVerify,
+         Input,
+         CustomLink,
+         Button,
+         onError, 
+         useVerificationForm,
+         type AccountContext, 
+         type IVerification
+} from '../'
 
 export const Verification: React.FC = () => {
     const { handleSubmit, registerInput } = useVerificationForm()
-    const { isShoper, email, password, setIsShoper , setIsVerifyPassed, isVerifyPassed } = useOutletContext<AccountContext>()
+    const { isShoper, email, password , setIsVerifyPassed } = useOutletContext<AccountContext>()
     const checkVerifyQuery = useMutation((data : { email: string, isShoper: boolean, code: number }) => checkVerify(data))
     const navigate = useNavigate()
     const onSubmit: SubmitHandler<IVerification> = async (data) => {
@@ -28,7 +36,7 @@ export const Verification: React.FC = () => {
     };
     useEffect(()=>{
         if(email === '' || password === '') navigate('/signup')
-    }, [])
+    }, [email, password, navigate])
     return (
         <FormWrapper onSubmit={handleSubmit(onSubmit, onError)} $gap='20px' $maxWidth='456px'>
             <Title $mb='10px'>Create Account</Title>

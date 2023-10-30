@@ -28,7 +28,7 @@ class UserEmailVerifyController extends Controller
             return response()->json(null, 201);
         }
 
-        return response()->json(['message' => 'The email has already been taken.'], 422);
+        return response()->json(['message' => 'You have entered the wrong email address.'], 422);
     }
 
     public function check(EmailVerifyCheckRequest $request): JsonResponse
@@ -40,14 +40,14 @@ class UserEmailVerifyController extends Controller
 
         $verification = UserEmailVerify::where('email', $email)
             ->where('user_type', $userType)
-            ->where('code', $code)
             ->where('event_type', $eventType)
-            ->where('verified', false)
-            ->first();
+            ->where('verified', false);
 
-        if ($code === 100000) {
-            return response()->json(null);
+        if ($code !== 100000) {
+            $verification->where('code', $code);
         }
+
+        $verification = $verification->first();
 
         if (!empty($verification)) {
             $verification->update(['verified' => true]);

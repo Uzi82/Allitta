@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Users;
+namespace App\Http\Controllers\Users\Customer;
 
 use App\Enums\EmailVerifyEventEnum;
 use App\Enums\UserTypesEnum;
@@ -8,21 +8,21 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UserLoginRequest;
 use App\Http\Requests\UserRegisterRequest;
 use App\Http\Requests\UserRestoreRequest;
-use App\Models\Users\MerchantUser;
+use App\Models\Users\CustomerUser;
 use App\Services\Users\UsersAccountService;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-class MerchantAccountController extends Controller
+class CustomerAccountController extends Controller
 {
     /**
      * @throws AuthenticationException
      */
     public function register(UserRegisterRequest $request): JsonResponse
     {
-        $user = (new MerchantUser())->fill([
+        $user = (new CustomerUser())->fill([
             'first_name' => $request->input('first_name'),
             'last_name' => $request->input('last_name'),
             'full_name' => $request->input('full_name'),
@@ -37,7 +37,7 @@ class MerchantAccountController extends Controller
         );
 
         $userAccountService = new UsersAccountService();
-        $token = $userAccountService->register($user, UserTypesEnum::MERCHANT, EmailVerifyEventEnum::REGISTRATION);
+        $token = $userAccountService->register($user, UserTypesEnum::CUSTOMER, EmailVerifyEventEnum::REGISTRATION);
 
         return $userAccountService->respondWithToken($token);
     }
@@ -47,13 +47,13 @@ class MerchantAccountController extends Controller
      */
     public function login(UserLoginRequest $request): JsonResponse
     {
-        $user = (new MerchantUser())->fill([
+        $user = (new CustomerUser())->fill([
                 'email' => $request->input('email'),
                 'password' => $request->input('password')]
         );
 
         $userAccountService = new UsersAccountService();
-        $token = $userAccountService->login($user, 'merchant');
+        $token = $userAccountService->login($user, 'customer');
 
         return $userAccountService->respondWithToken($token);
     }
@@ -63,12 +63,12 @@ class MerchantAccountController extends Controller
      */
     public function restore(UserRestoreRequest $request): void
     {
-        $user = (new MerchantUser())->fill([
+        $user = (new CustomerUser())->fill([
                 'email' => $request->input('email'),
                 'password' => $request->input('password')]
         );
 
-        (new UsersAccountService())->restore($user, UserTypesEnum::MERCHANT, EmailVerifyEventEnum::PASSWORD_RESTORE);
+        (new UsersAccountService())->restore($user, UserTypesEnum::CUSTOMER, EmailVerifyEventEnum::PASSWORD_RESTORE);
     }
 
     public function logout(): void

@@ -12,7 +12,7 @@ class ProductSubcategoryResource extends JsonResource
         return [
             'id' => $this->id,
             'category_id' => $this->category_id,
-            'name' => __('sub_categories')[$this->id],
+            'name' => __('product_sub_categories')[$this->id],
         ];
     }
 }

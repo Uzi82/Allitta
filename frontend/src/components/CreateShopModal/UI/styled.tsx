@@ -71,10 +71,6 @@ export const Input = styled.input<{ $half?: boolean }>`
     }
 `
 
-export const HiddenInput = styled.input`
-    display: none;
-`
-
 export const TwoInputs = styled.div`
     display: flex;
     justify-content: space-between;
@@ -207,4 +203,55 @@ export const BannerImg = styled.input<{ $banner?: string }>`
     background-position: center;
     background-clip: content-box;
     background-size: 100% auto;
+`
+
+export const Category = styled.select`
+    color: black;
+    padding: 14px;
+    border: 1px solid black;
+    border-radius: 10px;
+    width:100%;
+    font-family: Inter-Regular;
+    font-size: 14px;
+    transition-duration: 300ms;
+    opacity: 0.6;
+    padding: 14px;
+    &::placeholder {
+        text-transform: capitalize;
+        color: black;
+    }
+    &:focus {
+        box-shadow: 0px 0px 8px -5px rgba(0,0,0,0.75);
+        border: 1px solid rgba(93, 32, 214, 0.8);
+        opacity: 1;
+    }
+    @media screen and (max-width: 980px) {
+        padding: 12px;
+    }
+    @media screen and (max-width: 767px) {
+        padding: 10px;
+    }
+`
+
+export const Description = styled.textarea`
+    width: 100%;
+    padding: 10px;
+    opacity: 0.6;
+    border: 1px solid black;
+    font-family: Inter-Regular, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    resize: none;
+    border-radius: 10px;
+    height: 40vh;
+    transition-duration: 300ms;
+    background: rgba(255, 255, 255, 0.80);
+    backdrop-filter: blur(10px);
+    color: black;
+    &:focus {
+        opacity: 1;
+        border-color: #5D20D6;
+    }
 `

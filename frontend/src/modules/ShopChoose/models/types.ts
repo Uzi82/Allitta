@@ -1,5 +1,5 @@
 export type shop = {
     id: string,
-    img?: FileList,
+    logotype_path?: string,
     name: string
 }

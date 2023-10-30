@@ -213,6 +213,65 @@
    
     Ответ: {jwt_token: {string}, token_type: {string}, expires_in: {int seconds}}, код 200 OK
 
+#### JWT | Получение списка категорий для магазина:
+
+    URL: GET http://localhost/api/shops/categories
+   
+    Ответ: {{id, name}, ...}, код 200 OK
+
+#### JWT | Создание магазина:
+
+    URL: POST http://localhost/api/users/merchant/shops
+
+    Обязательные поля тела запроса:
+    - name: {string min:3 max:100}
+    - description: {string max:1000}
+    - category_id: {int (из "Получение списка категорий для магазина" роута)}
+    - email: {string}
+    - phone_number: {string min:9 max:15}
+    - street: {string max:100}
+    - city: {string max:25}
+    - zip_code: {string max:50}
+
+    Опциональные поля тела запроса:
+    - reg_number: {string max:20} *Уникальное значение для каждого магазина
+   
+    Ответ: {shop_id: {int}}, код 201 Created
+
+#### JWT | Обновление логотипа магазина:
+
+    URL: POST http://localhost/api/users/merchant/shops/logotype
+
+    Обязательные поля тела запроса:
+    - shop_id: {int}
+    - photo: {formdata image}
+
+    Ответ: {logotype: {string}}, код 200 OK
+
+#### JWT | Обновление баннера магазина:
+
+    URL: POST http://localhost/api/users/merchant/shops/banner
+
+    Обязательные поля тела запроса:
+    - shop_id: {int}
+    - photo: {formdata image}
+
+    Ответ: {banner: {string}}, код 200 OK
+
+#### JWT | Получение списка магазинов мерчанта:
+
+    URL: GET http://localhost/api/users/merchant/shops
+
+    Опционально: ?limit={int} (по умолчанию 10)
+
+    Ответ: {{id, name, logotype_path}, ...}, код 200 OK
+
+#### JWT | Получение краткой информации о мерчанте:
+
+    URL: GET http://localhost/api/users/merchant/profile/me
+   
+    Ответ: {name: {string}, img_path: {string}} код 200 OK
+
 #### Подписка на email рассылку:
 
     URL: POST http://localhost/api/users/email/distribution/subscribe
@@ -234,7 +293,7 @@
 #### Проверка кода для подтверждения email:
 
     URL: GET http://localhost/api/users/email/verify/check
-    Обязательные поля тела запроса:
+    Обязательные поля строки запроса:
         - email: {string}
         - user_type: {int} (2 - customer, 3 - merchant)
         - code: {int} (от 100000 до 999999) *универсальное значение для прохождения тестирования - 100000

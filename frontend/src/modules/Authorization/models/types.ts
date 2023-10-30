@@ -43,12 +43,12 @@ export type FormErrors<T> = {
 };
 // </--- Form  ---/> //
 export type SignInContext = {
-    email: string | undefined,
-    setEmail: React.Dispatch<React.SetStateAction<string | undefined>>,
-    password: string | undefined,
-    setPassword: React.Dispatch<React.SetStateAction<string | undefined>>,
-    isShoper: boolean | undefined,
-    setIsShoper: React.Dispatch<React.SetStateAction<boolean | undefined>>,
+    email: string,
+    setEmail: React.Dispatch<React.SetStateAction<string>>,
+    password: string,
+    setPassword: React.Dispatch<React.SetStateAction<string>>,
+    isShoper: boolean,
+    setIsShoper: React.Dispatch<React.SetStateAction<boolean>>,
     isSuccess: 0 | 1 | 2,
     setIsSuccess: React.Dispatch<React.SetStateAction<0 | 1 | 2>>,
 }

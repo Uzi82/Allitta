@@ -1,9 +1,21 @@
-import { CreateLink, CreateLinkWrapper, FormWrapper, Title } from './styled'
+import { CreateLink, 
+         CreateLinkWrapper, 
+         FormWrapper, 
+         Title 
+} from './styled'
 import { SubmitHandler } from 'react-hook-form'
-import { AccountContext, type ICreateAccount, Button, onError, useAccountForm, Input } from '../'
-import { useNavigate, useOutletContext } from 'react-router-dom'
+import { AccountContext, 
+         type ICreateAccount, 
+         Button, 
+         onError, 
+         useAccountForm, 
+         Input,
+         sendVerify
+} from '../'
+import { useNavigate, 
+         useOutletContext 
+} from 'react-router-dom'
 import { useMutation } from 'react-query'
-import { sendVerify } from '../'
 
 export const CreateAccount: React.FC = () => {
     const navigate = useNavigate()

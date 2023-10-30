@@ -12,7 +12,7 @@ class ProductCategoryRecommendationResource extends JsonResource
         return [
             'id' => $this->id,
             'banner_path' => asset($this->banner_path),
-            'name' => __('categories')[$this->id],
+            'name' => __('product_categories')[$this->id],
         ];
     }
 }

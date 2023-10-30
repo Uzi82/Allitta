@@ -3,7 +3,9 @@ import { Banner,
          BannerContainer, 
          BannerImg, 
          Btns, 
+         Category, 
          Container, 
+         Description, 
          Form, 
          Input, 
          Logo, 
@@ -16,22 +18,53 @@ import { Banner,
          Title, 
          TwoInputs
 } from "./styled"
-import { ToastContainer } from "react-toastify"
+import { ToastContainer, toast } from "react-toastify"
 import {
          useShopForm,
          onError,
          Exit,
          useAppDispatch,
-         open
+         open,
+         type ICreateShop,
+         getCategories,
+         createShop,
 } from '../'
+import { SubmitHandler } from "react-hook-form"
+import { useMutation, useQuery } from "react-query"
 
 export const CreateShopModal: React.FC = () => {
     const [stage, setStageNumber] = useState<number>(1)
     const [blocked, block] = useState<boolean>(false)
     const dispatch = useAppDispatch()
-    const { registerInput, handleSubmit, checkMainInputs, watch, setValue, formState: { errors } } = useShopForm()
-    const submit = (data: any) => {
+    const { registerInput, handleSubmit, checkMainInputs, watch, setValue, formState: { errors }, reset } = useShopForm()
+    const getCategiesQuery = useQuery('merchantGetCategories', getCategories, {
+        refetchOnWindowFocus: false,
+        refetchOnReconnect: false,
+        refetchInterval: false,
+        refetchOnMount: false,
+        refetchIntervalInBackground: false
+    })
+    const createShopQuery = useMutation((data: ICreateShop)=>createShop(data))
+    const submit: SubmitHandler<ICreateShop> = async (data) => {
         console.log(data)
+        await createShopQuery.mutateAsync(data)
+            .then(
+                async ()=>{
+                    toast('Shop created!')
+                    setTimeout(()=>{
+                        dispatch(open())
+                        reset()
+                        setStage(1)
+                    }, 2000)
+                    return
+                },
+                ()=>{
+                    toast('Something gone wrong!')
+                    reset()
+                    setStage(1)
+                    return
+                }
+            )
     }
     const logoinput = watch('logo')
     const bannerinput = watch('banner')
@@ -42,12 +75,12 @@ export const CreateShopModal: React.FC = () => {
     function setStage(num: number) {
         setStageNumber(num)
         block(true)
-        setTimeout(()=>block(false), 1000)
+        setTimeout(()=>block(false), 100)
     }
     return(
-        <Container onSubmit={()=>handleSubmit(submit, onError)}>
+        <Container onSubmit={handleSubmit(submit, onError)}>
+            <ToastContainer position="top-center" autoClose={500} limit={2} newestOnTop closeOnClick rtl={false} pauseOnFocusLoss={false} draggable theme="dark" />
             <Exit type="button" onClick={()=>dispatch(open())} />
-            <ToastContainer position="top-center" autoClose={2000} limit={2} newestOnTop closeOnClick rtl={false} pauseOnFocusLoss draggable theme="dark" />
             {
                 stage === 1
                     ?<>
@@ -60,7 +93,22 @@ export const CreateShopModal: React.FC = () => {
                                     Shop Informations
                                 </PartTitle>
                                 <Input placeholder="Shop Name" {...registerInput('name')}/>
-                                <Input placeholder="Business Category" {...registerInput('category')} />
+                                
+                                    {
+                                        getCategiesQuery.data !== undefined
+                                            ? <Category {...registerInput('category_id')}>
+                                                    {
+                                                        getCategiesQuery.data.data.map(el=>
+                                                            <option key={el.id} value={el.id}>
+                                                                {
+                                                                    el.name
+                                                                }
+                                                            </option>
+                                                        )
+                                                    }
+                                                </Category>
+                                            : <></>
+                                    }
                                 <Input placeholder="Reg Number (Optional)" $half type="number" {...registerInput('regnumber')}/>
                             </Part>
                             <Part>
@@ -88,6 +136,16 @@ export const CreateShopModal: React.FC = () => {
                         </SubmitBtn>
                     </>
                     : stage === 2
+                    ? <>
+                        <Title>
+                            Description
+                        </Title>
+                        <Description maxLength={1000} placeholder="Type here..." {...registerInput('description')} />
+                        <SubmitBtn disabled={blocked} onClick={()=>setStage(3)}>
+                            Submit
+                        </SubmitBtn>
+                    </>
+                    : stage === 3
                     ?<> 
                         <Title>
                             Shop Logo
@@ -97,15 +155,16 @@ export const CreateShopModal: React.FC = () => {
                             { logoinput ? logoinput.length > 0 && <LogoImg $logo={URL.createObjectURL(logoinput[0])} /> : <></>}
                         </LogoContainer>
                         <Btns>
-                            <SubmitBtn disabled={blocked} type="button" onClick={()=>setStage(3)}>
+                            <SubmitBtn disabled={blocked || logoinput?.length === 0} type="button" onClick={()=>setStage(4)}>
                                 Submit
                             </SubmitBtn>
-                            <SkipBtn disabled={blocked} type="button" onClick={()=>{setValue('logo', undefined); setStage(3)}}>
+                            <SkipBtn disabled={blocked} type="button" onClick={()=>{setValue('logo', undefined); setStage(4)}}>
                                 Skip
                             </SkipBtn>
                         </Btns>
                     </>
-                    : stage === 3 && <> 
+                    : stage === 4 &&
+                    <> 
                         <Title>
                             Shop Banner
                         </Title>
@@ -114,10 +173,10 @@ export const CreateShopModal: React.FC = () => {
                             { bannerinput ? bannerinput.length > 0 && <BannerImg $banner={URL.createObjectURL(bannerinput[0])} /> : <></>}
                         </BannerContainer>
                         <Btns>
-                            <SubmitBtn disabled={blocked} type="submit">
+                            <SubmitBtn disabled={blocked || bannerinput?.length === 0}>
                                 Submit
                             </SubmitBtn>
-                            <SkipBtn disabled={blocked} type="submit" onClick={()=>{setValue('banner', undefined)}}>
+                            <SkipBtn disabled={blocked} onClick={()=>{setValue('banner', undefined)}}>
                                 Skip
                             </SkipBtn>
                         </Btns>

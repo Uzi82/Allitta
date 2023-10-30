@@ -9,11 +9,6 @@ use Illuminate\Validation\Rule;
 
 class UserRegisterRequest extends FormRequest
 {
-    public function authorize(): bool
-    {
-        return true;
-    }
-
     public function rules(): array
     {
         $currentDate = Carbon::now()->toDateString();

@@ -13,11 +13,11 @@ export type FormLinkStyles = {
 }
 
 export interface ISignInPopup {
-    isSuccess: 1 | 2
+    isSuccess: 0 | 1 | 2
     setIsSuccess: React.Dispatch<React.SetStateAction<0 | 1 | 2>>
 }
 
 export interface ISignUpPopup {
-    isVerifyPassed: 1 | 2
+    isVerifyPassed: 0 | 1 | 2
     setIsVerifyPassed: React.Dispatch<React.SetStateAction<0 | 1 | 2>>
 }

@@ -73,8 +73,8 @@ export const Sign = styled.div`
     }
 `
 
-export const Button = styled(Link)`
-    width: 91px;
+export const Button = styled(Link)<{ $big?: boolean }>`
+    width: ${({ $big }) => $big ? '182px': '91px'};
     height: 35px;
     display: flex;
     align-items: center;

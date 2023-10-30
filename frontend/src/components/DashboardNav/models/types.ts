@@ -9,7 +9,7 @@ export type Props = {
 }
 
 export type UserProps = {
-    img?: FileList,
+    img?: string,
     name: string,
     status: string
 }
