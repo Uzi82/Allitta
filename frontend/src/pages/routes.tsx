@@ -20,6 +20,7 @@ import { ShopProfile } from '../modules/ShopProfile'
 import { ComplaintAdmin } from '../modules/ComplaintAdmin'
 import { AdminAccounts } from '../modules/AdminAccounts'
 import { AdminProducts } from '../modules/AdminProducts'
+import { CustomerDashboardLayout } from './CustomerDashboardLayout'
 
 export const publicRoutes = createBrowserRouter([
     {
@@ -85,8 +86,32 @@ export const publicRoutes = createBrowserRouter([
                 element: <AdminProducts />
             },
         ]
-
-
+    },
+    {
+        path: '/customer',
+        element: <CustomerDashboardLayout />,
+        children: [
+            {
+                path: '/customer/',
+                element: <Navigate to={'/customer/profile'} />
+            },
+            {
+                path: 'profile',
+                element: <>profile</>
+            },
+            {
+                path: 'complaint',
+                element: <>complaint</>,
+            },
+            {
+                path: 'orders',
+                element: <>orders</>,
+            },
+            {
+                path: 'cuschat',
+                element: <>cuschat</>,
+            },
+        ]
     },
     {
         path: '/signin',

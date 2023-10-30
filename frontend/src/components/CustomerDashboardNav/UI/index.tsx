@@ -3,7 +3,7 @@ import { Logo, navElements } from "../"
 import { Container, Navigation, Element, Img, NavigationMobile, NavBurger, NavBurgerItem, Profile, ProfileWrapper, ProfileTitle, ProfileButton, ProfileName, ProfileRole, ProfileInfo, ProfileAvatar } from "./styled"
 import { Burger } from "./Burger"
 import React from "react"
-export const AdminDashboardNav: React.FC<{ setIsLogoutShown: React.Dispatch<React.SetStateAction<boolean>> }> = ({ setIsLogoutShown }) => {
+export const CustomerDashboardNav: React.FC<{ setIsLogoutShown: React.Dispatch<React.SetStateAction<boolean>> }> = ({ setIsLogoutShown }) => {
     const [burgerActive, setBurgerActive] = React.useState(false)
     const navigate = useNavigate()
     const location = useLocation().pathname.split('/')[2]
@@ -13,7 +13,7 @@ export const AdminDashboardNav: React.FC<{ setIsLogoutShown: React.Dispatch<Reac
             <Logo color="#5D20D6">ALLITTA</Logo>
             <Navigation>
                 {navElements.map(navItem => (
-                    <Element key={navItem.title} $active={navItem.title.toLowerCase() === location} onClick={() => navigate(`/admin/${navItem.title.replace(/[A-Z]/g, (u: string) => u.toLowerCase())}`)}>
+                    <Element key={navItem.title} $active={navItem.title.toLowerCase() === location} onClick={() => navigate(`/customer/${navItem.title.replace(/[A-Z]/g, (u: string) => u.toLowerCase())}`)}>
                         <Img src={navItem.img} />
                         <span>{navItem.title}</span>
                     </Element>
@@ -22,10 +22,10 @@ export const AdminDashboardNav: React.FC<{ setIsLogoutShown: React.Dispatch<Reac
             <ProfileWrapper>
                 <ProfileTitle>profile</ProfileTitle>
                 <Profile>
-                    <ProfileAvatar /> {/*need to provide an src={} */}
+                    <ProfileAvatar /> {/*need to provide src={} */}
                     <ProfileInfo>
-                        <ProfileName>Admin</ProfileName>
-                        <ProfileRole>Admin</ProfileRole>
+                        <ProfileName>Customer</ProfileName>
+                        <ProfileRole>Ashomka</ProfileRole>
                     </ProfileInfo>
                 </Profile>
                 <ProfileButton onClick={(e) => {
