@@ -8,7 +8,7 @@ import { CustomerDashboardNav } from "../../../components/CustomerDashboardNav"
 export const CustomerDashboardLayout: React.FC = () => {
     const [isLogoutShown, setIsLogoutShown] = React.useState(false)
 
-    const header = { 'profile': 'My Profile', 'complaint': 'Complaints & Reporting', 'cuschat': 'CusChat' }[useLocation().pathname.split('/')[2]]
+    const header = { 'profile': 'My Profile', 'complaints': 'Complaints & Reporting', 'cuschat': 'CusChat' }[useLocation().pathname.split('/')[2]]
     return (
         <Container>
             <SideBlock>

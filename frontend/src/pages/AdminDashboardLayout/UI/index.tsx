@@ -8,7 +8,7 @@ import React from "react"
 export const AdminDashboardLayout: React.FC = () => {
     const [isLogoutShown, setIsLogoutShown] = React.useState(false)
 
-    const header = { 'dashboard': 'Dashboard', 'complaint': 'Complaints & Reporting', 'accounts': 'Accounts Management', 'products': 'Products' }[useLocation().pathname.split('/')[2]]
+    const header = { 'dashboard': 'Dashboard', 'complaints': 'Complaints & Reporting', 'accounts': 'Accounts Management', 'products': 'Products' }[useLocation().pathname.split('/')[2]]
     return (
         <Container>
             <SideBlock>

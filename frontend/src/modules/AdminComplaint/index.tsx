@@ -1,2 +1,0 @@
-export { AdminComplaint } from './UI'
-

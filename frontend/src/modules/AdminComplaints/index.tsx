@@ -1,0 +1,2 @@
+export { AdminComplaints } from './UI'
+

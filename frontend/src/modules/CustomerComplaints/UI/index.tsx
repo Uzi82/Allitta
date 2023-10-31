@@ -2,7 +2,7 @@ import { useQuery } from "react-query"
 import { getComplaints } from "../models/getComplaints"
 import { ComplaintItem, ComplaintsRow, Wrapper, Id, KindOf, SeeMoreWrapper, SentDate, Subject, ComplaintsWrapper } from './styled'
 import { SeeMore } from '../../../UI/SeeMore'
-export const CustomerComplaint: React.FC = () => {
+export const CustomerComplaints: React.FC = () => {
     const { data, isError } = useQuery(['CustomerComplaints'], getComplaints, {
         refetchOnWindowFocus: false
     })

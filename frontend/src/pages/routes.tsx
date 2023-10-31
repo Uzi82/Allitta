@@ -16,13 +16,13 @@ import { ShopPage } from './ShopPage'
 import { ShopChat } from '../modules/ShopChat'
 import { ShopChoose } from '../modules/ShopChoose'
 import { ShopProfile } from '../modules/ShopProfile'
-import { AdminComplaint } from '../modules/AdminComplaint'
+import { AdminComplaints } from '../modules/AdminComplaints'
 import { AdminAccounts } from '../modules/AdminAccounts'
 import { AdminProducts } from '../modules/AdminProducts'
 import { CustomerDashboardLayout } from './CustomerDashboardLayout'
 import { CustomerProfile } from '../modules/CustomerProfile'
 import { CustomerOrders } from '../modules/CustomerOrders'
-import { CustomerComplaint } from '../modules/CustomerComplaint'
+import { CustomerComplaints } from '../modules/CustomerComplaints'
 
 export const publicRoutes = createBrowserRouter([
     {
@@ -76,8 +76,8 @@ export const publicRoutes = createBrowserRouter([
                 element: <AdminDashboard />
             },
             {
-                path: 'complaint',
-                element: <AdminComplaint />,
+                path: 'complaints',
+                element: <AdminComplaints />,
             },
             {
                 path: 'accounts',
@@ -102,8 +102,8 @@ export const publicRoutes = createBrowserRouter([
                 element: <CustomerProfile />
             },
             {
-                path: 'complaint',
-                element: <CustomerComplaint />,
+                path: 'complaints',
+                element: <CustomerComplaints />,
             },
             {
                 path: 'orders',
