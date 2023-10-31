@@ -22,6 +22,7 @@ import { AdminProducts } from '../modules/AdminProducts'
 import { CustomerDashboardLayout } from './CustomerDashboardLayout'
 import { CustomerProfile } from '../modules/CustomerProfile'
 import { CustomerOrders } from '../modules/CustomerOrders'
+import { CustomerComplaint } from '../modules/CustomerComplaint'
 
 export const publicRoutes = createBrowserRouter([
     {
@@ -102,7 +103,7 @@ export const publicRoutes = createBrowserRouter([
             },
             {
                 path: 'complaint',
-                element: <></>,
+                element: <CustomerComplaint />,
             },
             {
                 path: 'orders',
