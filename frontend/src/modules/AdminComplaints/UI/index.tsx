@@ -1,9 +1,15 @@
 import React from 'react'
-import { ComplaintItem, ComplaintsRow, Wrapper, Id, KindOf, SeeMoreWrapper, SentDate, Subject } from './styled'
+import { ComplaintItem, ComplaintsRow, Wrapper, Id, KindOf, SeeMoreWrapper, SentDate, Subject, ComplaintsWrapper } from './styled'
 import { SeeMore } from '../../../UI/SeeMore'
+import { useQuery } from 'react-query'
+import { getComplaints } from '../models/getComplaints'
 
 
 export const AdminComplaints: React.FC = () => {
+    const { data, isError } = useQuery(['CustomerComplaints'], getComplaints, {
+        refetchOnWindowFocus: false
+    })
+    if (isError) console.error('CustomerComplaints: Query error')
     return (
         <Wrapper>
             <ComplaintsRow>
@@ -13,14 +19,20 @@ export const AdminComplaints: React.FC = () => {
                 <KindOf>Kind of</KindOf>
                 <SeeMoreWrapper></SeeMoreWrapper>
             </ComplaintsRow>
-            {[{ id: 1, sentDate: '12/12/2022', subject: 'i hate u', kindOf: 'shop' }].map(({ id, sentDate, subject, kindOf }) =>
-                <ComplaintItem key={id}>
-                    <Id>#{id}</Id>
-                    <Subject>{subject}</Subject>
-                    <SentDate>{sentDate}</SentDate>
-                    <KindOf>{kindOf}</KindOf>
-                    <SeeMoreWrapper><SeeMore /></SeeMoreWrapper>
-                </ComplaintItem>)}
+            <ComplaintsWrapper>
+                {data === undefined ?
+                    <>there isn`t any customers</>
+                    :
+                    data.map(({ id, sentDate, subject, kindOf }) =>
+                        <ComplaintItem key={id}>
+                            <Id>#{id}</Id>
+                            <Subject>{subject}</Subject>
+                            <SentDate>{sentDate}</SentDate>
+                            <KindOf>{kindOf}</KindOf>
+                            <SeeMoreWrapper><SeeMore /></SeeMoreWrapper>
+                        </ComplaintItem>
+                    )}
+            </ComplaintsWrapper>
         </Wrapper>
     )
 }

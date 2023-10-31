@@ -32,6 +32,11 @@ export const ComplaintsRow = styled.div`
         font-size: 12px;
     }
 `
+export const ComplaintsWrapper = styled.div`
+    width: 100%;
+    max-height: calc(100vh - 50px);
+    overflow-y: auto;
+`
 export const ComplaintItem = styled(ComplaintsRow)`
     border-radius: 10px;
     border: 1px solid rgba(0, 0, 0, 0.06);
