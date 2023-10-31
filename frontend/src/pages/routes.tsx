@@ -21,6 +21,7 @@ import { AdminAccounts } from '../modules/AdminAccounts'
 import { AdminProducts } from '../modules/AdminProducts'
 import { CustomerDashboardLayout } from './CustomerDashboardLayout'
 import { CustomerProfile } from '../modules/CustomerProfile'
+import { CustomerOrders } from '../modules/CustomerOrders'
 
 export const publicRoutes = createBrowserRouter([
     {
@@ -101,11 +102,11 @@ export const publicRoutes = createBrowserRouter([
             },
             {
                 path: 'complaint',
-                element: <>complaint</>,
+                element: <></>,
             },
             {
                 path: 'orders',
-                element: <>orders</>,
+                element: <CustomerOrders />,
             },
             {
                 path: 'cuschat',
