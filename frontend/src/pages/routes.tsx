@@ -23,6 +23,7 @@ import { CustomerDashboardLayout } from './CustomerDashboardLayout'
 import { CustomerProfile } from '../modules/CustomerProfile'
 import { CustomerOrders } from '../modules/CustomerOrders'
 import { CustomerComplaints } from '../modules/CustomerComplaints'
+import { CustomerChat } from '../modules/CustomerChat'
 
 export const publicRoutes = createBrowserRouter([
     {
@@ -111,7 +112,7 @@ export const publicRoutes = createBrowserRouter([
             },
             {
                 path: 'cuschat',
-                element: <>cuschat</>,
+                element: <CustomerChat />,
             },
         ]
     },
