@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
-
-`;
-
 export const Rating = styled.div`
     display: inline-block;
+    @media screen and (max-width: 450px) {
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+    }
 ` 
   
   export const Star = styled.span`
