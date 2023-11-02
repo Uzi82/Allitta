@@ -4,6 +4,7 @@ import { CreateShopModal,
          SimpleBlur, 
          getShops, 
          openModal, 
+         setId, 
          useAppDispatch, 
          useAppSelector, 
          useJWT
@@ -17,6 +18,7 @@ import { AddShop,
          ShopImg,
          ShopName
 } from "./styled"
+import { useNavigate } from "react-router-dom"
 
 export const ShopChoose: React.FC = () => {
     const jwt = useJWT()
@@ -24,10 +26,12 @@ export const ShopChoose: React.FC = () => {
         refetchOnWindowFocus: false
     })
     if(isError) console.error('ShopChoose: Query error')
+    const navigate = useNavigate()
     const modal = useAppSelector(state=>state.products)
     const dispatch = useAppDispatch()
     const redirect = (id: string)=>{
-        console.log(id)
+        dispatch(setId(parseInt(id)))
+        navigate('/shop/dashboard')
     }
     return(
         <Container>

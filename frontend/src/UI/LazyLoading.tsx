@@ -1,9 +1,10 @@
 import styled from "styled-components";
 
-export const LazyLoad = styled.div<{$width: string, $height: string}>`
+export const LazyLoad = styled.div<{$width: string, $height: string, $m?: string }>`
     animation: linear bg-pan-left 8s both infinite;
     width: ${({$width})=> $width || `auto`};
     height: ${({$height})=> $height || `auto`};
+    ${({ $m }) => $m && `margin: ${$m};`}
     background: #d8d8d8;
     background-image: linear-gradient(90deg, rgb(232, 232, 232), rgb(204, 204, 204), rgb(232, 232, 232));
     border-radius: 10px;
