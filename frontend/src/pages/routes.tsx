@@ -24,6 +24,7 @@ import { CustomerProfile } from '../modules/CustomerProfile'
 import { CustomerOrders } from '../modules/CustomerOrders'
 import { CustomerComplaints } from '../modules/CustomerComplaints'
 import { CustomerChat } from '../modules/CustomerChat'
+import { HomeProducts } from '../modules/HomeProducts'
 
 export const publicRoutes = createBrowserRouter([
     {
@@ -37,7 +38,11 @@ export const publicRoutes = createBrowserRouter([
             {
                 path: '/shops/:id',
                 element: <ShopPage />
-            }
+            },
+            {
+                path: '/products',
+                element: <HomeProducts />
+            },
         ]
     },
     {
