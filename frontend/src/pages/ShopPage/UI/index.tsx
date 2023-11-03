@@ -1,6 +1,6 @@
 import { ShopContent } from "../../../components/ShopContent";
 import { ChooseRating } from "../../../modules/ChooseRating";
-import { GoodsByShopCategories } from "../../../modules/GoodsByShopCategories";
+import { GoodsByShopCategories, LazyLoad } from "../../../modules/GoodsByShopCategories";
 import { ChooseShop } from "../../Home";
 import { ShopsWrapper } from './styled';
 import { getShopInfo } from "../models/getShopInfo";
@@ -22,7 +22,7 @@ export const ShopPage: React.FC = () => {
     }, [id, refetch])
 
     if (isError) console.error('Shop: Query error')
-    if (isFetching) return <div>Загрузка...</div>
+    if (isFetching) return <LazyLoad $height="80vh" $width="90%" $m="10px" />
     return (
         <>
             {data &&

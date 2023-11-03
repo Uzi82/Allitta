@@ -272,6 +272,12 @@
    
     Ответ: {name: {string}, img_path: {string}} код 200 OK
 
+#### JWT | Получение краткой статистики о магазине:
+
+    URL: GET http://localhost/api/users/merchant/shops/dashboard/{id}
+   
+    Ответ: {summary: {total_products: {int}, total_sales: {int}, pending_orders: {int}, on_process_delivery: {int}}} код 200 OK
+
 #### Подписка на email рассылку:
 
     URL: POST http://localhost/api/users/email/distribution/subscribe

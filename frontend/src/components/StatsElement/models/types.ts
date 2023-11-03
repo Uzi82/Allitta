@@ -1,5 +1,5 @@
 export type Props = {
-    amount?: number,
+    amount?: number | false,
     title?: string,
     img?: string
 }

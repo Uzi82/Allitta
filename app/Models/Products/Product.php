@@ -3,14 +3,21 @@
 namespace App\Models\Products;
 
 use App\Enums\ProductOrderStatusEnum;
+use App\Models\Shops\Shop;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\DB;
 
 class Product extends Model
 {
     use HasFactory;
+
+    public function shop(): BelongsTo
+    {
+        return $this->belongsTo(Shop::class);
+    }
 
     public function searchByName(Builder $query, string $name): Builder
     {

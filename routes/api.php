@@ -13,6 +13,7 @@ use App\Http\Controllers\Users\Merchant\MerchantAccountController;
 use App\Http\Controllers\Users\Merchant\MerchantController;
 use App\Http\Controllers\Users\Merchant\MerchantShopController;
 use App\Http\Controllers\Users\Merchant\MerchantShopImagesController;
+use App\Http\Controllers\Users\Merchant\MerchantShopsDashboardController;
 use App\Http\Controllers\Users\ProfileController;
 use App\Http\Controllers\Users\UserEmailDistributionController;
 use App\Http\Controllers\Users\UserEmailVerifyController;
@@ -90,6 +91,11 @@ Route::prefix('users')->group(function () {
         });
 
         Route::prefix('shops')->group(function () {
+
+            Route::prefix('dashboard')->group(function () {
+                Route::get('{id}', [MerchantShopsDashboardController::class, 'show'])->middleware('auth:merchant');
+            });
+
             Route::get('/', [MerchantShopController::class, 'index'])->middleware('auth:merchant');
             Route::post('/', [MerchantShopController::class, 'store'])->middleware('auth:merchant');
             Route::post('logotype', [MerchantShopImagesController::class, 'logotype'])->middleware('auth:merchant');
