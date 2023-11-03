@@ -1,18 +1,18 @@
 import { Outlet, useLocation } from "react-router-dom"
 import { Container, Content, Header, SideBlock } from "./styled"
 import moment from "moment"
-import { AdminDashboardNav } from "../../../components/AdminDashboardNav"
 import { Logout } from "../../../components/Logout"
 import React from "react"
+import { CustomerDashboardNav } from "../../../components/CustomerDashboardNav"
 
-export const AdminDashboardLayout: React.FC = () => {
+export const CustomerDashboardLayout: React.FC = () => {
     const [isLogoutShown, setIsLogoutShown] = React.useState(false)
 
-    const header = { 'dashboard': 'Dashboard', 'complaints': 'Complaints & Reporting', 'accounts': 'Accounts Management', 'products': 'Products' }[useLocation().pathname.split('/')[2]]
+    const header = { 'profile': 'My Profile', 'complaints': 'Complaints & Reporting', 'cuschat': 'CusChat' }[useLocation().pathname.split('/')[2]]
     return (
         <Container>
             <SideBlock>
-                <AdminDashboardNav {...{ setIsLogoutShown }} />
+                <CustomerDashboardNav {...{ setIsLogoutShown }} />
             </SideBlock>
             <Content>
                 <Header>
