@@ -14,7 +14,7 @@ class ProductRecommendationResource extends JsonResource
             'name' => $this->name,
             'logotype_path' => asset($this->logotype_path),
             'currency' => config('currencies')[$this->currency],
-            'cost' => (int)$this->cost,
+            'cost' => $this->cost,
             'description' => $this->description
         ];
     }

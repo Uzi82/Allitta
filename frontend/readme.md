@@ -276,7 +276,12 @@
 
     URL: GET http://localhost/api/users/merchant/shops/dashboard/{id}
    
-    Ответ: {summary: {total_products: {int}, total_sales: {int}, pending_orders: {int}, on_process_delivery: {int}}} код 200 OK
+    Ответ: {
+            summary: {total_products: {int}, total_sales: {int}, pending_orders: {int}, on_process_delivery: {int}},
+            stock_summary: {id: {int}, product_name: {string}, available_stock_percent: {int}},
+            available_stock_percent: {float},
+            new_orders: {id: {int}, customer_name: {string}, ordered_date: {date Y/m/d}, amount: {float}, currency: {string}, status: {int}},
+    } код 200 OK
 
 #### Подписка на email рассылку:
 
