@@ -1,4 +1,4 @@
-export type product = null | {
+export type product = {
     id: string,
     name: string,
     cost: string,
