@@ -3,8 +3,10 @@
 namespace App\Models\Shops;
 
 use App\Enums\ProductOrderStatusEnum;
+use App\Enums\ProductStatusEnum;
 use App\Models\Orders\ProductOrder;
 use App\Models\Products\Product;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -52,5 +54,24 @@ class Shop extends Model
                 ProductOrderStatusEnum::ON_DELIVERY->value
             ])
             ->first();
+    }
+
+    public function getDashboardStockProductsByShopId(int $shopId, int $limit): Collection
+    {
+        return Product::select('id', 'name')
+            ->where('shop_id', $shopId)
+            ->where('status', '!=', ProductStatusEnum::UNAVAILABLE->value)
+            ->selectRaw('ROUND((CAST(quantity AS DECIMAL) / CAST(last_stock_quantity AS DECIMAL)) * 100) AS available_stock_percent')
+            ->orderBy('available_stock_percent')
+            ->limit($limit)
+            ->get();
+    }
+
+    public function getDashboardStockSummaryByShopId(int $shopId): float
+    {
+        return (float)Product::where('shop_id', $shopId)
+            ->where('status', '!=', ProductStatusEnum::UNAVAILABLE->value)
+            ->selectRaw('ROUND((SUM(quantity::decimal) / SUM(last_stock_quantity::decimal)) * 100, 2) AS available_stock_percent')
+            ->value('available_stock_percent');
     }
 }

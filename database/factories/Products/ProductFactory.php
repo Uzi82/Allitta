@@ -28,6 +28,7 @@ class ProductFactory extends Factory
         $name = $this->faker->words(2, true);
         $categoryId = ProductCategory::inRandomOrder()->first()->id;
         $categoryChildren = config('app.categories.category.children')[$categoryId];
+        $quantity = rand(0, 100);
 
         return [
             'shop_id' => null,
@@ -41,9 +42,10 @@ class ProductFactory extends Factory
             'subcategory_id' => $categoryChildren[array_rand($categoryChildren)],
             'active' => (bool)rand(0, 1),
             'draft' => (bool)rand(0, 1),
-            'quantity' => rand(0, 100),
+            'quantity' => $quantity,
             'currency' => $currencies[array_rand($currencies)]->value,
-            'cost' => rand(100, 5000)
+            'cost' => rand(100, 5000),
+            'last_stock_quantity' => $quantity + rand(10, 100),
         ];
     }
 }

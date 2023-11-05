@@ -10,17 +10,21 @@ import { ForgetPassword, ResetPassword, SignIn, VerifyingEmail } from '../module
 import { ShopProducts } from '../modules/ShopProducts'
 import { AdminDashboardLayout } from './AdminDashboardLayout'
 import { AdminDashboard } from '../modules/AdminDashboard'
-import { AccountDetailed, ProductDetailed } from '../components/AdminDetailedItem'
 import { ShopOrders } from '../modules/ShopOrders'
 import { ShopCustomers } from '../modules/ShopCustomers'
 import { ShopPage } from './ShopPage'
 import { ShopChat } from '../modules/ShopChat'
 import { ShopChoose } from '../modules/ShopChoose'
 import { ShopProfile } from '../modules/ShopProfile'
-import { ComplaintAdmin } from '../modules/ComplaintAdmin'
+import { AdminComplaints } from '../modules/AdminComplaints'
 import { AdminAccounts } from '../modules/AdminAccounts'
 import { AdminProducts } from '../modules/AdminProducts'
 import { ProductPage } from './ProductPage'
+import { CustomerDashboardLayout } from './CustomerDashboardLayout'
+import { CustomerProfile } from '../modules/CustomerProfile'
+import { CustomerOrders } from '../modules/CustomerOrders'
+import { CustomerComplaints } from '../modules/CustomerComplaints'
+import { CustomerChat } from '../modules/CustomerChat'
 
 export const publicRoutes = createBrowserRouter([
     {
@@ -78,8 +82,8 @@ export const publicRoutes = createBrowserRouter([
                 element: <AdminDashboard />
             },
             {
-                path: 'complaint',
-                element: <ComplaintAdmin />,
+                path: 'complaints',
+                element: <AdminComplaints />,
             },
             {
                 path: 'accounts',
@@ -90,8 +94,32 @@ export const publicRoutes = createBrowserRouter([
                 element: <AdminProducts />
             },
         ]
-
-
+    },
+    {
+        path: '/customer',
+        element: <CustomerDashboardLayout />,
+        children: [
+            {
+                path: '/customer/',
+                element: <Navigate to={'/customer/profile'} />
+            },
+            {
+                path: 'profile',
+                element: <CustomerProfile />
+            },
+            {
+                path: 'complaints',
+                element: <CustomerComplaints />,
+            },
+            {
+                path: 'orders',
+                element: <CustomerOrders />,
+            },
+            {
+                path: 'cuschat',
+                element: <CustomerChat />,
+            },
+        ]
     },
     {
         path: '/signin',
