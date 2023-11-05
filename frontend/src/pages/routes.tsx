@@ -19,6 +19,7 @@ import { ShopProfile } from '../modules/ShopProfile'
 import { AdminComplaints } from '../modules/AdminComplaints'
 import { AdminAccounts } from '../modules/AdminAccounts'
 import { AdminProducts } from '../modules/AdminProducts'
+import { ProductPage } from './ProductPage'
 import { CustomerDashboardLayout } from './CustomerDashboardLayout'
 import { CustomerProfile } from '../modules/CustomerProfile'
 import { CustomerOrders } from '../modules/CustomerOrders'
@@ -37,6 +38,10 @@ export const publicRoutes = createBrowserRouter([
             {
                 path: '/shops/:id',
                 element: <ShopPage />
+            },
+            {
+                path: '/products/:id',
+                element: <ProductPage />
             }
         ]
     },
