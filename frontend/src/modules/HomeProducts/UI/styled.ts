@@ -16,7 +16,7 @@ export const Content = styled.div`
     }
 `
 
-export const MainPage = styled.div`
+export const Main = styled.div`
     background-image: url(${searchBg});
     width: 1108px;
     height: 450px;
@@ -34,6 +34,8 @@ export const MainPage = styled.div`
         height: 150px;
         background: none;
     }
+`
+export const ProductsList = styled.div`
 `
 export const MainTitle = styled.h1`
     font-family: Inter-Regular, sans-serif;

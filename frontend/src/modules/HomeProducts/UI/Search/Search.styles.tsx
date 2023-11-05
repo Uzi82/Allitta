@@ -1,7 +1,6 @@
-import React from "react"
 import styled from "styled-components"
 
-const SearchStyled = styled.div`
+export const SearchStyled = styled.div`
     display: flex;
     width: 100%;
     max-width: 544px;
@@ -11,7 +10,7 @@ const SearchStyled = styled.div`
     justify-content: flex-end;
 `
 
-const Input = styled.input`
+export const Input = styled.input`
     padding: 3px 100px 3px 20px;
     width: 100%;
     height: 100%;
@@ -35,7 +34,7 @@ const Input = styled.input`
     }
 `
 
-const Send = styled.button`
+export const Send = styled.button`
     border-radius: 100px;
     background: #5D20D6;   
     position: absolute;
@@ -60,16 +59,3 @@ const Send = styled.button`
         padding: 7px 16px;
     }
 `
-
-
-
-export const Search: React.FC = ({ }) => {
-    const [searchValue, setSearchValue] = React.useState('')
-
-    return (
-        <SearchStyled>
-            <Input onChange={(e) => { setSearchValue(e.target.value) }} value={searchValue} placeholder={'Search Here Shop or Product'} maxLength={30} />
-            <Send onClick={() => { }}>Search</Send>
-        </SearchStyled>
-    )
-}
