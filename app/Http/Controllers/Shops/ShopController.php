@@ -15,7 +15,7 @@ class ShopController extends Controller
     public function show(ProductCategoryLimitRequest $request): JsonResponse
     {
         $data = [];
-        $shopId = $this->getId($request);
+        $shopId = $this->getId($request, 'shop_id');
 
         $data['shop'] = ShopResource::collection([(new Shop())->getInfoByShopId($shopId)]);
         $categoryIds = (new Product())->getProductCategoriesByShopId($shopId, $request->input('category_limit', 10));

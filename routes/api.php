@@ -3,6 +3,7 @@
 use App\Http\Controllers\Products\ProductCategoriesController;
 use App\Http\Controllers\Products\ProductSearchController;
 use App\Http\Controllers\Products\ProductSubcategoriesController;
+use App\Http\Controllers\Products\ShopProductController;
 use App\Http\Controllers\Recommendations\ProductsCategoriesRecommendationsController;
 use App\Http\Controllers\Recommendations\ProductsRecommendationsController;
 use App\Http\Controllers\Recommendations\ShopsRecommendationsController;
@@ -52,7 +53,14 @@ Route::prefix('shops')->group(function () {
     });
 
     Route::get('categories', [ShopCategoriesController::class, 'index'])->middleware('auth:merchant');
-    Route::get('{id}', [ShopController::class, 'show']);
+
+    Route::prefix('{shop_id}')->group(function () {
+        Route::get('/', [ShopController::class, 'show']);
+        Route::prefix('products')->group(function () {
+            Route::get('{product_id}', [ShopProductController::class, 'show']);
+        });
+    });
+
 });
 
 Route::prefix('users')->group(function () {

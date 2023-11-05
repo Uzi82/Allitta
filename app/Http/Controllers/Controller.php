@@ -13,9 +13,9 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
 
-    public function getId(Request $request): int|JsonResponse
+    public function getId(Request $request, string $parameter = 'id'): int|JsonResponse
     {
-        $id = $request->route('id');
+        $id = $request->route($parameter);
 
         $validator = Validator::make(['id' => $id], [
             'id' => ['required', 'integer'],
