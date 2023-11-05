@@ -20,6 +20,7 @@ import { ShopProfile } from '../modules/ShopProfile'
 import { ComplaintAdmin } from '../modules/ComplaintAdmin'
 import { AdminAccounts } from '../modules/AdminAccounts'
 import { AdminProducts } from '../modules/AdminProducts'
+import { ProductPage } from './ProductPage'
 
 export const publicRoutes = createBrowserRouter([
     {
@@ -33,6 +34,10 @@ export const publicRoutes = createBrowserRouter([
             {
                 path: '/shops/:id',
                 element: <ShopPage />
+            },
+            {
+                path: '/products/:id',
+                element: <ProductPage />
             }
         ]
     },

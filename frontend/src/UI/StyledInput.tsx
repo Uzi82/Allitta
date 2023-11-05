@@ -58,7 +58,27 @@ const Send = styled.button<{ $changecolor: string }>`
     }
 `
 
-export const StyledInput = ({btnText = 'Send', width = '256px' , heigth = 45, chngClr, placeholder = '', onChange, value, onClick }: {btnText?: string, width?: string, heigth?: number, chngClr?: boolean, placeholder?: string, onChange?: React.ChangeEventHandler<HTMLInputElement>, value?: string, onClick?: React.MouseEventHandler<HTMLButtonElement> }) => <Div>
+type Props = {
+    btnText?: string, 
+    width?: string, 
+    heigth?: number, 
+    chngClr?: boolean, 
+    placeholder?: string, 
+    onChange?: React.ChangeEventHandler<HTMLInputElement>, 
+    value?: string, 
+    onClick?: React.MouseEventHandler<HTMLButtonElement> 
+}
+
+export const StyledInput = ({
+    btnText = 'Send', 
+    width = '256px' , 
+    heigth = 45, 
+    chngClr, 
+    placeholder = '', 
+    onChange, 
+    value, 
+    onClick
+    }: Props) => <Div>
     <Input onChange={onChange} value={value} placeholder={placeholder} $width={width} $heigth={heigth} maxLength={30}/>
     <Send onClick={onClick} $changecolor={chngClr ? '#5D20D6' : 'white'}>{btnText}</Send>
 </Div>
