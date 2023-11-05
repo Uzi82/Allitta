@@ -1,9 +1,10 @@
 import { useQuery } from "react-query"
-import { Content, MainPage, MainTitle, MainText } from "./styled"
+import { Content, Main, MainTitle, MainText, ProductsList } from "./styled"
 import { getFilteredProducts } from "../models/getFilteredProducts"
 import { Pagination } from "../../../components/Pagination"
 import React from "react"
 import { Search } from "./Search"
+import { Filters } from "./Filters"
 
 export const HomeProducts: React.FC = () => {
     const [page, setPage] = React.useState(1)
@@ -16,15 +17,19 @@ export const HomeProducts: React.FC = () => {
     }
     return (
         <Content>
-            <MainPage>
-                <MainTitle>
-                    Shop Online
-                </MainTitle>
-                <MainText>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                </MainText>
-                <Search></Search>
-            </MainPage>
+            <Main>
+                <MainTitle>Shop Online</MainTitle>
+                <MainText>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</MainText>
+                <Search />
+            </Main>
+            <Content>
+                <Filters />
+                <ProductsList>
+                    {data.map((product) => (
+                        <div key={product.id}>{product.name}</div>
+                    ))}
+                </ProductsList>
+            </Content>
             <Pagination count={7} onChange={setPage} />
         </Content>
     )
