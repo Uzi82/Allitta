@@ -22,7 +22,7 @@ export const Title = styled.h2<{ $mb?: string }>`
     font-weight: 700;
     margin: 0 0 ${({ $mb }) => $mb ? $mb : '0'} 0;
 `
-export const ButtonReset = styled.button`
+export const ButtonReset = styled.button.attrs({ type: 'button' })`
     font-family: Inter-regular, sans-serif;
     font-size: 14px;
     padding: 4px 11px;
