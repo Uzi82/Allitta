@@ -6,24 +6,29 @@ import styled from "styled-components"
 export const RadioGroupStyled = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px;
 `
 export const RadioGroupHeader = styled.div`
     display: flex;  
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
-    margin-bottom: 10px;
 `
-export const RadioGroupTitle = styled.h3`
+export const RadioGroupList = styled.div<{ $isOpen: boolean }>`
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+    margin-bottom: ${({ $isOpen }) => $isOpen ? '0' : '20px'} ;
+    transform: translateX(${({ $isOpen }) => $isOpen ? '-100%' : 0});
+    max-height: ${({ $isOpen }) => $isOpen ? '0px' : '200px'};
+    opacity: ${({ $isOpen }) => $isOpen ? 0 : 1};
 `
-export const RadioGroupExpand = styled.div`
+export const RadioGroupExpand = styled.div<{ $isOpen: boolean }>`
     cursor: pointer;
-        transition: transform 0.2s ease-in-out;
-        transform: rotate(-90deg);
-    &:hover {
-        transform: rotate(0deg);
-    }
+    transition: transform 0.2s ease-in-out;
+    transform: rotate(${({ $isOpen }) => $isOpen ? 0 : '-90deg'});
 `
 export const RadioGroupElement = styled.input`
 `

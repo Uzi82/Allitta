@@ -1,21 +1,31 @@
 import React from "react"
 import { Wrapper, Header, Title, ButtonReset, Divider } from "./Filters.styled"
-import { RadioGroup } from "./components/RadioGroup"
 import { Price } from "./components/Price"
+import { setCategories, setCities, setPrice } from "../../../../store/slices/filtersSlice"
+import { Categories } from "./components/Categories"
+import { Cities } from "./components/Cities"
+import { useAppSelector } from "../../../Dashboard"
 
 export const Filters: React.FC = ({ }) => {
-    const [price, setPrice] = React.useState(0)
-    console.log(price)
+
+    const filters = useAppSelector((state) => state.filtersSlice)
+
     return (
         <Wrapper>
             <Header>
                 <Title>Filter</Title>
-                <ButtonReset>Reset</ButtonReset>
+                <ButtonReset onClick={() => {
+                    setPrice(0)
+                    setCategories({})
+                    setCities({})
+                }}>Reset</ButtonReset>
             </Header>
             <Divider $mb={'10px'} />
-            <Price setPrice={setPrice} />
+            <Price />
             <Divider $mb={'20px'} />
-            <RadioGroup label='Categories' />
+            <Categories />
+            <Divider $mb={'20px'} />
+            <Cities />
         </Wrapper>
     )
 }
