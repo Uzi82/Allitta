@@ -10,13 +10,17 @@ export const Filters: React.FC = ({ }) => {
                 <Title>Filter</Title>
                 <ButtonReset>Reset</ButtonReset>
             </Header>
-            <Divider />
+            <Divider mb={'10px'} />
             <PriceWrapper>
+                <Title mb="10px">Price</Title>
                 <PriceInput />
-                <MaxPriceTitle></MaxPriceTitle>
-                <PriceSelect />
+                <MaxPriceTitle>Max price Rs. 30,000.00</MaxPriceTitle>
+                <PriceSelect placeholder='Price'>
+                    <option value={1}>Lower To Higher</option>
+                    <option value={2}>Higher To Lower</option>
+                </PriceSelect>
             </PriceWrapper>
-            <Divider />
+            <Divider mb={'20px'} />
             <RadioGroup>
                 <RadioGroupHeader>
                     <RadioGroupTitle>Categories</RadioGroupTitle>
