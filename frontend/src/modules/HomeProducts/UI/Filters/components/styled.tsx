@@ -24,6 +24,9 @@ export const RadioGroupList = styled.div<{ $isOpen: boolean }>`
     transform: translateX(${({ $isOpen }) => $isOpen ? '-100%' : 0});
     max-height: ${({ $isOpen }) => $isOpen ? '0px' : '200px'};
     opacity: ${({ $isOpen }) => $isOpen ? 0 : 1};
+    @media (max-width: 768px) {
+      transform: translateX(${({ $isOpen }) => $isOpen ? '100%' : 0});
+  }
 `
 export const RadioGroupExpand = styled.div<{ $isOpen: boolean }>`
     cursor: pointer;
