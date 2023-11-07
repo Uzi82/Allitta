@@ -2,9 +2,12 @@
     display: flex;
     gap: 5px;
     list-style: none;
+    align-items: center;
+    justify-content: center;
 }
 
-.page-item a {
+.page-item a,
+.break span {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -19,6 +22,11 @@
 
     &:hover {
         background-color: #FF9C00;
+    }
+
+    @media (max-width: 768px) {
+        width: 25px;
+        height: 25px;
     }
 }
 
@@ -41,6 +49,10 @@
     border-radius: 5px;
     user-select: none;
 
+    @media (max-width: 768px) {
+        width: 25px;
+        height: 25px;
+    }
 }
 
 .previous a svg,
