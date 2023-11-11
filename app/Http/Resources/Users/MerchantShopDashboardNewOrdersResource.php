@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Users;
 
+use App\Enums\CurrencyEnum;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Carbon;
@@ -15,7 +16,7 @@ class MerchantShopDashboardNewOrdersResource extends JsonResource
             'customer_name' => $this->full_name,
             'ordered_date' => Carbon::parse($this->created_at)->format('Y/m/d'),
             'amount' => (float)$this->amount,
-            'currency' => config('currencies')[$this->currency],
+            'currency' => config('currencies')[CurrencyEnum::USD->value],
             'status' => $this->status,
         ];
     }

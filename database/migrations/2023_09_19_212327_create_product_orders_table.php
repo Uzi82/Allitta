@@ -1,6 +1,5 @@
 <?php
 
-use App\Enums\CurrencyEnum;
 use App\Enums\ProductOrderStatusEnum;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -18,7 +17,6 @@ return new class extends Migration {
             $table->foreignId('shop_id')->constrained('shops');
             $table->smallInteger('status')->default(ProductOrderStatusEnum::NEW->value);
             $table->float('amount');
-            $table->tinyInteger('currency')->default(CurrencyEnum::USD->value);
             $table->string('delivery_code', 10);
             $table->timestamps();
         });

@@ -1,6 +1,5 @@
 <?php
 
-use App\Enums\CurrencyEnum;
 use App\Enums\ProductStatusEnum;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -25,7 +24,6 @@ return new class extends Migration {
             $table->boolean('active')->default(false);
             $table->boolean('draft')->default(false);
             $table->integer('quantity')->default(0);
-            $table->tinyInteger('currency')->default(CurrencyEnum::USD->value);
             $table->float('cost');
             $table->timestamps();
         });

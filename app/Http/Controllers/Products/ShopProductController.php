@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Products;
 
+use App\Enums\CurrencyEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LimitRequest;
 use App\Http\Resources\Products\ProductRecommendationResource;
@@ -31,7 +32,6 @@ class ShopProductController extends Controller
                 'description',
                 'images',
                 'cost',
-                'currency',
                 'category_id',
                 DB::raw("ROUND((SELECT AVG(rating) FROM product_order_items WHERE product_id = ?) * 2) / 2 as rating")
             )
@@ -52,7 +52,7 @@ class ShopProductController extends Controller
                 'logotype_path' => asset($product->logotype_path),
                 'images' => array_map('asset', json_decode($product->images)),
                 'cost' => (float)$product->cost,
-                'currency' => config('currencies')[$product->currency],
+                'currency' => config('currencies')[CurrencyEnum::USD->value],
                 'rating' => (float)$product->rating ?? 0,
             ],
             'shop' => [
