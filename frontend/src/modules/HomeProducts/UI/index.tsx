@@ -7,6 +7,9 @@ import { Search } from "./Search"
 import { Filters } from "./Filters"
 import { Button } from "../../../UI/Button"
 import { useNavigate } from "react-router-dom"
+import { ChooseShop } from "../../ChooseShop"
+import { ExploreMore } from "../../../UI/ExploreMore"
+import { TrandingProducts } from "../../TrandingProducts"
 
 export const HomeProducts: React.FC = () => {
     const navigate = useNavigate()
@@ -14,7 +17,7 @@ export const HomeProducts: React.FC = () => {
     const { data, isLoading, isError } = useQuery('getFilteredProducts', getFilteredProducts, {
         refetchOnWindowFocus: false
     })
-
+    console.log(data)
     if (!data) {
         return <div>no products</div>
     }
@@ -45,6 +48,9 @@ export const HomeProducts: React.FC = () => {
                 </ProductsList>
             </Content>
             <Pagination count={7} onChange={setPage} />
+            <ChooseShop />
+            <ExploreMore to={'/products'} $mb="40px" />
+            <TrandingProducts />
         </Wrapper>
     )
 }
