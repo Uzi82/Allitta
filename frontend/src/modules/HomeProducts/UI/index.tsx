@@ -14,7 +14,7 @@ export const HomeProducts: React.FC = () => {
     const { data } = useQuery('getFilteredProducts', () => getFilteredProducts({ pageCount: page }), {
         refetchOnWindowFocus: false
     })
-
+    const changePage = (selectedItem: { selected: number }) => setPage(selectedItem.selected)
     if (!data) {
         return <div>no products</div>
     }
@@ -44,7 +44,7 @@ export const HomeProducts: React.FC = () => {
                     }
                 </ProductsList>
             </Content>
-            <Pagination count={7} onChange={setPage} />
+            <Pagination count={7} onChange={changePage} />
         </Wrapper>
     )
 }

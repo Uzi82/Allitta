@@ -1,4 +1,4 @@
 export interface PaginationProps {
     count: number;
-    onChange: (page: number) => void;
+    onChange: (selectedItem: { selected: number; }) => void;
 }

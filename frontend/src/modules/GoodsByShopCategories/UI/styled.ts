@@ -32,7 +32,7 @@ export const List = styled.div`
     flex-direction: row;
     gap: 17px;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     @media screen and (min-width: 767px) and (max-width: 1120px) {
         width: calc(100vw - 20px);
         gap: 7px;  

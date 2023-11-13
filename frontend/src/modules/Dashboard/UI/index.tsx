@@ -82,7 +82,10 @@ export const Dashboard: React.FC = () => {
                         </Btn>
                     </Buttons>
                 </Blocks>
-                <DashboardPie />
+                <DashboardPie 
+                    percent={getInfoQuery.data !== undefined ? getInfoQuery.data.available_stock_percent : 0}
+                    stock_summary={getInfoQuery.data !== undefined ? getInfoQuery.data.stock_summary : []}
+                />
             </Header>
             <NewOrders />
         </Container>

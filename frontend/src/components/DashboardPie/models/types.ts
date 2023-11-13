@@ -1,5 +1,8 @@
-export type lowStockProd = {
-    title: string,
-    remaining: number,
-    id: string
+export type Props = {
+    percent: number,
+    stock_summary: {
+        id: number, 
+        product_name: string, 
+        available_stock_percent: number
+    }[]
 }
