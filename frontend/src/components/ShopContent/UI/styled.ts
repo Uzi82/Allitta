@@ -53,7 +53,7 @@ export const InfoWrapper = styled.div`
 `
 export const ShopInfo= styled.div`
     display: flex;
-    align-items: center;
+    align-items: gl;
     @media screen and (max-width: 450px) {
         justify-content: center;
     }

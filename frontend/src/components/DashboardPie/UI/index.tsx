@@ -17,18 +17,16 @@ import { Chart,
          Text
 } from './styled';
 import { useQuery } from 'react-query';
-import { LazyLoad, getLowStock } from '../';
+import { LazyLoad, Props } from '../';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-export const DashboardPie: React.FC = () => {
-    const { data, isError, isLoading } = useQuery('lowStockProducts', getLowStock)
-    if(isError) console.error('LowStock: Query error')
+export const DashboardPie: React.FC<Props> = ({ percent, stock_summary }) => {
     const chartData = {
         labels: ['Added Stock', 'Available Stock'],
         datasets: [
             {
-                data: [9, 1],
+                data: [percent, 100 - percent],
                 backgroundColor: [
                 'rgba(93, 32, 214, 1)',
                 'rgba(93, 32, 214, 0.2)'
@@ -73,22 +71,19 @@ export const DashboardPie: React.FC = () => {
                 </LowStockHeader>
                 <List>
                     {
-                        isLoading
-                            ? <LazyLoad $width='100%' $height='140px'/>
-                            : data && data.length > 0
-                                ? data.map(el=>{
-                                    return(
-                                        <LowStockEl key={el.id}>
-                                            <LowStockTitle>
-                                                { el.title }
-                                            </LowStockTitle>
-                                            <LowStockRemain>
-                                                Remaining { el.remaining }%
-                                            </LowStockRemain>
-                                        </LowStockEl>
-                                    )
-                                })
-                                : <LazyLoad $height='140px' $width='100%' />
+                        stock_summary !== undefined
+                        && stock_summary.map(el=>{
+                            return(
+                                <LowStockEl key={el.id}>
+                                    <LowStockTitle>
+                                        { el.product_name }
+                                    </LowStockTitle>
+                                    <LowStockRemain>
+                                        Remaining { el.available_stock_percent }%
+                                    </LowStockRemain>
+                                </LowStockEl>
+                            )
+                        })
                     }
                 </List>
             </LowStock>

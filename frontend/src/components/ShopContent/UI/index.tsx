@@ -24,7 +24,6 @@ export const ShopContent: React.FC<Props> = ({ children, data }) => {
             <InfoWrapper>
                 <ShopInfo>
                     <Name>{data?.name}</Name>
-                    <Rating>{data?.rating} DR</Rating>
                 </ShopInfo>
                 {children}
             </InfoWrapper>

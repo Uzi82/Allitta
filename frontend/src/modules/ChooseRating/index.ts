@@ -1,1 +1,0 @@
-export { ChooseRating } from './UI/index';

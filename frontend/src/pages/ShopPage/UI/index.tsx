@@ -1,5 +1,4 @@
 import { ShopContent } from "../../../components/ShopContent";
-import { ChooseRating } from "../../../modules/ChooseRating";
 import { GoodsByShopCategories, LazyLoad } from "../../../modules/GoodsByShopCategories";
 import { ChooseShop } from "../../Home";
 import { ShopsWrapper } from './styled';
@@ -7,6 +6,7 @@ import { getShopInfo } from "../models/getShopInfo";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
+import { RatingStars } from '../'
 
 export const ShopPage: React.FC = () => {
     let { id } = useParams();
@@ -28,7 +28,7 @@ export const ShopPage: React.FC = () => {
             {data &&
                 <>
                     <ShopContent data={data.shop[0]}>
-                        <ChooseRating />
+                        <RatingStars rating={parseFloat(data.shop[0].rating)} />
                     </ShopContent>
                     {data?.data.map(item => (
                         <GoodsByShopCategories
