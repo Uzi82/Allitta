@@ -34,7 +34,7 @@ class ProductSearchController extends Controller
         $query = $filtersService->applyFilters($query)
             ->leftJoin('shops', 'shops.id', '=', 'products.shop_id')
             ->where('shops.active', true)
-            ->select('products.id', 'products.name', 'products.logotype_path', 'products.currency', 'products.cost')
+            ->select('products.id', 'products.name', 'products.logotype_path', 'products.cost')
             ->paginate($request->input('per_page'));
 
         $data = [

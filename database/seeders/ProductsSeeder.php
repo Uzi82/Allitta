@@ -15,7 +15,7 @@ class ProductsSeeder extends Seeder
     {
         Shop::all()->each(function (Shop $shop) {
             Product::factory()
-                ->count(rand(10, 30))
+                ->count(25)
                 ->create(['shop_id' => $shop->id]);
         });
     }

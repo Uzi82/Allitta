@@ -37,7 +37,7 @@ class Product extends Model
 
     public function getBestProductsByShopIdAndCategoryId(int $shopId, int $categoryId, int $limit)
     {
-        $query = Product::select('products.id', 'products.name', 'products.logotype_path', 'products.currency', 'products.cost', 'products.description')
+        $query = Product::select('products.id', 'products.name', 'products.logotype_path', 'products.cost', 'products.description')
             ->leftJoin('shops', 'products.shop_id', '=', 'shops.id')
             ->where('shops.id', $shopId)
             ->where('shops.active', true)

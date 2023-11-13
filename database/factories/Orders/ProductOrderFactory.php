@@ -2,7 +2,6 @@
 
 namespace Database\Factories\Orders;
 
-use App\Enums\CurrencyEnum;
 use App\Enums\ProductOrderStatusEnum;
 use App\Models\Orders\ProductOrder;
 use App\Models\Shops\Shop;
@@ -30,7 +29,6 @@ class ProductOrderFactory extends Factory
             'shop_id' => Shop::inRandomOrder()->first()->id,
             'status' => $status,
             'amount' => 0,
-            'currency' => CurrencyEnum::USD->value,
             'delivery_code' => Str::random(6),
             'rating' => $status === ProductOrderStatusEnum::DONE->value ? rand(1, 5) : null,
         ];

@@ -1,19 +1,20 @@
 import { useQuery } from "react-query"
-import { DashboardPie, 
-         LazyLoad, 
-         NewOrders, 
-         StatsElement, 
-         getInfo, 
-         infoElements, 
-         useAppSelector, 
-         useJWT 
+import {
+    DashboardPie,
+    LazyLoad,
+    NewOrders,
+    StatsElement,
+    getInfo,
+    infoElements,
+    useAppSelector,
+    useJWT
 } from "../"
-import { 
+import {
     Blocks,
     Buttons,
-    Container, 
-    Header, 
-    Line, 
+    Container,
+    Header,
+    Line,
     Stats,
     Btn,
     BtnHeader,
@@ -32,25 +33,25 @@ export const Dashboard: React.FC = () => {
     const getInfoQuery = useQuery(['getInfoAboutShop', { JWT, id }], () => getInfo(JWT, id))
     useEffect(
         () => {
-            if(id === -1) navigate('/shop/')
+            if (id === -1) navigate('/shop/')
         },
-        [JWT, id]
+        [JWT, id, navigate]
     )
-    return(
+    return (
         <Container>
             <Header>
                 <Blocks>
                     <Stats>
                         {
                             getInfoQuery.isFetching
-                                ? 
+                                ?
                                 <>
                                     <LazyLoad $width="100%" $height="100%" />
                                     <LazyLoad $width="100%" $height="100%" />
                                     <LazyLoad $width="100%" $height="100%" />
                                     <LazyLoad $width="100%" $height="100%" />
                                 </>
-                                : getInfoQuery.data !== undefined && Object.keys(getInfoQuery.data.summary).map((el, index) => 
+                                : getInfoQuery.data !== undefined && Object.keys(getInfoQuery.data.summary).map((el, index) =>
                                     <StatsElement key={index} amount={getInfoQuery.data !== undefined && getInfoQuery.data.summary[el]} title={infoElements[el][0]} img={infoElements[el][1]} />
                                 )
                         }

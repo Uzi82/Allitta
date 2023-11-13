@@ -1,7 +1,7 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { CartModal, Logo, openModal, useAppDispatch, useAppSelector, useJWT, useUserType } from '../'
 import { HeaderDiv, HeaderContent, Navigation, LinkText, Sign, Button, CartBtn } from './styled'
-
+        
 export const Header: React.FC = () => {
     const jwt = useJWT()
     const type = useUserType()

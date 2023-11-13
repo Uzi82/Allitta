@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Enums\ProductOrderStatusEnum;
 use App\Models\Orders\ProductOrder;
 use App\Models\Orders\ProductOrderItem;
 use App\Models\Products\Product;
@@ -26,7 +27,8 @@ class ProductOrderItemsSeeder extends Seeder
                         'order_id' => $order->id,
                         'product_id' => $product->id,
                         'quantity' => $quantity,
-                        'cost' => $product->cost
+                        'cost' => $product->cost,
+                        'rating' => $order->status === ProductOrderStatusEnum::DONE->value ? rand(1, 5) : null,
                     ]
                 );
 

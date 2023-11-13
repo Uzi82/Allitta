@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import ReactSelect from "react-select"
 
 export const Content = styled.div`
     width: 100%;
@@ -154,8 +153,8 @@ export const List = styled.div`
 `
 
 export const Status = styled.div<{ $color: string }>`
-    border: 1px solid ${({ $color }) => $color };
-    color: ${({ $color }) => $color };
+    border: 1px solid ${({ $color }) => $color};
+    color: ${({ $color }) => $color};
     border-radius: 5px;
     height: 30px;
     width: 95px;

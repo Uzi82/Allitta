@@ -15,7 +15,6 @@ class ProductRecommendationService
             'products.id',
             'products.name',
             'products.logotype_path',
-            'products.currency',
             'products.cost',
             'products.description',
         )
@@ -24,7 +23,7 @@ class ProductRecommendationService
             ->leftJoin('shops', 'shops.id', '=', 'products.shop_id')
             ->where('product_orders.status', ProductOrderStatusEnum::DONE)
             ->where('shops.active', true)
-            ->groupBy('products.id', 'products.name', 'products.logotype_path', 'products.currency', 'products.cost', 'products.description')
+            ->groupBy('products.id', 'products.name', 'products.logotype_path', 'products.cost', 'products.description')
             ->orderByDesc(DB::raw('COUNT(*)'))
             ->limit($limit)
             ->get();
@@ -32,6 +31,6 @@ class ProductRecommendationService
 
     public function getPersonalBestProducts(int $limit): Collection
     {
-        return Product::select('id', 'name', 'logotype_path', 'currency', 'cost', 'description')->inRandomOrder()->limit($limit)->get();
+        return Product::select('id', 'name', 'logotype_path', 'cost', 'description')->inRandomOrder()->limit($limit)->get();
     }
 }

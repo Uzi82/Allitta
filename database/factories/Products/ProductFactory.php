@@ -2,7 +2,6 @@
 
 namespace Database\Factories\Products;
 
-use App\Enums\CurrencyEnum;
 use App\Enums\NoFilePathEnum;
 use App\Enums\PathEnum;
 use App\Enums\ProductStatusEnum;
@@ -24,7 +23,6 @@ class ProductFactory extends Factory
     public function definition(): array
     {
         $statuses = ProductStatusEnum::cases();
-        $currencies = CurrencyEnum::cases();
         $name = $this->faker->words(2, true);
         $categoryId = ProductCategory::inRandomOrder()->first()->id;
         $categoryChildren = config('app.categories.category.children')[$categoryId];
@@ -43,7 +41,6 @@ class ProductFactory extends Factory
             'active' => (bool)rand(0, 1),
             'draft' => (bool)rand(0, 1),
             'quantity' => $quantity,
-            'currency' => $currencies[array_rand($currencies)]->value,
             'cost' => rand(100, 5000),
             'last_stock_quantity' => $quantity + rand(10, 100),
         ];

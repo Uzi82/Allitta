@@ -99,6 +99,18 @@
 	        	...
         }
 
+#### Информация о товаре и магазине, с лучшими товарами из той же категории отсортированными по продажам:
+
+    URL: GET http://localhost/api/shops/{shop_id}/products/{product_id}
+    Опционально: ?limit={int} (по умолчанию 4) *лимит продуктов в списке из той же категории
+    Ответ: JSON вида 
+        {
+	        product: {id, name, description, logotype_path, images, cost, currency, rating},
+	        shop: {id, name, rating},
+            products_in_category: {{id, name, logotype_path, currency, cost, description}, ...}
+        }
+
+
 ### Пользователи:
 
 #### Регистрация кастомера:

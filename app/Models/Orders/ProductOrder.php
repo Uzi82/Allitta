@@ -24,7 +24,6 @@ class ProductOrder extends Model
             'customer_users.full_name',
             'product_orders.created_at',
             DB::raw('ROUND(CAST(product_orders.amount AS DECIMAL), 2) as amount'),
-            'product_orders.currency',
             'product_orders.status'
         )
             ->where('shop_id', $shopId)
