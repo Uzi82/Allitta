@@ -3,7 +3,10 @@ import styled from "styled-components"
 export const Card = styled.div`
     display: flex;
     flex-direction: column;
+    text-align: left;
+    cursor: pointer;
     gap: 15px;
+    background-color: inherit;
     @media screen and (min-width: 767px) and (max-width: 1120px) {
         gap: 5px;
     }

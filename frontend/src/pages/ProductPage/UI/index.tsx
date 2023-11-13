@@ -31,11 +31,16 @@ import { AddToCart,
          Text, 
          Top
 } from "./styled"
-import { ProductCard, StyledInput, TrandingProducts 
+import { ProductCard, 
+         StyledInput, 
+         TrandingProducts, 
+         addProduct, 
+         useAppDispatch 
 } from '../'
 
 export const ProductPage: React.FC = () => {
     const [flareStatus, setFlare] = useState<boolean>(false)
+    const dispatch = useAppDispatch()
     return(
     <>
         <Top>
@@ -74,7 +79,7 @@ export const ProductPage: React.FC = () => {
                         </ProductName>
                     </Names>
                     <PriceContent>
-                        <Price> Rs. 100,000.00</Price> <Piece> Per Piece </Piece>
+                        <Price> Rs 100,000.00</Price> <Piece> Per Piece </Piece>
                     </PriceContent>
                     <Rating>
                         <RatingTitle>
@@ -94,7 +99,13 @@ export const ProductPage: React.FC = () => {
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.
                         </DescriptionText>
                     </Description>
-                    <AddToCart onMouseEnter={()=>setFlare(true)} onMouseLeave={()=>setFlare(false)}>
+                    <AddToCart onClick={()=>dispatch(addProduct({
+                        id: (Math.random()*1000).toFixed(0).toString(),
+                        name: 'Product Name',
+                        logotype_path: '',
+                        price: 10000,
+                        currency: 'RS'
+                    }))} onMouseEnter={()=>setFlare(true)} onMouseLeave={()=>setFlare(false)}>
                         <Flare $status={flareStatus} />
                         <CartText>
                             Add to Cart

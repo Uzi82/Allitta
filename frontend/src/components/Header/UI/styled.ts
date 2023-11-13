@@ -102,3 +102,18 @@ export const Button = styled(Link)<{ $big?: boolean }>`
         font-size: 10px;
     }
 `
+
+export const CartBtn = styled.button`
+    cursor: pointer;
+    background: url(${require('./cart.png')});
+    background-color: inherit;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 40px;
+    height: 40px;
+    @media screen and (max-width: 626px) {
+        width: 20px;
+        height: 20px;
+    }
+`

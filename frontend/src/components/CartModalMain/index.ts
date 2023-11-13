@@ -1,0 +1,6 @@
+export { CartModalMain } from './UI'
+export type { cartEl } from './models/types'
+export { CartIncrement } from '../../UI/CartIncrement'
+export { useAppSelector, useAppDispatch } from '../../hooks/reduxHooks'
+export { changeAmount } from '../../store/slices/cartSlice'
+export { setId } from '../../store/slices/productsSlice'
