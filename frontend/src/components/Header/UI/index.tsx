@@ -1,10 +1,11 @@
 import { Link, useNavigate } from 'react-router-dom'
-import { Logo, useJWT, useUserType } from '../'
-import { HeaderDiv, HeaderContent, Navigation, LinkText, Sign, Button } from './styled'
+import { CartModal, Logo, openModal, useAppDispatch, useAppSelector, useJWT, useUserType } from '../'
+import { HeaderDiv, HeaderContent, Navigation, LinkText, Sign, Button, CartBtn } from './styled'
 
 export const Header: React.FC = () => {
     const jwt = useJWT()
     const type = useUserType()
+    const dispatch = useAppDispatch()
     return (
         <HeaderDiv>
             <HeaderContent>
@@ -24,9 +25,15 @@ export const Header: React.FC = () => {
                             <Button to={'/signin'}>Sign In</Button>
                         </Sign>
                         : 
-                        <Button $big to={type !== undefined ? type === '2' ? 'user' : 'shop' : '/'}>
-                            Profile
-                        </Button>
+                        <Sign>
+                            <Button $big to={type !== undefined ? type === '2' ? 'user' : 'shop' : '/'}>
+                                Profile
+                            </Button>
+                            <CartBtn onClick={() => dispatch(openModal({
+                                type: 'cartModal',
+                                id: 'main'
+                            }))} />
+                        </Sign>
                 }
             </HeaderContent>
         </HeaderDiv>

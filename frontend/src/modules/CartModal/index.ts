@@ -1,0 +1,5 @@
+export { CartModal } from './UI'
+export { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks'
+export { open } from '../../store/slices/productsSlice'
+export { CartModalMain } from '../../components/CartModalMain'
+export { CartModalAddress } from '../../components/CartModalAddress'
