@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Logo, useJWT, useUserType } from '../'
 import { HeaderDiv, HeaderContent, Navigation, LinkText, Sign, Button } from './styled'
 
@@ -23,7 +23,7 @@ export const Header: React.FC = () => {
                             <Button to={'/signup'}>Sign Up</Button>
                             <Button to={'/signin'}>Sign In</Button>
                         </Sign>
-                        : 
+                        :
                         <Button $big to={type !== undefined ? type === '2' ? 'user' : 'shop' : '/'}>
                             Profile
                         </Button>

@@ -8,7 +8,7 @@ import { setCities } from '../../../../../store/slices/filtersSlice';
 interface CitiesProps {
 }
 
-export const Cities: React.FC<CitiesProps> = ({ }) => {
+export const Cities: React.FC<CitiesProps> = () => {
   const data = ['City 1', 'City 2', 'City 3', 'City 4',]
   const initialState: Record<string, boolean> = {};
   data.forEach((str) => { initialState[str] = false; });
@@ -27,7 +27,7 @@ export const Cities: React.FC<CitiesProps> = ({ }) => {
     return () => {
       clearTimeout(id)
     }
-  }, [currValues])
+  }, [currValues, dispatch])
 
 
   return (

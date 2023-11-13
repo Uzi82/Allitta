@@ -7,7 +7,7 @@ import { setPrice } from '../../../../../store/slices/filtersSlice'
 interface PriceProps {
 }
 
-export const Price: React.FC<PriceProps> = ({ }) => {
+export const Price: React.FC<PriceProps> = () => {
     const maxPrice = 10000
     const dispatch = useAppDispatch()
     const [localPrice, setLocalPrice] = React.useState(maxPrice / 2)
@@ -22,7 +22,7 @@ export const Price: React.FC<PriceProps> = ({ }) => {
         return () => {
             clearTimeout(id)
         }
-    }, [localPrice])
+    }, [localPrice, dispatch])
     return (
         <PriceWrapper>
             <Title $mb="10px">Price</Title>

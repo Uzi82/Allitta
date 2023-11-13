@@ -1,11 +1,7 @@
 import React from "react"
-import styled from "styled-components"
 import { Input, SearchStyled, Send } from "./Search.styles"
 
-
-
-
-export const Search: React.FC = ({ }) => {
+export const Search: React.FC = () => {
     const [searchValue, setSearchValue] = React.useState('')
 
     return (

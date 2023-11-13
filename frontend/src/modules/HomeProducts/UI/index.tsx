@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom"
 export const HomeProducts: React.FC = () => {
     const navigate = useNavigate()
     const [page, setPage] = React.useState(1)
-    const { data, isLoading, isError } = useQuery('getFilteredProducts', getFilteredProducts, {
+    const { data } = useQuery('getFilteredProducts', () => getFilteredProducts({ pageCount: page }), {
         refetchOnWindowFocus: false
     })
 

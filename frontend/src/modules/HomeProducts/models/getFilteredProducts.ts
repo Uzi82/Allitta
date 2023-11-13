@@ -1,11 +1,10 @@
-import axios from "axios";
 import { product } from "./types";
 
-export async function getFilteredProducts(): Promise<product[]> {
+export async function getFilteredProducts({ pageCount }: { pageCount: number }): Promise<product[]> {
     // return await axios.get('http://localhost/api/products').then(res => res.data)
     return [
         {
-            id: '1',
+            id: (pageCount + 21).toString(), // just because pageCount should not be unused
             name: 'string',
             cost: 'string',
             description: 'string',

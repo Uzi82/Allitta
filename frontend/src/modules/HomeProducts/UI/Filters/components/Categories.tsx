@@ -8,7 +8,7 @@ import { setCategories } from '../../../../../store/slices/filtersSlice';
 interface CategoriesProps {
 }
 
-export const Categories: React.FC<CategoriesProps> = ({ }) => {
+export const Categories: React.FC<CategoriesProps> = () => {
   const data = ['category 1', 'category 2', 'category 3', 'category 4',]
   const initialState: Record<string, boolean> = {};
   data.forEach((str) => { initialState[str] = false; });
@@ -26,7 +26,7 @@ export const Categories: React.FC<CategoriesProps> = ({ }) => {
     return () => {
       clearTimeout(id)
     }
-  }, [currValues])
+  }, [currValues, dispatch])
 
 
   return (

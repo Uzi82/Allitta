@@ -4,13 +4,12 @@ import { Price } from "./components/Price"
 import { setCategories, setCities, setPrice } from "../../../../store/slices/filtersSlice"
 import { Categories } from "./components/Categories"
 import { Cities } from "./components/Cities"
-import { useAppSelector } from "../../../Dashboard"
 
-export const Filters: React.FC = ({ }) => {
+export const Filters: React.FC = () => {
 
     const [isMobileOpen, setisMobileOpen] = React.useState(false)
     const [dissapear, setDissapear] = React.useState(false)
-    const filters = useAppSelector((state) => state.filtersSlice)
+    // const filters = useAppSelector((state) => state.filtersSlice)
 
 
     React.useEffect(() => {
