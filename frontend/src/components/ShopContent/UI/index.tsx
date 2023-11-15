@@ -5,7 +5,6 @@ import {
     Avatar,
     ShopInfo,
     Name,
-    Rating,
     InfoWrapper,
     ShopDescription,
     Title,

@@ -87,7 +87,7 @@ export const Dashboard: React.FC = () => {
                     stock_summary={getInfoQuery.data !== undefined ? getInfoQuery.data.stock_summary : []}
                 />
             </Header>
-            <NewOrders />
+            <NewOrders new_orders={getInfoQuery.data?.new_orders} />
         </Container>
     )
 }
