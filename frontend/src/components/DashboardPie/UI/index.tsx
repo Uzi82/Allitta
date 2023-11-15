@@ -16,8 +16,7 @@ import { Chart,
          PieContainer,
          Text
 } from './styled';
-import { useQuery } from 'react-query';
-import { LazyLoad, Props } from '../';
+import { Props } from '../';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 

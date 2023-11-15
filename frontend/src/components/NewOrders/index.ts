@@ -1,4 +1,3 @@
 export { NewOrders } from './UI'
-export type { NewOrder } from './models/types'
-export { getNewOrders } from './models/getNewOrders'
+export type { Props } from './models/types'
 export { LazyLoad } from '../../UI/LazyLoading'

@@ -1,4 +1,3 @@
-import { useQuery } from "react-query"
 import { 
     Container, 
     Head, 
@@ -9,15 +8,10 @@ import {
     OrderLink,
     Status
 } from "./styled"
-import { getNewOrders } from "../models/getNewOrders"
-import { LazyLoad } from "../../../UI/LazyLoading"
+import { Props } from "../"
 
 
-export const NewOrders: React.FC = () => {
-    const {data, isError, isLoading} = useQuery('newOrders', getNewOrders, {
-        refetchOnWindowFocus: false
-    })
-    if(isError) console.error('NewOrders: Query error')
+export const NewOrders: React.FC<Props> = ({ new_orders }) => {
     return(
         <Container>
             <Head>
@@ -39,35 +33,29 @@ export const NewOrders: React.FC = () => {
                 </HeadEl>
             </Head>
             {
-                isLoading
-                    ? <LazyLoad $width="1110px" $height="350px" />
-                    : data && data.length > 0
-                        ?   data.map(el=>{
-                            return(
-                                <Order key={el.number}>
-                                    <OrderEl>
-                                        #{ el.number }
-                                    </OrderEl>
-                                    <OrderEl>
-                                        { el.name }
-                                    </OrderEl>
-                                    <OrderEl> {/* Элемент пустого места в центре */} </OrderEl>
-                                    <OrderEl>
-                                        { el.date }
-                                    </OrderEl>
-                                    <OrderEl>
-                                        { el.currency }{ el.coast }
-                                    </OrderEl>
-                                    <OrderEl>
-                                        <Status $process={el.status === 'New' ? false : true}>
-                                            { el.status }
-                                        </Status>
-                                    </OrderEl>
-                                    <OrderLink to={`/order/${el.number}`} />
-                                </Order>
-                            )
-                        })
-                        : <></>
+                new_orders !== undefined && new_orders.map(el=>
+                <Order key={el.id}>
+                            <OrderEl>
+                                #{ el.id }
+                            </OrderEl>
+                            <OrderEl>
+                                { el.customer_name }
+                            </OrderEl>
+                            <OrderEl> {/* Элемент пустого места в центре */} </OrderEl>
+                            <OrderEl>
+                                { el.ordered_date }
+                            </OrderEl>
+                            <OrderEl>
+                                { el.currency }{ el.amount }
+                            </OrderEl>
+                            <OrderEl>
+                                <Status $process={el.status === 1 ? false : true}>
+                                    { el.status }
+                                </Status>
+                            </OrderEl>
+                            <OrderLink to={`/order/${el.id}`} />
+                        </Order>
+                    )
             }
         </Container>
     )
